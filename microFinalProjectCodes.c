@@ -18,7 +18,8 @@ void lcdData( unsigned char data );
 void lcd_init();
 void lcd_gotoxy(unsigned char x, unsigned char y);
 void lcd_print( char * str );
-
+void LCM35_init();
+void getTemp();
 
 /* keypad mapping :
 C : Cancel
@@ -34,7 +35,7 @@ unsigned char keypad[4][4] = {'7', '8', '9', 'O',
 
 
 void main(void)
-{
+{    
     KEY_DDR = 0xF0;
     KEY_PRT = 0xFF;
     KEY_PRT &= 0x0F;// ground all rows at once
@@ -45,8 +46,8 @@ void main(void)
     
     #asm("sei") //enable interrupts
     lcdCommand(0x01); //clear LCD 
-    lcd_gotoxy(1,1);
-    lcd_print("num1:");
+    LCM35_init();
+    getTemp();
     while(1);
    
  
@@ -163,4 +164,31 @@ void lcd_print(char *str)
         lcdData(str[i]);
         i++;
     }
+}
+
+void LCM35_init()
+{
+    ADMUX = 0xE0;
+	ADCSRA = 0x87;
+
+}
+
+void getTemp()
+{ 
+	unsigned char temperatureVal = 0;
+	unsigned char temperatureRep[3];  
+        
+
+    while(1)
+	{      
+        lcdCommand(0x01);
+        lcd_gotoxy(1,1);  
+        lcd_print("Temp(C):");
+		ADCSRA |= (1 << ADSC);
+		while((ADCSRA & (1 << ADIF)) == 0);
+		temperatureVal = ADCH;
+		itoa(temperatureVal, temperatureRep);
+        lcd_print(temperatureRep);
+        delay_ms(100);
+	}
 }

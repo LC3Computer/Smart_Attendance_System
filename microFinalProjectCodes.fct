@@ -1,5 +1,6 @@
-main DSTACK_USAGE:0 DSTACK_LEVEL:0 FILE:"microFinalProjectCodes.c" LINE:36
-lcd_gotoxy DSTACK_USAGE:6 DSTACK_LEVEL:6 FILE:"microFinalProjectCodes.c" LINE:152
-lcdCommand DSTACK_USAGE:1 DSTACK_LEVEL:7 FILE:"microFinalProjectCodes.c" LINE:107
-int0_routine DSTACK_USAGE:16 DSTACK_LEVEL:23 FILE:"microFinalProjectCodes.c" LINE:58
-lcdData DSTACK_USAGE:1 DSTACK_LEVEL:24 FILE:"microFinalProjectCodes.c" LINE:121
+main DSTACK_USAGE:0 DSTACK_LEVEL:0 FILE:"microFinalProjectCodes.c" LINE:37
+getTemp DSTACK_USAGE:4 DSTACK_LEVEL:4 FILE:"microFinalProjectCodes.c" LINE:176
+lcd_gotoxy DSTACK_USAGE:6 DSTACK_LEVEL:10 FILE:"microFinalProjectCodes.c" LINE:153
+lcdCommand DSTACK_USAGE:1 DSTACK_LEVEL:11 FILE:"microFinalProjectCodes.c" LINE:108
+int0_routine DSTACK_USAGE:16 DSTACK_LEVEL:27 FILE:"microFinalProjectCodes.c" LINE:59
+lcdData DSTACK_USAGE:1 DSTACK_LEVEL:28 FILE:"microFinalProjectCodes.c" LINE:122

@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.30  D:\projects\hardware\microFinalProject\Debug\List\microFinalProjectCodes.asm Wed Dec 11 21:35:44 2024
+AVRASM ver. 2.1.30  C:\Users\Asus\Documents\attendance-avr\Debug\List\microFinalProjectCodes.asm Wed Dec 11 22:39:24 2024
 
                  
                  
@@ -1095,8 +1095,8 @@ AVRASM ver. 2.1.30  D:\projects\hardware\microFinalProject\Debug\List\microFinal
                  __START_OF_CODE:
                  
                  ;INTERRUPT VECTORS
-000000 940c 0045 	JMP  __RESET
-000002 940c 008a 	JMP  _int0_routine
+000000 940c 0047 	JMP  __RESET
+000002 940c 0087 	JMP  _int0_routine
 000004 940c 0000 	JMP  0x00
 000006 940c 0000 	JMP  0x00
 000008 940c 0000 	JMP  0x00
@@ -1127,102 +1127,105 @@ AVRASM ver. 2.1.30  D:\projects\hardware\microFinalProject\Debug\List\microFinal
 000030 304c
 000031 4552      	.DB  0x31,0x32,0x33,0x43,0x4C,0x30,0x52,0x45
                  _0x0:
-000032 756e
-000033 316d
-000034 003a      	.DB  0x6E,0x75,0x6D,0x31,0x3A,0x0
+000032 6554
+000033 706d
+000034 4328
+000035 3a29      	.DB  0x54,0x65,0x6D,0x70,0x28,0x43,0x29,0x3A
+C:\Users\Asus\Documents\attendance-avr\Debug\List\microFinalProjectCodes.asm(1121): warning: .cseg .db misalignment - padding zero byte
+000036 0000      	.DB  0x0
                  _0x2000060:
-D:\projects\hardware\microFinalProject\Debug\List\microFinalProjectCodes.asm(1122): warning: .cseg .db misalignment - padding zero byte
-000035 0001      	.DB  0x1
+C:\Users\Asus\Documents\attendance-avr\Debug\List\microFinalProjectCodes.asm(1123): warning: .cseg .db misalignment - padding zero byte
+000037 0001      	.DB  0x1
                  _0x2000000:
-000036 4e2d
-000037 4e41
-000038 4900
-000039 464e      	.DB  0x2D,0x4E,0x41,0x4E,0x0,0x49,0x4E,0x46
-D:\projects\hardware\microFinalProject\Debug\List\microFinalProjectCodes.asm(1125): warning: .cseg .db misalignment - padding zero byte
-00003a 0000      	.DB  0x0
+000038 4e2d
+000039 4e41
+00003a 4900
+00003b 464e      	.DB  0x2D,0x4E,0x41,0x4E,0x0,0x49,0x4E,0x46
+C:\Users\Asus\Documents\attendance-avr\Debug\List\microFinalProjectCodes.asm(1126): warning: .cseg .db misalignment - padding zero byte
+00003c 0000      	.DB  0x0
                  
                  __GLOBAL_INI_TBL:
-00003b 0010      	.DW  0x10
-00003c 0266      	.DW  _keypad
-00003d 0054      	.DW  _0x3*2
+00003d 0010      	.DW  0x10
+00003e 0269      	.DW  _keypad
+00003f 0054      	.DW  _0x3*2
                  
-00003e 0006      	.DW  0x06
-00003f 0260      	.DW  _0x4
-000040 0064      	.DW  _0x0*2
+000040 0009      	.DW  0x09
+000041 0260      	.DW  _0x1A
+000042 0064      	.DW  _0x0*2
                  
-000041 0001      	.DW  0x01
-000042 0276      	.DW  __seed_G100
-000043 006a      	.DW  _0x2000060*2
+000043 0001      	.DW  0x01
+000044 0279      	.DW  __seed_G100
+000045 006e      	.DW  _0x2000060*2
                  
                  _0xFFFFFFFF:
-000044 0000      	.DW  0
+000046 0000      	.DW  0
                  
                  #define __GLOBAL_INI_TBL_PRESENT 1
                  
                  __RESET:
-000045 94f8      	CLI
-000046 27ee      	CLR  R30
-000047 bbec      	OUT  EECR,R30
+000047 94f8      	CLI
+000048 27ee      	CLR  R30
+000049 bbec      	OUT  EECR,R30
                  
                  ;INTERRUPT VECTORS ARE PLACED
                  ;AT THE START OF FLASH
-000048 e0f1      	LDI  R31,1
-000049 bffb      	OUT  GICR,R31
-00004a bfeb      	OUT  GICR,R30
-00004b bfe5      	OUT  MCUCR,R30
+00004a e0f1      	LDI  R31,1
+00004b bffb      	OUT  GICR,R31
+00004c bfeb      	OUT  GICR,R30
+00004d bfe5      	OUT  MCUCR,R30
                  
                  ;CLEAR R2-R14
-00004c e08d      	LDI  R24,(14-2)+1
-00004d e0a2      	LDI  R26,2
-00004e 27bb      	CLR  R27
+00004e e08d      	LDI  R24,(14-2)+1
+00004f e0a2      	LDI  R26,2
+000050 27bb      	CLR  R27
                  __CLEAR_REG:
-00004f 93ed      	ST   X+,R30
-000050 958a      	DEC  R24
-000051 f7e9      	BRNE __CLEAR_REG
+000051 93ed      	ST   X+,R30
+000052 958a      	DEC  R24
+000053 f7e9      	BRNE __CLEAR_REG
                  
                  ;CLEAR SRAM
-000052 e080      	LDI  R24,LOW(__CLEAR_SRAM_SIZE)
-000053 e098      	LDI  R25,HIGH(__CLEAR_SRAM_SIZE)
-000054 e6a0      	LDI  R26,__SRAM_START
+000054 e080      	LDI  R24,LOW(__CLEAR_SRAM_SIZE)
+000055 e098      	LDI  R25,HIGH(__CLEAR_SRAM_SIZE)
+000056 e6a0      	LDI  R26,__SRAM_START
                  __CLEAR_SRAM:
-000055 93ed      	ST   X+,R30
-000056 9701      	SBIW R24,1
-000057 f7e9      	BRNE __CLEAR_SRAM
+000057 93ed      	ST   X+,R30
+000058 9701      	SBIW R24,1
+000059 f7e9      	BRNE __CLEAR_SRAM
                  
                  ;GLOBAL VARIABLES INITIALIZATION
-000058 e7e6      	LDI  R30,LOW(__GLOBAL_INI_TBL*2)
-000059 e0f0      	LDI  R31,HIGH(__GLOBAL_INI_TBL*2)
+00005a e7ea      	LDI  R30,LOW(__GLOBAL_INI_TBL*2)
+00005b e0f0      	LDI  R31,HIGH(__GLOBAL_INI_TBL*2)
                  __GLOBAL_INI_NEXT:
-00005a 9185      	LPM  R24,Z+
-00005b 9195      	LPM  R25,Z+
-00005c 9700      	SBIW R24,0
-00005d f061      	BREQ __GLOBAL_INI_END
-00005e 91a5      	LPM  R26,Z+
-00005f 91b5      	LPM  R27,Z+
-000060 9005      	LPM  R0,Z+
-000061 9015      	LPM  R1,Z+
-000062 01bf      	MOVW R22,R30
-000063 01f0      	MOVW R30,R0
+00005c 9185      	LPM  R24,Z+
+00005d 9195      	LPM  R25,Z+
+00005e 9700      	SBIW R24,0
+00005f f061      	BREQ __GLOBAL_INI_END
+000060 91a5      	LPM  R26,Z+
+000061 91b5      	LPM  R27,Z+
+000062 9005      	LPM  R0,Z+
+000063 9015      	LPM  R1,Z+
+000064 01bf      	MOVW R22,R30
+000065 01f0      	MOVW R30,R0
                  __GLOBAL_INI_LOOP:
-000064 9005      	LPM  R0,Z+
-000065 920d      	ST   X+,R0
-000066 9701      	SBIW R24,1
-000067 f7e1      	BRNE __GLOBAL_INI_LOOP
-000068 01fb      	MOVW R30,R22
-000069 cff0      	RJMP __GLOBAL_INI_NEXT
+000066 9005      	LPM  R0,Z+
+000067 920d      	ST   X+,R0
+000068 9701      	SBIW R24,1
+000069 f7e1      	BRNE __GLOBAL_INI_LOOP
+00006a 01fb      	MOVW R30,R22
+00006b cff0      	RJMP __GLOBAL_INI_NEXT
                  __GLOBAL_INI_END:
                  
                  ;HARDWARE STACK POINTER INITIALIZATION
-00006a e5ef      	LDI  R30,LOW(__SRAM_END-__HEAP_SIZE)
-00006b bfed      	OUT  SPL,R30
-00006c e0e8      	LDI  R30,HIGH(__SRAM_END-__HEAP_SIZE)
-00006d bfee      	OUT  SPH,R30
+00006c e5ef      	LDI  R30,LOW(__SRAM_END-__HEAP_SIZE)
+00006d bfed      	OUT  SPL,R30
+00006e e0e8      	LDI  R30,HIGH(__SRAM_END-__HEAP_SIZE)
+00006f bfee      	OUT  SPH,R30
                  
                  ;DATA STACK POINTER INITIALIZATION
-00006e e6c0      	LDI  R28,LOW(__SRAM_START+__DSTACK_SIZE)
-00006f e0d2      	LDI  R29,HIGH(__SRAM_START+__DSTACK_SIZE)
+000070 e6c0      	LDI  R28,LOW(__SRAM_START+__DSTACK_SIZE)
+000071 e0d2      	LDI  R29,HIGH(__SRAM_START+__DSTACK_SIZE)
                  
-000070 940c 0072 	JMP  _main
+000072 940c 0074 	JMP  _main
                  
                  	.ESEG
                  	.ORG 0
@@ -1262,7 +1265,8 @@ D:\projects\hardware\microFinalProject\Debug\List\microFinalProjectCodes.asm(112
                  ;void lcd_init();
                  ;void lcd_gotoxy(unsigned char x, unsigned char y);
                  ;void lcd_print( char * str );
-                 ;
+                 ;void LCM35_init();
+                 ;void getTemp();
                  ;
                  ;/* keypad mapping :
                  ;C : Cancel
@@ -1280,406 +1284,527 @@ D:\projects\hardware\microFinalProject\Debug\List\microFinalProjectCodes.asm(112
                  ;
                  ;
                  ;void main(void)
-                 ; 0000 0025 {
+                 ; 0000 0026 {
                  
                  	.CSEG
                  _main:
                  ; .FSTART _main
-                 ; 0000 0026     KEY_DDR = 0xF0;
-000072 efe0      	LDI  R30,LOW(240)
-000073 bbe4      	OUT  0x14,R30
-                 ; 0000 0027     KEY_PRT = 0xFF;
-000074 efef      	LDI  R30,LOW(255)
-000075 bbe5      	OUT  0x15,R30
-                 ; 0000 0028     KEY_PRT &= 0x0F;// ground all rows at once
-000076 b3e5      	IN   R30,0x15
-000077 70ef      	ANDI R30,LOW(0xF)
-000078 bbe5      	OUT  0x15,R30
-                 ; 0000 0029     MCUCR = 0x02; //make INT0 falling edge triggered
-000079 e0e2      	LDI  R30,LOW(2)
-00007a bfe5      	OUT  0x35,R30
-                 ; 0000 002A     GICR = (1<<INT0); //enable external interrupt 0
-00007b e4e0      	LDI  R30,LOW(64)
-00007c bfeb      	OUT  0x3B,R30
-                 ; 0000 002B     lcd_init();
-00007d d07e      	RCALL _lcd_init
-                 ; 0000 002C 
+                 ; 0000 0027     KEY_DDR = 0xF0;
+000074 efe0      	LDI  R30,LOW(240)
+000075 bbe4      	OUT  0x14,R30
+                 ; 0000 0028     KEY_PRT = 0xFF;
+000076 efef      	LDI  R30,LOW(255)
+000077 bbe5      	OUT  0x15,R30
+                 ; 0000 0029     KEY_PRT &= 0x0F;// ground all rows at once
+000078 b3e5      	IN   R30,0x15
+000079 70ef      	ANDI R30,LOW(0xF)
+00007a bbe5      	OUT  0x15,R30
+                 ; 0000 002A     MCUCR = 0x02; //make INT0 falling edge triggered
+00007b e0e2      	LDI  R30,LOW(2)
+00007c bfe5      	OUT  0x35,R30
+                 ; 0000 002B     GICR = (1<<INT0); //enable external interrupt 0
+00007d e4e0      	LDI  R30,LOW(64)
+00007e bfeb      	OUT  0x3B,R30
+                 ; 0000 002C     lcd_init();
+00007f d079      	RCALL _lcd_init
                  ; 0000 002D 
-                 ; 0000 002E     #asm("sei") //enable interrupts
-00007e 9478      	sei
-                 ; 0000 002F     lcdCommand(0x01); //clear LCD
-00007f e0a1      	LDI  R26,LOW(1)
-000080 d05e      	RCALL _lcdCommand
-                 ; 0000 0030     lcd_gotoxy(1,1);
-000081 e0e1      	LDI  R30,LOW(1)
-000082 93ea      	ST   -Y,R30
-000083 e0a1      	LDI  R26,LOW(1)
-000084 d094      	RCALL _lcd_gotoxy
-                 ; 0000 0031     lcd_print("num1:");
-                +
-000085 e6a0     +LDI R26 , LOW ( _0x4 + ( 0 ) )
-000086 e0b2     +LDI R27 , HIGH ( _0x4 + ( 0 ) )
-                 	__POINTW2MN _0x4,0
-000087 d0a9      	RCALL _lcd_print
-                 ; 0000 0032     while(1);
-                 _0x5:
-000088 cfff      	RJMP _0x5
-                 ; 0000 0033 
-                 ; 0000 0034 
-                 ; 0000 0035 }
-                 _0x8:
-000089 cfff      	RJMP _0x8
-                 ; .FEND
-                 
-                 	.DSEG
+                 ; 0000 002E 
+                 ; 0000 002F     #asm("sei") //enable interrupts
+000080 9478      	sei
+                 ; 0000 0030     lcdCommand(0x01); //clear LCD
+000081 e0a1      	LDI  R26,LOW(1)
+000082 d059      	RCALL _lcdCommand
+                 ; 0000 0031     LCM35_init();
+000083 d0c2      	RCALL _LCM35_init
+                 ; 0000 0032     getTemp();
+000084 d0c6      	RCALL _getTemp
+                 ; 0000 0033     while(1);
                  _0x4:
-000260           	.BYTE 0x6
+000085 cfff      	RJMP _0x4
+                 ; 0000 0034 
+                 ; 0000 0035 
+                 ; 0000 0036 }
+                 _0x7:
+000086 cfff      	RJMP _0x7
+                 ; .FEND
                  ;
                  ;
                  ;
                  ;//int0 (keypad) service routine
                  ;interrupt [EXT_INT0] void int0_routine(void){
-                 ; 0000 003A interrupt [2] void int0_routine(void){
-                 
-                 	.CSEG
+                 ; 0000 003B interrupt [2] void int0_routine(void){
                  _int0_routine:
                  ; .FSTART _int0_routine
-00008a 920a      	ST   -Y,R0
-00008b 921a      	ST   -Y,R1
-00008c 92fa      	ST   -Y,R15
-00008d 936a      	ST   -Y,R22
-00008e 937a      	ST   -Y,R23
-00008f 938a      	ST   -Y,R24
-000090 939a      	ST   -Y,R25
-000091 93aa      	ST   -Y,R26
-000092 93ba      	ST   -Y,R27
+000087 920a      	ST   -Y,R0
+000088 921a      	ST   -Y,R1
+000089 92fa      	ST   -Y,R15
+00008a 936a      	ST   -Y,R22
+00008b 937a      	ST   -Y,R23
+00008c 938a      	ST   -Y,R24
+00008d 939a      	ST   -Y,R25
+00008e 93aa      	ST   -Y,R26
+00008f 93ba      	ST   -Y,R27
+000090 93ea      	ST   -Y,R30
+000091 93fa      	ST   -Y,R31
+000092 b7ef      	IN   R30,SREG
 000093 93ea      	ST   -Y,R30
-000094 93fa      	ST   -Y,R31
-000095 b7ef      	IN   R30,SREG
-000096 93ea      	ST   -Y,R30
-                 ; 0000 003B     unsigned char colloc, rowloc , cl;
-                 ; 0000 003C 
-                 ; 0000 003D     //detect the key
-                 ; 0000 003E       while (1)
-000097 940e 016b 	CALL __SAVELOCR4
+                 ; 0000 003C     unsigned char colloc, rowloc , cl;
+                 ; 0000 003D 
+                 ; 0000 003E     //detect the key
+                 ; 0000 003F       while (1)
+000094 940e 01c5 	CALL __SAVELOCR4
                  ;	colloc -> R17
                  ;	rowloc -> R16
                  ;	cl -> R19
-                 ; 0000 003F         {
-                 ; 0000 0040             KEY_PRT = 0xEF;            // ground row 0
-000099 eeef      	LDI  R30,LOW(239)
-00009a 940e 0149 	CALL SUBOPT_0x0
-                 ; 0000 0041             colloc = (KEY_PIN & 0x0F); // read the columns
-                 ; 0000 0042             if (colloc != 0x0F)        // column detected
-00009c f011      	BREQ _0xC
-                 ; 0000 0043             {
-                 ; 0000 0044                 rowloc = 0; // save row location
-00009d e000      	LDI  R16,LOW(0)
-                 ; 0000 0045                 break;      // exit while loop
-00009e c012      	RJMP _0xB
-                 ; 0000 0046             }
-                 ; 0000 0047             KEY_PRT = 0xDF;            // ground row 1
-                 _0xC:
-00009f edef      	LDI  R30,LOW(223)
-0000a0 940e 0149 	CALL SUBOPT_0x0
-                 ; 0000 0048             colloc = (KEY_PIN & 0x0F); // read the columns
-                 ; 0000 0049             if (colloc != 0x0F)        // column detected
-0000a2 f011      	BREQ _0xD
-                 ; 0000 004A             {
-                 ; 0000 004B                 rowloc = 1; // save row location
-0000a3 e001      	LDI  R16,LOW(1)
-                 ; 0000 004C                 break;      // exit while loop
-0000a4 c00c      	RJMP _0xB
-                 ; 0000 004D             }
-                 ; 0000 004E             KEY_PRT = 0xBF;            // ground row 2
-                 _0xD:
-0000a5 ebef      	LDI  R30,LOW(191)
-0000a6 940e 0149 	CALL SUBOPT_0x0
-                 ; 0000 004F             colloc = (KEY_PIN & 0x0F); // read the columns
-                 ; 0000 0050             if (colloc != 0x0F)        // column detected
-0000a8 f011      	BREQ _0xE
-                 ; 0000 0051             {
-                 ; 0000 0052                 rowloc = 2; // save row location
-0000a9 e002      	LDI  R16,LOW(2)
-                 ; 0000 0053                 break;      // exit while loop
-0000aa c006      	RJMP _0xB
-                 ; 0000 0054             }
-                 ; 0000 0055             KEY_PRT = 0x7F;            // ground row 3
-                 _0xE:
-0000ab e7ef      	LDI  R30,LOW(127)
-0000ac bbe5      	OUT  0x15,R30
-                 ; 0000 0056             colloc = (KEY_PIN & 0x0F); // read the columns
-0000ad b3e3      	IN   R30,0x13
-0000ae 70ef      	ANDI R30,LOW(0xF)
-0000af 2f1e      	MOV  R17,R30
-                 ; 0000 0057             rowloc = 3;                // save row location
-0000b0 e003      	LDI  R16,LOW(3)
-                 ; 0000 0058             break;                     // exit while loop
-                 ; 0000 0059         }
+                 ; 0000 0040         {
+                 ; 0000 0041             KEY_PRT = 0xEF;            // ground row 0
+000096 eeef      	LDI  R30,LOW(239)
+000097 940e 0199 	CALL SUBOPT_0x0
+                 ; 0000 0042             colloc = (KEY_PIN & 0x0F); // read the columns
+                 ; 0000 0043             if (colloc != 0x0F)        // column detected
+000099 f011      	BREQ _0xB
+                 ; 0000 0044             {
+                 ; 0000 0045                 rowloc = 0; // save row location
+00009a e000      	LDI  R16,LOW(0)
+                 ; 0000 0046                 break;      // exit while loop
+00009b c012      	RJMP _0xA
+                 ; 0000 0047             }
+                 ; 0000 0048             KEY_PRT = 0xDF;            // ground row 1
                  _0xB:
-                 ; 0000 005A         // check column and send result to Port D
-                 ; 0000 005B         if (colloc == 0x0E)
-0000b1 301e      	CPI  R17,14
-0000b2 f411      	BRNE _0xF
-                 ; 0000 005C             cl=0;
-0000b3 e030      	LDI  R19,LOW(0)
-                 ; 0000 005D         else if (colloc == 0x0D)
-0000b4 c009      	RJMP _0x10
-                 _0xF:
-0000b5 301d      	CPI  R17,13
-0000b6 f411      	BRNE _0x11
-                 ; 0000 005E              cl=1;
-0000b7 e031      	LDI  R19,LOW(1)
-                 ; 0000 005F         else if (colloc == 0x0B)
-0000b8 c005      	RJMP _0x12
-                 _0x11:
-0000b9 301b      	CPI  R17,11
-0000ba f411      	BRNE _0x13
-                 ; 0000 0060               cl=2;
-0000bb e032      	LDI  R19,LOW(2)
-                 ; 0000 0061         else
-0000bc c001      	RJMP _0x14
-                 _0x13:
-                 ; 0000 0062             cl=3;
-0000bd e033      	LDI  R19,LOW(3)
-                 ; 0000 0063 
-                 ; 0000 0064     KEY_PRT &= 0x0F;// ground all rows at once
-                 _0x14:
-                 _0x12:
+00009c edef      	LDI  R30,LOW(223)
+00009d 940e 0199 	CALL SUBOPT_0x0
+                 ; 0000 0049             colloc = (KEY_PIN & 0x0F); // read the columns
+                 ; 0000 004A             if (colloc != 0x0F)        // column detected
+00009f f011      	BREQ _0xC
+                 ; 0000 004B             {
+                 ; 0000 004C                 rowloc = 1; // save row location
+0000a0 e001      	LDI  R16,LOW(1)
+                 ; 0000 004D                 break;      // exit while loop
+0000a1 c00c      	RJMP _0xA
+                 ; 0000 004E             }
+                 ; 0000 004F             KEY_PRT = 0xBF;            // ground row 2
+                 _0xC:
+0000a2 ebef      	LDI  R30,LOW(191)
+0000a3 940e 0199 	CALL SUBOPT_0x0
+                 ; 0000 0050             colloc = (KEY_PIN & 0x0F); // read the columns
+                 ; 0000 0051             if (colloc != 0x0F)        // column detected
+0000a5 f011      	BREQ _0xD
+                 ; 0000 0052             {
+                 ; 0000 0053                 rowloc = 2; // save row location
+0000a6 e002      	LDI  R16,LOW(2)
+                 ; 0000 0054                 break;      // exit while loop
+0000a7 c006      	RJMP _0xA
+                 ; 0000 0055             }
+                 ; 0000 0056             KEY_PRT = 0x7F;            // ground row 3
+                 _0xD:
+0000a8 e7ef      	LDI  R30,LOW(127)
+0000a9 bbe5      	OUT  0x15,R30
+                 ; 0000 0057             colloc = (KEY_PIN & 0x0F); // read the columns
+0000aa b3e3      	IN   R30,0x13
+0000ab 70ef      	ANDI R30,LOW(0xF)
+0000ac 2f1e      	MOV  R17,R30
+                 ; 0000 0058             rowloc = 3;                // save row location
+0000ad e003      	LDI  R16,LOW(3)
+                 ; 0000 0059             break;                     // exit while loop
+                 ; 0000 005A         }
+                 _0xA:
+                 ; 0000 005B         // check column and send result to Port D
+                 ; 0000 005C         if (colloc == 0x0E)
+0000ae 301e      	CPI  R17,14
+0000af f411      	BRNE _0xE
+                 ; 0000 005D             cl=0;
+0000b0 e030      	LDI  R19,LOW(0)
+                 ; 0000 005E         else if (colloc == 0x0D)
+0000b1 c009      	RJMP _0xF
+                 _0xE:
+0000b2 301d      	CPI  R17,13
+0000b3 f411      	BRNE _0x10
+                 ; 0000 005F              cl=1;
+0000b4 e031      	LDI  R19,LOW(1)
+                 ; 0000 0060         else if (colloc == 0x0B)
+0000b5 c005      	RJMP _0x11
                  _0x10:
-0000be b3e5      	IN   R30,0x15
-0000bf 70ef      	ANDI R30,LOW(0xF)
-0000c0 bbe5      	OUT  0x15,R30
-                 ; 0000 0065 
-                 ; 0000 0066    lcdData(keypad[rowloc][cl]); //send the character to lcd
-0000c1 2fe0      	MOV  R30,R16
-0000c2 e6a6      	LDI  R26,LOW(_keypad)
-0000c3 e0b2      	LDI  R27,HIGH(_keypad)
-0000c4 e0f0      	LDI  R31,0
-0000c5 940e 0166 	CALL __LSLW2
-0000c7 0fae      	ADD  R26,R30
-0000c8 1fbf      	ADC  R27,R31
-0000c9 27ee      	CLR  R30
-0000ca 0fa3      	ADD  R26,R19
-0000cb 1fbe      	ADC  R27,R30
-0000cc 91ac      	LD   R26,X
-0000cd d01a      	RCALL _lcdData
-                 ; 0000 0067 
-                 ; 0000 0068 }
-0000ce 940e 0170 	CALL __LOADLOCR4
-0000d0 9624      	ADIW R28,4
+0000b6 301b      	CPI  R17,11
+0000b7 f411      	BRNE _0x12
+                 ; 0000 0061               cl=2;
+0000b8 e032      	LDI  R19,LOW(2)
+                 ; 0000 0062         else
+0000b9 c001      	RJMP _0x13
+                 _0x12:
+                 ; 0000 0063             cl=3;
+0000ba e033      	LDI  R19,LOW(3)
+                 ; 0000 0064 
+                 ; 0000 0065     KEY_PRT &= 0x0F;// ground all rows at once
+                 _0x13:
+                 _0x11:
+                 _0xF:
+0000bb b3e5      	IN   R30,0x15
+0000bc 70ef      	ANDI R30,LOW(0xF)
+0000bd bbe5      	OUT  0x15,R30
+                 ; 0000 0066 
+                 ; 0000 0067    lcdData(keypad[rowloc][cl]); //send the character to lcd
+0000be 2fe0      	MOV  R30,R16
+0000bf e6a9      	LDI  R26,LOW(_keypad)
+0000c0 e0b2      	LDI  R27,HIGH(_keypad)
+0000c1 e0f0      	LDI  R31,0
+0000c2 940e 01c0 	CALL __LSLW2
+0000c4 0fae      	ADD  R26,R30
+0000c5 1fbf      	ADC  R27,R31
+0000c6 27ee      	CLR  R30
+0000c7 0fa3      	ADD  R26,R19
+0000c8 1fbe      	ADC  R27,R30
+0000c9 91ac      	LD   R26,X
+0000ca d01a      	RCALL _lcdData
+                 ; 0000 0068 
+                 ; 0000 0069 }
+0000cb 940e 01ca 	CALL __LOADLOCR4
+0000cd 9624      	ADIW R28,4
+0000ce 91e9      	LD   R30,Y+
+0000cf bfef      	OUT  SREG,R30
+0000d0 91f9      	LD   R31,Y+
 0000d1 91e9      	LD   R30,Y+
-0000d2 bfef      	OUT  SREG,R30
-0000d3 91f9      	LD   R31,Y+
-0000d4 91e9      	LD   R30,Y+
-0000d5 91b9      	LD   R27,Y+
-0000d6 91a9      	LD   R26,Y+
-0000d7 9199      	LD   R25,Y+
-0000d8 9189      	LD   R24,Y+
-0000d9 9179      	LD   R23,Y+
-0000da 9169      	LD   R22,Y+
-0000db 90f9      	LD   R15,Y+
-0000dc 9019      	LD   R1,Y+
-0000dd 9009      	LD   R0,Y+
-0000de 9518      	RETI
+0000d2 91b9      	LD   R27,Y+
+0000d3 91a9      	LD   R26,Y+
+0000d4 9199      	LD   R25,Y+
+0000d5 9189      	LD   R24,Y+
+0000d6 9179      	LD   R23,Y+
+0000d7 9169      	LD   R22,Y+
+0000d8 90f9      	LD   R15,Y+
+0000d9 9019      	LD   R1,Y+
+0000da 9009      	LD   R0,Y+
+0000db 9518      	RETI
                  ; .FEND
                  ;
                  ;
                  ;void lcdCommand(unsigned char cmnd)
-                 ; 0000 006C {
+                 ; 0000 006D {
                  _lcdCommand:
                  ; .FSTART _lcdCommand
-                 ; 0000 006D     LCD_PRT = (LCD_PRT & 0x0F) | (cmnd & 0xF0);
-0000df 940e 014f 	CALL SUBOPT_0x1
+                 ; 0000 006E     LCD_PRT = (LCD_PRT & 0x0F) | (cmnd & 0xF0);
+0000dc 940e 019f 	CALL SUBOPT_0x1
                  ;	cmnd -> Y+0
-                 ; 0000 006E     LCD_PRT &= ~(1 << LCD_RS); // RS = 0 for command
-0000e1 98c0      	CBI  0x18,0
-                 ; 0000 006F     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
-0000e2 940e 0158 	CALL SUBOPT_0x2
-                 ; 0000 0070     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
-                 ; 0000 0071     delay_us(1);               // wait to make EN wider
-                 ; 0000 0072     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
-                 ; 0000 0073     delay_us(20);              // wait
+                 ; 0000 006F     LCD_PRT &= ~(1 << LCD_RS); // RS = 0 for command
+0000de 98c0      	CBI  0x18,0
+                 ; 0000 0070     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
+0000df 940e 01a8 	CALL SUBOPT_0x2
+                 ; 0000 0071     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
+                 ; 0000 0072     delay_us(1);               // wait to make EN wider
+                 ; 0000 0073     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
+                 ; 0000 0074     delay_us(20);              // wait
                 +
-0000e4 e385     +LDI R24 , LOW ( 53 )
+0000e1 e385     +LDI R24 , LOW ( 53 )
                 +__DELAY_USB_LOOP :
-0000e5 958a     +DEC R24
-0000e6 f7f1     +BRNE __DELAY_USB_LOOP
+0000e2 958a     +DEC R24
+0000e3 f7f1     +BRNE __DELAY_USB_LOOP
                  	__DELAY_USB 53
-                 ; 0000 0074     LCD_PRT = (LCD_PRT & 0x0F) | (cmnd << 4);
-0000e7 c005      	RJMP _0x2080001
-                 ; 0000 0075     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
-                 ; 0000 0076     delay_us(1);               // wait to make EN wider
-                 ; 0000 0077     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
-                 ; 0000 0078 }
+                 ; 0000 0075     LCD_PRT = (LCD_PRT & 0x0F) | (cmnd << 4);
+0000e4 c005      	RJMP _0x2080001
+                 ; 0000 0076     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
+                 ; 0000 0077     delay_us(1);               // wait to make EN wider
+                 ; 0000 0078     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
+                 ; 0000 0079 }
                  ; .FEND
                  ;void lcdData(unsigned char data)
-                 ; 0000 007A {
+                 ; 0000 007B {
                  _lcdData:
                  ; .FSTART _lcdData
-                 ; 0000 007B     LCD_PRT = (LCD_PRT & 0x0F) | (data & 0xF0);
-0000e8 940e 014f 	CALL SUBOPT_0x1
+                 ; 0000 007C     LCD_PRT = (LCD_PRT & 0x0F) | (data & 0xF0);
+0000e5 940e 019f 	CALL SUBOPT_0x1
                  ;	data -> Y+0
-                 ; 0000 007C     LCD_PRT |= (1 << LCD_RS);  // RS = 1 for data
-0000ea 9ac0      	SBI  0x18,0
-                 ; 0000 007D     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
-0000eb 940e 0158 	CALL SUBOPT_0x2
-                 ; 0000 007E     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
-                 ; 0000 007F     delay_us(1);               // wait to make EN wider
-                 ; 0000 0080     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
-                 ; 0000 0081     LCD_PRT = (LCD_PRT & 0x0F) | (data << 4);
+                 ; 0000 007D     LCD_PRT |= (1 << LCD_RS);  // RS = 1 for data
+0000e7 9ac0      	SBI  0x18,0
+                 ; 0000 007E     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
+0000e8 940e 01a8 	CALL SUBOPT_0x2
+                 ; 0000 007F     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
+                 ; 0000 0080     delay_us(1);               // wait to make EN wider
+                 ; 0000 0081     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
+                 ; 0000 0082     LCD_PRT = (LCD_PRT & 0x0F) | (data << 4);
                  _0x2080001:
-0000ed b3e8      	IN   R30,0x18
-0000ee 70ef      	ANDI R30,LOW(0xF)
-0000ef 2fae      	MOV  R26,R30
-0000f0 81e8      	LD   R30,Y
-0000f1 95e2      	SWAP R30
-0000f2 7fe0      	ANDI R30,0xF0
-0000f3 2bea      	OR   R30,R26
-0000f4 bbe8      	OUT  0x18,R30
-                 ; 0000 0082     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
-0000f5 9ac2      	SBI  0x18,2
-                 ; 0000 0083     delay_us(1);               // wait to make EN wider
+0000ea b3e8      	IN   R30,0x18
+0000eb 70ef      	ANDI R30,LOW(0xF)
+0000ec 2fae      	MOV  R26,R30
+0000ed 81e8      	LD   R30,Y
+0000ee 95e2      	SWAP R30
+0000ef 7fe0      	ANDI R30,0xF0
+0000f0 2bea      	OR   R30,R26
+0000f1 bbe8      	OUT  0x18,R30
+                 ; 0000 0083     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
+0000f2 9ac2      	SBI  0x18,2
+                 ; 0000 0084     delay_us(1);               // wait to make EN wider
                 +
-0000f6 e083     +LDI R24 , LOW ( 3 )
+0000f3 e083     +LDI R24 , LOW ( 3 )
                 +__DELAY_USB_LOOP :
-0000f7 958a     +DEC R24
-0000f8 f7f1     +BRNE __DELAY_USB_LOOP
+0000f4 958a     +DEC R24
+0000f5 f7f1     +BRNE __DELAY_USB_LOOP
                  	__DELAY_USB 3
-                 ; 0000 0084     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
-0000f9 98c2      	CBI  0x18,2
-                 ; 0000 0085 }
-0000fa 9621      	ADIW R28,1
-0000fb 9508      	RET
+                 ; 0000 0085     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
+0000f6 98c2      	CBI  0x18,2
+                 ; 0000 0086 }
+0000f7 9621      	ADIW R28,1
+0000f8 9508      	RET
                  ; .FEND
                  ;void lcd_init()
-                 ; 0000 0087 {
+                 ; 0000 0088 {
                  _lcd_init:
                  ; .FSTART _lcd_init
-                 ; 0000 0088     LCD_DDR = 0xFF;            // LCD port is output
-0000fc efef      	LDI  R30,LOW(255)
-0000fd bbe7      	OUT  0x17,R30
-                 ; 0000 0089     LCD_PRT &= ~(1 << LCD_EN); // LCD_EN = 0
-0000fe 98c2      	CBI  0x18,2
-                 ; 0000 008A     delay_us(2000);            // wait for stable power
+                 ; 0000 0089     LCD_DDR = 0xFF;            // LCD port is output
+0000f9 efef      	LDI  R30,LOW(255)
+0000fa bbe7      	OUT  0x17,R30
+                 ; 0000 008A     LCD_PRT &= ~(1 << LCD_EN); // LCD_EN = 0
+0000fb 98c2      	CBI  0x18,2
+                 ; 0000 008B     delay_us(2000);            // wait for stable power
                 +
-0000ff ea80     +LDI R24 , LOW ( 4000 )
-000100 e09f     +LDI R25 , HIGH ( 4000 )
+0000fc ea80     +LDI R24 , LOW ( 4000 )
+0000fd e09f     +LDI R25 , HIGH ( 4000 )
                 +__DELAY_USW_LOOP :
-000101 9701     +SBIW R24 , 1
-000102 f7f1     +BRNE __DELAY_USW_LOOP
+0000fe 9701     +SBIW R24 , 1
+0000ff f7f1     +BRNE __DELAY_USW_LOOP
                  	__DELAY_USW 4000
-                 ; 0000 008B     lcdCommand(0x33);          //$33 for 4-bit mode
-000103 e3a3      	LDI  R26,LOW(51)
-000104 940e 015f 	CALL SUBOPT_0x3
-                 ; 0000 008C     delay_us(100 * 8);             // wait
-                 ; 0000 008D     lcdCommand(0x32);          //$32 for 4-bit mode
-000106 e3a2      	LDI  R26,LOW(50)
-000107 940e 015f 	CALL SUBOPT_0x3
-                 ; 0000 008E     delay_us(100 * 8);             // wait
-                 ; 0000 008F     lcdCommand(0x28);          //$28 for 4-bit mode
-000109 e2a8      	LDI  R26,LOW(40)
-00010a 940e 015f 	CALL SUBOPT_0x3
-                 ; 0000 0090     delay_us(100 * 8);             // wait
-                 ; 0000 0091     lcdCommand(0x0e);          // display on, cursor on
-00010c e0ae      	LDI  R26,LOW(14)
-00010d 940e 015f 	CALL SUBOPT_0x3
-                 ; 0000 0092     delay_us(100 * 8);             // wait
-                 ; 0000 0093     lcdCommand(0x01);          // clear LCD
-00010f e0a1      	LDI  R26,LOW(1)
-000110 dfce      	RCALL _lcdCommand
-                 ; 0000 0094     delay_us(2000);            // wait
+                 ; 0000 008C     lcdCommand(0x33);          //$33 for 4-bit mode
+000100 e3a3      	LDI  R26,LOW(51)
+000101 940e 01af 	CALL SUBOPT_0x3
+                 ; 0000 008D     delay_us(100 * 8);             // wait
+                 ; 0000 008E     lcdCommand(0x32);          //$32 for 4-bit mode
+000103 e3a2      	LDI  R26,LOW(50)
+000104 940e 01af 	CALL SUBOPT_0x3
+                 ; 0000 008F     delay_us(100 * 8);             // wait
+                 ; 0000 0090     lcdCommand(0x28);          //$28 for 4-bit mode
+000106 e2a8      	LDI  R26,LOW(40)
+000107 940e 01af 	CALL SUBOPT_0x3
+                 ; 0000 0091     delay_us(100 * 8);             // wait
+                 ; 0000 0092     lcdCommand(0x0e);          // display on, cursor on
+000109 e0ae      	LDI  R26,LOW(14)
+00010a 940e 01af 	CALL SUBOPT_0x3
+                 ; 0000 0093     delay_us(100 * 8);             // wait
+                 ; 0000 0094     lcdCommand(0x01);          // clear LCD
+00010c e0a1      	LDI  R26,LOW(1)
+00010d dfce      	RCALL _lcdCommand
+                 ; 0000 0095     delay_us(2000);            // wait
                 +
-000111 ea80     +LDI R24 , LOW ( 4000 )
-000112 e09f     +LDI R25 , HIGH ( 4000 )
+00010e ea80     +LDI R24 , LOW ( 4000 )
+00010f e09f     +LDI R25 , HIGH ( 4000 )
                 +__DELAY_USW_LOOP :
-000113 9701     +SBIW R24 , 1
-000114 f7f1     +BRNE __DELAY_USW_LOOP
+000110 9701     +SBIW R24 , 1
+000111 f7f1     +BRNE __DELAY_USW_LOOP
                  	__DELAY_USW 4000
-                 ; 0000 0095     lcdCommand(0x06);          // shift cursor right
-000115 e0a6      	LDI  R26,LOW(6)
-000116 940e 015f 	CALL SUBOPT_0x3
-                 ; 0000 0096     delay_us(100 * 8);
-                 ; 0000 0097 }
-000118 9508      	RET
+                 ; 0000 0096     lcdCommand(0x06);          // shift cursor right
+000112 e0a6      	LDI  R26,LOW(6)
+000113 940e 01af 	CALL SUBOPT_0x3
+                 ; 0000 0097     delay_us(100 * 8);
+                 ; 0000 0098 }
+000115 9508      	RET
                  ; .FEND
                  ;void lcd_gotoxy(unsigned char x, unsigned char y)
-                 ; 0000 0099 {
+                 ; 0000 009A {
                  _lcd_gotoxy:
                  ; .FSTART _lcd_gotoxy
-                 ; 0000 009A     unsigned char firstCharAdr[] = {0x80, 0xC0, 0x94, 0xD4};
-                 ; 0000 009B     lcdCommand(firstCharAdr[y - 1] + x - 1);
-000119 93aa      	ST   -Y,R26
-00011a 9724      	SBIW R28,4
-00011b e8e0      	LDI  R30,LOW(128)
-00011c 83e8      	ST   Y,R30
-00011d ece0      	LDI  R30,LOW(192)
-00011e 83e9      	STD  Y+1,R30
-00011f e9e4      	LDI  R30,LOW(148)
-000120 83ea      	STD  Y+2,R30
-000121 ede4      	LDI  R30,LOW(212)
-000122 83eb      	STD  Y+3,R30
+                 ; 0000 009B     unsigned char firstCharAdr[] = {0x80, 0xC0, 0x94, 0xD4};
+                 ; 0000 009C     lcdCommand(firstCharAdr[y - 1] + x - 1);
+000116 93aa      	ST   -Y,R26
+000117 9724      	SBIW R28,4
+000118 e8e0      	LDI  R30,LOW(128)
+000119 83e8      	ST   Y,R30
+00011a ece0      	LDI  R30,LOW(192)
+00011b 83e9      	STD  Y+1,R30
+00011c e9e4      	LDI  R30,LOW(148)
+00011d 83ea      	STD  Y+2,R30
+00011e ede4      	LDI  R30,LOW(212)
+00011f 83eb      	STD  Y+3,R30
                  ;	x -> Y+5
                  ;	y -> Y+4
                  ;	firstCharAdr -> Y+0
-000123 81ec      	LDD  R30,Y+4
-000124 e0f0      	LDI  R31,0
-000125 9731      	SBIW R30,1
-000126 01de      	MOVW R26,R28
-000127 0fae      	ADD  R26,R30
-000128 1fbf      	ADC  R27,R31
-000129 91ec      	LD   R30,X
-00012a 81ad      	LDD  R26,Y+5
-00012b 0fae      	ADD  R26,R30
-00012c 50a1      	SUBI R26,LOW(1)
-00012d 940e 015f 	CALL SUBOPT_0x3
-                 ; 0000 009C     delay_us(100 * 8);
-                 ; 0000 009D }
-00012f 9626      	ADIW R28,6
-000130 9508      	RET
+000120 81ec      	LDD  R30,Y+4
+000121 e0f0      	LDI  R31,0
+000122 9731      	SBIW R30,1
+000123 01de      	MOVW R26,R28
+000124 0fae      	ADD  R26,R30
+000125 1fbf      	ADC  R27,R31
+000126 91ec      	LD   R30,X
+000127 81ad      	LDD  R26,Y+5
+000128 0fae      	ADD  R26,R30
+000129 50a1      	SUBI R26,LOW(1)
+00012a 940e 01af 	CALL SUBOPT_0x3
+                 ; 0000 009D     delay_us(100 * 8);
+                 ; 0000 009E }
+00012c 9626      	ADIW R28,6
+00012d 9508      	RET
                  ; .FEND
                  ;void lcd_print(char *str)
-                 ; 0000 009F {
+                 ; 0000 00A0 {
                  _lcd_print:
                  ; .FSTART _lcd_print
-                 ; 0000 00A0     unsigned char i = 0;
-                 ; 0000 00A1     while (str[i] != 0)
-000131 93ba      	ST   -Y,R27
-000132 93aa      	ST   -Y,R26
-000133 931a      	ST   -Y,R17
+                 ; 0000 00A1     unsigned char i = 0;
+                 ; 0000 00A2     while (str[i] != 0)
+00012e 93ba      	ST   -Y,R27
+00012f 93aa      	ST   -Y,R26
+000130 931a      	ST   -Y,R17
                  ;	*str -> Y+1
                  ;	i -> R17
-000134 e010      	LDI  R17,0
-                 _0x15:
-000135 81a9      	LDD  R26,Y+1
-000136 81ba      	LDD  R27,Y+1+1
-000137 27ee      	CLR  R30
-000138 0fa1      	ADD  R26,R17
-000139 1fbe      	ADC  R27,R30
-00013a 91ec      	LD   R30,X
-00013b 30e0      	CPI  R30,0
-00013c f049      	BREQ _0x17
-                 ; 0000 00A2     {
-                 ; 0000 00A3         lcdData(str[i]);
-00013d 81a9      	LDD  R26,Y+1
-00013e 81ba      	LDD  R27,Y+1+1
-00013f 27ee      	CLR  R30
-000140 0fa1      	ADD  R26,R17
-000141 1fbe      	ADC  R27,R30
-000142 91ac      	LD   R26,X
-000143 dfa4      	RCALL _lcdData
-                 ; 0000 00A4         i++;
-000144 5f1f      	SUBI R17,-1
-                 ; 0000 00A5     }
-000145 cfef      	RJMP _0x15
+000131 e010      	LDI  R17,0
+                 _0x14:
+000132 81a9      	LDD  R26,Y+1
+000133 81ba      	LDD  R27,Y+1+1
+000134 27ee      	CLR  R30
+000135 0fa1      	ADD  R26,R17
+000136 1fbe      	ADC  R27,R30
+000137 91ec      	LD   R30,X
+000138 30e0      	CPI  R30,0
+000139 f049      	BREQ _0x16
+                 ; 0000 00A3     {
+                 ; 0000 00A4         lcdData(str[i]);
+00013a 81a9      	LDD  R26,Y+1
+00013b 81ba      	LDD  R27,Y+1+1
+00013c 27ee      	CLR  R30
+00013d 0fa1      	ADD  R26,R17
+00013e 1fbe      	ADC  R27,R30
+00013f 91ac      	LD   R26,X
+000140 dfa4      	RCALL _lcdData
+                 ; 0000 00A5         i++;
+000141 5f1f      	SUBI R17,-1
+                 ; 0000 00A6     }
+000142 cfef      	RJMP _0x14
+                 _0x16:
+                 ; 0000 00A7 }
+000143 8118      	LDD  R17,Y+0
+000144 9623      	ADIW R28,3
+000145 9508      	RET
+                 ; .FEND
+                 ;
+                 ;void LCM35_init()
+                 ; 0000 00AA {
+                 _LCM35_init:
+                 ; .FSTART _LCM35_init
+                 ; 0000 00AB     ADMUX = 0xE0;
+000146 eee0      	LDI  R30,LOW(224)
+000147 b9e7      	OUT  0x7,R30
+                 ; 0000 00AC 	ADCSRA = 0x87;
+000148 e8e7      	LDI  R30,LOW(135)
+000149 b9e6      	OUT  0x6,R30
+                 ; 0000 00AD 
+                 ; 0000 00AE }
+00014a 9508      	RET
+                 ; .FEND
+                 ;
+                 ;void getTemp()
+                 ; 0000 00B1 {
+                 _getTemp:
+                 ; .FSTART _getTemp
+                 ; 0000 00B2 	unsigned char temperatureVal = 0;
+                 ; 0000 00B3 	unsigned char temperatureRep[3];
+                 ; 0000 00B4 
+                 ; 0000 00B5 
+                 ; 0000 00B6     while(1)
+00014b 9723      	SBIW R28,3
+00014c 931a      	ST   -Y,R17
+                 ;	temperatureVal -> R17
+                 ;	temperatureRep -> Y+1
+00014d e010      	LDI  R17,0
                  _0x17:
-                 ; 0000 00A6 }
-000146 8118      	LDD  R17,Y+0
-000147 9623      	ADIW R28,3
-000148 9508      	RET
+                 ; 0000 00B7 	{
+                 ; 0000 00B8         lcdCommand(0x01);
+00014e e0a1      	LDI  R26,LOW(1)
+00014f df8c      	RCALL _lcdCommand
+                 ; 0000 00B9         lcd_gotoxy(1,1);
+000150 e0e1      	LDI  R30,LOW(1)
+000151 93ea      	ST   -Y,R30
+000152 e0a1      	LDI  R26,LOW(1)
+000153 dfc2      	RCALL _lcd_gotoxy
+                 ; 0000 00BA         lcd_print("Temp(C):");
+                +
+000154 e6a0     +LDI R26 , LOW ( _0x1A + ( 0 ) )
+000155 e0b2     +LDI R27 , HIGH ( _0x1A + ( 0 ) )
+                 	__POINTW2MN _0x1A,0
+000156 dfd7      	RCALL _lcd_print
+                 ; 0000 00BB 		ADCSRA |= (1 << ADSC);
+000157 9a36      	SBI  0x6,6
+                 ; 0000 00BC 		while((ADCSRA & (1 << ADIF)) == 0);
+                 _0x1B:
+000158 9b34      	SBIS 0x6,4
+000159 cffe      	RJMP _0x1B
+                 ; 0000 00BD 		temperatureVal = ADCH;
+00015a b115      	IN   R17,5
+                 ; 0000 00BE 		itoa(temperatureVal, temperatureRep);
+00015b 2fe1      	MOV  R30,R17
+00015c e0f0      	LDI  R31,0
+00015d 93fa      	ST   -Y,R31
+00015e 93ea      	ST   -Y,R30
+00015f 01de      	MOVW R26,R28
+000160 9613      	ADIW R26,3
+000161 940e 016b 	CALL _itoa
+                 ; 0000 00BF         lcd_print(temperatureRep);
+000163 01de      	MOVW R26,R28
+000164 9611      	ADIW R26,1
+000165 dfc8      	RCALL _lcd_print
+                 ; 0000 00C0         delay_ms(100);
+000166 e6a4      	LDI  R26,LOW(100)
+000167 e0b0      	LDI  R27,0
+000168 940e 01b6 	CALL _delay_ms
+                 ; 0000 00C1 	}
+00016a cfe3      	RJMP _0x17
+                 ; 0000 00C2 }
                  ; .FEND
                  
+                 	.DSEG
+                 _0x1A:
+000260           	.BYTE 0x9
+                 
                  	.CSEG
+                 _itoa:
+                 ; .FSTART _itoa
+00016b 93ba      	ST   -Y,R27
+00016c 93aa      	ST   -Y,R26
+00016d 91a9          ld   r26,y+
+00016e 91b9          ld   r27,y+
+00016f 91e9          ld   r30,y+
+000170 91f9          ld   r31,y+
+000171 9630          adiw r30,0
+000172 f42a          brpl __itoa0
+000173 95e0          com  r30
+000174 95f0          com  r31
+000175 9631          adiw r30,1
+000176 e26d          ldi  r22,'-'
+000177 936d          st   x+,r22
+                 __itoa0:
+000178 94e8          clt
+000179 e180          ldi  r24,low(10000)
+00017a e297          ldi  r25,high(10000)
+00017b d00d          rcall __itoa1
+00017c ee88          ldi  r24,low(1000)
+00017d e093          ldi  r25,high(1000)
+00017e d00a          rcall __itoa1
+00017f e684          ldi  r24,100
+000180 2799          clr  r25
+000181 d007          rcall __itoa1
+000182 e08a          ldi  r24,10
+000183 d005          rcall __itoa1
+000184 2f6e          mov  r22,r30
+000185 d010          rcall __itoa5
+000186 2766          clr  r22
+000187 936c          st   x,r22
+000188 9508          ret
+                 
+                 __itoa1:
+000189 2766          clr	 r22
+                 __itoa2:
+00018a 17e8          cp   r30,r24
+00018b 07f9          cpc  r31,r25
+00018c f020          brlo __itoa3
+00018d 9563          inc  r22
+00018e 1be8          sub  r30,r24
+00018f 0bf9          sbc  r31,r25
+000190 f7c9          brne __itoa2
+                 __itoa3:
+000191 2366          tst  r22
+000192 f411          brne __itoa4
+000193 f016          brts __itoa5
+000194 9508          ret
+                 __itoa4:
+000195 9468          set
+                 __itoa5:
+000196 5d60          subi r22,-0x30
+000197 936d          st   x+,r22
+000198 9508          ret
+                 ; .FEND
                  
                  	.DSEG
                  
@@ -1693,83 +1818,100 @@ D:\projects\hardware\microFinalProject\Debug\List\microFinalProjectCodes.asm(112
                  
                  	.DSEG
                  _keypad:
-000266           	.BYTE 0x10
+000269           	.BYTE 0x10
                  __seed_G100:
-000276           	.BYTE 0x4
+000279           	.BYTE 0x4
                  
                  	.CSEG
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
                  SUBOPT_0x0:
-000149 bbe5      	OUT  0x15,R30
-00014a b3e3      	IN   R30,0x13
-00014b 70ef      	ANDI R30,LOW(0xF)
-00014c 2f1e      	MOV  R17,R30
-00014d 301f      	CPI  R17,15
-00014e 9508      	RET
+000199 bbe5      	OUT  0x15,R30
+00019a b3e3      	IN   R30,0x13
+00019b 70ef      	ANDI R30,LOW(0xF)
+00019c 2f1e      	MOV  R17,R30
+00019d 301f      	CPI  R17,15
+00019e 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:3 WORDS
                  SUBOPT_0x1:
-00014f 93aa      	ST   -Y,R26
-000150 b3e8      	IN   R30,0x18
-000151 70ef      	ANDI R30,LOW(0xF)
-000152 2fae      	MOV  R26,R30
-000153 81e8      	LD   R30,Y
-000154 7fe0      	ANDI R30,LOW(0xF0)
-000155 2bea      	OR   R30,R26
-000156 bbe8      	OUT  0x18,R30
-000157 9508      	RET
+00019f 93aa      	ST   -Y,R26
+0001a0 b3e8      	IN   R30,0x18
+0001a1 70ef      	ANDI R30,LOW(0xF)
+0001a2 2fae      	MOV  R26,R30
+0001a3 81e8      	LD   R30,Y
+0001a4 7fe0      	ANDI R30,LOW(0xF0)
+0001a5 2bea      	OR   R30,R26
+0001a6 bbe8      	OUT  0x18,R30
+0001a7 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
                  SUBOPT_0x2:
-000158 98c1      	CBI  0x18,1
-000159 9ac2      	SBI  0x18,2
+0001a8 98c1      	CBI  0x18,1
+0001a9 9ac2      	SBI  0x18,2
                 +
-00015a e083     +LDI R24 , LOW ( 3 )
+0001aa e083     +LDI R24 , LOW ( 3 )
                 +__DELAY_USB_LOOP :
-00015b 958a     +DEC R24
-00015c f7f1     +BRNE __DELAY_USB_LOOP
+0001ab 958a     +DEC R24
+0001ac f7f1     +BRNE __DELAY_USB_LOOP
                  	__DELAY_USB 3
-00015d 98c2      	CBI  0x18,2
-00015e 9508      	RET
+0001ad 98c2      	CBI  0x18,2
+0001ae 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 6 TIMES, CODE SIZE REDUCTION:17 WORDS
                  SUBOPT_0x3:
-00015f 940e 00df 	CALL _lcdCommand
+0001af 940e 00dc 	CALL _lcdCommand
                 +
-000161 e480     +LDI R24 , LOW ( 1600 )
-000162 e096     +LDI R25 , HIGH ( 1600 )
+0001b1 e480     +LDI R24 , LOW ( 1600 )
+0001b2 e096     +LDI R25 , HIGH ( 1600 )
                 +__DELAY_USW_LOOP :
-000163 9701     +SBIW R24 , 1
-000164 f7f1     +BRNE __DELAY_USW_LOOP
+0001b3 9701     +SBIW R24 , 1
+0001b4 f7f1     +BRNE __DELAY_USW_LOOP
                  	__DELAY_USW 1600
-000165 9508      	RET
+0001b5 9508      	RET
                  
                  
                  	.CSEG
+                 _delay_ms:
+0001b6 9610      	adiw r26,0
+0001b7 f039      	breq __delay_ms1
+                 __delay_ms0:
+0001b8 95a8      	wdr
+                +
+0001b9 ed80     +LDI R24 , LOW ( 0x7D0 )
+0001ba e097     +LDI R25 , HIGH ( 0x7D0 )
+                +__DELAY_USW_LOOP :
+0001bb 9701     +SBIW R24 , 1
+0001bc f7f1     +BRNE __DELAY_USW_LOOP
+                 	__DELAY_USW 0x7D0
+0001bd 9711      	sbiw r26,1
+0001be f7c9      	brne __delay_ms0
+                 __delay_ms1:
+0001bf 9508      	ret
+                 
                  __LSLW2:
-000166 0fee      	LSL  R30
-000167 1fff      	ROL  R31
-000168 0fee      	LSL  R30
-000169 1fff      	ROL  R31
-00016a 9508      	RET
+0001c0 0fee      	LSL  R30
+0001c1 1fff      	ROL  R31
+0001c2 0fee      	LSL  R30
+0001c3 1fff      	ROL  R31
+0001c4 9508      	RET
                  
                  __SAVELOCR4:
-00016b 933a      	ST   -Y,R19
+0001c5 933a      	ST   -Y,R19
                  __SAVELOCR3:
-00016c 932a      	ST   -Y,R18
+0001c6 932a      	ST   -Y,R18
                  __SAVELOCR2:
-00016d 931a      	ST   -Y,R17
-00016e 930a      	ST   -Y,R16
-00016f 9508      	RET
+0001c7 931a      	ST   -Y,R17
+0001c8 930a      	ST   -Y,R16
+0001c9 9508      	RET
                  
                  __LOADLOCR4:
-000170 813b      	LDD  R19,Y+3
+0001ca 813b      	LDD  R19,Y+3
                  __LOADLOCR3:
-000171 812a      	LDD  R18,Y+2
+0001cb 812a      	LDD  R18,Y+2
                  __LOADLOCR2:
-000172 8119      	LDD  R17,Y+1
-000173 8108      	LD   R16,Y
-000174 9508      	RET
+0001cc 8119      	LDD  R17,Y+1
+0001cd 8108      	LD   R16,Y
+0001ce 9508      	RET
                  
                  ;END OF CODE MARKER
                  __END_OF_CODE:
@@ -1792,39 +1934,39 @@ counted separately from r26..r31 here.
 ATmega32 register use summary:
 r0 :   6 r1 :   3 r2 :   0 r3 :   0 r4 :   0 r5 :   0 r6 :   0 r7 :   0 
 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 r13:   0 r14:   0 r15:   2 
-r16:   7 r17:  14 r18:   2 r19:   7 r20:   0 r21:   0 r22:   4 r23:   2 
-r24:  21 r25:   7 r26:  35 r27:  14 r28:   7 r29:   1 r30:  90 r31:  11 
-x  :   7 y  :  51 z  :   7 
+r16:   7 r17:  18 r18:   2 r19:   7 r20:   0 r21:   0 r22:  14 r23:   2 
+r24:  29 r25:  13 r26:  45 r27:  17 r28:  10 r29:   1 r30: 103 r31:  17 
+x  :  10 y  :  60 z  :   7 
 Registers used: 20 out of 35 (57.1%)
 
 ATmega32 instruction use summary:
 .lds  :   0 .lds.l:   0 .sts  :   0 .sts.l:   0 adc   :   5 add   :   6 
-adiw  :   4 and   :   0 andi  :   8 asr   :   0 bclr  :   0 bld   :   0 
-brbc  :   0 brbs  :   0 brcc  :   0 brcs  :   0 break :   0 breq  :   5 
-brge  :   0 brhc  :   0 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 
-brlt  :   0 brmi  :   0 brne  :  12 brpl  :   0 brsh  :   0 brtc  :   0 
-brts  :   0 brvc  :   0 brvs  :   0 bset  :   0 bst   :   0 call  :  17 
+adiw  :   9 and   :   0 andi  :   8 asr   :   0 bclr  :   0 bld   :   0 
+brbc  :   0 brbs  :   0 brcc  :   0 brcs  :   0 break :   0 breq  :   6 
+brge  :   0 brhc  :   0 brhs  :   0 brid  :   0 brie  :   0 brlo  :   1 
+brlt  :   0 brmi  :   0 brne  :  16 brpl  :   1 brsh  :   0 brtc  :   0 
+brts  :   1 brvc  :   0 brvs  :   0 bset  :   0 bst   :   0 call  :  19 
 cbi   :   5 cbr   :   0 clc   :   0 clh   :   0 cli   :   1 cln   :   0 
-clr   :   5 cls   :   0 clt   :   0 clv   :   0 clz   :   0 com   :   0 
-cp    :   0 cpc   :   0 cpi   :   5 cpse  :   0 dec   :   4 des   :   0 
+clr   :   8 cls   :   0 clt   :   1 clv   :   0 clz   :   0 com   :   2 
+cp    :   1 cpc   :   1 cpi   :   5 cpse  :   0 dec   :   4 des   :   0 
 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 
-in    :   7 inc   :   0 jmp   :  22 ld    :  19 ldd   :  10 ldi   :  58 
-lds   :   0 lpm   :   7 lsl   :   2 lsr   :   0 mov   :   5 movw  :   4 
+in    :   8 inc   :   1 jmp   :  22 ld    :  23 ldd   :  10 ldi   :  74 
+lds   :   0 lpm   :   7 lsl   :   2 lsr   :   0 mov   :   7 movw  :   6 
 mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   2 
-ori   :   0 out   :  18 pop   :   0 push  :   0 rcall :   7 ret   :  11 
-reti  :   1 rjmp  :  11 rol   :   2 ror   :   0 sbc   :   0 sbci  :   0 
-sbi   :   3 sbic  :   0 sbis  :   0 sbiw  :   8 sbr   :   0 sbrc  :   0 
+ori   :   0 out   :  20 pop   :   0 push  :   0 rcall :  16 ret   :  16 
+reti  :   1 rjmp  :  13 rol   :   2 ror   :   0 sbc   :   1 sbci  :   0 
+sbi   :   4 sbic  :   0 sbis  :   1 sbiw  :  11 sbr   :   0 sbrc  :   0 
 sbrs  :   0 sec   :   0 seh   :   0 sei   :   1 sen   :   0 ser   :   0 
-ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 spm   :   0 
-st    :  26 std   :   3 sts   :   0 sub   :   0 subi  :   2 swap  :   1 
-tst   :   0 wdr   :   0 
-Instructions used: 35 out of 116 (30.2%)
+ses   :   0 set   :   1 sev   :   0 sez   :   0 sleep :   0 spm   :   0 
+st    :  34 std   :   3 sts   :   0 sub   :   1 subi  :   3 swap  :   1 
+tst   :   1 wdr   :   1 
+Instructions used: 49 out of 116 (42.2%)
 
 ATmega32 memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x0002ea    692     54    746   32768   2.3%
-[.dseg] 0x000060 0x00027a      0     26     26    2048   1.3%
+[.cseg] 0x000000 0x00039e    868     58    926   32768   2.8%
+[.dseg] 0x000060 0x00027d      0     29     29    2048   1.4%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
-Assembly complete, 0 errors, 2 warnings
+Assembly complete, 0 errors, 3 warnings

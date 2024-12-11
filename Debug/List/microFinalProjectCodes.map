@@ -1,8 +1,8 @@
 RAM Allocation [bytes]
 Variable                                                                          Address   Size
 ------------------------------------------------------------------------------------------------
-keypad                                                                            0x0266      16
-_seed                                                                             0x0276       4
+keypad                                                                            0x0269      16
+_seed                                                                             0x0279       4
 
 EEPROM Allocation [bytes]
 Variable                                                                          Address   Size
@@ -15,9 +15,12 @@ Variable                                                                        
 FLASH Allocation [words]
 Function                                                                          Address   Size
 ------------------------------------------------------------------------------------------------
-main                                                                              0x00072     24
-int0_routine                                                                      0x0008A     85
-lcdData                                                                           0x000E8     20
-lcd_init                                                                          0x000FC     29
-lcd_gotoxy                                                                        0x00119     24
-lcd_print                                                                         0x00131     24
+main                                                                              0x00074     19
+int0_routine                                                                      0x00087     85
+lcdData                                                                           0x000E5     20
+lcd_init                                                                          0x000F9     29
+lcd_gotoxy                                                                        0x00116     24
+lcd_print                                                                         0x0012E     24
+LCM35_init                                                                        0x00146      5
+getTemp                                                                           0x0014B     32
+itoa                                                                              0x0016B     46
