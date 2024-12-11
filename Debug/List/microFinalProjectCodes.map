@@ -1,0 +1,23 @@
+RAM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+keypad                                                                            0x0266      16
+_seed                                                                             0x0276       4
+
+EEPROM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+
+Register Allocation
+Variable                                                                          Register  Size
+------------------------------------------------------------------------------------------------
+
+FLASH Allocation [words]
+Function                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+main                                                                              0x00072     24
+int0_routine                                                                      0x0008A     85
+lcdData                                                                           0x000E8     20
+lcd_init                                                                          0x000FC     29
+lcd_gotoxy                                                                        0x00119     24
+lcd_print                                                                         0x00131     24
