@@ -19,7 +19,9 @@ void lcd_init();
 void lcd_gotoxy(unsigned char x, unsigned char y);
 void lcd_print( char * str );
 void LCM35_init();
-void getTemp();
+void show_temp();
+void show_menu();
+
 
 /* keypad mapping :
 C : Cancel
@@ -32,6 +34,16 @@ unsigned char keypad[4][4] = {'7', '8', '9', 'O',
                               '4', '5', '6', 'D',
                               '1', '2', '3', 'C',
                               'L', '0', 'R', 'E'}; 
+
+
+
+
+unsigned int stage = 0;
+
+
+enum stages  {STAGE_INIT_MENU,STAGE_ATTENDENC_MENU,STAGE_SUBMIT_CODE,STAGE_TEMPERATURE_MONITORING};
+enum menu_options {OPTION_ATTENDENCE=1,OPTION_STUDENT_MANAGEMENT,OPTION_VIEW_PRESENT_STUDENTS,OPTION_TEMPERATURE_MONITORING};
+
 
 
 void main(void)
@@ -47,8 +59,27 @@ void main(void)
     #asm("sei") //enable interrupts
     lcdCommand(0x01); //clear LCD 
     LCM35_init();
-    getTemp();
-    while(1);
+    while(1){
+        if(stage==STAGE_INIT_MENU){
+            show_menu();
+        }else if(stage==STAGE_ATTENDENC_MENU){
+            lcdCommand(0x01);
+            lcd_gotoxy(1,1);
+            lcd_print("1:sub std code");
+            lcd_gotoxy(1,2);
+            lcd_print("cancel: back");
+            while(stage==STAGE_ATTENDENC_MENU);
+        }else if(stage==STAGE_SUBMIT_CODE){
+            lcdCommand(0x01);
+            lcd_gotoxy(1,1);
+            lcd_print("Enter your code:");
+            lcd_gotoxy(1,2);
+            while(stage==STAGE_SUBMIT_CODE);
+        }else if(stage==STAGE_TEMPERATURE_MONITORING){
+            show_temp();   
+        }
+
+    }
    
  
 }
@@ -99,8 +130,56 @@ interrupt [EXT_INT0] void int0_routine(void){
             cl=3; 
             
     KEY_PRT &= 0x0F;// ground all rows at once
+
+    //inside menu level 1
+    if(stage==STAGE_INIT_MENU){
+        switch (keypad[rowloc][cl]-'0')
+        {
+        case OPTION_ATTENDENCE :
+             stage = STAGE_ATTENDENC_MENU;
+            break;
+        
+        case OPTION_TEMPERATURE_MONITORING :
+            stage=STAGE_TEMPERATURE_MONITORING;
+            break;
+
+        default:
+            break;
+        }
+    }else if(stage==STAGE_ATTENDENC_MENU){
+        switch (keypad[rowloc][cl])
+        {
+        case 'C' :
+            stage=STAGE_INIT_MENU;
+            break;
+        case '1' :
+            stage=STAGE_SUBMIT_CODE;
+            break;
+        default:
+            break;
+        }
+    }else if(stage==STAGE_SUBMIT_CODE){
+
+        if((keypad[rowloc][cl]-'0')<10)
+            lcdData(keypad[rowloc][cl]);
+        else if(keypad[rowloc][cl]=='E'){
+
+            stage=STAGE_INIT_MENU;
+
+
+        }else if(keypad[rowloc][cl]=='C')
+            stage=STAGE_ATTENDENC_MENU;
+        
+    }else if(stage==STAGE_TEMPERATURE_MONITORING){
+
+        if(keypad[rowloc][cl]=='C')
+            stage=STAGE_INIT_MENU;
+    }
+
+
+
     
-   lcdData(keypad[rowloc][cl]); //send the character to lcd           
+       
    
 }
 
@@ -169,26 +248,65 @@ void lcd_print(char *str)
 void LCM35_init()
 {
     ADMUX = 0xE0;
-	ADCSRA = 0x87;
+    ADCSRA = 0x87;
 
 }
 
-void getTemp()
+void show_temp()
 { 
-	unsigned char temperatureVal = 0;
-	unsigned char temperatureRep[3];  
+    unsigned char temperatureVal = 0;
+    unsigned char temperatureRep[3];  
         
 
-    while(1)
-	{      
+    while(stage==STAGE_TEMPERATURE_MONITORING)
+    {      
         lcdCommand(0x01);
         lcd_gotoxy(1,1);  
         lcd_print("Temp(C):");
-		ADCSRA |= (1 << ADSC);
-		while((ADCSRA & (1 << ADIF)) == 0);
-		temperatureVal = ADCH;
-		itoa(temperatureVal, temperatureRep);
+        ADCSRA |= (1 << ADSC);
+        while((ADCSRA & (1 << ADIF)) == 0);
+        temperatureVal = ADCH;
+        itoa(temperatureVal, temperatureRep);
         lcd_print(temperatureRep);
         delay_ms(100);
-	}
+    }
+}
+
+
+
+void show_menu()
+{
+    unsigned char page_num = 0;
+    while(stage==STAGE_INIT_MENU){
+    lcdCommand(0x01);
+    lcd_gotoxy(1,1); 
+    if(page_num==0){
+        lcd_print("1: attend init");
+        lcd_gotoxy(1,2);
+        lcd_print("2: std manage");
+        if(stage==STAGE_INIT_MENU)
+            delay_ms(250);
+        page_num=(page_num+1)%3;        
+    }else if(page_num==1){
+        lcd_print("3: present std");
+        lcd_gotoxy(1,2);
+        lcd_print("4: check temp");
+        if(stage==STAGE_INIT_MENU)
+            delay_ms(250);
+        page_num=(page_num+1)%3;
+    }else if(page_num==2){
+        lcd_print("5:get std data");
+        lcd_gotoxy(1,2);
+        lcd_print("6: traffic monitor ");
+        if(stage==STAGE_INIT_MENU)
+            delay_ms(250);
+        page_num=(page_num+1)%3;
+    }
+    
+    }
+
+
+
+
+
 }
