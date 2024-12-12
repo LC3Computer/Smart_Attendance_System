@@ -27,6 +27,21 @@ void clear_eeprom();
 unsigned char read_byte_from_eeprom(unsigned int addr);
 void write_byte_to_eeprom(unsigned int addr, unsigned char value);
 
+void USART_init(unsigned int ubrr)
+{
+    UBRRL = (unsigned char)ubrr;
+    UBRRH = (unsigned char)(ubrr >> 8);
+    UCSRB = (1 << RXEN) | (1 << TXEN);
+    UCSRC = (1 << UCSZ1) | (1 << UCSZ0); // Set UCSZ1 and UCSZ0 for 8-bit data
+}
+
+void USART_Transmit(unsigned char data)
+{
+    while (!(UCSRA & (1 << UDRE)))
+        ;
+    UDR = data;
+}
+
 /* keypad mapping :
 C : Cancel
 O : On/Clear
@@ -71,6 +86,7 @@ void main(void)
     MCUCR = 0x02;       // make INT0 falling edge triggered
     GICR = (1 << INT0); // enable external interrupt 0
     lcd_init();
+    USART_init(0x33);
 
 #asm("sei")           // enable interrupts
     lcdCommand(0x01); // clear LCD
@@ -118,7 +134,7 @@ void main(void)
             memset(buffer, 0, 32);
             itoa(st_counts, buffer);
             lcd_print(buffer);
-            delay_ms(200);
+            delay_ms(1000);
 
             for (i = 0; i < st_counts; i++)
             {
@@ -131,7 +147,7 @@ void main(void)
                 lcdCommand(0x01);
                 lcd_gotoxy(1, 1);
                 lcd_print(buffer);
-                delay_ms(250);
+                delay_ms(1000);
             }
 
             lcdCommand(0x01);
@@ -141,27 +157,25 @@ void main(void)
                 ;
         }
         else if (stage == STAGE_RETRIEVE_STUDENT_DATA)
-        {  
-            /*lcdCommand(0x01);
+        {
+            lcdCommand(0x01);
             lcd_gotoxy(1, 1);
-            lcd_print("start transferring...");
+            lcd_print("Start Transferring...");
             st_counts = read_byte_from_eeprom(0x0);
             for (i = 0; i < st_counts; i++)
             {
                 for (j = 0; j < 8; j++)
-                {   
-                     delay_ms(500);
-                    USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 8))); 
-                   
-                } 
+                {
+                    USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 8)));
+                }
+                USART_Transmit(',');
                 delay_ms(500);
-                USART_Transmit('\n');
             }
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
-            lcd_print("usart transmit finished");
-            delay_ms(250);
-            stage = STAGE_INIT_MENU;*/
+            lcd_print("Usart Transmit finished");
+            delay_ms(2000);
+            stage = STAGE_INIT_MENU;
         }
     }
 }
@@ -306,12 +320,12 @@ void lcdCommand(unsigned char cmnd)
     LCD_PRT &= ~(1 << LCD_RS); // RS = 0 for command
     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
-    delay_us(1);               // wait to make EN wider
+    delay_us(1 * 8);           // wait to make EN wider
     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
-    delay_us(20);              // wait
+    delay_us(20 * 8);          // wait
     LCD_PRT = (LCD_PRT & 0x0F) | (cmnd << 4);
     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
-    delay_us(1);               // wait to make EN wider
+    delay_us(1 * 8);           // wait to make EN wider
     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
 }
 void lcdData(unsigned char data)
@@ -320,36 +334,36 @@ void lcdData(unsigned char data)
     LCD_PRT |= (1 << LCD_RS);  // RS = 1 for data
     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
-    delay_us(1);               // wait to make EN wider
+    delay_us(1 * 8);           // wait to make EN wider
     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
     LCD_PRT = (LCD_PRT & 0x0F) | (data << 4);
     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
-    delay_us(1);               // wait to make EN wider
+    delay_us(1 * 8);           // wait to make EN wider
     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
 }
 void lcd_init()
 {
     LCD_DDR = 0xFF;            // LCD port is output
     LCD_PRT &= ~(1 << LCD_EN); // LCD_EN = 0
-    delay_us(2000);            // wait for stable power
+    delay_us(2000 * 8);        // wait for stable power
     lcdCommand(0x33);          //$33 for 4-bit mode
-    delay_us(100 * 8);         // wait
+    delay_us(100 * 8 * 8);     // wait
     lcdCommand(0x32);          //$32 for 4-bit mode
-    delay_us(100 * 8);         // wait
+    delay_us(100 * 8 * 8);     // wait
     lcdCommand(0x28);          //$28 for 4-bit mode
-    delay_us(100 * 8);         // wait
+    delay_us(100 * 8 * 8);     // wait
     lcdCommand(0x0c);          // display on, cursor off
-    delay_us(100 * 8);         // wait
+    delay_us(100 * 8 * 8);     // wait
     lcdCommand(0x01);          // clear LCD
-    delay_us(2000);            // wait
+    delay_us(2000 * 8);        // wait
     lcdCommand(0x06);          // shift cursor right
-    delay_us(100 * 8);
+    delay_us(100 * 8 * 8);
 }
 void lcd_gotoxy(unsigned char x, unsigned char y)
 {
     unsigned char firstCharAdr[] = {0x80, 0xC0, 0x94, 0xD4};
     lcdCommand(firstCharAdr[y - 1] + x - 1);
-    delay_us(100 * 8);
+    delay_us(100 * 8 * 8);
 }
 void lcd_print(char *str)
 {
@@ -383,7 +397,7 @@ void show_temp()
         temperatureVal = ADCH;
         itoa(temperatureVal, temperatureRep);
         lcd_print(temperatureRep);
-        delay_ms(100);
+        delay_ms(500);
     }
 }
 
@@ -400,7 +414,7 @@ void show_menu()
             lcd_gotoxy(1, 2);
             lcd_print("2: Student Management");
             if (stage == STAGE_INIT_MENU)
-                delay_ms(250);
+                delay_ms(2000);
             page_num = (page_num + 1) % 3;
         }
         else if (page_num == 1)
@@ -409,7 +423,7 @@ void show_menu()
             lcd_gotoxy(1, 2);
             lcd_print("4: Temperature Monitoring");
             if (stage == STAGE_INIT_MENU)
-                delay_ms(250);
+                delay_ms(2000);
             page_num = (page_num + 1) % 3;
         }
         else if (page_num == 2)
@@ -418,7 +432,7 @@ void show_menu()
             lcd_gotoxy(1, 2);
             lcd_print("6: Traffic Monitoring");
             if (stage == STAGE_INIT_MENU)
-                delay_ms(250);
+                delay_ms(2000);
             page_num = (page_num + 1) % 3;
         }
     }

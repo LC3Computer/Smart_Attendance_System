@@ -5,10 +5,6 @@
 #include <string.h>
 #include <eeprom.h>
 
-#define F_CPU 16000000UL // 16 MHz clock frequency
-#define BAUD 9600
-#define MYUBRR ((F_CPU / 16 / BAUD) - 1)
-
 #define LCD_PRT PORTB // LCD DATA PORT
 #define LCD_DDR DDRB  // LCD DATA DDR
 #define LCD_PIN PINB  // LCD DATA PIN
@@ -30,8 +26,20 @@ void show_menu();
 void clear_eeprom();
 unsigned char read_byte_from_eeprom(unsigned int addr);
 void write_byte_to_eeprom(unsigned int addr, unsigned char value);
-void USART_init(unsigned int ubrr);
-void USART_Transmit(unsigned char data);
+
+void USART_init(unsigned int ubrr) {
+    UBRRL = (unsigned char)ubrr;
+    UBRRH = (unsigned char)(ubrr >> 8);
+    UCSRB = (1 << RXEN) | (1 << TXEN);
+    UCSRC = (1 << UCSZ1) | (1 << UCSZ0); // Set UCSZ1 and UCSZ0 for 8-bit data
+}
+
+void USART_Transmit(unsigned char data)
+{
+    while(!(UCSRA &(1<<UDRE)));
+    UDR = data; 
+}
+
 
 /* keypad mapping :
 C : Cancel
@@ -76,8 +84,8 @@ void main(void)
     KEY_PRT &= 0x0F;    // ground all rows at once
     MCUCR = 0x02;       // make INT0 falling edge triggered
     GICR = (1 << INT0); // enable external interrupt 0
-    USART_init(MYUBRR); // Initialize USART with the correct baud rate
     lcd_init();
+    USART_init(6);
 
 #asm("sei")           // enable interrupts
     lcdCommand(0x01); // clear LCD
@@ -484,19 +492,4 @@ void write_byte_to_eeprom(unsigned int addr, unsigned char value)
     // Enable write
     EECR |= (1 << EEMWE); // Master write enable
     EECR |= (1 << EEWE);  // Start EEPROM write
-}
-
-void USART_init(unsigned int ubrr)
-{
-    UBRRL = (unsigned char)ubrr;
-    UBRRH = (unsigned char)(ubrr >> 8);
-    UCSRB = (1 << RXEN) | (1 << TXEN);
-    UCSRC = (1 << UCSZ1) | (1 << UCSZ0); // Set UCSZ1 and UCSZ0 for 8-bit data
-}
-
-void USART_Transmit(unsigned char data)
-{
-    while (!(UCSRA & (1 << UDRE)))
-        ;
-    UDR = data;
 }

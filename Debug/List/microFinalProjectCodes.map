@@ -1,9 +1,9 @@
 RAM Allocation [bytes]
 Variable                                                                          Address   Size
 ------------------------------------------------------------------------------------------------
-keypad                                                                            0x0385      16
-buffer                                                                            0x0395      32
-_seed                                                                             0x03B5       4
+keypad                                                                            0x03B3      16
+buffer                                                                            0x03C3      32
+_seed                                                                             0x03E3       4
 
 EEPROM Allocation [bytes]
 Variable                                                                          Address   Size
@@ -17,18 +17,20 @@ stage                                                                           
 FLASH Allocation [words]
 Function                                                                          Address   Size
 ------------------------------------------------------------------------------------------------
-main                                                                              0x0012A    153
-int0_routine                                                                      0x001C3    253
-lcdData                                                                           0x002C9     20
-lcd_init                                                                          0x002DD     29
-lcd_gotoxy                                                                        0x002FA     24
-lcd_print                                                                         0x00312     23
-LCM35_init                                                                        0x00329      5
-show_temp                                                                         0x0032E     34
-show_menu                                                                         0x00350     60
-clear_eeprom                                                                      0x0038C     26
-read_byte_from_eeprom                                                             0x003A6     12
-write_byte_to_eeprom                                                              0x003B2     11
-itoa                                                                              0x003BD     46
-memset                                                                            0x003EB     16
-strlen                                                                            0x003FB     12
+USART_init                                                                        0x00147     13
+USART_Transmit                                                                    0x00154      6
+main                                                                              0x0015A    196
+int0_routine                                                                      0x0021E    253
+lcdData                                                                           0x00325     20
+lcd_init                                                                          0x00339     29
+lcd_gotoxy                                                                        0x00356     24
+lcd_print                                                                         0x0036E     23
+LCM35_init                                                                        0x00385      5
+show_temp                                                                         0x0038A     34
+show_menu                                                                         0x003AC     60
+clear_eeprom                                                                      0x003E8     26
+read_byte_from_eeprom                                                             0x00402     12
+write_byte_to_eeprom                                                              0x0040E     11
+itoa                                                                              0x00419     46
+memset                                                                            0x00447     16
+strlen                                                                            0x00457     12
