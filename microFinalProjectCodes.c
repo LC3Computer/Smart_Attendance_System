@@ -14,6 +14,10 @@
 #define KEY_PRT PORTC // keyboard PORT
 #define KEY_DDR DDRC  // keyboard DDR
 #define KEY_PIN PINC  // keyboard PIN
+#define BUZZER_DDR DDRD
+#define BUZZER_PRT PORTD
+#define BUZZER_NUM 7
+#define MENU_PAGE_COUNT 3
 
 void lcdCommand(unsigned char cmnd);
 void lcdData(unsigned char data);
@@ -44,6 +48,7 @@ unsigned char keypad[4][4] = {'7', '8', '9', 'O',
 
 unsigned int stage = 0;
 char buffer[32] = "";
+unsigned char page_num = 0;
 
 enum stages
 {
@@ -76,8 +81,11 @@ void main(void)
     KEY_PRT &= 0x0F;    // ground all rows at once
     MCUCR = 0x02;       // make INT0 falling edge triggered
     GICR = (1 << INT0); // enable external interrupt 0
+    BUZZER_DDR |= (1 << BUZZER_NUM); //make buzzer pin output
+    BUZZER_PRT &= ~(1 << BUZZER_NUM); // disable buzzer
     lcd_init();
     USART_init(0x33);
+    
 
 #asm("sei")           // enable interrupts
     lcdCommand(0x01); // clear LCD
@@ -159,7 +167,6 @@ void main(void)
                 {
                     USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 8)));
                 }
-                USART_Transmit('\r');
                 USART_Transmit('\r');
                 USART_Transmit('\r');
                 delay_ms(500);
@@ -276,6 +283,16 @@ interrupt[EXT_INT0] void int0_routine(void)
         default:
             break;
         }
+        
+        
+        if(keypad[rowloc][cl] == 'L'){
+            page_num = page_num > 0 ? page_num -1 : (MENU_PAGE_COUNT -1);
+        }
+         if(keypad[rowloc][cl] == 'R'){
+            page_num = (page_num +1) % MENU_PAGE_COUNT;
+        }
+        
+        
     }
     else if (stage == STAGE_ATTENDENC_MENU)
     {
@@ -305,26 +322,33 @@ interrupt[EXT_INT0] void int0_routine(void)
             }
         }
         else if (keypad[rowloc][cl] == 'E')
-        {
+        {     
+        
+        #asm("cli")
 
             if (strncmp(buffer, "40", 2) != 0 ||
                 strlen(buffer) != 8)
-            {
+            {   
+               
+                BUZZER_PRT |= (1<<BUZZER_NUM); //turn on buzzer
                 lcdCommand(0x01);
                 lcd_gotoxy(1, 1);
                 lcd_print("Incorrect Suudent Code Format");
                 lcd_gotoxy(1, 2);
-                lcd_print("You Will Back Menu In 5 Second");
-                delay_ms(5000);
+                lcd_print("You Will Back Menu In 2 Second");
+                delay_ms(2000);
+                BUZZER_PRT &= ~(1<<BUZZER_NUM); //turn off buzzer
             }
             else if (search_student_code())
-            {
+            { 
+                BUZZER_PRT |= (1<<BUZZER_NUM); //turn on buzzer
                 lcdCommand(0x01);
                 lcd_gotoxy(1, 1);
                 lcd_print("Duplicate Suudent Code Entered");
                 lcd_gotoxy(1, 2);
-                lcd_print("You Will Back Menu In 5 Second");
-                delay_ms(5000);
+                lcd_print("You Will Back Menu In 2 Second");
+                delay_ms(2000);
+                BUZZER_PRT &= ~(1<<BUZZER_NUM); //turn off buzzer
             }
             else
             {
@@ -344,7 +368,7 @@ interrupt[EXT_INT0] void int0_routine(void)
                 delay_ms(2000);
             }
             memset(buffer, 0, 32);
-
+             #asm("sei")
             stage = STAGE_ATTENDENC_MENU;
         }
         else if (keypad[rowloc][cl] == 'C')
@@ -499,7 +523,7 @@ void show_temp()
 
 void show_menu()
 {
-    unsigned char page_num = 0;
+    
     while (stage == STAGE_INIT_MENU)
     {
         lcdCommand(0x01);
@@ -509,27 +533,24 @@ void show_menu()
             lcd_print("1: Attendance Initialization");
             lcd_gotoxy(1, 2);
             lcd_print("2: Student Management");
-            if (stage == STAGE_INIT_MENU)
-                delay_ms(2000);
-            page_num = (page_num + 1) % 3;
+            while(page_num==0 && stage == STAGE_INIT_MENU);
+            
         }
         else if (page_num == 1)
         {
             lcd_print("3: View Present Students ");
             lcd_gotoxy(1, 2);
             lcd_print("4: Temperature Monitoring");
-            if (stage == STAGE_INIT_MENU)
-                delay_ms(2000);
-            page_num = (page_num + 1) % 3;
+             while(page_num==1 && stage == STAGE_INIT_MENU);
+           
         }
         else if (page_num == 2)
         {
             lcd_print("5: Retrieve Student Data");
             lcd_gotoxy(1, 2);
             lcd_print("6: Traffic Monitoring");
-            if (stage == STAGE_INIT_MENU)
-                delay_ms(2000);
-            page_num = (page_num + 1) % 3;
+            while(page_num==2 && stage == STAGE_INIT_MENU);
+           
         }
     }
 }
