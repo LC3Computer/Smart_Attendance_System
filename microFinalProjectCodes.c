@@ -23,6 +23,9 @@ void lcd_print(char *str);
 void LCM35_init();
 void show_temp();
 void show_menu();
+void clear_eeprom();
+unsigned char read_byte_from_eeprom(unsigned int addr);
+void write_byte_to_eeprom(unsigned int addr, unsigned char value);
 
 /* keypad mapping :
 C : Cancel
@@ -39,9 +42,6 @@ unsigned char keypad[4][4] = {'7', '8', '9', 'O',
 unsigned int stage = 0;
 char buffer[32] = "";
 
-char EEMEM eepromStudentCodes[200] = "";
-unsigned char studentCounts = 0;
-
 enum stages
 {
     STAGE_INIT_MENU,
@@ -49,6 +49,7 @@ enum stages
     STAGE_SUBMIT_CODE,
     STAGE_TEMPERATURE_MONITORING,
     STAGE_VIEW_PRESENT_STUDENTS,
+    STAGE_RETRIEVE_STUDENT_DATA,
 };
 enum menu_options
 {
@@ -62,7 +63,8 @@ enum menu_options
 
 void main(void)
 {
-    unsigned char i;
+    int i, j;
+    unsigned char st_counts;
     KEY_DDR = 0xF0;
     KEY_PRT = 0xFF;
     KEY_PRT &= 0x0F;    // ground all rows at once
@@ -111,19 +113,55 @@ void main(void)
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
             lcd_print("Number of students : ");
+            lcd_gotoxy(1, 2);
+            st_counts = read_byte_from_eeprom(0x0);
+            memset(buffer, 0, 32);
+            itoa(st_counts, buffer);
+            lcd_print(buffer);
+            delay_ms(200);
 
-            for (i = 0; i < studentCounts; i++)
+            for (i = 0; i < st_counts; i++)
             {
-                eeprom_read_block(buffer, (&eepromStudentCodes)+i, 9);
-
+                memset(buffer, 0, 32);
+                for (j = 0; j < 8; j++)
+                {
+                    buffer[j] = read_byte_from_eeprom(j + ((i + 1) * 8));
+                }
+                buffer[j] = '\0';
                 lcdCommand(0x01);
                 lcd_gotoxy(1, 1);
                 lcd_print(buffer);
-                delay_ms(300);
+                delay_ms(250);
             }
+
+            lcdCommand(0x01);
+            lcd_gotoxy(1, 1);
             lcd_print("Press cancel to go back");
             while (stage == STAGE_VIEW_PRESENT_STUDENTS)
                 ;
+        }
+        else if (stage == STAGE_RETRIEVE_STUDENT_DATA)
+        {  
+            /*lcdCommand(0x01);
+            lcd_gotoxy(1, 1);
+            lcd_print("start transferring...");
+            st_counts = read_byte_from_eeprom(0x0);
+            for (i = 0; i < st_counts; i++)
+            {
+                for (j = 0; j < 8; j++)
+                {   
+                     delay_ms(500);
+                    USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 8))); 
+                   
+                } 
+                delay_ms(500);
+                USART_Transmit('\n');
+            }
+            lcdCommand(0x01);
+            lcd_gotoxy(1, 1);
+            lcd_print("usart transmit finished");
+            delay_ms(250);
+            stage = STAGE_INIT_MENU;*/
         }
     }
 }
@@ -131,7 +169,8 @@ void main(void)
 // int0 (keypad) service routine
 interrupt[EXT_INT0] void int0_routine(void)
 {
-    unsigned char colloc, rowloc, cl , i;
+    unsigned char colloc, rowloc, cl, st_counts;
+    int i;
 
     // detect the key
     while (1)
@@ -189,6 +228,17 @@ interrupt[EXT_INT0] void int0_routine(void)
         case OPTION_VIEW_PRESENT_STUDENTS:
             stage = STAGE_VIEW_PRESENT_STUDENTS;
             break;
+        case OPTION_RETRIEVE_STUDENT_DATA:
+            stage = STAGE_RETRIEVE_STUDENT_DATA;
+            break;
+        case 9:
+#asm("cli") // disable interrupts
+
+            lcdCommand(0x1);
+            lcd_gotoxy(1, 1);
+            lcd_print("clearing eeprom ...");
+            clear_eeprom();
+#asm("sei") // enable interrupts
 
         default:
             break;
@@ -202,6 +252,7 @@ interrupt[EXT_INT0] void int0_routine(void)
             stage = STAGE_INIT_MENU;
             break;
         case '1':
+            memset(buffer, 0, 32);
             stage = STAGE_SUBMIT_CODE;
             break;
         default:
@@ -213,7 +264,6 @@ interrupt[EXT_INT0] void int0_routine(void)
 
         if ((keypad[rowloc][cl] - '0') < 10)
         {
-
             if (strlen(buffer) <= 30)
             {
                 buffer[strlen(buffer)] = keypad[rowloc][cl];
@@ -224,8 +274,14 @@ interrupt[EXT_INT0] void int0_routine(void)
         else if (keypad[rowloc][cl] == 'E')
         {
             // save the buffer to EEPROM
-            eeprom_write_block((const void *)buffer, (eeprom void *)((&eepromStudentCodes)+studentCounts), 9);
-            studentCounts++;
+            st_counts = read_byte_from_eeprom(0x0);
+            for (i = 0; i < 8; i++)
+            {
+                write_byte_to_eeprom(i + ((st_counts + 1) * 8), buffer[i]);
+            }
+            write_byte_to_eeprom(0x0, st_counts + 1);
+            memset(buffer, 0, 32);
+
             stage = STAGE_INIT_MENU;
         }
         else if (keypad[rowloc][cl] == 'C')
@@ -366,4 +422,59 @@ void show_menu()
             page_num = (page_num + 1) % 3;
         }
     }
+}
+
+void clear_eeprom()
+{
+    unsigned int i;
+    for (i = 0; i <= 1023; i++)
+    {
+        // Wait for the previous write to complete
+        while (EECR & (1 << EEWE))
+            ;
+
+        // Set up address registers
+        EEARH = (i >> 8) & 0x03; // High byte (bits 8-9)
+        EEARL = i & 0xFF;        // Low byte (bits 0-7)
+
+        // Set up data register
+        EEDR = 0; // Write 0 to EEPROM
+
+        // Enable write
+        EECR |= (1 << EEMWE); // Master write enable
+        EECR |= (1 << EEWE);  // Start EEPROM write
+    }
+}
+
+unsigned char read_byte_from_eeprom(unsigned int addr)
+{
+    unsigned char x;
+    // Wait for the previous write to complete
+    while (EECR & (1 << EEWE))
+        ;
+
+    // Set up address registers
+    EEARH = (addr >> 8) & 0x03; // High byte (bits 8-9)
+    EEARL = addr & 0xFF;        // Low byte (bits 0-7)
+    EECR |= (1 << EERE);        // Read Enable
+    x = EEDR;
+    return x;
+}
+
+void write_byte_to_eeprom(unsigned int addr, unsigned char value)
+{
+    // Wait for the previous write to complete
+    while (EECR & (1 << EEWE))
+        ;
+
+    // Set up address registers
+    EEARH = (addr >> 8) & 0x03; // High byte (bits 8-9)
+    EEARL = addr & 0xFF;        // Low byte (bits 0-7)
+
+    // Set up data register
+    EEDR = value; // Write 0 to EEPROM
+
+    // Enable write
+    EECR |= (1 << EEMWE); // Master write enable
+    EECR |= (1 << EEWE);  // Start EEPROM write
 }
