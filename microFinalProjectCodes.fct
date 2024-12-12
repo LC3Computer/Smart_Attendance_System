@@ -1,6 +1,6 @@
-main DSTACK_USAGE:0 DSTACK_LEVEL:0 FILE:"microFinalProjectCodes.c" LINE:49
-show_temp DSTACK_USAGE:4 DSTACK_LEVEL:4 FILE:"microFinalProjectCodes.c" LINE:255
-lcd_gotoxy DSTACK_USAGE:6 DSTACK_LEVEL:10 FILE:"microFinalProjectCodes.c" LINE:232
-lcdCommand DSTACK_USAGE:1 DSTACK_LEVEL:11 FILE:"microFinalProjectCodes.c" LINE:187
-int0_routine DSTACK_USAGE:16 DSTACK_LEVEL:27 FILE:"microFinalProjectCodes.c" LINE:90
-lcdData DSTACK_USAGE:1 DSTACK_LEVEL:28 FILE:"microFinalProjectCodes.c" LINE:201
+main DSTACK_USAGE:0 DSTACK_LEVEL:0 FILE:"microFinalProjectCodes.c" LINE:63
+show_temp DSTACK_USAGE:4 DSTACK_LEVEL:4 FILE:"microFinalProjectCodes.c" LINE:314
+lcd_gotoxy DSTACK_USAGE:6 DSTACK_LEVEL:10 FILE:"microFinalProjectCodes.c" LINE:292
+lcdCommand DSTACK_USAGE:1 DSTACK_LEVEL:11 FILE:"microFinalProjectCodes.c" LINE:247
+int0_routine DSTACK_USAGE:16 DSTACK_LEVEL:27 FILE:"microFinalProjectCodes.c" LINE:132
+eeprom_write_block DSTACK_USAGE:10 DSTACK_LEVEL:37 FILE:"C:\cvavr\lib\eeprom.lib" LINE:23
