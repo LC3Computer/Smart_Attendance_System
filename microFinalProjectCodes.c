@@ -26,21 +26,9 @@ void show_menu();
 void clear_eeprom();
 unsigned char read_byte_from_eeprom(unsigned int addr);
 void write_byte_to_eeprom(unsigned int addr, unsigned char value);
-
-void USART_init(unsigned int ubrr)
-{
-    UBRRL = (unsigned char)ubrr;
-    UBRRH = (unsigned char)(ubrr >> 8);
-    UCSRB = (1 << RXEN) | (1 << TXEN);
-    UCSRC = (1 << UCSZ1) | (1 << UCSZ0); // Set UCSZ1 and UCSZ0 for 8-bit data
-}
-
-void USART_Transmit(unsigned char data)
-{
-    while (!(UCSRA & (1 << UDRE)))
-        ;
-    UDR = data;
-}
+void USART_init(unsigned int ubrr);
+void USART_Transmit(unsigned char data);
+unsigned char search_student_code();
 
 /* keypad mapping :
 C : Cancel
@@ -65,7 +53,10 @@ enum stages
     STAGE_TEMPERATURE_MONITORING,
     STAGE_VIEW_PRESENT_STUDENTS,
     STAGE_RETRIEVE_STUDENT_DATA,
+    STAGE_STUDENT_MANAGMENT,
+    STAGE_SEARCH_STUDENT,
 };
+
 enum menu_options
 {
     OPTION_ATTENDENCE = 1,
@@ -101,9 +92,9 @@ void main(void)
         {
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
-            lcd_print("1:submit student code");
+            lcd_print("1 : Submit Student Code");
             lcd_gotoxy(1, 2);
-            lcd_print("press cancel to back");
+            lcd_print("    press cancel to back");
             while (stage == STAGE_ATTENDENC_MENU)
                 ;
         }
@@ -113,12 +104,12 @@ void main(void)
             lcd_gotoxy(1, 1);
             lcd_print("Enter your student code:");
             lcd_gotoxy(1, 2);
-            lcdCommand(0x0f);  // display on, cursor blinking
-            delay_us(100 * 8); // wait
+            lcdCommand(0x0f);   // display on, cursor blinking
+            delay_us(100 * 16); // wait
             while (stage == STAGE_SUBMIT_CODE)
                 ;
-            lcdCommand(0x0c);  // display on, cursor off
-            delay_us(100 * 8); // wait
+            lcdCommand(0x0c);   // display on, cursor off
+            delay_us(100 * 16); // wait
         }
         else if (stage == STAGE_TEMPERATURE_MONITORING)
         {
@@ -152,7 +143,7 @@ void main(void)
 
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
-            lcd_print("Press cancel to go back");
+            lcd_print("Press Cancel To Go Back");
             while (stage == STAGE_VIEW_PRESENT_STUDENTS)
                 ;
         }
@@ -168,14 +159,39 @@ void main(void)
                 {
                     USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 8)));
                 }
-                USART_Transmit(',');
+                USART_Transmit('\r');
+                USART_Transmit('\r');
+                USART_Transmit('\r');
                 delay_ms(500);
             }
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
-            lcd_print("Usart Transmit finished");
+            lcd_print("Usart Transmit Finished");
             delay_ms(2000);
             stage = STAGE_INIT_MENU;
+        }
+        else if (stage == STAGE_STUDENT_MANAGMENT)
+        {
+            lcdCommand(0x01);
+            lcd_gotoxy(1, 1);
+            lcd_print("1 : Search Student");
+            lcd_gotoxy(1, 2);
+            lcd_print("    Press Cancel To Back");
+            while (stage == STAGE_STUDENT_MANAGMENT)
+                ;
+        }
+        else if (stage == STAGE_SEARCH_STUDENT)
+        {
+            lcdCommand(0x01);
+            lcd_gotoxy(1, 1);
+            lcd_print("Enter Student Code For Search:");
+            lcd_gotoxy(1, 2);
+            lcdCommand(0x0f);   // display on, cursor blinking
+            delay_us(100 * 16); // wait
+            while (stage == STAGE_SEARCH_STUDENT)
+                ;
+            lcdCommand(0x0c);   // display on, cursor off
+            delay_us(100 * 16); // wait
         }
     }
 }
@@ -245,12 +261,15 @@ interrupt[EXT_INT0] void int0_routine(void)
         case OPTION_RETRIEVE_STUDENT_DATA:
             stage = STAGE_RETRIEVE_STUDENT_DATA;
             break;
+        case OPTION_STUDENT_MANAGEMENT:
+            stage = STAGE_STUDENT_MANAGMENT;
+            break;
         case 9:
 #asm("cli") // disable interrupts
 
             lcdCommand(0x1);
             lcd_gotoxy(1, 1);
-            lcd_print("clearing eeprom ...");
+            lcd_print("Clearing EEPROM ...");
             clear_eeprom();
 #asm("sei") // enable interrupts
 
@@ -287,16 +306,46 @@ interrupt[EXT_INT0] void int0_routine(void)
         }
         else if (keypad[rowloc][cl] == 'E')
         {
-            // save the buffer to EEPROM
-            st_counts = read_byte_from_eeprom(0x0);
-            for (i = 0; i < 8; i++)
+
+            if (strncmp(buffer, "40", 2) != 0 ||
+                strlen(buffer) != 8)
             {
-                write_byte_to_eeprom(i + ((st_counts + 1) * 8), buffer[i]);
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Incorrect Suudent Code Format");
+                lcd_gotoxy(1, 2);
+                lcd_print("You Will Back Menu In 5 Second");
+                delay_ms(5000);
             }
-            write_byte_to_eeprom(0x0, st_counts + 1);
+            else if (search_student_code())
+            {
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Duplicate Suudent Code Entered");
+                lcd_gotoxy(1, 2);
+                lcd_print("You Will Back Menu In 5 Second");
+                delay_ms(5000);
+            }
+            else
+            {
+                // save the buffer to EEPROM
+                st_counts = read_byte_from_eeprom(0x0);
+                for (i = 0; i < 8; i++)
+                {
+                    write_byte_to_eeprom(i + ((st_counts + 1) * 8), buffer[i]);
+                }
+                write_byte_to_eeprom(0x0, st_counts + 1);
+
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Student Code Successfully Added");
+                lcd_gotoxy(1, 2);
+                lcd_print("You Will Back Menu In 2 Second");
+                delay_ms(2000);
+            }
             memset(buffer, 0, 32);
 
-            stage = STAGE_INIT_MENU;
+            stage = STAGE_ATTENDENC_MENU;
         }
         else if (keypad[rowloc][cl] == 'C')
             stage = STAGE_ATTENDENC_MENU;
@@ -312,6 +361,53 @@ interrupt[EXT_INT0] void int0_routine(void)
         if (keypad[rowloc][cl] == 'C')
             stage = STAGE_INIT_MENU;
     }
+    else if (stage == STAGE_STUDENT_MANAGMENT)
+    {
+        if (keypad[rowloc][cl] == 'C')
+            stage = STAGE_INIT_MENU;
+        else if (keypad[rowloc][cl] == '1')
+            stage = STAGE_SEARCH_STUDENT;
+    }
+    else if (stage == STAGE_SEARCH_STUDENT)
+    {
+        if ((keypad[rowloc][cl] - '0') < 10)
+        {
+            if (strlen(buffer) <= 30)
+            {
+                buffer[strlen(buffer)] = keypad[rowloc][cl];
+                buffer[strlen(buffer) + 1] = '\0';
+                lcdData(keypad[rowloc][cl]);
+            }
+        }
+        else if (keypad[rowloc][cl] == 'E')
+        {
+            // search from eeprom data
+            unsigned char result = search_student_code();
+
+            if (result == 1)
+            {
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Student Code Found");
+                lcd_gotoxy(1, 2);
+                lcd_print("You Will Back Menu In 5 Second");
+                delay_ms(5000);
+            }
+            else
+            {
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Ops , Student Code Not Found");
+                lcd_gotoxy(1, 2);
+                lcd_print("You Will Back Menu In 5 Second");
+                delay_ms(5000);
+            }
+            memset(buffer, 0, 32);
+            stage = STAGE_STUDENT_MANAGMENT;
+        }
+        else if (keypad[rowloc][cl] == 'C')
+            stage = STAGE_STUDENT_MANAGMENT;
+    }
 }
 
 void lcdCommand(unsigned char cmnd)
@@ -320,12 +416,12 @@ void lcdCommand(unsigned char cmnd)
     LCD_PRT &= ~(1 << LCD_RS); // RS = 0 for command
     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
-    delay_us(1 * 8);           // wait to make EN wider
+    delay_us(1 * 16);          // wait to make EN wider
     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
-    delay_us(20 * 8);          // wait
+    delay_us(20 * 16);         // wait
     LCD_PRT = (LCD_PRT & 0x0F) | (cmnd << 4);
     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
-    delay_us(1 * 8);           // wait to make EN wider
+    delay_us(1 * 16);          // wait to make EN wider
     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
 }
 void lcdData(unsigned char data)
@@ -334,36 +430,36 @@ void lcdData(unsigned char data)
     LCD_PRT |= (1 << LCD_RS);  // RS = 1 for data
     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
-    delay_us(1 * 8);           // wait to make EN wider
+    delay_us(1 * 16);          // wait to make EN wider
     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
     LCD_PRT = (LCD_PRT & 0x0F) | (data << 4);
     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
-    delay_us(1 * 8);           // wait to make EN wider
+    delay_us(1 * 16);          // wait to make EN wider
     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
 }
 void lcd_init()
 {
     LCD_DDR = 0xFF;            // LCD port is output
     LCD_PRT &= ~(1 << LCD_EN); // LCD_EN = 0
-    delay_us(2000 * 8);        // wait for stable power
+    delay_us(2000 * 16);       // wait for stable power
     lcdCommand(0x33);          //$33 for 4-bit mode
-    delay_us(100 * 8 * 8);     // wait
+    delay_us(100 * 16);        // wait
     lcdCommand(0x32);          //$32 for 4-bit mode
-    delay_us(100 * 8 * 8);     // wait
+    delay_us(100 * 16);        // wait
     lcdCommand(0x28);          //$28 for 4-bit mode
-    delay_us(100 * 8 * 8);     // wait
+    delay_us(100 * 16);        // wait
     lcdCommand(0x0c);          // display on, cursor off
-    delay_us(100 * 8 * 8);     // wait
+    delay_us(100 * 16);        // wait
     lcdCommand(0x01);          // clear LCD
-    delay_us(2000 * 8);        // wait
+    delay_us(2000 * 16);       // wait
     lcdCommand(0x06);          // shift cursor right
-    delay_us(100 * 8 * 8);
+    delay_us(100 * 16);
 }
 void lcd_gotoxy(unsigned char x, unsigned char y)
 {
     unsigned char firstCharAdr[] = {0x80, 0xC0, 0x94, 0xD4};
     lcdCommand(firstCharAdr[y - 1] + x - 1);
-    delay_us(100 * 8 * 8);
+    delay_us(100 * 16);
 }
 void lcd_print(char *str)
 {
@@ -491,4 +587,41 @@ void write_byte_to_eeprom(unsigned int addr, unsigned char value)
     // Enable write
     EECR |= (1 << EEMWE); // Master write enable
     EECR |= (1 << EEWE);  // Start EEPROM write
+}
+
+void USART_Transmit(unsigned char data)
+{
+    while (!(UCSRA & (1 << UDRE)))
+        ;
+    UDR = data;
+}
+
+void USART_init(unsigned int ubrr)
+{
+    UBRRL = (unsigned char)ubrr;
+    UBRRH = (unsigned char)(ubrr >> 8);
+    UCSRB = (1 << RXEN) | (1 << TXEN);
+    UCSRC = (1 << UCSZ1) | (1 << UCSZ0); // Set UCSZ1 and UCSZ0 for 8-bit data
+}
+
+unsigned char search_student_code()
+{
+    unsigned char st_counts, i, j;
+    char temp[32];
+
+    st_counts = read_byte_from_eeprom(0x0);
+
+    for (i = 0; i < st_counts; i++)
+    {
+        memset(temp, 0, 32);
+        for (j = 0; j < 8; j++)
+        {
+            temp[j] = read_byte_from_eeprom(j + ((i + 1) * 8));
+        }
+        temp[j] = '\0';
+        if (strcmp(temp, buffer) == 0)
+            return 1;
+    }
+
+    return 0;
 }
