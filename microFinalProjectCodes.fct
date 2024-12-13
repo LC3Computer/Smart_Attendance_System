@@ -1,7 +1,7 @@
-main DSTACK_USAGE:0 DSTACK_LEVEL:0 FILE:"microFinalProjectCodes.c" LINE:75
-show_temp DSTACK_USAGE:4 DSTACK_LEVEL:4 FILE:"microFinalProjectCodes.c" LINE:504
-lcd_gotoxy DSTACK_USAGE:6 DSTACK_LEVEL:10 FILE:"microFinalProjectCodes.c" LINE:482
-lcdCommand DSTACK_USAGE:1 DSTACK_LEVEL:11 FILE:"microFinalProjectCodes.c" LINE:437
-int0_routine DSTACK_USAGE:19 DSTACK_LEVEL:30 FILE:"microFinalProjectCodes.c" LINE:207
-search_student_code DSTACK_USAGE:36 DSTACK_LEVEL:66 FILE:"microFinalProjectCodes.c" LINE:628
-memset DSTACK_USAGE:5 DSTACK_LEVEL:71 FILE:"C:\cvavr\lib\string.lib" LINE:661
+main DSTACK_USAGE:0 DSTACK_LEVEL:0 FILE:"microFinalProjectCodes.c" LINE:77
+show_temperature DSTACK_USAGE:4 DSTACK_LEVEL:4 FILE:"microFinalProjectCodes.c" LINE:596
+lcd_gotoxy DSTACK_USAGE:6 DSTACK_LEVEL:10 FILE:"microFinalProjectCodes.c" LINE:574
+lcdCommand DSTACK_USAGE:1 DSTACK_LEVEL:11 FILE:"microFinalProjectCodes.c" LINE:529
+int0_routine DSTACK_USAGE:21 DSTACK_LEVEL:32 FILE:"microFinalProjectCodes.c" LINE:221
+search_student_code DSTACK_USAGE:14 DSTACK_LEVEL:46 FILE:"microFinalProjectCodes.c" LINE:726
+memset DSTACK_USAGE:5 DSTACK_LEVEL:51 FILE:"C:\cvavr\lib\string.lib" LINE:661

@@ -25,7 +25,7 @@ void lcd_init();
 void lcd_gotoxy(unsigned char x, unsigned char y);
 void lcd_print(char *str);
 void LCM35_init();
-void show_temp();
+void show_temperature();
 void show_menu();
 void clear_eeprom();
 unsigned char read_byte_from_eeprom(unsigned int addr);
@@ -33,6 +33,7 @@ void write_byte_to_eeprom(unsigned int addr, unsigned char value);
 void USART_init(unsigned int ubrr);
 void USART_Transmit(unsigned char data);
 unsigned char search_student_code();
+void delete_student_code(unsigned char index);
 
 /* keypad mapping :
 C : Cancel
@@ -60,6 +61,7 @@ enum stages
     STAGE_RETRIEVE_STUDENT_DATA,
     STAGE_STUDENT_MANAGMENT,
     STAGE_SEARCH_STUDENT,
+    STAGE_DELETE_STUDENT,
 };
 
 enum menu_options
@@ -78,14 +80,13 @@ void main(void)
     unsigned char st_counts;
     KEY_DDR = 0xF0;
     KEY_PRT = 0xFF;
-    KEY_PRT &= 0x0F;    // ground all rows at once
-    MCUCR = 0x02;       // make INT0 falling edge triggered
-    GICR = (1 << INT0); // enable external interrupt 0
-    BUZZER_DDR |= (1 << BUZZER_NUM); //make buzzer pin output
+    KEY_PRT &= 0x0F;                  // ground all rows at once
+    MCUCR = 0x02;                     // make INT0 falling edge triggered
+    GICR = (1 << INT0);               // enable external interrupt 0
+    BUZZER_DDR |= (1 << BUZZER_NUM);  // make buzzer pin output
     BUZZER_PRT &= ~(1 << BUZZER_NUM); // disable buzzer
     lcd_init();
     USART_init(0x33);
-    
 
 #asm("sei")           // enable interrupts
     lcdCommand(0x01); // clear LCD
@@ -121,7 +122,7 @@ void main(void)
         }
         else if (stage == STAGE_TEMPERATURE_MONITORING)
         {
-            show_temp();
+            show_temperature();
         }
         else if (stage == STAGE_VIEW_PRESENT_STUDENTS)
         {
@@ -181,9 +182,9 @@ void main(void)
         {
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
-            lcd_print("1 : Search Student");
+            lcd_print("1: Search Student");
             lcd_gotoxy(1, 2);
-            lcd_print("    Press Cancel To Back");
+            lcd_print("2: Delete Student");
             while (stage == STAGE_STUDENT_MANAGMENT)
                 ;
         }
@@ -200,13 +201,26 @@ void main(void)
             lcdCommand(0x0c);   // display on, cursor off
             delay_us(100 * 16); // wait
         }
+        else if (stage == STAGE_DELETE_STUDENT)
+        {
+            lcdCommand(0x01);
+            lcd_gotoxy(1, 1);
+            lcd_print("Enter Student Code For Delete:");
+            lcd_gotoxy(1, 2);
+            lcdCommand(0x0f);   // display on, cursor blinking
+            delay_us(100 * 16); // wait
+            while (stage == STAGE_DELETE_STUDENT)
+                ;
+            lcdCommand(0x0c); // display on, cursor off
+            delay_us(100 * 16);
+        }
     }
 }
 
 // int0 (keypad) service routine
 interrupt[EXT_INT0] void int0_routine(void)
 {
-    unsigned char colloc, rowloc, cl, st_counts;
+    unsigned char colloc, rowloc, cl, st_counts, buffer_len;
     int i;
 
     // detect the key
@@ -279,20 +293,19 @@ interrupt[EXT_INT0] void int0_routine(void)
             lcd_print("Clearing EEPROM ...");
             clear_eeprom();
 #asm("sei") // enable interrupts
-
+            stage = STAGE_INIT_MENU;
         default:
             break;
         }
-        
-        
-        if(keypad[rowloc][cl] == 'L'){
-            page_num = page_num > 0 ? page_num -1 : (MENU_PAGE_COUNT -1);
+
+        if (keypad[rowloc][cl] == 'L')
+        {
+            page_num = page_num > 0 ? page_num - 1 : (MENU_PAGE_COUNT - 1);
         }
-         if(keypad[rowloc][cl] == 'R'){
-            page_num = (page_num +1) % MENU_PAGE_COUNT;
+        if (keypad[rowloc][cl] == 'R')
+        {
+            page_num = (page_num + 1) % MENU_PAGE_COUNT;
         }
-        
-        
     }
     else if (stage == STAGE_ATTENDENC_MENU)
     {
@@ -321,34 +334,45 @@ interrupt[EXT_INT0] void int0_routine(void)
                 lcdData(keypad[rowloc][cl]);
             }
         }
+        else if (keypad[rowloc][cl] == 'D')
+        {
+            buffer_len = strlen(buffer);
+            if (buffer_len > 0)
+            {
+                buffer[buffer_len - 1] = '\0';
+                lcdCommand(0x10);
+                lcd_print(" ");
+                lcdCommand(0x10);
+            }
+        }
         else if (keypad[rowloc][cl] == 'E')
-        {     
-        
-        #asm("cli")
+        {
+
+#asm("cli")
 
             if (strncmp(buffer, "40", 2) != 0 ||
                 strlen(buffer) != 8)
-            {   
-               
-                BUZZER_PRT |= (1<<BUZZER_NUM); //turn on buzzer
+            {
+
+                BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
                 lcdCommand(0x01);
                 lcd_gotoxy(1, 1);
                 lcd_print("Incorrect Suudent Code Format");
                 lcd_gotoxy(1, 2);
                 lcd_print("You Will Back Menu In 2 Second");
                 delay_ms(2000);
-                BUZZER_PRT &= ~(1<<BUZZER_NUM); //turn off buzzer
+                BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
             }
-            else if (search_student_code())
-            { 
-                BUZZER_PRT |= (1<<BUZZER_NUM); //turn on buzzer
+            else if (search_student_code() > 0)
+            {
+                BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
                 lcdCommand(0x01);
                 lcd_gotoxy(1, 1);
                 lcd_print("Duplicate Suudent Code Entered");
                 lcd_gotoxy(1, 2);
                 lcd_print("You Will Back Menu In 2 Second");
                 delay_ms(2000);
-                BUZZER_PRT &= ~(1<<BUZZER_NUM); //turn off buzzer
+                BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
             }
             else
             {
@@ -368,7 +392,7 @@ interrupt[EXT_INT0] void int0_routine(void)
                 delay_ms(2000);
             }
             memset(buffer, 0, 32);
-             #asm("sei")
+#asm("sei")
             stage = STAGE_ATTENDENC_MENU;
         }
         else if (keypad[rowloc][cl] == 'C')
@@ -391,6 +415,8 @@ interrupt[EXT_INT0] void int0_routine(void)
             stage = STAGE_INIT_MENU;
         else if (keypad[rowloc][cl] == '1')
             stage = STAGE_SEARCH_STUDENT;
+        else if (keypad[rowloc][cl] == '2')
+            stage = STAGE_DELETE_STUDENT;
     }
     else if (stage == STAGE_SEARCH_STUDENT)
     {
@@ -403,12 +429,23 @@ interrupt[EXT_INT0] void int0_routine(void)
                 lcdData(keypad[rowloc][cl]);
             }
         }
+        else if (keypad[rowloc][cl] == 'D')
+        {
+            buffer_len = strlen(buffer);
+            if (buffer_len > 0)
+            {
+                buffer[buffer_len - 1] = '\0';
+                lcdCommand(0x10);
+                lcd_print(" ");
+                lcdCommand(0x10);
+            }
+        }
         else if (keypad[rowloc][cl] == 'E')
         {
             // search from eeprom data
             unsigned char result = search_student_code();
 
-            if (result == 1)
+            if (result > 0)
             {
                 lcdCommand(0x01);
                 lcd_gotoxy(1, 1);
@@ -431,6 +468,61 @@ interrupt[EXT_INT0] void int0_routine(void)
         }
         else if (keypad[rowloc][cl] == 'C')
             stage = STAGE_STUDENT_MANAGMENT;
+    }
+    else if (stage == STAGE_DELETE_STUDENT)
+    {
+        if ((keypad[rowloc][cl] - '0') < 10)
+        {
+            if (strlen(buffer) <= 30)
+            {
+                buffer[strlen(buffer)] = keypad[rowloc][cl];
+                buffer[strlen(buffer) + 1] = '\0';
+                lcdData(keypad[rowloc][cl]);
+            }
+        }
+        else if (keypad[rowloc][cl] == 'D')
+        {
+            buffer_len = strlen(buffer);
+            if (buffer_len > 0)
+            {
+                buffer[buffer_len - 1] = '\0';
+                lcdCommand(0x10);
+                lcd_print(" ");
+                lcdCommand(0x10);
+            }
+        }
+        else if (keypad[rowloc][cl] == 'E')
+        {
+            // search from eeprom data
+            unsigned char result = search_student_code();
+
+            if (result > 0)
+            {
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Student Code Found");
+                lcd_gotoxy(1, 2);
+                lcd_print("Wait For Delete...");
+                delete_student_code(result);
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Student Code Was Deleted");
+                lcd_gotoxy(1, 2);
+                lcd_print("You Will Back Menu In 2 Second");
+                delay_ms(2000);
+            }
+            else
+            {
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Ops , Student Code Not Found");
+                lcd_gotoxy(1, 2);
+                lcd_print("You Will Back Menu In 2 Second");
+                delay_ms(2000);
+            }
+            memset(buffer, 0, 32);
+            stage = STAGE_STUDENT_MANAGMENT;
+        }
     }
 }
 
@@ -501,29 +593,34 @@ void LCM35_init()
     ADCSRA = 0x87;
 }
 
-void show_temp()
+void show_temperature()
 {
     unsigned char temperatureVal = 0;
     unsigned char temperatureRep[3];
+    lcdCommand(0x01);
+    lcd_gotoxy(1, 1);
+    lcd_print("temperature(C):");
 
     while (stage == STAGE_TEMPERATURE_MONITORING)
     {
-        lcdCommand(0x01);
-        lcd_gotoxy(1, 1);
-        lcd_print("Temp(C):");
         ADCSRA |= (1 << ADSC);
         while ((ADCSRA & (1 << ADIF)) == 0)
             ;
-        temperatureVal = ADCH;
-        itoa(temperatureVal, temperatureRep);
-        lcd_print(temperatureRep);
+        if (ADCH != temperatureVal)
+        {
+            temperatureVal = ADCH;
+            itoa(temperatureVal, temperatureRep);
+            lcd_gotoxy(17, 1);
+            lcd_print(temperatureRep);
+            lcd_print(" ");
+        }
         delay_ms(500);
     }
 }
 
 void show_menu()
 {
-    
+
     while (stage == STAGE_INIT_MENU)
     {
         lcdCommand(0x01);
@@ -533,24 +630,24 @@ void show_menu()
             lcd_print("1: Attendance Initialization");
             lcd_gotoxy(1, 2);
             lcd_print("2: Student Management");
-            while(page_num==0 && stage == STAGE_INIT_MENU);
-            
+            while (page_num == 0 && stage == STAGE_INIT_MENU)
+                ;
         }
         else if (page_num == 1)
         {
             lcd_print("3: View Present Students ");
             lcd_gotoxy(1, 2);
             lcd_print("4: Temperature Monitoring");
-             while(page_num==1 && stage == STAGE_INIT_MENU);
-           
+            while (page_num == 1 && stage == STAGE_INIT_MENU)
+                ;
         }
         else if (page_num == 2)
         {
             lcd_print("5: Retrieve Student Data");
             lcd_gotoxy(1, 2);
             lcd_print("6: Traffic Monitoring");
-            while(page_num==2 && stage == STAGE_INIT_MENU);
-           
+            while (page_num == 2 && stage == STAGE_INIT_MENU)
+                ;
         }
     }
 }
@@ -558,6 +655,7 @@ void show_menu()
 void clear_eeprom()
 {
     unsigned int i;
+
     for (i = 0; i <= 1023; i++)
     {
         // Wait for the previous write to complete
@@ -628,7 +726,7 @@ void USART_init(unsigned int ubrr)
 unsigned char search_student_code()
 {
     unsigned char st_counts, i, j;
-    char temp[32];
+    char temp[10];
 
     st_counts = read_byte_from_eeprom(0x0);
 
@@ -641,8 +739,26 @@ unsigned char search_student_code()
         }
         temp[j] = '\0';
         if (strcmp(temp, buffer) == 0)
-            return 1;
+            return (i + 1);
     }
 
     return 0;
+}
+
+void delete_student_code(unsigned char index)
+{
+    unsigned char st_counts, i, j;
+    unsigned char temp;
+
+    st_counts = read_byte_from_eeprom(0x0);
+
+    for (i = index; i <= st_counts; i++)
+    {
+        for (j = 0; j < 8; j++)
+        {
+            temp = read_byte_from_eeprom(j + ((i + 1) * 8));
+            write_byte_to_eeprom(j + ((i) * 8), temp);
+        }
+    }
+    write_byte_to_eeprom(0x0, st_counts - 1);
 }
