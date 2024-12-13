@@ -2517,7 +2517,7 @@ _0xA5:
 ;PCODE: $000006AA VOL: 0
 ;PCODE: $000006AB VOL: 0
 ; 0000 02DE     {
-; 0000 02DF         memset(temp, 0, 32);
+; 0000 02DF         memset(temp, 0, 10);
 ;PCODE: $000006AC VOL: 0
 ;PCODE: $000006AD VOL: 0
 ;PCODE: $000006AE VOL: 0
@@ -2565,58 +2565,58 @@ _0xA5:
 ;PCODE: $000006D3 VOL: 0
 ;PCODE: $000006D4 VOL: 0
 ;PCODE: $000006D5 VOL: 0
-; 0000 02E5         if (strcmp(temp, buffer) == 0)
+; 0000 02E5         if (strncmp(temp, buffer , 8) == 0)
 ;PCODE: $000006D6 VOL: 0
 ;PCODE: $000006D7 VOL: 0
 ;PCODE: $000006D8 VOL: 0
 ;PCODE: $000006D9 VOL: 0
 ;PCODE: $000006DA VOL: 0
 ;PCODE: $000006DB VOL: 0
-; 0000 02E6             return (i + 1);
 ;PCODE: $000006DC VOL: 0
 ;PCODE: $000006DD VOL: 0
+; 0000 02E6             return (i + 1);
 ;PCODE: $000006DE VOL: 0
 ;PCODE: $000006DF VOL: 0
 ;PCODE: $000006E0 VOL: 0
-; 0000 02E7     }
 ;PCODE: $000006E1 VOL: 0
 ;PCODE: $000006E2 VOL: 0
+; 0000 02E7     }
 ;PCODE: $000006E3 VOL: 0
 ;PCODE: $000006E4 VOL: 0
 ;PCODE: $000006E5 VOL: 0
 ;PCODE: $000006E6 VOL: 0
-; 0000 02E8 
-; 0000 02E9     return 0;
 ;PCODE: $000006E7 VOL: 0
 ;PCODE: $000006E8 VOL: 0
+; 0000 02E8 
+; 0000 02E9     return 0;
 ;PCODE: $000006E9 VOL: 0
 ;PCODE: $000006EA VOL: 0
-; 0000 02EA }
 ;PCODE: $000006EB VOL: 0
+;PCODE: $000006EC VOL: 0
+; 0000 02EA }
+;PCODE: $000006ED VOL: 0
 ;
 ;void delete_student_code(unsigned char index)
 ; 0000 02ED {
-;PCODE: $000006EC VOL: 0
-;PCODE: $000006ED VOL: 0
+;PCODE: $000006EE VOL: 0
+;PCODE: $000006EF VOL: 0
 ; 0000 02EE     unsigned char st_counts, i, j;
 ; 0000 02EF     unsigned char temp;
 ; 0000 02F0 
 ; 0000 02F1     st_counts = read_byte_from_eeprom(0x0);
-;PCODE: $000006EE VOL: 0
-;PCODE: $000006EF VOL: 0
+;PCODE: $000006F0 VOL: 0
+;PCODE: $000006F1 VOL: 0
 ;	index -> Y+4
 ;	st_counts -> R17
 ;	i -> R16
 ;	j -> R19
 ;	temp -> R18
-;PCODE: $000006F0 VOL: 0
-;PCODE: $000006F1 VOL: 0
 ;PCODE: $000006F2 VOL: 0
 ;PCODE: $000006F3 VOL: 0
-; 0000 02F2 
-; 0000 02F3     for (i = index; i <= st_counts; i++)
 ;PCODE: $000006F4 VOL: 0
 ;PCODE: $000006F5 VOL: 0
+; 0000 02F2 
+; 0000 02F3     for (i = index; i <= st_counts; i++)
 ;PCODE: $000006F6 VOL: 0
 ;PCODE: $000006F7 VOL: 0
 ;PCODE: $000006F8 VOL: 0
@@ -2624,10 +2624,10 @@ _0xA5:
 ;PCODE: $000006FA VOL: 0
 ;PCODE: $000006FB VOL: 0
 ;PCODE: $000006FC VOL: 0
-; 0000 02F4     {
-; 0000 02F5         for (j = 0; j < 8; j++)
 ;PCODE: $000006FD VOL: 0
 ;PCODE: $000006FE VOL: 0
+; 0000 02F4     {
+; 0000 02F5         for (j = 0; j < 8; j++)
 ;PCODE: $000006FF VOL: 0
 ;PCODE: $00000700 VOL: 0
 ;PCODE: $00000701 VOL: 0
@@ -2635,10 +2635,10 @@ _0xA5:
 ;PCODE: $00000703 VOL: 0
 ;PCODE: $00000704 VOL: 0
 ;PCODE: $00000705 VOL: 0
-; 0000 02F6         {
-; 0000 02F7             temp = read_byte_from_eeprom(j + ((i + 1) * 8));
 ;PCODE: $00000706 VOL: 0
 ;PCODE: $00000707 VOL: 0
+; 0000 02F6         {
+; 0000 02F7             temp = read_byte_from_eeprom(j + ((i + 1) * 8));
 ;PCODE: $00000708 VOL: 0
 ;PCODE: $00000709 VOL: 0
 ;PCODE: $0000070A VOL: 0
@@ -2646,35 +2646,37 @@ _0xA5:
 ;PCODE: $0000070C VOL: 0
 ;PCODE: $0000070D VOL: 0
 ;PCODE: $0000070E VOL: 0
-; 0000 02F8             write_byte_to_eeprom(j + ((i) * 8), temp);
 ;PCODE: $0000070F VOL: 0
 ;PCODE: $00000710 VOL: 0
+; 0000 02F8             write_byte_to_eeprom(j + ((i) * 8), temp);
 ;PCODE: $00000711 VOL: 0
 ;PCODE: $00000712 VOL: 0
 ;PCODE: $00000713 VOL: 0
 ;PCODE: $00000714 VOL: 0
 ;PCODE: $00000715 VOL: 0
 ;PCODE: $00000716 VOL: 0
-; 0000 02F9         }
 ;PCODE: $00000717 VOL: 0
 ;PCODE: $00000718 VOL: 0
+; 0000 02F9         }
 ;PCODE: $00000719 VOL: 0
 ;PCODE: $0000071A VOL: 0
 ;PCODE: $0000071B VOL: 0
-; 0000 02FA     }
 ;PCODE: $0000071C VOL: 0
 ;PCODE: $0000071D VOL: 0
+; 0000 02FA     }
 ;PCODE: $0000071E VOL: 0
 ;PCODE: $0000071F VOL: 0
 ;PCODE: $00000720 VOL: 0
-; 0000 02FB     write_byte_to_eeprom(0x0, st_counts - 1);
 ;PCODE: $00000721 VOL: 0
 ;PCODE: $00000722 VOL: 0
+; 0000 02FB     write_byte_to_eeprom(0x0, st_counts - 1);
 ;PCODE: $00000723 VOL: 0
 ;PCODE: $00000724 VOL: 0
 ;PCODE: $00000725 VOL: 0
-; 0000 02FC }
 ;PCODE: $00000726 VOL: 0
 ;PCODE: $00000727 VOL: 0
+; 0000 02FC }
 ;PCODE: $00000728 VOL: 0
 ;PCODE: $00000729 VOL: 0
+;PCODE: $0000072A VOL: 0
+;PCODE: $0000072B VOL: 0

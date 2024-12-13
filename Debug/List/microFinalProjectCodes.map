@@ -33,10 +33,9 @@ read_byte_from_eeprom                                                           
 write_byte_to_eeprom                                                              0x0066F     11
 USART_Transmit                                                                    0x0067A      7
 USART_init                                                                        0x00681     13
-search_student_code                                                               0x0068E     71
-delete_student_code                                                               0x006D5     47
-itoa                                                                              0x00704     46
-memset                                                                            0x00732     16
-strcmp                                                                            0x00742     20
-strlen                                                                            0x00756     12
-strncmp                                                                           0x00762     25
+search_student_code                                                               0x0068E     74
+delete_student_code                                                               0x006D8     47
+itoa                                                                              0x00707     46
+memset                                                                            0x00735     16
+strlen                                                                            0x00745     12
+strncmp                                                                           0x00751     25

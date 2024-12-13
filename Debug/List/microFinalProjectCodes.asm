@@ -3354,14 +3354,14 @@ _0xC9:
 	CP   R16,R17
 	BRSH _0xCA
 ; 0000 02DE     {
-; 0000 02DF         memset(temp, 0, 32);
+; 0000 02DF         memset(temp, 0, 10);
 	MOVW R30,R28
 	ADIW R30,4
 	ST   -Y,R31
 	ST   -Y,R30
 	LDI  R30,LOW(0)
 	ST   -Y,R30
-	LDI  R26,LOW(32)
+	LDI  R26,LOW(10)
 	LDI  R27,0
 	CALL _memset
 ; 0000 02E0         for (j = 0; j < 8; j++)
@@ -3402,14 +3402,17 @@ _0xCD:
 	ADC  R27,R31
 	LDI  R30,LOW(0)
 	ST   X,R30
-; 0000 02E5         if (strcmp(temp, buffer) == 0)
+; 0000 02E5         if (strncmp(temp, buffer , 8) == 0)
 	MOVW R30,R28
 	ADIW R30,4
 	ST   -Y,R31
 	ST   -Y,R30
-	LDI  R26,LOW(_buffer)
-	LDI  R27,HIGH(_buffer)
-	CALL _strcmp
+	LDI  R30,LOW(_buffer)
+	LDI  R31,HIGH(_buffer)
+	ST   -Y,R31
+	ST   -Y,R30
+	LDI  R26,LOW(8)
+	CALL _strncmp
 	CPI  R30,0
 	BRNE _0xCE
 ; 0000 02E6             return (i + 1);
@@ -3587,33 +3590,6 @@ memset1:
 _0x20A0001:
 	ADIW R28,5
 	RET
-; .FEND
-_strcmp:
-; .FSTART _strcmp
-	ST   -Y,R27
-	ST   -Y,R26
-    ld   r30,y+
-    ld   r31,y+
-    ld   r26,y+
-    ld   r27,y+
-strcmp0:
-    ld   r22,x+
-    ld   r23,z+
-    cp   r22,r23
-    brne strcmp1
-    tst  r22
-    brne strcmp0
-strcmp3:
-    clr  r30
-    ret
-strcmp1:
-    sub  r22,r23
-    breq strcmp3
-    ldi  r30,1
-    brcc strcmp2
-    subi r30,2
-strcmp2:
-    ret
 ; .FEND
 _strlen:
 ; .FSTART _strlen

@@ -732,13 +732,13 @@ unsigned char search_student_code()
 
     for (i = 0; i < st_counts; i++)
     {
-        memset(temp, 0, 32);
+        memset(temp, 0, 10);
         for (j = 0; j < 8; j++)
         {
             temp[j] = read_byte_from_eeprom(j + ((i + 1) * 8));
         }
         temp[j] = '\0';
-        if (strcmp(temp, buffer) == 0)
+        if (strncmp(temp, buffer , 8) == 0)
             return (i + 1);
     }
 

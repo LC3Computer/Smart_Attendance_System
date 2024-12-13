@@ -25,7 +25,7 @@ void lcd_init();
 void lcd_gotoxy(unsigned char x, unsigned char y);
 void lcd_print(char *str);
 void LCM35_init();
-void show_temp();
+void show_temperature();
 void show_menu();
 void clear_eeprom();
 unsigned char read_byte_from_eeprom(unsigned int addr);
@@ -109,6 +109,7 @@ void main(void)
         }
         else if (stage == STAGE_SUBMIT_CODE)
         {
+            memset(buffer, 0, 32);
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
             lcd_print("Enter your student code:");
@@ -122,7 +123,7 @@ void main(void)
         }
         else if (stage == STAGE_TEMPERATURE_MONITORING)
         {
-            show_temp();
+            show_temperature();
         }
         else if (stage == STAGE_VIEW_PRESENT_STUDENTS)
         {
@@ -190,6 +191,7 @@ void main(void)
         }
         else if (stage == STAGE_SEARCH_STUDENT)
         {
+            memset(buffer, 0, 32);
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
             lcd_print("Enter Student Code For Search:");
@@ -203,6 +205,7 @@ void main(void)
         }
         else if (stage == STAGE_DELETE_STUDENT)
         {
+            memset(buffer, 0, 32);
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
             lcd_print("Enter Student Code For Delete:");
@@ -220,7 +223,7 @@ void main(void)
 // int0 (keypad) service routine
 interrupt[EXT_INT0] void int0_routine(void)
 {
-    unsigned char colloc, rowloc, cl, st_counts;
+    unsigned char colloc, rowloc, cl, st_counts, buffer_len;
     int i;
 
     // detect the key
@@ -315,7 +318,6 @@ interrupt[EXT_INT0] void int0_routine(void)
             stage = STAGE_INIT_MENU;
             break;
         case '1':
-            memset(buffer, 0, 32);
             stage = STAGE_SUBMIT_CODE;
             break;
         default:
@@ -332,6 +334,17 @@ interrupt[EXT_INT0] void int0_routine(void)
                 buffer[strlen(buffer)] = keypad[rowloc][cl];
                 buffer[strlen(buffer) + 1] = '\0';
                 lcdData(keypad[rowloc][cl]);
+            }
+        }
+        else if (keypad[rowloc][cl] == 'D')
+        {
+            buffer_len = strlen(buffer);
+            if (buffer_len > 0)
+            {
+                buffer[buffer_len - 1] = '\0';
+                lcdCommand(0x10);
+                lcd_print(" ");
+                lcdCommand(0x10);
             }
         }
         else if (keypad[rowloc][cl] == 'E')
@@ -409,7 +422,6 @@ interrupt[EXT_INT0] void int0_routine(void)
     }
     else if (stage == STAGE_SEARCH_STUDENT)
     {
-        memset(buffer, 0, 32);
         if ((keypad[rowloc][cl] - '0') < 10)
         {
             if (strlen(buffer) <= 30)
@@ -417,6 +429,17 @@ interrupt[EXT_INT0] void int0_routine(void)
                 buffer[strlen(buffer)] = keypad[rowloc][cl];
                 buffer[strlen(buffer) + 1] = '\0';
                 lcdData(keypad[rowloc][cl]);
+            }
+        }
+        else if (keypad[rowloc][cl] == 'D')
+        {
+            buffer_len = strlen(buffer);
+            if (buffer_len > 0)
+            {
+                buffer[buffer_len - 1] = '\0';
+                lcdCommand(0x10);
+                lcd_print(" ");
+                lcdCommand(0x10);
             }
         }
         else if (keypad[rowloc][cl] == 'E')
@@ -450,7 +473,6 @@ interrupt[EXT_INT0] void int0_routine(void)
     }
     else if (stage == STAGE_DELETE_STUDENT)
     {
-        memset(buffer, 0, 32);
         if ((keypad[rowloc][cl] - '0') < 10)
         {
             if (strlen(buffer) <= 30)
@@ -458,6 +480,17 @@ interrupt[EXT_INT0] void int0_routine(void)
                 buffer[strlen(buffer)] = keypad[rowloc][cl];
                 buffer[strlen(buffer) + 1] = '\0';
                 lcdData(keypad[rowloc][cl]);
+            }
+        }
+        else if (keypad[rowloc][cl] == 'D')
+        {
+            buffer_len = strlen(buffer);
+            if (buffer_len > 0)
+            {
+                buffer[buffer_len - 1] = '\0';
+                lcdCommand(0x10);
+                lcd_print(" ");
+                lcdCommand(0x10);
             }
         }
         else if (keypad[rowloc][cl] == 'E')
@@ -562,22 +595,27 @@ void LCM35_init()
     ADCSRA = 0x87;
 }
 
-void show_temp()
+void show_temperature()
 {
     unsigned char temperatureVal = 0;
     unsigned char temperatureRep[3];
+    lcdCommand(0x01);
+    lcd_gotoxy(1, 1);
+    lcd_print("temperature(C):");
 
     while (stage == STAGE_TEMPERATURE_MONITORING)
     {
-        lcdCommand(0x01);
-        lcd_gotoxy(1, 1);
-        lcd_print("Temp(C):");
         ADCSRA |= (1 << ADSC);
         while ((ADCSRA & (1 << ADIF)) == 0)
             ;
-        temperatureVal = ADCH;
-        itoa(temperatureVal, temperatureRep);
-        lcd_print(temperatureRep);
+        if (ADCH != temperatureVal)
+        {
+            temperatureVal = ADCH;
+            itoa(temperatureVal, temperatureRep);
+            lcd_gotoxy(17, 1);
+            lcd_print(temperatureRep);
+            lcd_print(" ");
+        }
         delay_ms(500);
     }
 }
@@ -619,7 +657,6 @@ void show_menu()
 void clear_eeprom()
 {
     unsigned int i;
-    unsigned char st_counts;
 
     for (i = 0; i <= 1023; i++)
     {
@@ -697,13 +734,13 @@ unsigned char search_student_code()
 
     for (i = 0; i < st_counts; i++)
     {
-        memset(temp, 0, 32);
+        memset(temp, 0, 10);
         for (j = 0; j < 8; j++)
         {
             temp[j] = read_byte_from_eeprom(j + ((i + 1) * 8));
         }
         temp[j] = '\0';
-        if (strcmp(temp, buffer) == 0)
+        if (strncmp(temp, buffer , 8) == 0)
             return (i + 1);
     }
 
@@ -717,15 +754,13 @@ void delete_student_code(unsigned char index)
 
     st_counts = read_byte_from_eeprom(0x0);
 
-    for (i = index; i < st_counts; i++)
+    for (i = index; i <= st_counts; i++)
     {
-        for (j = 0; i < 8; j++)
+        for (j = 0; j < 8; j++)
         {
             temp = read_byte_from_eeprom(j + ((i + 1) * 8));
-            delay_ms(1000);
             write_byte_to_eeprom(j + ((i) * 8), temp);
         }
-        delay_ms(1000);
     }
     write_byte_to_eeprom(0x0, st_counts - 1);
 }

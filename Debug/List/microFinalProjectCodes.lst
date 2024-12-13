@@ -1,9 +1,9 @@
 
-AVRASM ver. 2.1.30  C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCodes.asm Fri Dec 13 05:43:00 2024
+AVRASM ver. 2.1.30  D:\projects\hardware\microFinalProject\Debug\List\microFinalProjectCodes.asm Fri Dec 13 20:12:37 2024
 
-C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCodes.asm(1088): warning: Register r4 already defined by the .DEF directive
-C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCodes.asm(1089): warning: Register r5 already defined by the .DEF directive
-C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCodes.asm(1090): warning: Register r7 already defined by the .DEF directive
+D:\projects\hardware\microFinalProject\Debug\List\microFinalProjectCodes.asm(1088): warning: Register r4 already defined by the .DEF directive
+D:\projects\hardware\microFinalProject\Debug\List\microFinalProjectCodes.asm(1089): warning: Register r5 already defined by the .DEF directive
+D:\projects\hardware\microFinalProject\Debug\List\microFinalProjectCodes.asm(1090): warning: Register r7 already defined by the .DEF directive
                  
                  
                  ;CodeVisionAVR C Compiler V3.14 Advanced
@@ -1491,14 +1491,14 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 000190 6e69
 000191 0067      	.DB  0x69,0x6E,0x67,0x0
                  _0x2000060:
-C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCodes.asm(1218): warning: .cseg .db misalignment - padding zero byte
+D:\projects\hardware\microFinalProject\Debug\List\microFinalProjectCodes.asm(1218): warning: .cseg .db misalignment - padding zero byte
 000192 0001      	.DB  0x1
                  _0x2000000:
 000193 4e2d
 000194 4e41
 000195 4900
 000196 464e      	.DB  0x2D,0x4E,0x41,0x4E,0x0,0x49,0x4E,0x46
-C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCodes.asm(1221): warning: .cseg .db misalignment - padding zero byte
+D:\projects\hardware\microFinalProject\Debug\List\microFinalProjectCodes.asm(1221): warning: .cseg .db misalignment - padding zero byte
 000197 0000      	.DB  0x0
                  
                  __GLOBAL_INI_TBL:
@@ -1899,18 +1899,18 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 0064         else if (stage == STAGE_ATTENDENC_MENU)
 000260 c0d7      	RJMP _0x8
                  _0x7:
-000261 940e 077b 	CALL SUBOPT_0x0
+000261 940e 076a 	CALL SUBOPT_0x0
 000263 f469      	BRNE _0x9
                  ; 0000 0065         {
                  ; 0000 0066             lcdCommand(0x01);
-000264 940e 0780 	CALL SUBOPT_0x1
+000264 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 0067             lcd_gotoxy(1, 1);
                  ; 0000 0068             lcd_print("1 : Submit Student Code");
                 +
 000266 e6a0     +LDI R26 , LOW ( _0xA + ( 0 ) )
 000267 e0b2     +LDI R27 , HIGH ( _0xA + ( 0 ) )
                  	__POINTW2MN _0xA,0
-000268 940e 0788 	CALL SUBOPT_0x2
+000268 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 0069             lcd_gotoxy(1, 2);
                  ; 0000 006A             lcd_print("    press cancel to back");
                 +
@@ -1920,32 +1920,32 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 00026c d354      	RCALL _lcd_print
                  ; 0000 006B             while (stage == STAGE_ATTENDENC_MENU)
                  _0xB:
-00026d 940e 077b 	CALL SUBOPT_0x0
+00026d 940e 076a 	CALL SUBOPT_0x0
 00026f f3e9      	BREQ _0xB
                  ; 0000 006C                 ;
                  ; 0000 006D         }
                  ; 0000 006E         else if (stage == STAGE_SUBMIT_CODE)
 000270 c0c7      	RJMP _0xE
                  _0x9:
-000271 940e 078f 	CALL SUBOPT_0x3
+000271 940e 077e 	CALL SUBOPT_0x3
 000273 f461      	BRNE _0xF
                  ; 0000 006F         {
                  ; 0000 0070             lcdCommand(0x01);
-000274 940e 0780 	CALL SUBOPT_0x1
+000274 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 0071             lcd_gotoxy(1, 1);
                  ; 0000 0072             lcd_print("Enter your student code:");
                 +
 000276 e9a1     +LDI R26 , LOW ( _0xA + ( 49 ) )
 000277 e0b2     +LDI R27 , HIGH ( _0xA + ( 49 ) )
                  	__POINTW2MN _0xA,49
-000278 940e 0788 	CALL SUBOPT_0x2
+000278 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 0073             lcd_gotoxy(1, 2);
                  ; 0000 0074             lcdCommand(0x0f);   // display on, cursor blinking
-00027a 940e 0794 	CALL SUBOPT_0x4
+00027a 940e 0783 	CALL SUBOPT_0x4
                  ; 0000 0075             delay_us(100 * 16); // wait
                  ; 0000 0076             while (stage == STAGE_SUBMIT_CODE)
                  _0x10:
-00027c 940e 078f 	CALL SUBOPT_0x3
+00027c 940e 077e 	CALL SUBOPT_0x3
 00027e f3e9      	BREQ _0x10
                  ; 0000 0077                 ;
                  ; 0000 0078             lcdCommand(0x0c);   // display on, cursor off
@@ -1954,7 +1954,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 007A         }
                  ; 0000 007B         else if (stage == STAGE_TEMPERATURE_MONITORING)
                  _0xF:
-000280 940e 079c 	CALL SUBOPT_0x5
+000280 940e 078b 	CALL SUBOPT_0x5
 000282 f411      	BRNE _0x14
                  ; 0000 007C         {
                  ; 0000 007D             show_temperature();
@@ -1963,19 +1963,19 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 007F         else if (stage == STAGE_VIEW_PRESENT_STUDENTS)
 000284 c0b3      	RJMP _0x15
                  _0x14:
-000285 940e 07a1 	CALL SUBOPT_0x6
+000285 940e 0790 	CALL SUBOPT_0x6
 000287 f009      	BREQ PC+2
 000288 c049      	RJMP _0x16
                  ; 0000 0080         {
                  ; 0000 0081             lcdCommand(0x01);
-000289 940e 0780 	CALL SUBOPT_0x1
+000289 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 0082             lcd_gotoxy(1, 1);
                  ; 0000 0083             lcd_print("Number of students : ");
                 +
 00028b eaaa     +LDI R26 , LOW ( _0xA + ( 74 ) )
 00028c e0b2     +LDI R27 , HIGH ( _0xA + ( 74 ) )
                  	__POINTW2MN _0xA,74
-00028d 940e 0788 	CALL SUBOPT_0x2
+00028d 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 0084             lcd_gotoxy(1, 2);
                  ; 0000 0085             st_counts = read_byte_from_eeprom(0x0);
 00028f e0a0      	LDI  R26,LOW(0)
@@ -1983,7 +1983,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 000291 d3d1      	RCALL _read_byte_from_eeprom
 000292 2f5e      	MOV  R21,R30
                  ; 0000 0086             memset(buffer, 0, 32);
-000293 940e 07a6 	CALL SUBOPT_0x7
+000293 940e 0795 	CALL SUBOPT_0x7
                  ; 0000 0087             itoa(st_counts, buffer);
 000295 2fe5      	MOV  R30,R21
 000296 e0f0      	LDI  R31,0
@@ -1991,9 +1991,9 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 000298 93ea      	ST   -Y,R30
 000299 efaf      	LDI  R26,LOW(_buffer)
 00029a e0b5      	LDI  R27,HIGH(_buffer)
-00029b 940e 0704 	CALL _itoa
+00029b 940e 0707 	CALL _itoa
                  ; 0000 0088             lcd_print(buffer);
-00029d 940e 07b0 	CALL SUBOPT_0x8
+00029d 940e 079f 	CALL SUBOPT_0x8
                  ; 0000 0089             delay_ms(1000);
                  ; 0000 008A 
                  ; 0000 008B             for (i = 0; i < st_counts; i++)
@@ -2010,7 +2010,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 0002a6 f514      	BRGE _0x19
                  ; 0000 008C             {
                  ; 0000 008D                 memset(buffer, 0, 32);
-0002a7 940e 07a6 	CALL SUBOPT_0x7
+0002a7 940e 0795 	CALL SUBOPT_0x7
                  ; 0000 008E                 for (j = 0; j < 8; j++)
                 +
 0002a9 e020     +LDI R18 , LOW ( 0 )
@@ -2030,7 +2030,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 0002b1 4ffa      	SBCI R31,HIGH(-_buffer)
 0002b2 93ff      	PUSH R31
 0002b3 93ef      	PUSH R30
-0002b4 940e 07b8 	CALL SUBOPT_0x9
+0002b4 940e 07a7 	CALL SUBOPT_0x9
 0002b6 91af      	POP  R26
 0002b7 91bf      	POP  R27
 0002b8 93ec      	ST   X,R30
@@ -2049,10 +2049,10 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 0002c0 e0e0      	LDI  R30,LOW(0)
 0002c1 93ec      	ST   X,R30
                  ; 0000 0093                 lcdCommand(0x01);
-0002c2 940e 0780 	CALL SUBOPT_0x1
+0002c2 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 0094                 lcd_gotoxy(1, 1);
                  ; 0000 0095                 lcd_print(buffer);
-0002c4 940e 07b0 	CALL SUBOPT_0x8
+0002c4 940e 079f 	CALL SUBOPT_0x8
                  ; 0000 0096                 delay_ms(1000);
                  ; 0000 0097             }
                 +
@@ -2063,7 +2063,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  _0x19:
                  ; 0000 0098 
                  ; 0000 0099             lcdCommand(0x01);
-0002c9 940e 0780 	CALL SUBOPT_0x1
+0002c9 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 009A             lcd_gotoxy(1, 1);
                  ; 0000 009B             lcd_print("Press Cancel To Go Back");
                 +
@@ -2073,7 +2073,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 0002cd d2f3      	RCALL _lcd_print
                  ; 0000 009C             while (stage == STAGE_VIEW_PRESENT_STUDENTS)
                  _0x1D:
-0002ce 940e 07a1 	CALL SUBOPT_0x6
+0002ce 940e 0790 	CALL SUBOPT_0x6
 0002d0 f3e9      	BREQ _0x1D
                  ; 0000 009D                 ;
                  ; 0000 009E         }
@@ -2087,7 +2087,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 0002d6 f589      	BRNE _0x21
                  ; 0000 00A0         {
                  ; 0000 00A1             lcdCommand(0x01);
-0002d7 940e 0780 	CALL SUBOPT_0x1
+0002d7 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 00A2             lcd_gotoxy(1, 1);
                  ; 0000 00A3             lcd_print("Start Transferring...");
                 +
@@ -2096,7 +2096,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  	__POINTW2MN _0xA,120
 0002db d2e5      	RCALL _lcd_print
                  ; 0000 00A4             st_counts = read_byte_from_eeprom(0x0);
-0002dc 940e 07c1 	CALL SUBOPT_0xA
+0002dc 940e 07b0 	CALL SUBOPT_0xA
 0002de 2f5e      	MOV  R21,R30
                  ; 0000 00A5             for (i = 0; i < st_counts; i++)
                 +
@@ -2125,7 +2125,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 0002ec f43c      	BRGE _0x27
                  ; 0000 00A8                 {
                  ; 0000 00A9                     USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 8)));
-0002ed 940e 07b8 	CALL SUBOPT_0x9
+0002ed 940e 07a7 	CALL SUBOPT_0x9
 0002ef 2fae      	MOV  R26,R30
 0002f0 d389      	RCALL _USART_Transmit
                  ; 0000 00AA                 }
@@ -2144,7 +2144,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 00AD                 delay_ms(500);
 0002f8 efa4      	LDI  R26,LOW(500)
 0002f9 e0b1      	LDI  R27,HIGH(500)
-0002fa 940e 0844 	CALL _delay_ms
+0002fa 940e 0833 	CALL _delay_ms
                  ; 0000 00AE             }
                 +
 0002fc 5f0f     +SUBI R16 , LOW ( - 1 )
@@ -2153,14 +2153,14 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 0002fe cfe2      	RJMP _0x23
                  _0x24:
                  ; 0000 00AF             lcdCommand(0x01);
-0002ff 940e 0780 	CALL SUBOPT_0x1
+0002ff 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 00B0             lcd_gotoxy(1, 1);
                  ; 0000 00B1             lcd_print("Usart Transmit Finished");
                 +
 000301 eeae     +LDI R26 , LOW ( _0xA + ( 142 ) )
 000302 e0b2     +LDI R27 , HIGH ( _0xA + ( 142 ) )
                  	__POINTW2MN _0xA,142
-000303 940e 07c5 	CALL SUBOPT_0xB
+000303 940e 07b4 	CALL SUBOPT_0xB
                  ; 0000 00B2             delay_ms(2000);
                  ; 0000 00B3             stage = STAGE_INIT_MENU;
 000305 2444      	CLR  R4
@@ -2169,18 +2169,18 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 00B5         else if (stage == STAGE_STUDENT_MANAGMENT)
 000307 c030      	RJMP _0x28
                  _0x21:
-000308 940e 07cb 	CALL SUBOPT_0xC
+000308 940e 07ba 	CALL SUBOPT_0xC
 00030a f469      	BRNE _0x29
                  ; 0000 00B6         {
                  ; 0000 00B7             lcdCommand(0x01);
-00030b 940e 0780 	CALL SUBOPT_0x1
+00030b 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 00B8             lcd_gotoxy(1, 1);
                  ; 0000 00B9             lcd_print("1: Search Student");
                 +
 00030d e0a6     +LDI R26 , LOW ( _0xA + ( 166 ) )
 00030e e0b3     +LDI R27 , HIGH ( _0xA + ( 166 ) )
                  	__POINTW2MN _0xA,166
-00030f 940e 0788 	CALL SUBOPT_0x2
+00030f 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 00BA             lcd_gotoxy(1, 2);
                  ; 0000 00BB             lcd_print("2: Delete Student");
                 +
@@ -2190,32 +2190,32 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 000313 d2ad      	RCALL _lcd_print
                  ; 0000 00BC             while (stage == STAGE_STUDENT_MANAGMENT)
                  _0x2A:
-000314 940e 07cb 	CALL SUBOPT_0xC
+000314 940e 07ba 	CALL SUBOPT_0xC
 000316 f3e9      	BREQ _0x2A
                  ; 0000 00BD                 ;
                  ; 0000 00BE         }
                  ; 0000 00BF         else if (stage == STAGE_SEARCH_STUDENT)
 000317 c020      	RJMP _0x2D
                  _0x29:
-000318 940e 07d0 	CALL SUBOPT_0xD
+000318 940e 07bf 	CALL SUBOPT_0xD
 00031a f461      	BRNE _0x2E
                  ; 0000 00C0         {
                  ; 0000 00C1             lcdCommand(0x01);
-00031b 940e 0780 	CALL SUBOPT_0x1
+00031b 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 00C2             lcd_gotoxy(1, 1);
                  ; 0000 00C3             lcd_print("Enter Student Code For Search:");
                 +
 00031d e2aa     +LDI R26 , LOW ( _0xA + ( 202 ) )
 00031e e0b3     +LDI R27 , HIGH ( _0xA + ( 202 ) )
                  	__POINTW2MN _0xA,202
-00031f 940e 0788 	CALL SUBOPT_0x2
+00031f 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 00C4             lcd_gotoxy(1, 2);
                  ; 0000 00C5             lcdCommand(0x0f);   // display on, cursor blinking
-000321 940e 0794 	CALL SUBOPT_0x4
+000321 940e 0783 	CALL SUBOPT_0x4
                  ; 0000 00C6             delay_us(100 * 16); // wait
                  ; 0000 00C7             while (stage == STAGE_SEARCH_STUDENT)
                  _0x2F:
-000323 940e 07d0 	CALL SUBOPT_0xD
+000323 940e 07bf 	CALL SUBOPT_0xD
 000325 f3e9      	BREQ _0x2F
                  ; 0000 00C8                 ;
                  ; 0000 00C9             lcdCommand(0x0c);   // display on, cursor off
@@ -2224,31 +2224,31 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 00CB         }
                  ; 0000 00CC         else if (stage == STAGE_DELETE_STUDENT)
                  _0x2E:
-000327 940e 07d5 	CALL SUBOPT_0xE
+000327 940e 07c4 	CALL SUBOPT_0xE
 000329 f471      	BRNE _0x33
                  ; 0000 00CD         {
                  ; 0000 00CE             lcdCommand(0x01);
-00032a 940e 0780 	CALL SUBOPT_0x1
+00032a 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 00CF             lcd_gotoxy(1, 1);
                  ; 0000 00D0             lcd_print("Enter Student Code For Delete:");
                 +
 00032c e4a9     +LDI R26 , LOW ( _0xA + ( 233 ) )
 00032d e0b3     +LDI R27 , HIGH ( _0xA + ( 233 ) )
                  	__POINTW2MN _0xA,233
-00032e 940e 0788 	CALL SUBOPT_0x2
+00032e 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 00D1             lcd_gotoxy(1, 2);
                  ; 0000 00D2             lcdCommand(0x0f);   // display on, cursor blinking
-000330 940e 0794 	CALL SUBOPT_0x4
+000330 940e 0783 	CALL SUBOPT_0x4
                  ; 0000 00D3             delay_us(100 * 16); // wait
                  ; 0000 00D4             while (stage == STAGE_DELETE_STUDENT)
                  _0x34:
-000332 940e 07d5 	CALL SUBOPT_0xE
+000332 940e 07c4 	CALL SUBOPT_0xE
 000334 f3e9      	BREQ _0x34
                  ; 0000 00D5                 ;
                  ; 0000 00D6             lcdCommand(0x0c); // display on, cursor off
                  _0xD5:
 000335 e0ac      	LDI  R26,LOW(12)
-000336 940e 07da 	CALL SUBOPT_0xF
+000336 940e 07c9 	CALL SUBOPT_0xF
                  ; 0000 00D7             delay_us(100 * 16);
                  ; 0000 00D8         }
                  ; 0000 00D9     }
@@ -2295,7 +2295,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 00E2     // detect the key
                  ; 0000 00E3     while (1)
 000347 9722      	SBIW R28,2
-000348 940e 087a 	CALL __SAVELOCR6
+000348 940e 0869 	CALL __SAVELOCR6
                  ;	colloc -> R17
                  ;	rowloc -> R16
                  ;	cl -> R19
@@ -2305,7 +2305,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 00E4     {
                  ; 0000 00E5         KEY_PRT = 0xEF;            // ground row 0
 00034a eeef      	LDI  R30,LOW(239)
-00034b 940e 07e1 	CALL SUBOPT_0x10
+00034b 940e 07d0 	CALL SUBOPT_0x10
                  ; 0000 00E6         colloc = (KEY_PIN & 0x0F); // read the columns
                  ; 0000 00E7         if (colloc != 0x0F)        // column detected
 00034d f011      	BREQ _0x3B
@@ -2318,7 +2318,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 00EC         KEY_PRT = 0xDF;            // ground row 1
                  _0x3B:
 000350 edef      	LDI  R30,LOW(223)
-000351 940e 07e1 	CALL SUBOPT_0x10
+000351 940e 07d0 	CALL SUBOPT_0x10
                  ; 0000 00ED         colloc = (KEY_PIN & 0x0F); // read the columns
                  ; 0000 00EE         if (colloc != 0x0F)        // column detected
 000353 f011      	BREQ _0x3C
@@ -2331,7 +2331,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 00F3         KEY_PRT = 0xBF;            // ground row 2
                  _0x3C:
 000356 ebef      	LDI  R30,LOW(191)
-000357 940e 07e1 	CALL SUBOPT_0x10
+000357 940e 07d0 	CALL SUBOPT_0x10
                  ; 0000 00F4         colloc = (KEY_PIN & 0x0F); // read the columns
                  ; 0000 00F5         if (colloc != 0x0F)        // column detected
 000359 f011      	BREQ _0x3D
@@ -2396,7 +2396,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 000375 c058      	RJMP _0x44
                  ; 0000 010D     {
                  ; 0000 010E         switch (keypad[rowloc][cl] - '0')
-000376 940e 07e7 	CALL SUBOPT_0x11
+000376 940e 07d6 	CALL SUBOPT_0x11
 000378 91ec      	LD   R30,X
 000379 e0f0      	LDI  R31,0
 00037a 97f0      	SBIW R30,48
@@ -2471,7 +2471,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 0003a7 94f8      	cli
                  ; 0000 0122 
                  ; 0000 0123             lcdCommand(0x1);
-0003a8 940e 0780 	CALL SUBOPT_0x1
+0003a8 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 0124             lcd_gotoxy(1, 1);
                  ; 0000 0125             lcd_print("Clearing EEPROM ...");
                 +
@@ -2493,7 +2493,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  _0x47:
                  ; 0000 012C 
                  ; 0000 012D         if (keypad[rowloc][cl] == 'L')
-0003b1 940e 07e7 	CALL SUBOPT_0x11
+0003b1 940e 07d6 	CALL SUBOPT_0x11
 0003b3 91ac      	LD   R26,X
 0003b4 34ac      	CPI  R26,LOW(0x4C)
 0003b5 f449      	BRNE _0x50
@@ -2513,7 +2513,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 0130         }
                  ; 0000 0131         if (keypad[rowloc][cl] == 'R')
                  _0x50:
-0003bf 940e 07e7 	CALL SUBOPT_0x11
+0003bf 940e 07d6 	CALL SUBOPT_0x11
 0003c1 91ac      	LD   R26,X
 0003c2 35a2      	CPI  R26,LOW(0x52)
 0003c3 f449      	BRNE _0x54
@@ -2525,7 +2525,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 0003c7 01df      	MOVW R26,R30
 0003c8 e0e3      	LDI  R30,LOW(3)
 0003c9 e0f0      	LDI  R31,HIGH(3)
-0003ca 940e 086c 	CALL __MODW21
+0003ca 940e 085b 	CALL __MODW21
 0003cc 2e7e      	MOV  R7,R30
                  ; 0000 0134         }
                  ; 0000 0135     }
@@ -2533,11 +2533,11 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 0136     else if (stage == STAGE_ATTENDENC_MENU)
 0003cd c199      	RJMP _0x55
                  _0x44:
-0003ce 940e 077b 	CALL SUBOPT_0x0
+0003ce 940e 076a 	CALL SUBOPT_0x0
 0003d0 f4a9      	BRNE _0x56
                  ; 0000 0137     {
                  ; 0000 0138         switch (keypad[rowloc][cl])
-0003d1 940e 07e7 	CALL SUBOPT_0x11
+0003d1 940e 07d6 	CALL SUBOPT_0x11
 0003d3 91ec      	LD   R30,X
 0003d4 e0f0      	LDI  R31,0
                  ; 0000 0139         {
@@ -2558,7 +2558,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 0003de 07fa      	CPC  R31,R26
 0003df f429      	BRNE _0x5C
                  ; 0000 013E             memset(buffer, 0, 32);
-0003e0 940e 07a6 	CALL SUBOPT_0x7
+0003e0 940e 0795 	CALL SUBOPT_0x7
                  ; 0000 013F             stage = STAGE_SUBMIT_CODE;
 0003e2 e0e2      	LDI  R30,LOW(2)
 0003e3 e0f0      	LDI  R31,HIGH(2)
@@ -2573,29 +2573,29 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 0145     else if (stage == STAGE_SUBMIT_CODE)
 0003e5 c181      	RJMP _0x5D
                  _0x56:
-0003e6 940e 078f 	CALL SUBOPT_0x3
+0003e6 940e 077e 	CALL SUBOPT_0x3
 0003e8 f009      	BREQ PC+2
 0003e9 c09a      	RJMP _0x5E
                  ; 0000 0146     {
                  ; 0000 0147 
                  ; 0000 0148         if ((keypad[rowloc][cl] - '0') < 10)
-0003ea 940e 07e7 	CALL SUBOPT_0x11
+0003ea 940e 07d6 	CALL SUBOPT_0x11
 0003ec 91ec      	LD   R30,X
 0003ed e0f0      	LDI  R31,0
 0003ee 97fa      	SBIW R30,58
 0003ef f47c      	BRGE _0x5F
                  ; 0000 0149         {
                  ; 0000 014A             if (strlen(buffer) <= 30)
-0003f0 940e 07f3 	CALL SUBOPT_0x12
+0003f0 940e 07e2 	CALL SUBOPT_0x12
 0003f2 977f      	SBIW R30,31
 0003f3 f450      	BRSH _0x60
                  ; 0000 014B             {
                  ; 0000 014C                 buffer[strlen(buffer)] = keypad[rowloc][cl];
-0003f4 940e 07f3 	CALL SUBOPT_0x12
-0003f6 940e 07f7 	CALL SUBOPT_0x13
-0003f8 940e 07fb 	CALL SUBOPT_0x14
+0003f4 940e 07e2 	CALL SUBOPT_0x12
+0003f6 940e 07e6 	CALL SUBOPT_0x13
+0003f8 940e 07ea 	CALL SUBOPT_0x14
                  ; 0000 014D                 buffer[strlen(buffer) + 1] = '\0';
-0003fa 940e 07ff 	CALL SUBOPT_0x15
+0003fa 940e 07ee 	CALL SUBOPT_0x15
                  ; 0000 014E                 lcdData(keypad[rowloc][cl]);
 0003fc 91ac      	LD   R26,X
 0003fd d186      	RCALL _lcdData
@@ -2605,27 +2605,27 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 0151         else if (keypad[rowloc][cl] == 'D')
 0003fe c084      	RJMP _0x61
                  _0x5F:
-0003ff 940e 07e7 	CALL SUBOPT_0x11
+0003ff 940e 07d6 	CALL SUBOPT_0x11
 000401 91ac      	LD   R26,X
 000402 34a4      	CPI  R26,LOW(0x44)
 000403 f461      	BRNE _0x62
                  ; 0000 0152         {
                  ; 0000 0153             buffer_len = strlen(buffer);
-000404 940e 07f3 	CALL SUBOPT_0x12
+000404 940e 07e2 	CALL SUBOPT_0x12
 000406 2f5e      	MOV  R21,R30
                  ; 0000 0154             if (buffer_len > 0)
 000407 3051      	CPI  R21,1
 000408 f030      	BRLO _0x63
                  ; 0000 0155             {
                  ; 0000 0156                 buffer[buffer_len - 1] = '\0';
-000409 940e 0804 	CALL SUBOPT_0x16
+000409 940e 07f3 	CALL SUBOPT_0x16
                  ; 0000 0157                 lcdCommand(0x10);
                  ; 0000 0158                 lcd_print(" ");
                 +
 00040b e7ac     +LDI R26 , LOW ( _0x4E + ( 20 ) )
 00040c e0b3     +LDI R27 , HIGH ( _0x4E + ( 20 ) )
                  	__POINTW2MN _0x4E,20
-00040d 940e 080e 	CALL SUBOPT_0x17
+00040d 940e 07fd 	CALL SUBOPT_0x17
                  ; 0000 0159                 lcdCommand(0x10);
                  ; 0000 015A             }
                  ; 0000 015B         }
@@ -2633,7 +2633,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 015C         else if (keypad[rowloc][cl] == 'E')
 00040f c073      	RJMP _0x64
                  _0x62:
-000410 940e 07e7 	CALL SUBOPT_0x11
+000410 940e 07d6 	CALL SUBOPT_0x11
 000412 91ac      	LD   R26,X
 000413 34a5      	CPI  R26,LOW(0x45)
 000414 f009      	BREQ PC+2
@@ -2656,10 +2656,10 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 00041d 93fa      	ST   -Y,R31
 00041e 93ea      	ST   -Y,R30
 00041f e0a2      	LDI  R26,LOW(2)
-000420 940e 0762 	CALL _strncmp
+000420 940e 0751 	CALL _strncmp
 000422 30e0      	CPI  R30,0
 000423 f431      	BRNE _0x67
-000424 940e 07f3 	CALL SUBOPT_0x12
+000424 940e 07e2 	CALL SUBOPT_0x12
 000426 30e8      	CPI  R30,LOW(0x8)
 000427 e0a0      	LDI  R26,HIGH(0x8)
 000428 07fa      	CPC  R31,R26
@@ -2670,21 +2670,21 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 0165                 BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
 00042a 9a97      	SBI  0x12,7
                  ; 0000 0166                 lcdCommand(0x01);
-00042b 940e 0780 	CALL SUBOPT_0x1
+00042b 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 0167                 lcd_gotoxy(1, 1);
                  ; 0000 0168                 lcd_print("Incorrect Suudent Code Format");
                 +
 00042d e8a1     +LDI R26 , LOW ( _0x4E + ( 25 ) )
 00042e e0b3     +LDI R27 , HIGH ( _0x4E + ( 25 ) )
                  	__POINTW2MN _0x4E,25
-00042f 940e 0788 	CALL SUBOPT_0x2
+00042f 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 0169                 lcd_gotoxy(1, 2);
                  ; 0000 016A                 lcd_print("You Will Back Menu In 2 Second");
                 +
 000431 e9af     +LDI R26 , LOW ( _0x4E + ( 55 ) )
 000432 e0b3     +LDI R27 , HIGH ( _0x4E + ( 55 ) )
                  	__POINTW2MN _0x4E,55
-000433 940e 07c5 	CALL SUBOPT_0xB
+000433 940e 07b4 	CALL SUBOPT_0xB
                  ; 0000 016B                 delay_ms(2000);
                  ; 0000 016C                 BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
 000435 9897      	CBI  0x12,7
@@ -2699,21 +2699,21 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 0170                 BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
 00043a 9a97      	SBI  0x12,7
                  ; 0000 0171                 lcdCommand(0x01);
-00043b 940e 0780 	CALL SUBOPT_0x1
+00043b 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 0172                 lcd_gotoxy(1, 1);
                  ; 0000 0173                 lcd_print("Duplicate Suudent Code Entered");
                 +
 00043d ebae     +LDI R26 , LOW ( _0x4E + ( 86 ) )
 00043e e0b3     +LDI R27 , HIGH ( _0x4E + ( 86 ) )
                  	__POINTW2MN _0x4E,86
-00043f 940e 0788 	CALL SUBOPT_0x2
+00043f 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 0174                 lcd_gotoxy(1, 2);
                  ; 0000 0175                 lcd_print("You Will Back Menu In 2 Second");
                 +
 000441 edad     +LDI R26 , LOW ( _0x4E + ( 117 ) )
 000442 e0b3     +LDI R27 , HIGH ( _0x4E + ( 117 ) )
                  	__POINTW2MN _0x4E,117
-000443 940e 07c5 	CALL SUBOPT_0xB
+000443 940e 07b4 	CALL SUBOPT_0xB
                  ; 0000 0176                 delay_ms(2000);
                  ; 0000 0177                 BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
 000445 9897      	CBI  0x12,7
@@ -2724,7 +2724,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 017A             {
                  ; 0000 017B                 // save the buffer to EEPROM
                  ; 0000 017C                 st_counts = read_byte_from_eeprom(0x0);
-000447 940e 07c1 	CALL SUBOPT_0xA
+000447 940e 07b0 	CALL SUBOPT_0xA
 000449 2f2e      	MOV  R18,R30
                  ; 0000 017D                 for (i = 0; i < 8; i++)
 00044a e0e0      	LDI  R30,LOW(0)
@@ -2738,7 +2738,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 017E                 {
                  ; 0000 017F                     write_byte_to_eeprom(i + ((st_counts + 1) * 8), buffer[i]);
 000451 2fe2      	MOV  R30,R18
-000452 940e 0813 	CALL SUBOPT_0x18
+000452 940e 0802 	CALL SUBOPT_0x18
 000454 81ae      	LDD  R26,Y+6
 000455 81bf      	LDD  R27,Y+6+1
 000456 0fea      	ADD  R30,R26
@@ -2769,27 +2769,27 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 00046c d202      	RCALL _write_byte_to_eeprom
                  ; 0000 0182 
                  ; 0000 0183                 lcdCommand(0x01);
-00046d 940e 0780 	CALL SUBOPT_0x1
+00046d 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 0184                 lcd_gotoxy(1, 1);
                  ; 0000 0185                 lcd_print("Student Code Successfully Added");
                 +
 00046f efac     +LDI R26 , LOW ( _0x4E + ( 148 ) )
 000470 e0b3     +LDI R27 , HIGH ( _0x4E + ( 148 ) )
                  	__POINTW2MN _0x4E,148
-000471 940e 0788 	CALL SUBOPT_0x2
+000471 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 0186                 lcd_gotoxy(1, 2);
                  ; 0000 0187                 lcd_print("You Will Back Menu In 2 Second");
                 +
 000473 e1ac     +LDI R26 , LOW ( _0x4E + ( 180 ) )
 000474 e0b4     +LDI R27 , HIGH ( _0x4E + ( 180 ) )
                  	__POINTW2MN _0x4E,180
-000475 940e 07c5 	CALL SUBOPT_0xB
+000475 940e 07b4 	CALL SUBOPT_0xB
                  ; 0000 0188                 delay_ms(2000);
                  ; 0000 0189             }
                  _0x6B:
                  _0x69:
                  ; 0000 018A             memset(buffer, 0, 32);
-000477 940e 07a6 	CALL SUBOPT_0x7
+000477 940e 0795 	CALL SUBOPT_0x7
                  ; 0000 018B #asm("sei")
 000479 9478      	sei
                  ; 0000 018C             stage = STAGE_ATTENDENC_MENU;
@@ -2797,7 +2797,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 018D         }
                  ; 0000 018E         else if (keypad[rowloc][cl] == 'C')
                  _0x65:
-00047b 940e 07e7 	CALL SUBOPT_0x11
+00047b 940e 07d6 	CALL SUBOPT_0x11
 00047d 91ac      	LD   R26,X
 00047e 34a3      	CPI  R26,LOW(0x43)
 00047f f419      	BRNE _0x70
@@ -2813,12 +2813,12 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 0191     else if (stage == STAGE_TEMPERATURE_MONITORING)
 000483 c0e3      	RJMP _0x71
                  _0x5E:
-000484 940e 079c 	CALL SUBOPT_0x5
+000484 940e 078b 	CALL SUBOPT_0x5
 000486 f441      	BRNE _0x72
                  ; 0000 0192     {
                  ; 0000 0193 
                  ; 0000 0194         if (keypad[rowloc][cl] == 'C')
-000487 940e 07e7 	CALL SUBOPT_0x11
+000487 940e 07d6 	CALL SUBOPT_0x11
 000489 91ac      	LD   R26,X
 00048a 34a3      	CPI  R26,LOW(0x43)
 00048b f411      	BRNE _0x73
@@ -2830,11 +2830,11 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 0197     else if (stage == STAGE_VIEW_PRESENT_STUDENTS)
 00048e c0d8      	RJMP _0x74
                  _0x72:
-00048f 940e 07a1 	CALL SUBOPT_0x6
+00048f 940e 0790 	CALL SUBOPT_0x6
 000491 f441      	BRNE _0x75
                  ; 0000 0198     {
                  ; 0000 0199         if (keypad[rowloc][cl] == 'C')
-000492 940e 07e7 	CALL SUBOPT_0x11
+000492 940e 07d6 	CALL SUBOPT_0x11
 000494 91ac      	LD   R26,X
 000495 34a3      	CPI  R26,LOW(0x43)
 000496 f411      	BRNE _0x76
@@ -2846,11 +2846,11 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 019C     else if (stage == STAGE_STUDENT_MANAGMENT)
 000499 c0cd      	RJMP _0x77
                  _0x75:
-00049a 940e 07cb 	CALL SUBOPT_0xC
+00049a 940e 07ba 	CALL SUBOPT_0xC
 00049c f4c9      	BRNE _0x78
                  ; 0000 019D     {
                  ; 0000 019E         if (keypad[rowloc][cl] == 'C')
-00049d 940e 07e7 	CALL SUBOPT_0x11
+00049d 940e 07d6 	CALL SUBOPT_0x11
 00049f 91ac      	LD   R26,X
 0004a0 34a3      	CPI  R26,LOW(0x43)
 0004a1 f419      	BRNE _0x79
@@ -2860,7 +2860,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 01A0         else if (keypad[rowloc][cl] == '1')
 0004a4 c010      	RJMP _0x7A
                  _0x79:
-0004a5 940e 07e7 	CALL SUBOPT_0x11
+0004a5 940e 07d6 	CALL SUBOPT_0x11
 0004a7 91ac      	LD   R26,X
 0004a8 33a1      	CPI  R26,LOW(0x31)
 0004a9 f419      	BRNE _0x7B
@@ -2870,7 +2870,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 0004ac c007      	RJMP _0xD7
                  ; 0000 01A2         else if (keypad[rowloc][cl] == '2')
                  _0x7B:
-0004ad 940e 07e7 	CALL SUBOPT_0x11
+0004ad 940e 07d6 	CALL SUBOPT_0x11
 0004af 91ac      	LD   R26,X
 0004b0 33a2      	CPI  R26,LOW(0x32)
 0004b1 f419      	BRNE _0x7D
@@ -2885,28 +2885,28 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 01A5     else if (stage == STAGE_SEARCH_STUDENT)
 0004b5 c0b1      	RJMP _0x7E
                  _0x78:
-0004b6 940e 07d0 	CALL SUBOPT_0xD
+0004b6 940e 07bf 	CALL SUBOPT_0xD
 0004b8 f009      	BREQ PC+2
 0004b9 c054      	RJMP _0x7F
                  ; 0000 01A6     {
                  ; 0000 01A7         if ((keypad[rowloc][cl] - '0') < 10)
-0004ba 940e 07e7 	CALL SUBOPT_0x11
+0004ba 940e 07d6 	CALL SUBOPT_0x11
 0004bc 91ec      	LD   R30,X
 0004bd e0f0      	LDI  R31,0
 0004be 97fa      	SBIW R30,58
 0004bf f47c      	BRGE _0x80
                  ; 0000 01A8         {
                  ; 0000 01A9             if (strlen(buffer) <= 30)
-0004c0 940e 07f3 	CALL SUBOPT_0x12
+0004c0 940e 07e2 	CALL SUBOPT_0x12
 0004c2 977f      	SBIW R30,31
 0004c3 f450      	BRSH _0x81
                  ; 0000 01AA             {
                  ; 0000 01AB                 buffer[strlen(buffer)] = keypad[rowloc][cl];
-0004c4 940e 07f3 	CALL SUBOPT_0x12
-0004c6 940e 07f7 	CALL SUBOPT_0x13
-0004c8 940e 07fb 	CALL SUBOPT_0x14
+0004c4 940e 07e2 	CALL SUBOPT_0x12
+0004c6 940e 07e6 	CALL SUBOPT_0x13
+0004c8 940e 07ea 	CALL SUBOPT_0x14
                  ; 0000 01AC                 buffer[strlen(buffer) + 1] = '\0';
-0004ca 940e 07ff 	CALL SUBOPT_0x15
+0004ca 940e 07ee 	CALL SUBOPT_0x15
                  ; 0000 01AD                 lcdData(keypad[rowloc][cl]);
 0004cc 91ac      	LD   R26,X
 0004cd d0b6      	RCALL _lcdData
@@ -2916,27 +2916,27 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 01B0         else if (keypad[rowloc][cl] == 'D')
 0004ce c03e      	RJMP _0x82
                  _0x80:
-0004cf 940e 07e7 	CALL SUBOPT_0x11
+0004cf 940e 07d6 	CALL SUBOPT_0x11
 0004d1 91ac      	LD   R26,X
 0004d2 34a4      	CPI  R26,LOW(0x44)
 0004d3 f461      	BRNE _0x83
                  ; 0000 01B1         {
                  ; 0000 01B2             buffer_len = strlen(buffer);
-0004d4 940e 07f3 	CALL SUBOPT_0x12
+0004d4 940e 07e2 	CALL SUBOPT_0x12
 0004d6 2f5e      	MOV  R21,R30
                  ; 0000 01B3             if (buffer_len > 0)
 0004d7 3051      	CPI  R21,1
 0004d8 f030      	BRLO _0x84
                  ; 0000 01B4             {
                  ; 0000 01B5                 buffer[buffer_len - 1] = '\0';
-0004d9 940e 0804 	CALL SUBOPT_0x16
+0004d9 940e 07f3 	CALL SUBOPT_0x16
                  ; 0000 01B6                 lcdCommand(0x10);
                  ; 0000 01B7                 lcd_print(" ");
                 +
 0004db e3ab     +LDI R26 , LOW ( _0x4E + ( 211 ) )
 0004dc e0b4     +LDI R27 , HIGH ( _0x4E + ( 211 ) )
                  	__POINTW2MN _0x4E,211
-0004dd 940e 080e 	CALL SUBOPT_0x17
+0004dd 940e 07fd 	CALL SUBOPT_0x17
                  ; 0000 01B8                 lcdCommand(0x10);
                  ; 0000 01B9             }
                  ; 0000 01BA         }
@@ -2944,7 +2944,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 01BB         else if (keypad[rowloc][cl] == 'E')
 0004df c02d      	RJMP _0x85
                  _0x83:
-0004e0 940e 07e7 	CALL SUBOPT_0x11
+0004e0 940e 07d6 	CALL SUBOPT_0x11
 0004e2 91ac      	LD   R26,X
 0004e3 34a5      	CPI  R26,LOW(0x45)
 0004e4 f501      	BRNE _0x86
@@ -2953,20 +2953,20 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 01BE             unsigned char result = search_student_code();
                  ; 0000 01BF 
                  ; 0000 01C0             if (result > 0)
-0004e5 940e 0818 	CALL SUBOPT_0x19
+0004e5 940e 0807 	CALL SUBOPT_0x19
                  ;	i -> Y+7
                  ;	result -> Y+0
 0004e7 f048      	BRLO _0x87
                  ; 0000 01C1             {
                  ; 0000 01C2                 lcdCommand(0x01);
-0004e8 940e 0780 	CALL SUBOPT_0x1
+0004e8 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 01C3                 lcd_gotoxy(1, 1);
                  ; 0000 01C4                 lcd_print("Student Code Found");
                 +
 0004ea e3ad     +LDI R26 , LOW ( _0x4E + ( 213 ) )
 0004eb e0b4     +LDI R27 , HIGH ( _0x4E + ( 213 ) )
                  	__POINTW2MN _0x4E,213
-0004ec 940e 0788 	CALL SUBOPT_0x2
+0004ec 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 01C5                 lcd_gotoxy(1, 2);
                  ; 0000 01C6                 lcd_print("You Will Back Menu In 5 Second");
                 +
@@ -2980,14 +2980,14 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  _0x87:
                  ; 0000 01CA             {
                  ; 0000 01CB                 lcdCommand(0x01);
-0004f1 940e 0780 	CALL SUBOPT_0x1
+0004f1 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 01CC                 lcd_gotoxy(1, 1);
                  ; 0000 01CD                 lcd_print("Ops , Student Code Not Found");
                 +
 0004f3 e6af     +LDI R26 , LOW ( _0x4E + ( 263 ) )
 0004f4 e0b4     +LDI R27 , HIGH ( _0x4E + ( 263 ) )
                  	__POINTW2MN _0x4E,263
-0004f5 940e 0788 	CALL SUBOPT_0x2
+0004f5 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 01CE                 lcd_gotoxy(1, 2);
                  ; 0000 01CF                 lcd_print("You Will Back Menu In 5 Second");
                 +
@@ -2999,10 +2999,10 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 01D0                 delay_ms(5000);
 0004fa e8a8      	LDI  R26,LOW(5000)
 0004fb e1b3      	LDI  R27,HIGH(5000)
-0004fc 940e 0844 	CALL _delay_ms
+0004fc 940e 0833 	CALL _delay_ms
                  ; 0000 01D1             }
                  ; 0000 01D2             memset(buffer, 0, 32);
-0004fe 940e 07a6 	CALL SUBOPT_0x7
+0004fe 940e 0795 	CALL SUBOPT_0x7
                  ; 0000 01D3             stage = STAGE_STUDENT_MANAGMENT;
 000500 e0e6      	LDI  R30,LOW(6)
 000501 e0f0      	LDI  R31,HIGH(6)
@@ -3012,7 +3012,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 01D5         else if (keypad[rowloc][cl] == 'C')
 000504 c008      	RJMP _0x89
                  _0x86:
-000505 940e 07e7 	CALL SUBOPT_0x11
+000505 940e 07d6 	CALL SUBOPT_0x11
 000507 91ac      	LD   R26,X
 000508 34a3      	CPI  R26,LOW(0x43)
 000509 f419      	BRNE _0x8A
@@ -3028,28 +3028,28 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 01D8     else if (stage == STAGE_DELETE_STUDENT)
 00050d c059      	RJMP _0x8B
                  _0x7F:
-00050e 940e 07d5 	CALL SUBOPT_0xE
+00050e 940e 07c4 	CALL SUBOPT_0xE
 000510 f009      	BREQ PC+2
 000511 c055      	RJMP _0x8C
                  ; 0000 01D9     {
                  ; 0000 01DA         if ((keypad[rowloc][cl] - '0') < 10)
-000512 940e 07e7 	CALL SUBOPT_0x11
+000512 940e 07d6 	CALL SUBOPT_0x11
 000514 91ec      	LD   R30,X
 000515 e0f0      	LDI  R31,0
 000516 97fa      	SBIW R30,58
 000517 f47c      	BRGE _0x8D
                  ; 0000 01DB         {
                  ; 0000 01DC             if (strlen(buffer) <= 30)
-000518 940e 07f3 	CALL SUBOPT_0x12
+000518 940e 07e2 	CALL SUBOPT_0x12
 00051a 977f      	SBIW R30,31
 00051b f450      	BRSH _0x8E
                  ; 0000 01DD             {
                  ; 0000 01DE                 buffer[strlen(buffer)] = keypad[rowloc][cl];
-00051c 940e 07f3 	CALL SUBOPT_0x12
-00051e 940e 07f7 	CALL SUBOPT_0x13
-000520 940e 07fb 	CALL SUBOPT_0x14
+00051c 940e 07e2 	CALL SUBOPT_0x12
+00051e 940e 07e6 	CALL SUBOPT_0x13
+000520 940e 07ea 	CALL SUBOPT_0x14
                  ; 0000 01DF                 buffer[strlen(buffer) + 1] = '\0';
-000522 940e 07ff 	CALL SUBOPT_0x15
+000522 940e 07ee 	CALL SUBOPT_0x15
                  ; 0000 01E0                 lcdData(keypad[rowloc][cl]);
 000524 91ac      	LD   R26,X
 000525 d05e      	RCALL _lcdData
@@ -3059,27 +3059,27 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 01E3         else if (keypad[rowloc][cl] == 'D')
 000526 c040      	RJMP _0x8F
                  _0x8D:
-000527 940e 07e7 	CALL SUBOPT_0x11
+000527 940e 07d6 	CALL SUBOPT_0x11
 000529 91ac      	LD   R26,X
 00052a 34a4      	CPI  R26,LOW(0x44)
 00052b f461      	BRNE _0x90
                  ; 0000 01E4         {
                  ; 0000 01E5             buffer_len = strlen(buffer);
-00052c 940e 07f3 	CALL SUBOPT_0x12
+00052c 940e 07e2 	CALL SUBOPT_0x12
 00052e 2f5e      	MOV  R21,R30
                  ; 0000 01E6             if (buffer_len > 0)
 00052f 3051      	CPI  R21,1
 000530 f030      	BRLO _0x91
                  ; 0000 01E7             {
                  ; 0000 01E8                 buffer[buffer_len - 1] = '\0';
-000531 940e 0804 	CALL SUBOPT_0x16
+000531 940e 07f3 	CALL SUBOPT_0x16
                  ; 0000 01E9                 lcdCommand(0x10);
                  ; 0000 01EA                 lcd_print(" ");
                 +
 000533 eaab     +LDI R26 , LOW ( _0x4E + ( 323 ) )
 000534 e0b4     +LDI R27 , HIGH ( _0x4E + ( 323 ) )
                  	__POINTW2MN _0x4E,323
-000535 940e 080e 	CALL SUBOPT_0x17
+000535 940e 07fd 	CALL SUBOPT_0x17
                  ; 0000 01EB                 lcdCommand(0x10);
                  ; 0000 01EC             }
                  ; 0000 01ED         }
@@ -3087,7 +3087,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 01EE         else if (keypad[rowloc][cl] == 'E')
 000537 c02f      	RJMP _0x92
                  _0x90:
-000538 940e 07e7 	CALL SUBOPT_0x11
+000538 940e 07d6 	CALL SUBOPT_0x11
 00053a 91ac      	LD   R26,X
 00053b 34a5      	CPI  R26,LOW(0x45)
 00053c f551      	BRNE _0x93
@@ -3096,20 +3096,20 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 01F1             unsigned char result = search_student_code();
                  ; 0000 01F2 
                  ; 0000 01F3             if (result > 0)
-00053d 940e 0818 	CALL SUBOPT_0x19
+00053d 940e 0807 	CALL SUBOPT_0x19
                  ;	i -> Y+7
                  ;	result -> Y+0
 00053f f0a0      	BRLO _0x94
                  ; 0000 01F4             {
                  ; 0000 01F5                 lcdCommand(0x01);
-000540 940e 0780 	CALL SUBOPT_0x1
+000540 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 01F6                 lcd_gotoxy(1, 1);
                  ; 0000 01F7                 lcd_print("Student Code Found");
                 +
 000542 eaad     +LDI R26 , LOW ( _0x4E + ( 325 ) )
 000543 e0b4     +LDI R27 , HIGH ( _0x4E + ( 325 ) )
                  	__POINTW2MN _0x4E,325
-000544 940e 0788 	CALL SUBOPT_0x2
+000544 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 01F8                 lcd_gotoxy(1, 2);
                  ; 0000 01F9                 lcd_print("Wait For Delete...");
                 +
@@ -3119,16 +3119,16 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 000548 d078      	RCALL _lcd_print
                  ; 0000 01FA                 delete_student_code(result);
 000549 81a8      	LD   R26,Y
-00054a d18a      	RCALL _delete_student_code
+00054a d18d      	RCALL _delete_student_code
                  ; 0000 01FB                 lcdCommand(0x01);
-00054b 940e 0780 	CALL SUBOPT_0x1
+00054b 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 01FC                 lcd_gotoxy(1, 1);
                  ; 0000 01FD                 lcd_print("Student Code Was Deleted");
                 +
 00054d eda3     +LDI R26 , LOW ( _0x4E + ( 363 ) )
 00054e e0b4     +LDI R27 , HIGH ( _0x4E + ( 363 ) )
                  	__POINTW2MN _0x4E,363
-00054f 940e 0788 	CALL SUBOPT_0x2
+00054f 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 01FE                 lcd_gotoxy(1, 2);
                  ; 0000 01FF                 lcd_print("You Will Back Menu In 2 Second");
                 +
@@ -3142,14 +3142,14 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  _0x94:
                  ; 0000 0203             {
                  ; 0000 0204                 lcdCommand(0x01);
-000554 940e 0780 	CALL SUBOPT_0x1
+000554 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 0205                 lcd_gotoxy(1, 1);
                  ; 0000 0206                 lcd_print("Ops , Student Code Not Found");
                 +
 000556 e0ab     +LDI R26 , LOW ( _0x4E + ( 419 ) )
 000557 e0b5     +LDI R27 , HIGH ( _0x4E + ( 419 ) )
                  	__POINTW2MN _0x4E,419
-000558 940e 0788 	CALL SUBOPT_0x2
+000558 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 0207                 lcd_gotoxy(1, 2);
                  ; 0000 0208                 lcd_print("You Will Back Menu In 2 Second");
                 +
@@ -3161,10 +3161,10 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 0209                 delay_ms(2000);
 00055d eda0      	LDI  R26,LOW(2000)
 00055e e0b7      	LDI  R27,HIGH(2000)
-00055f 940e 0844 	CALL _delay_ms
+00055f 940e 0833 	CALL _delay_ms
                  ; 0000 020A             }
                  ; 0000 020B             memset(buffer, 0, 32);
-000561 940e 07a6 	CALL SUBOPT_0x7
+000561 940e 0795 	CALL SUBOPT_0x7
                  ; 0000 020C             stage = STAGE_STUDENT_MANAGMENT;
 000563 e0e6      	LDI  R30,LOW(6)
 000564 e0f0      	LDI  R31,HIGH(6)
@@ -3184,7 +3184,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  _0x71:
                  _0x5D:
                  _0x55:
-000567 940e 0881 	CALL __LOADLOCR6
+000567 940e 0870 	CALL __LOADLOCR6
 000569 9628      	ADIW R28,8
 00056a 91e9      	LD   R30,Y+
 00056b bfef      	OUT  SREG,R30
@@ -3213,12 +3213,12 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  _lcdCommand:
                  ; .FSTART _lcdCommand
                  ; 0000 0213     LCD_PRT = (LCD_PRT & 0x0F) | (cmnd & 0xF0);
-000578 940e 081f 	CALL SUBOPT_0x1A
+000578 940e 080e 	CALL SUBOPT_0x1A
                  ;	cmnd -> Y+0
                  ; 0000 0214     LCD_PRT &= ~(1 << LCD_RS); // RS = 0 for command
 00057a 98c0      	CBI  0x18,0
                  ; 0000 0215     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
-00057b 940e 0828 	CALL SUBOPT_0x1B
+00057b 940e 0817 	CALL SUBOPT_0x1B
                  ; 0000 0216     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
                  ; 0000 0217     delay_us(1 * 16);          // wait to make EN wider
                  ; 0000 0218     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
@@ -3231,7 +3231,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 000580 f7f1     +BRNE __DELAY_USW_LOOP
                  	__DELAY_USW 640
                  ; 0000 021A     LCD_PRT = (LCD_PRT & 0x0F) | (cmnd << 4);
-000581 940e 082f 	CALL SUBOPT_0x1C
+000581 940e 081e 	CALL SUBOPT_0x1C
                  ; 0000 021B     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
                  ; 0000 021C     delay_us(1 * 16);          // wait to make EN wider
                  ; 0000 021D     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
@@ -3243,17 +3243,17 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  _lcdData:
                  ; .FSTART _lcdData
                  ; 0000 0221     LCD_PRT = (LCD_PRT & 0x0F) | (data & 0xF0);
-000584 940e 081f 	CALL SUBOPT_0x1A
+000584 940e 080e 	CALL SUBOPT_0x1A
                  ;	data -> Y+0
                  ; 0000 0222     LCD_PRT |= (1 << LCD_RS);  // RS = 1 for data
 000586 9ac0      	SBI  0x18,0
                  ; 0000 0223     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
-000587 940e 0828 	CALL SUBOPT_0x1B
+000587 940e 0817 	CALL SUBOPT_0x1B
                  ; 0000 0224     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
                  ; 0000 0225     delay_us(1 * 16);          // wait to make EN wider
                  ; 0000 0226     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
                  ; 0000 0227     LCD_PRT = (LCD_PRT & 0x0F) | (data << 4);
-000589 940e 082f 	CALL SUBOPT_0x1C
+000589 940e 081e 	CALL SUBOPT_0x1C
                  ; 0000 0228     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
                  ; 0000 0229     delay_us(1 * 16);          // wait to make EN wider
                  ; 0000 022A     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
@@ -3279,19 +3279,19 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  	__DELAY_USW 64000
                  ; 0000 0231     lcdCommand(0x33);          //$33 for 4-bit mode
 000593 e3a3      	LDI  R26,LOW(51)
-000594 940e 07da 	CALL SUBOPT_0xF
+000594 940e 07c9 	CALL SUBOPT_0xF
                  ; 0000 0232     delay_us(100 * 16);        // wait
                  ; 0000 0233     lcdCommand(0x32);          //$32 for 4-bit mode
 000596 e3a2      	LDI  R26,LOW(50)
-000597 940e 07da 	CALL SUBOPT_0xF
+000597 940e 07c9 	CALL SUBOPT_0xF
                  ; 0000 0234     delay_us(100 * 16);        // wait
                  ; 0000 0235     lcdCommand(0x28);          //$28 for 4-bit mode
 000599 e2a8      	LDI  R26,LOW(40)
-00059a 940e 07da 	CALL SUBOPT_0xF
+00059a 940e 07c9 	CALL SUBOPT_0xF
                  ; 0000 0236     delay_us(100 * 16);        // wait
                  ; 0000 0237     lcdCommand(0x0c);          // display on, cursor off
 00059c e0ac      	LDI  R26,LOW(12)
-00059d 940e 07da 	CALL SUBOPT_0xF
+00059d 940e 07c9 	CALL SUBOPT_0xF
                  ; 0000 0238     delay_us(100 * 16);        // wait
                  ; 0000 0239     lcdCommand(0x01);          // clear LCD
 00059f e0a1      	LDI  R26,LOW(1)
@@ -3306,7 +3306,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  	__DELAY_USW 64000
                  ; 0000 023B     lcdCommand(0x06);          // shift cursor right
 0005a5 e0a6      	LDI  R26,LOW(6)
-0005a6 940e 07da 	CALL SUBOPT_0xF
+0005a6 940e 07c9 	CALL SUBOPT_0xF
                  ; 0000 023C     delay_us(100 * 16);
                  ; 0000 023D }
 0005a8 9508      	RET
@@ -3340,7 +3340,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 0005ba 81ad      	LDD  R26,Y+5
 0005bb 0fae      	ADD  R26,R30
 0005bc 50a1      	SUBI R26,LOW(1)
-0005bd 940e 07da 	CALL SUBOPT_0xF
+0005bd 940e 07c9 	CALL SUBOPT_0xF
                  ; 0000 0242     delay_us(100 * 16);
                  ; 0000 0243 }
 0005bf 9626      	ADIW R28,6
@@ -3412,7 +3412,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ;	temperatureVal -> R17
                  ;	temperatureRep -> Y+1
 0005df e010      	LDI  R17,0
-0005e0 940e 0780 	CALL SUBOPT_0x1
+0005e0 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 0259     lcd_gotoxy(1, 1);
                  ; 0000 025A     lcd_print("temperature(C):");
                 +
@@ -3423,7 +3423,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 025B 
                  ; 0000 025C     while (stage == STAGE_TEMPERATURE_MONITORING)
                  _0x9A:
-0005e5 940e 079c 	CALL SUBOPT_0x5
+0005e5 940e 078b 	CALL SUBOPT_0x5
 0005e7 f4f1      	BRNE _0x9C
                  ; 0000 025D     {
                  ; 0000 025E         ADCSRA |= (1 << ADSC);
@@ -3447,7 +3447,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 0005f2 93ea      	ST   -Y,R30
 0005f3 01de      	MOVW R26,R28
 0005f4 9613      	ADIW R26,3
-0005f5 940e 0704 	CALL _itoa
+0005f5 940e 0707 	CALL _itoa
                  ; 0000 0265             lcd_gotoxy(17, 1);
 0005f7 e1e1      	LDI  R30,LOW(17)
 0005f8 93ea      	ST   -Y,R30
@@ -3468,7 +3468,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  _0xA0:
 000601 efa4      	LDI  R26,LOW(500)
 000602 e0b1      	LDI  R27,HIGH(500)
-000603 940e 0844 	CALL _delay_ms
+000603 940e 0833 	CALL _delay_ms
                  ; 0000 026A     }
 000605 cfdf      	RJMP _0x9A
                  _0x9C:
@@ -3496,7 +3496,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 00060b f5e1      	BRNE _0xA3
                  ; 0000 0271     {
                  ; 0000 0272         lcdCommand(0x01);
-00060c 940e 0780 	CALL SUBOPT_0x1
+00060c 940e 076f 	CALL SUBOPT_0x1
                  ; 0000 0273         lcd_gotoxy(1, 1);
                  ; 0000 0274         if (page_num == 0)
 00060e 2077      	TST  R7
@@ -3507,7 +3507,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 000610 e5a9     +LDI R26 , LOW ( _0xA5 + ( 0 ) )
 000611 e0b5     +LDI R27 , HIGH ( _0xA5 + ( 0 ) )
                  	__POINTW2MN _0xA5,0
-000612 940e 0788 	CALL SUBOPT_0x2
+000612 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 0277             lcd_gotoxy(1, 2);
                  ; 0000 0278             lcd_print("2: Student Management");
                 +
@@ -3542,7 +3542,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 000623 e8ac     +LDI R26 , LOW ( _0xA5 + ( 51 ) )
 000624 e0b5     +LDI R27 , HIGH ( _0xA5 + ( 51 ) )
                  	__POINTW2MN _0xA5,51
-000625 940e 0788 	CALL SUBOPT_0x2
+000625 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 027F             lcd_gotoxy(1, 2);
                  ; 0000 0280             lcd_print("4: Temperature Monitoring");
                 +
@@ -3578,7 +3578,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 000637 eca0     +LDI R26 , LOW ( _0xA5 + ( 103 ) )
 000638 e0b5     +LDI R27 , HIGH ( _0xA5 + ( 103 ) )
                  	__POINTW2MN _0xA5,103
-000639 940e 0788 	CALL SUBOPT_0x2
+000639 940e 0777 	CALL SUBOPT_0x2
                  ; 0000 0287             lcd_gotoxy(1, 2);
                  ; 0000 0288             lcd_print("6: Traffic Monitoring");
                 +
@@ -3699,7 +3699,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 02AC 
                  ; 0000 02AD     // Set up address registers
                  ; 0000 02AE     EEARH = (addr >> 8) & 0x03; // High byte (bits 8-9)
-000668 940e 083d 	CALL SUBOPT_0x1D
+000668 940e 082c 	CALL SUBOPT_0x1D
                  ; 0000 02AF     EEARL = addr & 0xFF;        // Low byte (bits 0-7)
                  ; 0000 02B0     EECR |= (1 << EERE);        // Read Enable
 00066a 9ae0      	SBI  0x1C,0
@@ -3728,7 +3728,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 02BA 
                  ; 0000 02BB     // Set up address registers
                  ; 0000 02BC     EEARH = (addr >> 8) & 0x03; // High byte (bits 8-9)
-000672 940e 083d 	CALL SUBOPT_0x1D
+000672 940e 082c 	CALL SUBOPT_0x1D
                  ; 0000 02BD     EEARL = addr & 0xFF;        // Low byte (bits 0-7)
                  ; 0000 02BE 
                  ; 0000 02BF     // Set up data register
@@ -3801,30 +3801,30 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 02DA 
                  ; 0000 02DB     st_counts = read_byte_from_eeprom(0x0);
 00068e 972a      	SBIW R28,10
-00068f 940e 087c 	CALL __SAVELOCR4
+00068f 940e 086b 	CALL __SAVELOCR4
                  ;	st_counts -> R17
                  ;	i -> R16
                  ;	j -> R19
                  ;	temp -> Y+4
-000691 940e 07c1 	CALL SUBOPT_0xA
+000691 940e 07b0 	CALL SUBOPT_0xA
 000693 2f1e      	MOV  R17,R30
                  ; 0000 02DC 
                  ; 0000 02DD     for (i = 0; i < st_counts; i++)
 000694 e000      	LDI  R16,LOW(0)
                  _0xC9:
 000695 1701      	CP   R16,R17
-000696 f5c8      	BRSH _0xCA
+000696 f5e0      	BRSH _0xCA
                  ; 0000 02DE     {
-                 ; 0000 02DF         memset(temp, 0, 32);
+                 ; 0000 02DF         memset(temp, 0, 10);
 000697 01fe      	MOVW R30,R28
 000698 9634      	ADIW R30,4
 000699 93fa      	ST   -Y,R31
 00069a 93ea      	ST   -Y,R30
 00069b e0e0      	LDI  R30,LOW(0)
 00069c 93ea      	ST   -Y,R30
-00069d e2a0      	LDI  R26,LOW(32)
+00069d e0aa      	LDI  R26,LOW(10)
 00069e e0b0      	LDI  R27,0
-00069f 940e 0732 	CALL _memset
+00069f 940e 0735 	CALL _memset
                  ; 0000 02E0         for (j = 0; j < 8; j++)
 0006a1 e030      	LDI  R19,LOW(0)
                  _0xCC:
@@ -3843,7 +3843,7 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 0006ac 2fa3      	MOV  R26,R19
 0006ad 27bb      	CLR  R27
 0006ae 2fe0      	MOV  R30,R16
-0006af 940e 0813 	CALL SUBOPT_0x18
+0006af 940e 0802 	CALL SUBOPT_0x18
 0006b1 0fae      	ADD  R26,R30
 0006b2 1fbf      	ADC  R27,R31
 0006b3 dfaf      	RCALL _read_byte_from_eeprom
@@ -3863,32 +3863,35 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
 0006be 1fbf      	ADC  R27,R31
 0006bf e0e0      	LDI  R30,LOW(0)
 0006c0 93ec      	ST   X,R30
-                 ; 0000 02E5         if (strcmp(temp, buffer) == 0)
+                 ; 0000 02E5         if (strncmp(temp, buffer , 8) == 0)
 0006c1 01fe      	MOVW R30,R28
 0006c2 9634      	ADIW R30,4
 0006c3 93fa      	ST   -Y,R31
 0006c4 93ea      	ST   -Y,R30
-0006c5 efaf      	LDI  R26,LOW(_buffer)
-0006c6 e0b5      	LDI  R27,HIGH(_buffer)
-0006c7 940e 0742 	CALL _strcmp
-0006c9 30e0      	CPI  R30,0
-0006ca f419      	BRNE _0xCE
+0006c5 efef      	LDI  R30,LOW(_buffer)
+0006c6 e0f5      	LDI  R31,HIGH(_buffer)
+0006c7 93fa      	ST   -Y,R31
+0006c8 93ea      	ST   -Y,R30
+0006c9 e0a8      	LDI  R26,LOW(8)
+0006ca 940e 0751 	CALL _strncmp
+0006cc 30e0      	CPI  R30,0
+0006cd f419      	BRNE _0xCE
                  ; 0000 02E6             return (i + 1);
-0006cb 2fe0      	MOV  R30,R16
-0006cc 5fef      	SUBI R30,-LOW(1)
-0006cd c003      	RJMP _0x20A0002
+0006ce 2fe0      	MOV  R30,R16
+0006cf 5fef      	SUBI R30,-LOW(1)
+0006d0 c003      	RJMP _0x20A0002
                  ; 0000 02E7     }
                  _0xCE:
-0006ce 5f0f      	SUBI R16,-1
-0006cf cfc5      	RJMP _0xC9
+0006d1 5f0f      	SUBI R16,-1
+0006d2 cfc2      	RJMP _0xC9
                  _0xCA:
                  ; 0000 02E8 
                  ; 0000 02E9     return 0;
-0006d0 e0e0      	LDI  R30,LOW(0)
+0006d3 e0e0      	LDI  R30,LOW(0)
                  _0x20A0002:
-0006d1 940e 0883 	CALL __LOADLOCR4
-0006d3 962e      	ADIW R28,14
-0006d4 9508      	RET
+0006d4 940e 0872 	CALL __LOADLOCR4
+0006d6 962e      	ADIW R28,14
+0006d7 9508      	RET
                  ; 0000 02EA }
                  ; .FEND
                  ;
@@ -3900,126 +3903,126 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  ; 0000 02EF     unsigned char temp;
                  ; 0000 02F0 
                  ; 0000 02F1     st_counts = read_byte_from_eeprom(0x0);
-0006d5 93aa      	ST   -Y,R26
-0006d6 940e 087c 	CALL __SAVELOCR4
+0006d8 93aa      	ST   -Y,R26
+0006d9 940e 086b 	CALL __SAVELOCR4
                  ;	index -> Y+4
                  ;	st_counts -> R17
                  ;	i -> R16
                  ;	j -> R19
                  ;	temp -> R18
-0006d8 940e 07c1 	CALL SUBOPT_0xA
-0006da 2f1e      	MOV  R17,R30
+0006db 940e 07b0 	CALL SUBOPT_0xA
+0006dd 2f1e      	MOV  R17,R30
                  ; 0000 02F2 
                  ; 0000 02F3     for (i = index; i <= st_counts; i++)
-0006db 810c      	LDD  R16,Y+4
+0006de 810c      	LDD  R16,Y+4
                  _0xD0:
-0006dc 1710      	CP   R17,R16
-0006dd f0d8      	BRLO _0xD1
+0006df 1710      	CP   R17,R16
+0006e0 f0d8      	BRLO _0xD1
                  ; 0000 02F4     {
                  ; 0000 02F5         for (j = 0; j < 8; j++)
-0006de e030      	LDI  R19,LOW(0)
+0006e1 e030      	LDI  R19,LOW(0)
                  _0xD3:
-0006df 3038      	CPI  R19,8
-0006e0 f4b0      	BRSH _0xD4
+0006e2 3038      	CPI  R19,8
+0006e3 f4b0      	BRSH _0xD4
                  ; 0000 02F6         {
                  ; 0000 02F7             temp = read_byte_from_eeprom(j + ((i + 1) * 8));
-0006e1 2fa3      	MOV  R26,R19
-0006e2 27bb      	CLR  R27
-0006e3 2fe0      	MOV  R30,R16
-0006e4 940e 0813 	CALL SUBOPT_0x18
-0006e6 0fae      	ADD  R26,R30
-0006e7 1fbf      	ADC  R27,R31
-0006e8 df7a      	RCALL _read_byte_from_eeprom
-0006e9 2f2e      	MOV  R18,R30
+0006e4 2fa3      	MOV  R26,R19
+0006e5 27bb      	CLR  R27
+0006e6 2fe0      	MOV  R30,R16
+0006e7 940e 0802 	CALL SUBOPT_0x18
+0006e9 0fae      	ADD  R26,R30
+0006ea 1fbf      	ADC  R27,R31
+0006eb df77      	RCALL _read_byte_from_eeprom
+0006ec 2f2e      	MOV  R18,R30
                  ; 0000 02F8             write_byte_to_eeprom(j + ((i) * 8), temp);
-0006ea 2fa3      	MOV  R26,R19
-0006eb 27bb      	CLR  R27
-0006ec e0e8      	LDI  R30,LOW(8)
-0006ed 9fe0      	MUL  R30,R16
-0006ee 01f0      	MOVW R30,R0
-0006ef 0fea      	ADD  R30,R26
-0006f0 1ffb      	ADC  R31,R27
-0006f1 93fa      	ST   -Y,R31
-0006f2 93ea      	ST   -Y,R30
-0006f3 2fa2      	MOV  R26,R18
-0006f4 df7a      	RCALL _write_byte_to_eeprom
+0006ed 2fa3      	MOV  R26,R19
+0006ee 27bb      	CLR  R27
+0006ef e0e8      	LDI  R30,LOW(8)
+0006f0 9fe0      	MUL  R30,R16
+0006f1 01f0      	MOVW R30,R0
+0006f2 0fea      	ADD  R30,R26
+0006f3 1ffb      	ADC  R31,R27
+0006f4 93fa      	ST   -Y,R31
+0006f5 93ea      	ST   -Y,R30
+0006f6 2fa2      	MOV  R26,R18
+0006f7 df77      	RCALL _write_byte_to_eeprom
                  ; 0000 02F9         }
-0006f5 5f3f      	SUBI R19,-1
-0006f6 cfe8      	RJMP _0xD3
+0006f8 5f3f      	SUBI R19,-1
+0006f9 cfe8      	RJMP _0xD3
                  _0xD4:
                  ; 0000 02FA     }
-0006f7 5f0f      	SUBI R16,-1
-0006f8 cfe3      	RJMP _0xD0
+0006fa 5f0f      	SUBI R16,-1
+0006fb cfe3      	RJMP _0xD0
                  _0xD1:
                  ; 0000 02FB     write_byte_to_eeprom(0x0, st_counts - 1);
-0006f9 e0e0      	LDI  R30,LOW(0)
-0006fa e0f0      	LDI  R31,HIGH(0)
-0006fb 93fa      	ST   -Y,R31
-0006fc 93ea      	ST   -Y,R30
-0006fd 2fa1      	MOV  R26,R17
-0006fe 50a1      	SUBI R26,LOW(1)
-0006ff df6f      	RCALL _write_byte_to_eeprom
+0006fc e0e0      	LDI  R30,LOW(0)
+0006fd e0f0      	LDI  R31,HIGH(0)
+0006fe 93fa      	ST   -Y,R31
+0006ff 93ea      	ST   -Y,R30
+000700 2fa1      	MOV  R26,R17
+000701 50a1      	SUBI R26,LOW(1)
+000702 df6c      	RCALL _write_byte_to_eeprom
                  ; 0000 02FC }
-000700 940e 0883 	CALL __LOADLOCR4
-000702 940c 0740 	JMP  _0x20A0001
+000703 940e 0872 	CALL __LOADLOCR4
+000705 940c 0743 	JMP  _0x20A0001
                  ; .FEND
                  
                  	.CSEG
                  _itoa:
                  ; .FSTART _itoa
-000704 93ba      	ST   -Y,R27
-000705 93aa      	ST   -Y,R26
-000706 91a9          ld   r26,y+
-000707 91b9          ld   r27,y+
-000708 91e9          ld   r30,y+
-000709 91f9          ld   r31,y+
-00070a 9630          adiw r30,0
-00070b f42a          brpl __itoa0
-00070c 95e0          com  r30
-00070d 95f0          com  r31
-00070e 9631          adiw r30,1
-00070f e26d          ldi  r22,'-'
-000710 936d          st   x+,r22
+000707 93ba      	ST   -Y,R27
+000708 93aa      	ST   -Y,R26
+000709 91a9          ld   r26,y+
+00070a 91b9          ld   r27,y+
+00070b 91e9          ld   r30,y+
+00070c 91f9          ld   r31,y+
+00070d 9630          adiw r30,0
+00070e f42a          brpl __itoa0
+00070f 95e0          com  r30
+000710 95f0          com  r31
+000711 9631          adiw r30,1
+000712 e26d          ldi  r22,'-'
+000713 936d          st   x+,r22
                  __itoa0:
-000711 94e8          clt
-000712 e180          ldi  r24,low(10000)
-000713 e297          ldi  r25,high(10000)
-000714 d00d          rcall __itoa1
-000715 ee88          ldi  r24,low(1000)
-000716 e093          ldi  r25,high(1000)
-000717 d00a          rcall __itoa1
-000718 e684          ldi  r24,100
-000719 2799          clr  r25
-00071a d007          rcall __itoa1
-00071b e08a          ldi  r24,10
-00071c d005          rcall __itoa1
-00071d 2f6e          mov  r22,r30
-00071e d010          rcall __itoa5
-00071f 2766          clr  r22
-000720 936c          st   x,r22
-000721 9508          ret
+000714 94e8          clt
+000715 e180          ldi  r24,low(10000)
+000716 e297          ldi  r25,high(10000)
+000717 d00d          rcall __itoa1
+000718 ee88          ldi  r24,low(1000)
+000719 e093          ldi  r25,high(1000)
+00071a d00a          rcall __itoa1
+00071b e684          ldi  r24,100
+00071c 2799          clr  r25
+00071d d007          rcall __itoa1
+00071e e08a          ldi  r24,10
+00071f d005          rcall __itoa1
+000720 2f6e          mov  r22,r30
+000721 d010          rcall __itoa5
+000722 2766          clr  r22
+000723 936c          st   x,r22
+000724 9508          ret
                  
                  __itoa1:
-000722 2766          clr	 r22
+000725 2766          clr	 r22
                  __itoa2:
-000723 17e8          cp   r30,r24
-000724 07f9          cpc  r31,r25
-000725 f020          brlo __itoa3
-000726 9563          inc  r22
-000727 1be8          sub  r30,r24
-000728 0bf9          sbc  r31,r25
-000729 f7c9          brne __itoa2
+000726 17e8          cp   r30,r24
+000727 07f9          cpc  r31,r25
+000728 f020          brlo __itoa3
+000729 9563          inc  r22
+00072a 1be8          sub  r30,r24
+00072b 0bf9          sbc  r31,r25
+00072c f7c9          brne __itoa2
                  __itoa3:
-00072a 2366          tst  r22
-00072b f411          brne __itoa4
-00072c f016          brts __itoa5
-00072d 9508          ret
+00072d 2366          tst  r22
+00072e f411          brne __itoa4
+00072f f016          brts __itoa5
+000730 9508          ret
                  __itoa4:
-00072e 9468          set
+000731 9468          set
                  __itoa5:
-00072f 5d60          subi r22,-0x30
-000730 936d          st   x+,r22
-000731 9508          ret
+000732 5d60          subi r22,-0x30
+000733 936d          st   x+,r22
+000734 9508          ret
                  ; .FEND
                  
                  	.DSEG
@@ -4029,101 +4032,74 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  	.CSEG
                  _memset:
                  ; .FSTART _memset
-000732 93ba      	ST   -Y,R27
-000733 93aa      	ST   -Y,R26
-000734 81b9          ldd  r27,y+1
-000735 81a8          ld   r26,y
-000736 9610          adiw r26,0
-000737 f031          breq memset1
-000738 81fc          ldd  r31,y+4
-000739 81eb          ldd  r30,y+3
-00073a 816a          ldd  r22,y+2
+000735 93ba      	ST   -Y,R27
+000736 93aa      	ST   -Y,R26
+000737 81b9          ldd  r27,y+1
+000738 81a8          ld   r26,y
+000739 9610          adiw r26,0
+00073a f031          breq memset1
+00073b 81fc          ldd  r31,y+4
+00073c 81eb          ldd  r30,y+3
+00073d 816a          ldd  r22,y+2
                  memset0:
-00073b 9361          st   z+,r22
-00073c 9711          sbiw r26,1
-00073d f7e9          brne memset0
+00073e 9361          st   z+,r22
+00073f 9711          sbiw r26,1
+000740 f7e9          brne memset0
                  memset1:
-00073e 81eb          ldd  r30,y+3
-00073f 81fc          ldd  r31,y+4
+000741 81eb          ldd  r30,y+3
+000742 81fc          ldd  r31,y+4
                  _0x20A0001:
-000740 9625      	ADIW R28,5
-000741 9508      	RET
-                 ; .FEND
-                 _strcmp:
-                 ; .FSTART _strcmp
-000742 93ba      	ST   -Y,R27
-000743 93aa      	ST   -Y,R26
-000744 91e9          ld   r30,y+
-000745 91f9          ld   r31,y+
-000746 91a9          ld   r26,y+
-000747 91b9          ld   r27,y+
-                 strcmp0:
-000748 916d          ld   r22,x+
-000749 9171          ld   r23,z+
-00074a 1767          cp   r22,r23
-00074b f421          brne strcmp1
-00074c 2366          tst  r22
-00074d f7d1          brne strcmp0
-                 strcmp3:
-00074e 27ee          clr  r30
-00074f 9508          ret
-                 strcmp1:
-000750 1b67          sub  r22,r23
-000751 f3e1          breq strcmp3
-000752 e0e1          ldi  r30,1
-000753 f408          brcc strcmp2
-000754 50e2          subi r30,2
-                 strcmp2:
-000755 9508          ret
+000743 9625      	ADIW R28,5
+000744 9508      	RET
                  ; .FEND
                  _strlen:
                  ; .FSTART _strlen
-000756 93ba      	ST   -Y,R27
-000757 93aa      	ST   -Y,R26
-000758 91a9          ld   r26,y+
-000759 91b9          ld   r27,y+
-00075a 27ee          clr  r30
-00075b 27ff          clr  r31
+000745 93ba      	ST   -Y,R27
+000746 93aa      	ST   -Y,R26
+000747 91a9          ld   r26,y+
+000748 91b9          ld   r27,y+
+000749 27ee          clr  r30
+00074a 27ff          clr  r31
                  strlen0:
-00075c 916d          ld   r22,x+
-00075d 2366          tst  r22
-00075e f011          breq strlen1
-00075f 9631          adiw r30,1
-000760 cffb          rjmp strlen0
+00074b 916d          ld   r22,x+
+00074c 2366          tst  r22
+00074d f011          breq strlen1
+00074e 9631          adiw r30,1
+00074f cffb          rjmp strlen0
                  strlen1:
-000761 9508          ret
+000750 9508          ret
                  ; .FEND
                  _strncmp:
                  ; .FSTART _strncmp
-000762 93aa      	ST   -Y,R26
-000763 2766          clr  r22
-000764 2777          clr  r23
-000765 9189          ld   r24,y+
-000766 91e9          ld   r30,y+
-000767 91f9          ld   r31,y+
-000768 91a9          ld   r26,y+
-000769 91b9          ld   r27,y+
+000751 93aa      	ST   -Y,R26
+000752 2766          clr  r22
+000753 2777          clr  r23
+000754 9189          ld   r24,y+
+000755 91e9          ld   r30,y+
+000756 91f9          ld   r31,y+
+000757 91a9          ld   r26,y+
+000758 91b9          ld   r27,y+
                  strncmp0:
-00076a 2388          tst  r24
-00076b f049          breq strncmp1
-00076c 958a          dec  r24
-00076d 916d          ld   r22,x+
-00076e 9171          ld   r23,z+
-00076f 1767          cp   r22,r23
-000770 f421          brne strncmp1
-000771 2366          tst  r22
-000772 f7b9          brne strncmp0
+000759 2388          tst  r24
+00075a f049          breq strncmp1
+00075b 958a          dec  r24
+00075c 916d          ld   r22,x+
+00075d 9171          ld   r23,z+
+00075e 1767          cp   r22,r23
+00075f f421          brne strncmp1
+000760 2366          tst  r22
+000761 f7b9          brne strncmp0
                  strncmp3:
-000773 27ee          clr  r30
-000774 9508          ret
+000762 27ee          clr  r30
+000763 9508          ret
                  strncmp1:
-000775 1b67          sub  r22,r23
-000776 f3e1          breq strncmp3
-000777 e0e1          ldi  r30,1
-000778 f408          brcc strncmp2
-000779 50e2          subi r30,2
+000764 1b67          sub  r22,r23
+000765 f3e1          breq strncmp3
+000766 e0e1          ldi  r30,1
+000767 f408          brcc strncmp2
+000768 50e2          subi r30,2
                  strncmp2:
-00077a 9508          ret
+000769 9508          ret
                  ; .FEND
                  
                  	.CSEG
@@ -4143,390 +4119,390 @@ C:\Users\HP\Downloads\final_micro\attendance-avr\Debug\List\microFinalProjectCod
                  	.CSEG
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
                  SUBOPT_0x0:
-00077b e0e1      	LDI  R30,LOW(1)
-00077c e0f0      	LDI  R31,HIGH(1)
-00077d 15e4      	CP   R30,R4
-00077e 05f5      	CPC  R31,R5
-00077f 9508      	RET
+00076a e0e1      	LDI  R30,LOW(1)
+00076b e0f0      	LDI  R31,HIGH(1)
+00076c 15e4      	CP   R30,R4
+00076d 05f5      	CPC  R31,R5
+00076e 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 21 TIMES, CODE SIZE REDUCTION:117 WORDS
                  SUBOPT_0x1:
-000780 e0a1      	LDI  R26,LOW(1)
-000781 940e 0578 	CALL _lcdCommand
-000783 e0e1      	LDI  R30,LOW(1)
-000784 93ea      	ST   -Y,R30
-000785 e0a1      	LDI  R26,LOW(1)
-000786 940c 05a9 	JMP  _lcd_gotoxy
+00076f e0a1      	LDI  R26,LOW(1)
+000770 940e 0578 	CALL _lcdCommand
+000772 e0e1      	LDI  R30,LOW(1)
+000773 93ea      	ST   -Y,R30
+000774 e0a1      	LDI  R26,LOW(1)
+000775 940c 05a9 	JMP  _lcd_gotoxy
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 17 TIMES, CODE SIZE REDUCTION:77 WORDS
                  SUBOPT_0x2:
-000788 940e 05c1 	CALL _lcd_print
-00078a e0e1      	LDI  R30,LOW(1)
-00078b 93ea      	ST   -Y,R30
-00078c e0a2      	LDI  R26,LOW(2)
-00078d 940c 05a9 	JMP  _lcd_gotoxy
+000777 940e 05c1 	CALL _lcd_print
+000779 e0e1      	LDI  R30,LOW(1)
+00077a 93ea      	ST   -Y,R30
+00077b e0a2      	LDI  R26,LOW(2)
+00077c 940c 05a9 	JMP  _lcd_gotoxy
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
                  SUBOPT_0x3:
-00078f e0e2      	LDI  R30,LOW(2)
-000790 e0f0      	LDI  R31,HIGH(2)
-000791 15e4      	CP   R30,R4
-000792 05f5      	CPC  R31,R5
-000793 9508      	RET
+00077e e0e2      	LDI  R30,LOW(2)
+00077f e0f0      	LDI  R31,HIGH(2)
+000780 15e4      	CP   R30,R4
+000781 05f5      	CPC  R31,R5
+000782 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:7 WORDS
                  SUBOPT_0x4:
-000794 e0af      	LDI  R26,LOW(15)
-000795 940e 0578 	CALL _lcdCommand
+000783 e0af      	LDI  R26,LOW(15)
+000784 940e 0578 	CALL _lcdCommand
                 +
-000797 e880     +LDI R24 , LOW ( 3200 )
-000798 e09c     +LDI R25 , HIGH ( 3200 )
+000786 e880     +LDI R24 , LOW ( 3200 )
+000787 e09c     +LDI R25 , HIGH ( 3200 )
                 +__DELAY_USW_LOOP :
-000799 9701     +SBIW R24 , 1
-00079a f7f1     +BRNE __DELAY_USW_LOOP
+000788 9701     +SBIW R24 , 1
+000789 f7f1     +BRNE __DELAY_USW_LOOP
                  	__DELAY_USW 3200
-00079b 9508      	RET
+00078a 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
                  SUBOPT_0x5:
-00079c e0e3      	LDI  R30,LOW(3)
-00079d e0f0      	LDI  R31,HIGH(3)
-00079e 15e4      	CP   R30,R4
-00079f 05f5      	CPC  R31,R5
-0007a0 9508      	RET
+00078b e0e3      	LDI  R30,LOW(3)
+00078c e0f0      	LDI  R31,HIGH(3)
+00078d 15e4      	CP   R30,R4
+00078e 05f5      	CPC  R31,R5
+00078f 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
                  SUBOPT_0x6:
-0007a1 e0e4      	LDI  R30,LOW(4)
-0007a2 e0f0      	LDI  R31,HIGH(4)
-0007a3 15e4      	CP   R30,R4
-0007a4 05f5      	CPC  R31,R5
-0007a5 9508      	RET
+000790 e0e4      	LDI  R30,LOW(4)
+000791 e0f0      	LDI  R31,HIGH(4)
+000792 15e4      	CP   R30,R4
+000793 05f5      	CPC  R31,R5
+000794 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 6 TIMES, CODE SIZE REDUCTION:37 WORDS
                  SUBOPT_0x7:
-0007a6 efef      	LDI  R30,LOW(_buffer)
-0007a7 e0f5      	LDI  R31,HIGH(_buffer)
-0007a8 93fa      	ST   -Y,R31
-0007a9 93ea      	ST   -Y,R30
-0007aa e0e0      	LDI  R30,LOW(0)
-0007ab 93ea      	ST   -Y,R30
-0007ac e2a0      	LDI  R26,LOW(32)
-0007ad e0b0      	LDI  R27,0
-0007ae 940c 0732 	JMP  _memset
+000795 efef      	LDI  R30,LOW(_buffer)
+000796 e0f5      	LDI  R31,HIGH(_buffer)
+000797 93fa      	ST   -Y,R31
+000798 93ea      	ST   -Y,R30
+000799 e0e0      	LDI  R30,LOW(0)
+00079a 93ea      	ST   -Y,R30
+00079b e2a0      	LDI  R26,LOW(32)
+00079c e0b0      	LDI  R27,0
+00079d 940c 0735 	JMP  _memset
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:3 WORDS
                  SUBOPT_0x8:
-0007b0 efaf      	LDI  R26,LOW(_buffer)
-0007b1 e0b5      	LDI  R27,HIGH(_buffer)
-0007b2 940e 05c1 	CALL _lcd_print
-0007b4 eea8      	LDI  R26,LOW(1000)
-0007b5 e0b3      	LDI  R27,HIGH(1000)
-0007b6 940c 0844 	JMP  _delay_ms
+00079f efaf      	LDI  R26,LOW(_buffer)
+0007a0 e0b5      	LDI  R27,HIGH(_buffer)
+0007a1 940e 05c1 	CALL _lcd_print
+0007a3 eea8      	LDI  R26,LOW(1000)
+0007a4 e0b3      	LDI  R27,HIGH(1000)
+0007a5 940c 0833 	JMP  _delay_ms
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:4 WORDS
                  SUBOPT_0x9:
-0007b8 01f8      	MOVW R30,R16
-0007b9 9631      	ADIW R30,1
-0007ba 940e 0852 	CALL __LSLW3
-0007bc 0fe2      	ADD  R30,R18
-0007bd 1ff3      	ADC  R31,R19
-0007be 01df      	MOVW R26,R30
-0007bf 940c 0663 	JMP  _read_byte_from_eeprom
+0007a7 01f8      	MOVW R30,R16
+0007a8 9631      	ADIW R30,1
+0007a9 940e 0841 	CALL __LSLW3
+0007ab 0fe2      	ADD  R30,R18
+0007ac 1ff3      	ADC  R31,R19
+0007ad 01df      	MOVW R26,R30
+0007ae 940c 0663 	JMP  _read_byte_from_eeprom
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:3 WORDS
                  SUBOPT_0xA:
-0007c1 e0a0      	LDI  R26,LOW(0)
-0007c2 e0b0      	LDI  R27,0
-0007c3 940c 0663 	JMP  _read_byte_from_eeprom
+0007b0 e0a0      	LDI  R26,LOW(0)
+0007b1 e0b0      	LDI  R27,0
+0007b2 940c 0663 	JMP  _read_byte_from_eeprom
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:9 WORDS
                  SUBOPT_0xB:
-0007c5 940e 05c1 	CALL _lcd_print
-0007c7 eda0      	LDI  R26,LOW(2000)
-0007c8 e0b7      	LDI  R27,HIGH(2000)
-0007c9 940c 0844 	JMP  _delay_ms
+0007b4 940e 05c1 	CALL _lcd_print
+0007b6 eda0      	LDI  R26,LOW(2000)
+0007b7 e0b7      	LDI  R27,HIGH(2000)
+0007b8 940c 0833 	JMP  _delay_ms
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
                  SUBOPT_0xC:
-0007cb e0e6      	LDI  R30,LOW(6)
-0007cc e0f0      	LDI  R31,HIGH(6)
-0007cd 15e4      	CP   R30,R4
-0007ce 05f5      	CPC  R31,R5
-0007cf 9508      	RET
+0007ba e0e6      	LDI  R30,LOW(6)
+0007bb e0f0      	LDI  R31,HIGH(6)
+0007bc 15e4      	CP   R30,R4
+0007bd 05f5      	CPC  R31,R5
+0007be 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
                  SUBOPT_0xD:
-0007d0 e0e7      	LDI  R30,LOW(7)
-0007d1 e0f0      	LDI  R31,HIGH(7)
-0007d2 15e4      	CP   R30,R4
-0007d3 05f5      	CPC  R31,R5
-0007d4 9508      	RET
+0007bf e0e7      	LDI  R30,LOW(7)
+0007c0 e0f0      	LDI  R31,HIGH(7)
+0007c1 15e4      	CP   R30,R4
+0007c2 05f5      	CPC  R31,R5
+0007c3 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
                  SUBOPT_0xE:
-0007d5 e0e8      	LDI  R30,LOW(8)
-0007d6 e0f0      	LDI  R31,HIGH(8)
-0007d7 15e4      	CP   R30,R4
-0007d8 05f5      	CPC  R31,R5
-0007d9 9508      	RET
+0007c4 e0e8      	LDI  R30,LOW(8)
+0007c5 e0f0      	LDI  R31,HIGH(8)
+0007c6 15e4      	CP   R30,R4
+0007c7 05f5      	CPC  R31,R5
+0007c8 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 7 TIMES, CODE SIZE REDUCTION:21 WORDS
                  SUBOPT_0xF:
-0007da 940e 0578 	CALL _lcdCommand
+0007c9 940e 0578 	CALL _lcdCommand
                 +
-0007dc e880     +LDI R24 , LOW ( 3200 )
-0007dd e09c     +LDI R25 , HIGH ( 3200 )
+0007cb e880     +LDI R24 , LOW ( 3200 )
+0007cc e09c     +LDI R25 , HIGH ( 3200 )
                 +__DELAY_USW_LOOP :
-0007de 9701     +SBIW R24 , 1
-0007df f7f1     +BRNE __DELAY_USW_LOOP
+0007cd 9701     +SBIW R24 , 1
+0007ce f7f1     +BRNE __DELAY_USW_LOOP
                  	__DELAY_USW 3200
-0007e0 9508      	RET
+0007cf 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
                  SUBOPT_0x10:
-0007e1 bbe5      	OUT  0x15,R30
-0007e2 b3e3      	IN   R30,0x13
-0007e3 70ef      	ANDI R30,LOW(0xF)
-0007e4 2f1e      	MOV  R17,R30
-0007e5 301f      	CPI  R17,15
-0007e6 9508      	RET
+0007d0 bbe5      	OUT  0x15,R30
+0007d1 b3e3      	IN   R30,0x13
+0007d2 70ef      	ANDI R30,LOW(0xF)
+0007d3 2f1e      	MOV  R17,R30
+0007d4 301f      	CPI  R17,15
+0007d5 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 26 TIMES, CODE SIZE REDUCTION:222 WORDS
                  SUBOPT_0x11:
-0007e7 2fe0      	MOV  R30,R16
-0007e8 eeaf      	LDI  R26,LOW(_keypad)
-0007e9 e0b5      	LDI  R27,HIGH(_keypad)
-0007ea e0f0      	LDI  R31,0
-0007eb 940e 0854 	CALL __LSLW2
-0007ed 0fae      	ADD  R26,R30
-0007ee 1fbf      	ADC  R27,R31
-0007ef 27ee      	CLR  R30
-0007f0 0fa3      	ADD  R26,R19
-0007f1 1fbe      	ADC  R27,R30
-0007f2 9508      	RET
+0007d6 2fe0      	MOV  R30,R16
+0007d7 eeaf      	LDI  R26,LOW(_keypad)
+0007d8 e0b5      	LDI  R27,HIGH(_keypad)
+0007d9 e0f0      	LDI  R31,0
+0007da 940e 0843 	CALL __LSLW2
+0007dc 0fae      	ADD  R26,R30
+0007dd 1fbf      	ADC  R27,R31
+0007de 27ee      	CLR  R30
+0007df 0fa3      	ADD  R26,R19
+0007e0 1fbe      	ADC  R27,R30
+0007e1 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 13 TIMES, CODE SIZE REDUCTION:21 WORDS
                  SUBOPT_0x12:
-0007f3 efaf      	LDI  R26,LOW(_buffer)
-0007f4 e0b5      	LDI  R27,HIGH(_buffer)
-0007f5 940c 0756 	JMP  _strlen
+0007e2 efaf      	LDI  R26,LOW(_buffer)
+0007e3 e0b5      	LDI  R27,HIGH(_buffer)
+0007e4 940c 0745 	JMP  _strlen
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
                  SUBOPT_0x13:
-0007f7 50e1      	SUBI R30,LOW(-_buffer)
-0007f8 4ffa      	SBCI R31,HIGH(-_buffer)
-0007f9 010f      	MOVW R0,R30
-0007fa cfec      	RJMP SUBOPT_0x11
+0007e6 50e1      	SUBI R30,LOW(-_buffer)
+0007e7 4ffa      	SBCI R31,HIGH(-_buffer)
+0007e8 010f      	MOVW R0,R30
+0007e9 cfec      	RJMP SUBOPT_0x11
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
                  SUBOPT_0x14:
-0007fb 91ec      	LD   R30,X
-0007fc 01d0      	MOVW R26,R0
-0007fd 93ec      	ST   X,R30
-0007fe cff4      	RJMP SUBOPT_0x12
+0007ea 91ec      	LD   R30,X
+0007eb 01d0      	MOVW R26,R0
+0007ec 93ec      	ST   X,R30
+0007ed cff4      	RJMP SUBOPT_0x12
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:5 WORDS
                  SUBOPT_0x15:
                 +
-0007ff 50e0     +SUBI R30 , LOW ( - _buffer - ( 1 ) )
-000800 4ffa     +SBCI R31 , HIGH ( - _buffer - ( 1 ) )
+0007ee 50e0     +SUBI R30 , LOW ( - _buffer - ( 1 ) )
+0007ef 4ffa     +SBCI R31 , HIGH ( - _buffer - ( 1 ) )
                  	__ADDW1MN _buffer,1
-000801 e0a0      	LDI  R26,LOW(0)
-000802 83a0      	STD  Z+0,R26
-000803 cfe3      	RJMP SUBOPT_0x11
+0007f0 e0a0      	LDI  R26,LOW(0)
+0007f1 83a0      	STD  Z+0,R26
+0007f2 cfe3      	RJMP SUBOPT_0x11
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:13 WORDS
                  SUBOPT_0x16:
-000804 2fe5      	MOV  R30,R21
-000805 e0f0      	LDI  R31,0
-000806 9731      	SBIW R30,1
-000807 50e1      	SUBI R30,LOW(-_buffer)
-000808 4ffa      	SBCI R31,HIGH(-_buffer)
-000809 e0a0      	LDI  R26,LOW(0)
-00080a 83a0      	STD  Z+0,R26
-00080b e1a0      	LDI  R26,LOW(16)
-00080c 940c 0578 	JMP  _lcdCommand
+0007f3 2fe5      	MOV  R30,R21
+0007f4 e0f0      	LDI  R31,0
+0007f5 9731      	SBIW R30,1
+0007f6 50e1      	SUBI R30,LOW(-_buffer)
+0007f7 4ffa      	SBCI R31,HIGH(-_buffer)
+0007f8 e0a0      	LDI  R26,LOW(0)
+0007f9 83a0      	STD  Z+0,R26
+0007fa e1a0      	LDI  R26,LOW(16)
+0007fb 940c 0578 	JMP  _lcdCommand
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
                  SUBOPT_0x17:
-00080e 940e 05c1 	CALL _lcd_print
-000810 e1a0      	LDI  R26,LOW(16)
-000811 940c 0578 	JMP  _lcdCommand
+0007fd 940e 05c1 	CALL _lcd_print
+0007ff e1a0      	LDI  R26,LOW(16)
+000800 940c 0578 	JMP  _lcdCommand
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
                  SUBOPT_0x18:
-000813 e0f0      	LDI  R31,0
-000814 9631      	ADIW R30,1
-000815 940e 0852 	CALL __LSLW3
-000817 9508      	RET
+000802 e0f0      	LDI  R31,0
+000803 9631      	ADIW R30,1
+000804 940e 0841 	CALL __LSLW3
+000806 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
                  SUBOPT_0x19:
-000818 9721      	SBIW R28,1
-000819 940e 068e 	CALL _search_student_code
-00081b 83e8      	ST   Y,R30
-00081c 81a8      	LD   R26,Y
-00081d 30a1      	CPI  R26,LOW(0x1)
-00081e 9508      	RET
+000807 9721      	SBIW R28,1
+000808 940e 068e 	CALL _search_student_code
+00080a 83e8      	ST   Y,R30
+00080b 81a8      	LD   R26,Y
+00080c 30a1      	CPI  R26,LOW(0x1)
+00080d 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:3 WORDS
                  SUBOPT_0x1A:
-00081f 93aa      	ST   -Y,R26
-000820 b3e8      	IN   R30,0x18
-000821 70ef      	ANDI R30,LOW(0xF)
-000822 2fae      	MOV  R26,R30
-000823 81e8      	LD   R30,Y
-000824 7fe0      	ANDI R30,LOW(0xF0)
-000825 2bea      	OR   R30,R26
-000826 bbe8      	OUT  0x18,R30
-000827 9508      	RET
+00080e 93aa      	ST   -Y,R26
+00080f b3e8      	IN   R30,0x18
+000810 70ef      	ANDI R30,LOW(0xF)
+000811 2fae      	MOV  R26,R30
+000812 81e8      	LD   R30,Y
+000813 7fe0      	ANDI R30,LOW(0xF0)
+000814 2bea      	OR   R30,R26
+000815 bbe8      	OUT  0x18,R30
+000816 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
                  SUBOPT_0x1B:
-000828 98c1      	CBI  0x18,1
-000829 9ac2      	SBI  0x18,2
+000817 98c1      	CBI  0x18,1
+000818 9ac2      	SBI  0x18,2
                 +
-00082a e28b     +LDI R24 , LOW ( 43 )
+000819 e28b     +LDI R24 , LOW ( 43 )
                 +__DELAY_USB_LOOP :
-00082b 958a     +DEC R24
-00082c f7f1     +BRNE __DELAY_USB_LOOP
+00081a 958a     +DEC R24
+00081b f7f1     +BRNE __DELAY_USB_LOOP
                  	__DELAY_USB 43
-00082d 98c2      	CBI  0x18,2
-00082e 9508      	RET
+00081c 98c2      	CBI  0x18,2
+00081d 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:8 WORDS
                  SUBOPT_0x1C:
-00082f b3e8      	IN   R30,0x18
-000830 70ef      	ANDI R30,LOW(0xF)
-000831 2fae      	MOV  R26,R30
-000832 81e8      	LD   R30,Y
-000833 95e2      	SWAP R30
-000834 7fe0      	ANDI R30,0xF0
-000835 2bea      	OR   R30,R26
-000836 bbe8      	OUT  0x18,R30
-000837 9ac2      	SBI  0x18,2
+00081e b3e8      	IN   R30,0x18
+00081f 70ef      	ANDI R30,LOW(0xF)
+000820 2fae      	MOV  R26,R30
+000821 81e8      	LD   R30,Y
+000822 95e2      	SWAP R30
+000823 7fe0      	ANDI R30,0xF0
+000824 2bea      	OR   R30,R26
+000825 bbe8      	OUT  0x18,R30
+000826 9ac2      	SBI  0x18,2
                 +
-000838 e28b     +LDI R24 , LOW ( 43 )
+000827 e28b     +LDI R24 , LOW ( 43 )
                 +__DELAY_USB_LOOP :
-000839 958a     +DEC R24
-00083a f7f1     +BRNE __DELAY_USB_LOOP
+000828 958a     +DEC R24
+000829 f7f1     +BRNE __DELAY_USB_LOOP
                  	__DELAY_USB 43
-00083b 98c2      	CBI  0x18,2
-00083c 9508      	RET
+00082a 98c2      	CBI  0x18,2
+00082b 9508      	RET
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
                  SUBOPT_0x1D:
-00083d 81ea      	LDD  R30,Y+2
-00083e 70f0      	ANDI R31,HIGH(0x0)
-00083f 70e3      	ANDI R30,LOW(0x3)
-000840 bbef      	OUT  0x1F,R30
-000841 81e9      	LDD  R30,Y+1
-000842 bbee      	OUT  0x1E,R30
-000843 9508      	RET
+00082c 81ea      	LDD  R30,Y+2
+00082d 70f0      	ANDI R31,HIGH(0x0)
+00082e 70e3      	ANDI R30,LOW(0x3)
+00082f bbef      	OUT  0x1F,R30
+000830 81e9      	LDD  R30,Y+1
+000831 bbee      	OUT  0x1E,R30
+000832 9508      	RET
                  
                  
                  	.CSEG
                  _delay_ms:
-000844 9610      	adiw r26,0
-000845 f039      	breq __delay_ms1
+000833 9610      	adiw r26,0
+000834 f039      	breq __delay_ms1
                  __delay_ms0:
-000846 95a8      	wdr
+000835 95a8      	wdr
                 +
-000847 ed80     +LDI R24 , LOW ( 0x7D0 )
-000848 e097     +LDI R25 , HIGH ( 0x7D0 )
+000836 ed80     +LDI R24 , LOW ( 0x7D0 )
+000837 e097     +LDI R25 , HIGH ( 0x7D0 )
                 +__DELAY_USW_LOOP :
-000849 9701     +SBIW R24 , 1
-00084a f7f1     +BRNE __DELAY_USW_LOOP
+000838 9701     +SBIW R24 , 1
+000839 f7f1     +BRNE __DELAY_USW_LOOP
                  	__DELAY_USW 0x7D0
-00084b 9711      	sbiw r26,1
-00084c f7c9      	brne __delay_ms0
+00083a 9711      	sbiw r26,1
+00083b f7c9      	brne __delay_ms0
                  __delay_ms1:
-00084d 9508      	ret
+00083c 9508      	ret
                  
                  __ANEGW1:
-00084e 95f1      	NEG  R31
-00084f 95e1      	NEG  R30
-000850 40f0      	SBCI R31,0
-000851 9508      	RET
+00083d 95f1      	NEG  R31
+00083e 95e1      	NEG  R30
+00083f 40f0      	SBCI R31,0
+000840 9508      	RET
                  
                  __LSLW3:
-000852 0fee      	LSL  R30
-000853 1fff      	ROL  R31
+000841 0fee      	LSL  R30
+000842 1fff      	ROL  R31
                  __LSLW2:
-000854 0fee      	LSL  R30
-000855 1fff      	ROL  R31
-000856 0fee      	LSL  R30
-000857 1fff      	ROL  R31
-000858 9508      	RET
+000843 0fee      	LSL  R30
+000844 1fff      	ROL  R31
+000845 0fee      	LSL  R30
+000846 1fff      	ROL  R31
+000847 9508      	RET
                  
                  __DIVW21U:
-000859 2400      	CLR  R0
-00085a 2411      	CLR  R1
-00085b e190      	LDI  R25,16
+000848 2400      	CLR  R0
+000849 2411      	CLR  R1
+00084a e190      	LDI  R25,16
                  __DIVW21U1:
-00085c 0faa      	LSL  R26
-00085d 1fbb      	ROL  R27
-00085e 1c00      	ROL  R0
-00085f 1c11      	ROL  R1
-000860 1a0e      	SUB  R0,R30
-000861 0a1f      	SBC  R1,R31
-000862 f418      	BRCC __DIVW21U2
-000863 0e0e      	ADD  R0,R30
-000864 1e1f      	ADC  R1,R31
-000865 c001      	RJMP __DIVW21U3
+00084b 0faa      	LSL  R26
+00084c 1fbb      	ROL  R27
+00084d 1c00      	ROL  R0
+00084e 1c11      	ROL  R1
+00084f 1a0e      	SUB  R0,R30
+000850 0a1f      	SBC  R1,R31
+000851 f418      	BRCC __DIVW21U2
+000852 0e0e      	ADD  R0,R30
+000853 1e1f      	ADC  R1,R31
+000854 c001      	RJMP __DIVW21U3
                  __DIVW21U2:
-000866 60a1      	SBR  R26,1
+000855 60a1      	SBR  R26,1
                  __DIVW21U3:
-000867 959a      	DEC  R25
-000868 f799      	BRNE __DIVW21U1
-000869 01fd      	MOVW R30,R26
-00086a 01d0      	MOVW R26,R0
-00086b 9508      	RET
+000856 959a      	DEC  R25
+000857 f799      	BRNE __DIVW21U1
+000858 01fd      	MOVW R30,R26
+000859 01d0      	MOVW R26,R0
+00085a 9508      	RET
                  
                  __MODW21:
-00086c 94e8      	CLT
-00086d ffb7      	SBRS R27,7
-00086e c004      	RJMP __MODW211
-00086f 95a0      	COM  R26
-000870 95b0      	COM  R27
-000871 9611      	ADIW R26,1
-000872 9468      	SET
+00085b 94e8      	CLT
+00085c ffb7      	SBRS R27,7
+00085d c004      	RJMP __MODW211
+00085e 95a0      	COM  R26
+00085f 95b0      	COM  R27
+000860 9611      	ADIW R26,1
+000861 9468      	SET
                  __MODW211:
-000873 fdf7      	SBRC R31,7
-000874 dfd9      	RCALL __ANEGW1
-000875 dfe3      	RCALL __DIVW21U
-000876 01fd      	MOVW R30,R26
-000877 f40e      	BRTC __MODW212
-000878 dfd5      	RCALL __ANEGW1
+000862 fdf7      	SBRC R31,7
+000863 dfd9      	RCALL __ANEGW1
+000864 dfe3      	RCALL __DIVW21U
+000865 01fd      	MOVW R30,R26
+000866 f40e      	BRTC __MODW212
+000867 dfd5      	RCALL __ANEGW1
                  __MODW212:
-000879 9508      	RET
+000868 9508      	RET
                  
                  __SAVELOCR6:
-00087a 935a      	ST   -Y,R21
+000869 935a      	ST   -Y,R21
                  __SAVELOCR5:
-00087b 934a      	ST   -Y,R20
+00086a 934a      	ST   -Y,R20
                  __SAVELOCR4:
-00087c 933a      	ST   -Y,R19
+00086b 933a      	ST   -Y,R19
                  __SAVELOCR3:
-00087d 932a      	ST   -Y,R18
+00086c 932a      	ST   -Y,R18
                  __SAVELOCR2:
-00087e 931a      	ST   -Y,R17
-00087f 930a      	ST   -Y,R16
-000880 9508      	RET
+00086d 931a      	ST   -Y,R17
+00086e 930a      	ST   -Y,R16
+00086f 9508      	RET
                  
                  __LOADLOCR6:
-000881 815d      	LDD  R21,Y+5
+000870 815d      	LDD  R21,Y+5
                  __LOADLOCR5:
-000882 814c      	LDD  R20,Y+4
+000871 814c      	LDD  R20,Y+4
                  __LOADLOCR4:
-000883 813b      	LDD  R19,Y+3
+000872 813b      	LDD  R19,Y+3
                  __LOADLOCR3:
-000884 812a      	LDD  R18,Y+2
+000873 812a      	LDD  R18,Y+2
                  __LOADLOCR2:
-000885 8119      	LDD  R17,Y+1
-000886 8108      	LD   R16,Y
-000887 9508      	RET
+000874 8119      	LDD  R17,Y+1
+000875 8108      	LD   R16,Y
+000876 9508      	RET
                  
                  ;END OF CODE MARKER
                  __END_OF_CODE:
@@ -4549,38 +4525,38 @@ counted separately from r26..r31 here.
 ATmega32 register use summary:
 r0 :  29 r1 :   7 r2 :   0 r3 :   0 r4 :  31 r5 :  20 r6 :   0 r7 :  11 
 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 r13:   0 r14:   0 r15:   2 
-r16:  30 r17:  39 r18:  16 r19:  26 r20:   2 r21:  14 r22:  27 r23:   9 
-r24:  34 r25:  17 r26: 219 r27:  98 r28:  23 r29:   1 r30: 327 r31: 117 
-x  :  41 y  : 149 z  :  13 
+r16:  30 r17:  39 r18:  16 r19:  26 r20:   2 r21:  14 r22:  23 r23:   6 
+r24:  34 r25:  17 r26: 217 r27:  95 r28:  23 r29:   1 r30: 325 r31: 118 
+x  :  40 y  : 145 z  :  12 
 Registers used: 25 out of 35 (71.4%)
 
 ATmega32 instruction use summary:
 .lds  :   0 .lds.l:   0 .sts  :   0 .sts.l:   0 adc   :  14 add   :  15 
 adiw  :  26 and   :   0 andi  :  13 asr   :   0 bclr  :   0 bld   :   0 
-brbc  :   0 brbs  :   0 brcc  :   3 brcs  :   0 break :   0 breq  :  28 
+brbc  :   0 brbs  :   0 brcc  :   2 brcs  :   0 break :   0 breq  :  27 
 brge  :   8 brhc  :   0 brhs  :   0 brid  :   0 brie  :   0 brlo  :   8 
-brlt  :   0 brmi  :   0 brne  :  67 brpl  :   1 brsh  :   8 brtc  :   1 
+brlt  :   0 brmi  :   0 brne  :  65 brpl  :   1 brsh  :   8 brtc  :   1 
 brts  :   1 brvc  :   0 brvs  :   0 bset  :   0 bst   :   0 call  : 175 
 cbi   :   8 cbr   :   0 clc   :   0 clh   :   0 cli   :   3 cln   :   0 
-clr   :  34 cls   :   0 clt   :   2 clv   :   0 clz   :   0 com   :   4 
-cp    :  24 cpc   :  26 cpi   :  41 cpse  :   0 dec   :   5 des   :   0 
+clr   :  33 cls   :   0 clt   :   2 clv   :   0 clz   :   0 com   :   4 
+cp    :  23 cpc   :  26 cpi   :  41 cpse  :   0 dec   :   5 des   :   0 
 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 
-in    :  10 inc   :   1 jmp   :  33 ld    :  71 ldd   :  32 ldi   : 306 
+in    :  10 inc   :   1 jmp   :  33 ld    :  65 ldd   :  32 ldi   : 306 
 lds   :   0 lpm   :   7 lsl   :   4 lsr   :   0 mov   :  43 movw  :  33 
 mul   :   1 muls  :   0 mulsu :   0 neg   :   2 nop   :   0 or    :   5 
-ori   :   0 out   :  31 pop   :   4 push  :   4 rcall :  47 ret   :  43 
+ori   :   0 out   :  31 pop   :   4 push  :   4 rcall :  47 ret   :  41 
 reti  :   1 rjmp  :  88 rol   :   6 ror   :   0 sbc   :   2 sbci  :  11 
 sbi   :  12 sbic  :   3 sbis  :   2 sbiw  :  27 sbr   :   1 sbrc  :   1 
 sbrs  :   1 sec   :   0 seh   :   0 sei   :   3 sen   :   0 ser   :   0 
 ses   :   0 set   :   2 sev   :   0 sez   :   0 sleep :   0 spm   :   0 
-st    :  84 std   :   9 sts   :   0 sub   :   4 subi  :  22 swap  :   1 
-tst   :   7 wdr   :   1 
+st    :  84 std   :   9 sts   :   0 sub   :   3 subi  :  21 swap  :   1 
+tst   :   6 wdr   :   1 
 Instructions used: 62 out of 116 (53.4%)
 
 ATmega32 memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x001110   3376    992   4368   32768  13.3%
+[.cseg] 0x000000 0x0010ee   3342    992   4334   32768  13.2%
 [.dseg] 0x000060 0x000623      0    963    963    2048  47.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
