@@ -18,7 +18,7 @@
 #define BUZZER_DDR DDRD
 #define BUZZER_PRT PORTD
 #define BUZZER_NUM 7
-#define MENU_PAGE_COUNT 3
+#define MENU_PAGE_COUNT 4
 #define US_ERROR -1       // Error indicator
 #define US_NO_OBSTACLE -2 // No obstacle indicator
 #define US_PORT PORTD     // Ultrasonic sensor connected to PORTB
@@ -45,6 +45,7 @@ void HCSR04Init();
 void HCSR04Trigger();
 uint16_t GetPulseWidth();
 void startSonar();
+unsigned int simple_hash(const char *str);
 
 /* keypad mapping :
 C : Cancel
@@ -62,6 +63,8 @@ unsigned int stage = 0;
 char buffer[32] = "";
 unsigned char page_num = 0;
 unsigned char US_count = 0;
+const unsigned int secret = 3940;
+char logged_in = 0;
 
 enum stages
 {
@@ -75,6 +78,8 @@ enum stages
     STAGE_SEARCH_STUDENT,
     STAGE_DELETE_STUDENT,
     STAGE_TRAFFIC_MONITORING,
+    STAGE_LOGIN_WITH_ADMIN,
+    STAGE_CLEAR_EEPROM,
 };
 
 enum menu_options
@@ -85,6 +90,8 @@ enum menu_options
     OPTION_TEMPERATURE_MONITORING = 4,
     OPTION_RETRIEVE_STUDENT_DATA = 5,
     OPTION_TRAFFIC_MONITORING = 6,
+    OPTION_LOGIN_WITH_ADMIN = 7,
+    OPTION_LOGOUT = 8,
 };
 
 void main(void)
@@ -243,6 +250,34 @@ void main(void)
             startSonar();
             stage = STAGE_INIT_MENU;
         }
+        else if (stage == STAGE_LOGIN_WITH_ADMIN)
+        {
+            lcdCommand(0x01);
+            lcd_gotoxy(1, 1);
+            lcd_print("Enter Secret Code (or cancel)");
+            lcd_gotoxy(1, 2);
+            lcdCommand(0x0f);   // display on, cursor blinking
+            delay_us(100 * 16); // wait
+            while (stage == STAGE_LOGIN_WITH_ADMIN && logged_in == 0)
+                ;
+            if (logged_in == 1)
+            {
+                lcdCommand(0x0c); // display on, cursor off
+                delay_us(100 * 16);
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("1 : Clear EEPROM");
+                lcd_gotoxy(1, 2);
+                lcd_print("    press cancel to back");
+                while (stage == STAGE_LOGIN_WITH_ADMIN)
+                    ;
+            }
+            else
+            {
+                lcdCommand(0x0c); // display on, cursor off
+                delay_us(100 * 16);
+            }
+        }
     }
 }
 
@@ -317,15 +352,24 @@ interrupt[EXT_INT0] void int0_routine(void)
         case OPTION_TRAFFIC_MONITORING:
             stage = STAGE_TRAFFIC_MONITORING;
             break;
-        case 9:
+        case OPTION_LOGIN_WITH_ADMIN:
+            stage = STAGE_LOGIN_WITH_ADMIN;
+            break;
+        case OPTION_LOGOUT:
 #asm("cli") // disable interrupts
-
-            lcdCommand(0x1);
-            lcd_gotoxy(1, 1);
-            lcd_print("Clearing EEPROM ...");
-            clear_eeprom();
-#asm("sei") // enable interrupts
-            stage = STAGE_INIT_MENU;
+            if (logged_in == 1)
+            {
+                lcdCommand(0x1);
+                lcd_gotoxy(1, 1);
+                lcd_print("Logout ...");
+                lcd_gotoxy(1, 2);
+                lcd_print("Going To Admin Page In 2 Sec");
+                delay_ms(2000);
+                logged_in = 0;
+#asm("sei")
+                stage = STAGE_LOGIN_WITH_ADMIN;
+            }
+            break;
         default:
             break;
         }
@@ -357,6 +401,11 @@ interrupt[EXT_INT0] void int0_routine(void)
     else if (stage == STAGE_SUBMIT_CODE)
     {
 
+        if (keypad[rowloc][cl] == 'C')
+        {
+            memset(buffer, 0, 32);
+            stage = STAGE_ATTENDENC_MENU;
+        }
         if ((keypad[rowloc][cl] - '0') < 10)
         {
             if (strlen(buffer) <= 30)
@@ -447,12 +496,27 @@ interrupt[EXT_INT0] void int0_routine(void)
             stage = STAGE_INIT_MENU;
         else if (keypad[rowloc][cl] == '1')
             stage = STAGE_SEARCH_STUDENT;
-        else if (keypad[rowloc][cl] == '2')
+        else if (keypad[rowloc][cl] == '2' && logged_in == 1)
             stage = STAGE_DELETE_STUDENT;
+        else if (keypad[rowloc][cl] == '2' && logged_in == 0)
+        {
+            lcdCommand(0x01);
+            lcd_gotoxy(1, 1);
+            lcd_print("You Must First Login");
+            lcd_gotoxy(1, 2);
+            lcd_print("You Will Go Admin Page 2 Sec");
+            delay_ms(2000);
+            stage = STAGE_LOGIN_WITH_ADMIN;
+        }
     }
     else if (stage == STAGE_SEARCH_STUDENT)
     {
-        if ((keypad[rowloc][cl] - '0') < 10)
+        if (keypad[rowloc][cl] == 'C')
+        {
+            memset(buffer, 0, 32);
+            stage = STAGE_STUDENT_MANAGMENT;
+        }
+        else if ((keypad[rowloc][cl] - '0') < 10)
         {
             if (strlen(buffer) <= 30)
             {
@@ -483,8 +547,8 @@ interrupt[EXT_INT0] void int0_routine(void)
                 lcd_gotoxy(1, 1);
                 lcd_print("Student Code Found");
                 lcd_gotoxy(1, 2);
-                lcd_print("You Will Back Menu In 5 Second");
-                delay_ms(5000);
+                lcd_print("You Will Back Menu In 2 Second");
+                delay_ms(2000);
             }
             else
             {
@@ -492,8 +556,8 @@ interrupt[EXT_INT0] void int0_routine(void)
                 lcd_gotoxy(1, 1);
                 lcd_print("Ops , Student Code Not Found");
                 lcd_gotoxy(1, 2);
-                lcd_print("You Will Back Menu In 5 Second");
-                delay_ms(5000);
+                lcd_print("You Will Back Menu In 2 Second");
+                delay_ms(2000);
             }
             memset(buffer, 0, 32);
             stage = STAGE_STUDENT_MANAGMENT;
@@ -503,7 +567,12 @@ interrupt[EXT_INT0] void int0_routine(void)
     }
     else if (stage == STAGE_DELETE_STUDENT)
     {
-        if ((keypad[rowloc][cl] - '0') < 10)
+        if (keypad[rowloc][cl] == 'C')
+        {
+            memset(buffer, 0, 32);
+            stage = STAGE_STUDENT_MANAGMENT;
+        }
+        else if ((keypad[rowloc][cl] - '0') < 10)
         {
             if (strlen(buffer) <= 30)
             {
@@ -560,6 +629,83 @@ interrupt[EXT_INT0] void int0_routine(void)
     {
         if (keypad[rowloc][cl] == 'C')
             stage = STAGE_INIT_MENU;
+    }
+    else if (stage == STAGE_LOGIN_WITH_ADMIN && logged_in != 1)
+    {
+        if (keypad[rowloc][cl] == 'C')
+        {
+            memset(buffer, 0, 32);
+            stage = STAGE_INIT_MENU;
+        }
+
+        else if ((keypad[rowloc][cl] - '0') < 10)
+        {
+            if (strlen(buffer) <= 30)
+            {
+                buffer[strlen(buffer)] = keypad[rowloc][cl];
+                buffer[strlen(buffer) + 1] = '\0';
+                lcdData(keypad[rowloc][cl]);
+            }
+        }
+        else if (keypad[rowloc][cl] == 'D')
+        {
+            buffer_len = strlen(buffer);
+            if (buffer_len > 0)
+            {
+                buffer[buffer_len - 1] = '\0';
+                lcdCommand(0x10);
+                lcd_print(" ");
+                lcdCommand(0x10);
+            }
+        }
+        else if (keypad[rowloc][cl] == 'E')
+        {
+            // search from eeprom data
+            unsigned int input_hash = simple_hash(buffer);
+
+            if (input_hash == secret)
+            {
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Login Successfully");
+                lcd_gotoxy(1, 2);
+                lcd_print("Wait...");
+                delay_ms(2000);
+                logged_in = 1;
+            }
+            else
+            {
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Ops , secret is incorrect");
+                lcd_gotoxy(1, 2);
+                lcd_print("You Will Back Menu In 2 Second");
+                delay_ms(2000);
+            }
+            memset(buffer, 0, 32);
+            stage = STAGE_INIT_MENU;
+        }
+    }
+    else if (stage == STAGE_LOGIN_WITH_ADMIN && logged_in != 0)
+    {
+        switch (keypad[rowloc][cl])
+        {
+        case 'C':
+            stage = STAGE_INIT_MENU;
+            break;
+        case '1':
+#asm("cli") // disable interrupts
+            lcdCommand(0x1);
+            lcd_gotoxy(1, 1);
+            lcd_print("Clearing EEPROM ...");
+            clear_eeprom();
+#asm("sei") // enable interrupts
+            break;
+        default:
+            break;
+        }
+        memset(buffer, 0, 32);
+        stage = STAGE_INIT_MENU;
     }
 }
 
@@ -684,6 +830,14 @@ void show_menu()
             lcd_gotoxy(1, 2);
             lcd_print("6: Traffic Monitoring");
             while (page_num == 2 && stage == STAGE_INIT_MENU)
+                ;
+        }
+        else if (page_num == 3)
+        {
+            lcd_print("7: Login With Admin");
+            lcd_gotoxy(1, 2);
+            lcd_print("8: Logout");
+            while (page_num == 3 && stage == STAGE_INIT_MENU)
                 ;
         }
     }
@@ -911,4 +1065,15 @@ void startSonar()
         }
         delay_ms(100);
     }
+}
+
+unsigned int simple_hash(const char *str)
+{
+    unsigned int hash = 0;
+    while (*str)
+    {
+        hash = (hash * 31) + *str; // A basic hash formula
+        str++;
+    }
+    return hash;
 }

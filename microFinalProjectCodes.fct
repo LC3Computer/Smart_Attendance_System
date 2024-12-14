@@ -1,6 +1,6 @@
-main DSTACK_USAGE:0 DSTACK_LEVEL:0 FILE:"microFinalProjectCodes.c" LINE:90
-startSonar DSTACK_USAGE:22 DSTACK_LEVEL:22 FILE:"microFinalProjectCodes.c" LINE:855
-GetPulseWidth DSTACK_USAGE:8 DSTACK_LEVEL:30 FILE:"microFinalProjectCodes.c" LINE:816
-int0_routine DSTACK_USAGE:21 DSTACK_LEVEL:51 FILE:"microFinalProjectCodes.c" LINE:250
-search_student_code DSTACK_USAGE:14 DSTACK_LEVEL:65 FILE:"microFinalProjectCodes.c" LINE:763
-memset DSTACK_USAGE:5 DSTACK_LEVEL:70 FILE:"C:\cvavr\lib\string.lib" LINE:661
+main DSTACK_USAGE:0 DSTACK_LEVEL:0 FILE:"microFinalProjectCodes.c" LINE:97
+startSonar DSTACK_USAGE:22 DSTACK_LEVEL:22 FILE:"microFinalProjectCodes.c" LINE:1009
+GetPulseWidth DSTACK_USAGE:8 DSTACK_LEVEL:30 FILE:"microFinalProjectCodes.c" LINE:970
+int0_routine DSTACK_USAGE:22 DSTACK_LEVEL:52 FILE:"microFinalProjectCodes.c" LINE:285
+search_student_code DSTACK_USAGE:14 DSTACK_LEVEL:66 FILE:"microFinalProjectCodes.c" LINE:917
+memset DSTACK_USAGE:5 DSTACK_LEVEL:71 FILE:"C:\cvavr\lib\string.lib" LINE:661
