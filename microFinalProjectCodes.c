@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <eeprom.h>
+#include <stdint.h>
 
 #define LCD_PRT PORTB // LCD DATA PORT
 #define LCD_DDR DDRB  // LCD DATA DDR
@@ -18,13 +19,19 @@
 #define BUZZER_PRT PORTD
 #define BUZZER_NUM 7
 #define MENU_PAGE_COUNT 3
+#define US_ERROR -1       // Error indicator
+#define US_NO_OBSTACLE -2 // No obstacle indicator
+#define US_PORT PORTD     // Ultrasonic sensor connected to PORTB
+#define US_PIN PIND       // Ultrasonic PIN register
+#define US_DDR DDRD       // Ultrasonic data direction register
+#define US_TRIG_POS 5   // Trigger pin connected to PD5
+#define US_ECHO_POS 6   // Echo pin connected to PD6
 
 void lcdCommand(unsigned char cmnd);
 void lcdData(unsigned char data);
 void lcd_init();
 void lcd_gotoxy(unsigned char x, unsigned char y);
 void lcd_print(char *str);
-void LCM35_init();
 void show_temperature();
 void show_menu();
 void clear_eeprom();
@@ -34,6 +41,10 @@ void USART_init(unsigned int ubrr);
 void USART_Transmit(unsigned char data);
 unsigned char search_student_code();
 void delete_student_code(unsigned char index);
+void HCSR04Init();
+void HCSR04Trigger();
+uint16_t GetPulseWidth();
+void startSonar();
 
 /* keypad mapping :
 C : Cancel
@@ -50,6 +61,7 @@ unsigned char keypad[4][4] = {'7', '8', '9', 'O',
 unsigned int stage = 0;
 char buffer[32] = "";
 unsigned char page_num = 0;
+unsigned char US_count = 0;
 
 enum stages
 {
@@ -62,6 +74,7 @@ enum stages
     STAGE_STUDENT_MANAGMENT,
     STAGE_SEARCH_STUDENT,
     STAGE_DELETE_STUDENT,
+    STAGE_TRAFFIC_MONITORING,
 };
 
 enum menu_options
@@ -85,12 +98,12 @@ void main(void)
     GICR = (1 << INT0);               // enable external interrupt 0
     BUZZER_DDR |= (1 << BUZZER_NUM);  // make buzzer pin output
     BUZZER_PRT &= ~(1 << BUZZER_NUM); // disable buzzer
-    lcd_init();
     USART_init(0x33);
-
+    HCSR04Init(); // Initialize ultrasonic sensor
+    lcd_init();
+          
 #asm("sei")           // enable interrupts
     lcdCommand(0x01); // clear LCD
-    LCM35_init();
     while (1)
     {
         if (stage == STAGE_INIT_MENU)
@@ -214,6 +227,11 @@ void main(void)
             lcdCommand(0x0c); // display on, cursor off
             delay_us(100 * 16);
         }
+        else if(stage == STAGE_TRAFFIC_MONITORING)
+        {
+            startSonar();
+            stage = STAGE_INIT_MENU;
+        }
     }
 }
 
@@ -284,6 +302,9 @@ interrupt[EXT_INT0] void int0_routine(void)
             break;
         case OPTION_STUDENT_MANAGEMENT:
             stage = STAGE_STUDENT_MANAGMENT;
+            break;
+        case OPTION_TRAFFIC_MONITORING:
+            stage = STAGE_TRAFFIC_MONITORING;
             break;
         case 9:
 #asm("cli") // disable interrupts
@@ -357,7 +378,7 @@ interrupt[EXT_INT0] void int0_routine(void)
                 BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
                 lcdCommand(0x01);
                 lcd_gotoxy(1, 1);
-                lcd_print("Incorrect Suudent Code Format");
+                lcd_print("Incorrect Student Code Format");
                 lcd_gotoxy(1, 2);
                 lcd_print("You Will Back Menu In 2 Second");
                 delay_ms(2000);
@@ -368,7 +389,7 @@ interrupt[EXT_INT0] void int0_routine(void)
                 BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
                 lcdCommand(0x01);
                 lcd_gotoxy(1, 1);
-                lcd_print("Duplicate Suudent Code Entered");
+                lcd_print("Duplicate Student Code Entered");
                 lcd_gotoxy(1, 2);
                 lcd_print("You Will Back Menu In 2 Second");
                 delay_ms(2000);
@@ -524,6 +545,11 @@ interrupt[EXT_INT0] void int0_routine(void)
             stage = STAGE_STUDENT_MANAGMENT;
         }
     }
+    else if (stage == STAGE_TRAFFIC_MONITORING)
+    {
+        if (keypad[rowloc][cl] == 'C')
+            stage = STAGE_INIT_MENU;
+    }
 }
 
 void lcdCommand(unsigned char cmnd)
@@ -587,16 +613,14 @@ void lcd_print(char *str)
     }
 }
 
-void LCM35_init()
-{
-    ADMUX = 0xE0;
-    ADCSRA = 0x87;
-}
-
 void show_temperature()
 {
     unsigned char temperatureVal = 0;
     unsigned char temperatureRep[3];
+
+    ADMUX = 0xE0;
+    ADCSRA = 0x87;
+
     lcdCommand(0x01);
     lcd_gotoxy(1, 1);
     lcd_print("temperature(C):");
@@ -616,6 +640,8 @@ void show_temperature()
         }
         delay_ms(500);
     }
+
+    ADCSRA = 0x0;    
 }
 
 void show_menu()
@@ -761,4 +787,107 @@ void delete_student_code(unsigned char index)
         }
     }
     write_byte_to_eeprom(0x0, st_counts - 1);
+}
+
+void HCSR04Init() 
+{
+    US_DDR |= (1 << US_TRIG_POS); // Trigger pin as output
+    US_DDR &= ~(1 << US_ECHO_POS); // Echo pin as input
+}
+
+void HCSR04Trigger() 
+{
+    US_PORT |= (1 << US_TRIG_POS); // Set trigger pin high
+    delay_us(15);                  // Wait for 15 microseconds
+    US_PORT &= ~(1 << US_TRIG_POS); // Set trigger pin low
+}
+
+uint16_t GetPulseWidth() 
+{
+    uint32_t i, result;
+
+    // Wait for rising edge on Echo pin
+    for (i = 0; i < 600000; i++) {
+        if (!(US_PIN & (1 << US_ECHO_POS)))
+            continue;
+        else
+            break;
+    }
+
+    if (i == 600000)
+        return US_ERROR; // Timeout error if no rising edge detected
+
+    // Start timer with prescaler 8
+    TCCR1A = 0x00;
+    TCCR1B = (1 << CS11) | (1 << CS10);
+    TCNT1 = 0x00; // Reset timer
+
+    // Wait for falling edge on Echo pin
+    for (i = 0; i < 600000; i++) {
+        if (!(US_PIN & (1 << US_ECHO_POS)))
+            break;  // Falling edge detected
+        if (TCNT1 > 60000)
+            return US_NO_OBSTACLE; // No obstacle in range
+    }
+
+    result = TCNT1; // Capture timer value
+    TCCR1B = 0x00; // Stop timer
+
+    if (result > 60000)
+        return US_NO_OBSTACLE;
+    else
+        return (result >> 1); // Return the measured pulse width
+}
+
+void startSonar()
+{
+    char numberString[16];
+    uint16_t pulseWidth;    // Pulse width from echo
+    int distance, previous_distance = -1; 
+    static int previous_count = -1;
+
+    lcdCommand(0x01);
+    lcd_gotoxy(1, 1);
+    lcd_print("Distance: ");
+
+    while(stage == STAGE_TRAFFIC_MONITORING){
+        HCSR04Trigger();              // Send trigger pulse
+        pulseWidth = GetPulseWidth();  // Measure echo pulse
+
+        if (pulseWidth == US_ERROR) {
+            lcdCommand(0x01);
+            lcd_gotoxy(1, 1);
+            lcd_print("Error");        // Display error message
+        } else if (pulseWidth == US_NO_OBSTACLE) {
+            lcdCommand(0x01);
+            lcd_gotoxy(1, 1);
+            lcd_print("No Obstacle");  // Display no obstacle message
+        } else {
+            distance = (int)((pulseWidth * 0.034 / 2) + 0.5);
+
+            if(distance != previous_distance){
+                previous_distance = distance;
+                // Display distance on LCD
+                itoa(distance, numberString); // Convert distance to string
+                lcd_gotoxy(11,1);
+                lcd_print(numberString); 
+                lcd_print(" cm ");
+            }
+            // Counting logic based on distance
+            if (distance < 6) {
+                US_count++;  // Increment count if distance is below threshold
+            }
+
+        
+            // Update count on LCD only if it changes
+            if (US_count != previous_count) {
+                previous_count = US_count;
+                lcd_gotoxy(1, 2); // Move to second line
+                itoa(US_count, numberString);
+                lcd_print("Count: ");
+                lcd_print(numberString);
+            }
+        }
+        delay_ms(100);
+    }
 }
