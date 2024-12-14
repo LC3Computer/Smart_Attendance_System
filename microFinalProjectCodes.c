@@ -24,8 +24,8 @@
 #define US_PORT PORTD     // Ultrasonic sensor connected to PORTB
 #define US_PIN PIND       // Ultrasonic PIN register
 #define US_DDR DDRD       // Ultrasonic data direction register
-#define US_TRIG_POS 5   // Trigger pin connected to PD5
-#define US_ECHO_POS 6   // Echo pin connected to PD6
+#define US_TRIG_POS 5     // Trigger pin connected to PD5
+#define US_ECHO_POS 6     // Echo pin connected to PD6
 
 void lcdCommand(unsigned char cmnd);
 void lcdData(unsigned char data);
@@ -101,7 +101,7 @@ void main(void)
     USART_init(0x33);
     HCSR04Init(); // Initialize ultrasonic sensor
     lcd_init();
-          
+
 #asm("sei")           // enable interrupts
     lcdCommand(0x01); // clear LCD
     while (1)
@@ -181,10 +181,21 @@ void main(void)
                 {
                     USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 8)));
                 }
+
                 USART_Transmit('\r');
                 USART_Transmit('\r');
+
                 delay_ms(500);
             }
+            for (j = 0; j < 8; j++)
+            {
+                USART_Transmit('=');
+            }
+
+            USART_Transmit('\r');
+            USART_Transmit('\r');
+            delay_ms(500);
+
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
             lcd_print("Usart Transmit Finished");
@@ -227,7 +238,7 @@ void main(void)
             lcdCommand(0x0c); // display on, cursor off
             delay_us(100 * 16);
         }
-        else if(stage == STAGE_TRAFFIC_MONITORING)
+        else if (stage == STAGE_TRAFFIC_MONITORING)
         {
             startSonar();
             stage = STAGE_INIT_MENU;
@@ -641,7 +652,7 @@ void show_temperature()
         delay_ms(500);
     }
 
-    ADCSRA = 0x0;    
+    ADCSRA = 0x0;
 }
 
 void show_menu()
@@ -764,7 +775,7 @@ unsigned char search_student_code()
             temp[j] = read_byte_from_eeprom(j + ((i + 1) * 8));
         }
         temp[j] = '\0';
-        if (strncmp(temp, buffer , 8) == 0)
+        if (strncmp(temp, buffer, 8) == 0)
             return (i + 1);
     }
 
@@ -789,25 +800,26 @@ void delete_student_code(unsigned char index)
     write_byte_to_eeprom(0x0, st_counts - 1);
 }
 
-void HCSR04Init() 
+void HCSR04Init()
 {
-    US_DDR |= (1 << US_TRIG_POS); // Trigger pin as output
+    US_DDR |= (1 << US_TRIG_POS);  // Trigger pin as output
     US_DDR &= ~(1 << US_ECHO_POS); // Echo pin as input
 }
 
-void HCSR04Trigger() 
+void HCSR04Trigger()
 {
-    US_PORT |= (1 << US_TRIG_POS); // Set trigger pin high
-    delay_us(15);                  // Wait for 15 microseconds
+    US_PORT |= (1 << US_TRIG_POS);  // Set trigger pin high
+    delay_us(15);                   // Wait for 15 microseconds
     US_PORT &= ~(1 << US_TRIG_POS); // Set trigger pin low
 }
 
-uint16_t GetPulseWidth() 
+uint16_t GetPulseWidth()
 {
     uint32_t i, result;
 
     // Wait for rising edge on Echo pin
-    for (i = 0; i < 600000; i++) {
+    for (i = 0; i < 600000; i++)
+    {
         if (!(US_PIN & (1 << US_ECHO_POS)))
             continue;
         else
@@ -823,15 +835,16 @@ uint16_t GetPulseWidth()
     TCNT1 = 0x00; // Reset timer
 
     // Wait for falling edge on Echo pin
-    for (i = 0; i < 600000; i++) {
+    for (i = 0; i < 600000; i++)
+    {
         if (!(US_PIN & (1 << US_ECHO_POS)))
-            break;  // Falling edge detected
+            break; // Falling edge detected
         if (TCNT1 > 60000)
             return US_NO_OBSTACLE; // No obstacle in range
     }
 
     result = TCNT1; // Capture timer value
-    TCCR1B = 0x00; // Stop timer
+    TCCR1B = 0x00;  // Stop timer
 
     if (result > 60000)
         return US_NO_OBSTACLE;
@@ -842,45 +855,53 @@ uint16_t GetPulseWidth()
 void startSonar()
 {
     char numberString[16];
-    uint16_t pulseWidth;    // Pulse width from echo
-    int distance, previous_distance = -1; 
+    uint16_t pulseWidth; // Pulse width from echo
+    int distance, previous_distance = -1;
     static int previous_count = -1;
 
     lcdCommand(0x01);
     lcd_gotoxy(1, 1);
     lcd_print("Distance: ");
 
-    while(stage == STAGE_TRAFFIC_MONITORING){
+    while (stage == STAGE_TRAFFIC_MONITORING)
+    {
         HCSR04Trigger();              // Send trigger pulse
-        pulseWidth = GetPulseWidth();  // Measure echo pulse
+        pulseWidth = GetPulseWidth(); // Measure echo pulse
 
-        if (pulseWidth == US_ERROR) {
+        if (pulseWidth == US_ERROR)
+        {
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
-            lcd_print("Error");        // Display error message
-        } else if (pulseWidth == US_NO_OBSTACLE) {
+            lcd_print("Error"); // Display error message
+        }
+        else if (pulseWidth == US_NO_OBSTACLE)
+        {
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
-            lcd_print("No Obstacle");  // Display no obstacle message
-        } else {
+            lcd_print("No Obstacle"); // Display no obstacle message
+        }
+        else
+        {
             distance = (int)((pulseWidth * 0.034 / 2) + 0.5);
 
-            if(distance != previous_distance){
+            if (distance != previous_distance)
+            {
                 previous_distance = distance;
                 // Display distance on LCD
                 itoa(distance, numberString); // Convert distance to string
-                lcd_gotoxy(11,1);
-                lcd_print(numberString); 
+                lcd_gotoxy(11, 1);
+                lcd_print(numberString);
                 lcd_print(" cm ");
             }
             // Counting logic based on distance
-            if (distance < 6) {
-                US_count++;  // Increment count if distance is below threshold
+            if (distance < 6)
+            {
+                US_count++; // Increment count if distance is below threshold
             }
 
-        
             // Update count on LCD only if it changes
-            if (US_count != previous_count) {
+            if (US_count != previous_count)
+            {
                 previous_count = US_count;
                 lcd_gotoxy(1, 2); // Move to second line
                 itoa(US_count, numberString);

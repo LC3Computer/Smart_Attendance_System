@@ -48,8 +48,8 @@
 ;#define US_PORT PORTD     // Ultrasonic sensor connected to PORTB
 ;#define US_PIN PIND       // Ultrasonic PIN register
 ;#define US_DDR DDRD       // Ultrasonic data direction register
-;#define US_TRIG_POS 5   // Trigger pin connected to PD5
-;#define US_ECHO_POS 6   // Echo pin connected to PD6
+;#define US_TRIG_POS 5     // Trigger pin connected to PD5
+;#define US_ECHO_POS 6     // Echo pin connected to PD6
 ;
 ;void lcdCommand(unsigned char cmnd);
 ;void lcdData(unsigned char data);
@@ -471,191 +471,224 @@
 ;PCODE: $0000010C VOL: 0
 ;PCODE: $0000010D VOL: 0
 ;PCODE: $0000010E VOL: 0
-; 0000 00B8                 USART_Transmit('\r');
+; 0000 00B8 
+; 0000 00B9                 USART_Transmit('\r');
 ;PCODE: $0000010F VOL: 0
 ;PCODE: $00000110 VOL: 0
-; 0000 00B9                 USART_Transmit('\r');
+; 0000 00BA                 USART_Transmit('\r');
 ;PCODE: $00000111 VOL: 0
 ;PCODE: $00000112 VOL: 0
-; 0000 00BA                 delay_ms(500);
+; 0000 00BB 
+; 0000 00BC                 delay_ms(500);
 ;PCODE: $00000113 VOL: 0
 ;PCODE: $00000114 VOL: 0
-; 0000 00BB             }
+; 0000 00BD             }
 ;PCODE: $00000115 VOL: 0
 ;PCODE: $00000116 VOL: 0
 ;PCODE: $00000117 VOL: 0
 ;PCODE: $00000118 VOL: 0
 ;PCODE: $00000119 VOL: 0
-; 0000 00BC             lcdCommand(0x01);
+; 0000 00BE             for (j = 0; j < 8; j++)
 ;PCODE: $0000011A VOL: 0
 ;PCODE: $0000011B VOL: 0
-; 0000 00BD             lcd_gotoxy(1, 1);
 ;PCODE: $0000011C VOL: 0
 ;PCODE: $0000011D VOL: 0
 ;PCODE: $0000011E VOL: 0
 ;PCODE: $0000011F VOL: 0
-; 0000 00BE             lcd_print("Usart Transmit Finished");
 ;PCODE: $00000120 VOL: 0
 ;PCODE: $00000121 VOL: 0
 ;PCODE: $00000122 VOL: 0
-; 0000 00BF             delay_ms(2000);
+; 0000 00BF             {
+; 0000 00C0                 USART_Transmit('=');
 ;PCODE: $00000123 VOL: 0
 ;PCODE: $00000124 VOL: 0
-; 0000 00C0             stage = STAGE_INIT_MENU;
+; 0000 00C1             }
 ;PCODE: $00000125 VOL: 0
-; 0000 00C1         }
-; 0000 00C2         else if (stage == STAGE_STUDENT_MANAGMENT)
 ;PCODE: $00000126 VOL: 0
 ;PCODE: $00000127 VOL: 0
 ;PCODE: $00000128 VOL: 0
 ;PCODE: $00000129 VOL: 0
+; 0000 00C2 
+; 0000 00C3             USART_Transmit('\r');
 ;PCODE: $0000012A VOL: 0
-; 0000 00C3         {
-; 0000 00C4             lcdCommand(0x01);
 ;PCODE: $0000012B VOL: 0
+; 0000 00C4             USART_Transmit('\r');
 ;PCODE: $0000012C VOL: 0
-; 0000 00C5             lcd_gotoxy(1, 1);
 ;PCODE: $0000012D VOL: 0
+; 0000 00C5             delay_ms(500);
 ;PCODE: $0000012E VOL: 0
 ;PCODE: $0000012F VOL: 0
+; 0000 00C6 
+; 0000 00C7             lcdCommand(0x01);
 ;PCODE: $00000130 VOL: 0
-; 0000 00C6             lcd_print("1: Search Student");
 ;PCODE: $00000131 VOL: 0
+; 0000 00C8             lcd_gotoxy(1, 1);
 ;PCODE: $00000132 VOL: 0
 ;PCODE: $00000133 VOL: 0
-; 0000 00C7             lcd_gotoxy(1, 2);
 ;PCODE: $00000134 VOL: 0
 ;PCODE: $00000135 VOL: 0
+; 0000 00C9             lcd_print("Usart Transmit Finished");
 ;PCODE: $00000136 VOL: 0
 ;PCODE: $00000137 VOL: 0
-; 0000 00C8             lcd_print("2: Delete Student");
 ;PCODE: $00000138 VOL: 0
+; 0000 00CA             delay_ms(2000);
 ;PCODE: $00000139 VOL: 0
 ;PCODE: $0000013A VOL: 0
-; 0000 00C9             while (stage == STAGE_STUDENT_MANAGMENT)
+; 0000 00CB             stage = STAGE_INIT_MENU;
 ;PCODE: $0000013B VOL: 0
+; 0000 00CC         }
+; 0000 00CD         else if (stage == STAGE_STUDENT_MANAGMENT)
 ;PCODE: $0000013C VOL: 0
 ;PCODE: $0000013D VOL: 0
 ;PCODE: $0000013E VOL: 0
-; 0000 00CA                 ;
 ;PCODE: $0000013F VOL: 0
 ;PCODE: $00000140 VOL: 0
-; 0000 00CB         }
-; 0000 00CC         else if (stage == STAGE_SEARCH_STUDENT)
+; 0000 00CE         {
+; 0000 00CF             lcdCommand(0x01);
 ;PCODE: $00000141 VOL: 0
 ;PCODE: $00000142 VOL: 0
+; 0000 00D0             lcd_gotoxy(1, 1);
 ;PCODE: $00000143 VOL: 0
 ;PCODE: $00000144 VOL: 0
 ;PCODE: $00000145 VOL: 0
-; 0000 00CD         {
-; 0000 00CE             lcdCommand(0x01);
 ;PCODE: $00000146 VOL: 0
+; 0000 00D1             lcd_print("1: Search Student");
 ;PCODE: $00000147 VOL: 0
-; 0000 00CF             lcd_gotoxy(1, 1);
 ;PCODE: $00000148 VOL: 0
 ;PCODE: $00000149 VOL: 0
+; 0000 00D2             lcd_gotoxy(1, 2);
 ;PCODE: $0000014A VOL: 0
 ;PCODE: $0000014B VOL: 0
-; 0000 00D0             lcd_print("Enter Student Code For Search:");
 ;PCODE: $0000014C VOL: 0
 ;PCODE: $0000014D VOL: 0
+; 0000 00D3             lcd_print("2: Delete Student");
 ;PCODE: $0000014E VOL: 0
-; 0000 00D1             lcd_gotoxy(1, 2);
 ;PCODE: $0000014F VOL: 0
 ;PCODE: $00000150 VOL: 0
+; 0000 00D4             while (stage == STAGE_STUDENT_MANAGMENT)
 ;PCODE: $00000151 VOL: 0
 ;PCODE: $00000152 VOL: 0
-; 0000 00D2             lcdCommand(0x0f);   // display on, cursor blinking
 ;PCODE: $00000153 VOL: 0
 ;PCODE: $00000154 VOL: 0
-; 0000 00D3             delay_us(100 * 16); // wait
+; 0000 00D5                 ;
 ;PCODE: $00000155 VOL: 0
-; 0000 00D4             while (stage == STAGE_SEARCH_STUDENT)
 ;PCODE: $00000156 VOL: 0
+; 0000 00D6         }
+; 0000 00D7         else if (stage == STAGE_SEARCH_STUDENT)
 ;PCODE: $00000157 VOL: 0
 ;PCODE: $00000158 VOL: 0
 ;PCODE: $00000159 VOL: 0
-; 0000 00D5                 ;
 ;PCODE: $0000015A VOL: 0
 ;PCODE: $0000015B VOL: 0
-; 0000 00D6             lcdCommand(0x0c);   // display on, cursor off
+; 0000 00D8         {
+; 0000 00D9             lcdCommand(0x01);
 ;PCODE: $0000015C VOL: 0
 ;PCODE: $0000015D VOL: 0
-; 0000 00D7             delay_us(100 * 16); // wait
+; 0000 00DA             lcd_gotoxy(1, 1);
 ;PCODE: $0000015E VOL: 0
-; 0000 00D8         }
-; 0000 00D9         else if (stage == STAGE_DELETE_STUDENT)
 ;PCODE: $0000015F VOL: 0
 ;PCODE: $00000160 VOL: 0
 ;PCODE: $00000161 VOL: 0
+; 0000 00DB             lcd_print("Enter Student Code For Search:");
 ;PCODE: $00000162 VOL: 0
 ;PCODE: $00000163 VOL: 0
-; 0000 00DA         {
-; 0000 00DB             lcdCommand(0x01);
 ;PCODE: $00000164 VOL: 0
+; 0000 00DC             lcd_gotoxy(1, 2);
 ;PCODE: $00000165 VOL: 0
-; 0000 00DC             lcd_gotoxy(1, 1);
 ;PCODE: $00000166 VOL: 0
 ;PCODE: $00000167 VOL: 0
 ;PCODE: $00000168 VOL: 0
+; 0000 00DD             lcdCommand(0x0f);   // display on, cursor blinking
 ;PCODE: $00000169 VOL: 0
-; 0000 00DD             lcd_print("Enter Student Code For Delete:");
 ;PCODE: $0000016A VOL: 0
+; 0000 00DE             delay_us(100 * 16); // wait
 ;PCODE: $0000016B VOL: 0
+; 0000 00DF             while (stage == STAGE_SEARCH_STUDENT)
 ;PCODE: $0000016C VOL: 0
-; 0000 00DE             lcd_gotoxy(1, 2);
 ;PCODE: $0000016D VOL: 0
 ;PCODE: $0000016E VOL: 0
 ;PCODE: $0000016F VOL: 0
+; 0000 00E0                 ;
 ;PCODE: $00000170 VOL: 0
-; 0000 00DF             lcdCommand(0x0f);   // display on, cursor blinking
 ;PCODE: $00000171 VOL: 0
+; 0000 00E1             lcdCommand(0x0c);   // display on, cursor off
 ;PCODE: $00000172 VOL: 0
-; 0000 00E0             delay_us(100 * 16); // wait
 ;PCODE: $00000173 VOL: 0
-; 0000 00E1             while (stage == STAGE_DELETE_STUDENT)
+; 0000 00E2             delay_us(100 * 16); // wait
 ;PCODE: $00000174 VOL: 0
+; 0000 00E3         }
+; 0000 00E4         else if (stage == STAGE_DELETE_STUDENT)
 ;PCODE: $00000175 VOL: 0
 ;PCODE: $00000176 VOL: 0
 ;PCODE: $00000177 VOL: 0
-; 0000 00E2                 ;
 ;PCODE: $00000178 VOL: 0
 ;PCODE: $00000179 VOL: 0
-; 0000 00E3             lcdCommand(0x0c); // display on, cursor off
+; 0000 00E5         {
+; 0000 00E6             lcdCommand(0x01);
 ;PCODE: $0000017A VOL: 0
 ;PCODE: $0000017B VOL: 0
-; 0000 00E4             delay_us(100 * 16);
+; 0000 00E7             lcd_gotoxy(1, 1);
 ;PCODE: $0000017C VOL: 0
-; 0000 00E5         }
-; 0000 00E6         else if(stage == STAGE_TRAFFIC_MONITORING)
 ;PCODE: $0000017D VOL: 0
 ;PCODE: $0000017E VOL: 0
 ;PCODE: $0000017F VOL: 0
+; 0000 00E8             lcd_print("Enter Student Code For Delete:");
 ;PCODE: $00000180 VOL: 0
 ;PCODE: $00000181 VOL: 0
-; 0000 00E7         {
-; 0000 00E8             startSonar();
 ;PCODE: $00000182 VOL: 0
-; 0000 00E9             stage = STAGE_INIT_MENU;
+; 0000 00E9             lcd_gotoxy(1, 2);
 ;PCODE: $00000183 VOL: 0
-; 0000 00EA         }
-; 0000 00EB     }
 ;PCODE: $00000184 VOL: 0
 ;PCODE: $00000185 VOL: 0
 ;PCODE: $00000186 VOL: 0
+; 0000 00EA             lcdCommand(0x0f);   // display on, cursor blinking
 ;PCODE: $00000187 VOL: 0
 ;PCODE: $00000188 VOL: 0
+; 0000 00EB             delay_us(100 * 16); // wait
 ;PCODE: $00000189 VOL: 0
+; 0000 00EC             while (stage == STAGE_DELETE_STUDENT)
 ;PCODE: $0000018A VOL: 0
 ;PCODE: $0000018B VOL: 0
 ;PCODE: $0000018C VOL: 0
 ;PCODE: $0000018D VOL: 0
+; 0000 00ED                 ;
 ;PCODE: $0000018E VOL: 0
 ;PCODE: $0000018F VOL: 0
-; 0000 00EC }
+; 0000 00EE             lcdCommand(0x0c); // display on, cursor off
 ;PCODE: $00000190 VOL: 0
 ;PCODE: $00000191 VOL: 0
+; 0000 00EF             delay_us(100 * 16);
 ;PCODE: $00000192 VOL: 0
+; 0000 00F0         }
+; 0000 00F1         else if (stage == STAGE_TRAFFIC_MONITORING)
+;PCODE: $00000193 VOL: 0
+;PCODE: $00000194 VOL: 0
+;PCODE: $00000195 VOL: 0
+;PCODE: $00000196 VOL: 0
+;PCODE: $00000197 VOL: 0
+; 0000 00F2         {
+; 0000 00F3             startSonar();
+;PCODE: $00000198 VOL: 0
+; 0000 00F4             stage = STAGE_INIT_MENU;
+;PCODE: $00000199 VOL: 0
+; 0000 00F5         }
+; 0000 00F6     }
+;PCODE: $0000019A VOL: 0
+;PCODE: $0000019B VOL: 0
+;PCODE: $0000019C VOL: 0
+;PCODE: $0000019D VOL: 0
+;PCODE: $0000019E VOL: 0
+;PCODE: $0000019F VOL: 0
+;PCODE: $000001A0 VOL: 0
+;PCODE: $000001A1 VOL: 0
+;PCODE: $000001A2 VOL: 0
+;PCODE: $000001A3 VOL: 0
+;PCODE: $000001A4 VOL: 0
+;PCODE: $000001A5 VOL: 0
+; 0000 00F7 }
+;PCODE: $000001A6 VOL: 0
+;PCODE: $000001A7 VOL: 0
+;PCODE: $000001A8 VOL: 0
 
 	.DSEG
 _0xA:
@@ -663,272 +696,246 @@ _0xA:
 ;
 ;// int0 (keypad) service routine
 ;interrupt[EXT_INT0] void int0_routine(void)
-; 0000 00F0 {
+; 0000 00FB {
 
 	.CSEG
-;PCODE: $00000193 VOL: 0
-;PCODE: $00000194 VOL: 0
-; 0000 00F1     unsigned char colloc, rowloc, cl, st_counts, buffer_len;
-; 0000 00F2     int i;
-; 0000 00F3 
-; 0000 00F4     // detect the key
-; 0000 00F5     while (1)
-;PCODE: $00000195 VOL: 0
-;PCODE: $00000196 VOL: 0
+;PCODE: $000001A9 VOL: 0
+;PCODE: $000001AA VOL: 0
+; 0000 00FC     unsigned char colloc, rowloc, cl, st_counts, buffer_len;
+; 0000 00FD     int i;
+; 0000 00FE 
+; 0000 00FF     // detect the key
+; 0000 0100     while (1)
+;PCODE: $000001AB VOL: 0
+;PCODE: $000001AC VOL: 0
 ;	colloc -> R17
 ;	rowloc -> R16
 ;	cl -> R19
 ;	st_counts -> R18
 ;	buffer_len -> R21
 ;	i -> Y+6
-;PCODE: $00000197 VOL: 0
-; 0000 00F6     {
-; 0000 00F7         KEY_PRT = 0xEF;            // ground row 0
-;PCODE: $00000198 VOL: 0
-;PCODE: $00000199 VOL: 0
-; 0000 00F8         colloc = (KEY_PIN & 0x0F); // read the columns
-;PCODE: $0000019A VOL: 0
-;PCODE: $0000019B VOL: 0
-;PCODE: $0000019C VOL: 0
-; 0000 00F9         if (colloc != 0x0F)        // column detected
-;PCODE: $0000019D VOL: 0
-;PCODE: $0000019E VOL: 0
-;PCODE: $0000019F VOL: 0
-; 0000 00FA         {
-; 0000 00FB             rowloc = 0; // save row location
-;PCODE: $000001A0 VOL: 0
-;PCODE: $000001A1 VOL: 0
-; 0000 00FC             break;      // exit while loop
-;PCODE: $000001A2 VOL: 0
-; 0000 00FD         }
-; 0000 00FE         KEY_PRT = 0xDF;            // ground row 1
-;PCODE: $000001A3 VOL: 0
-;PCODE: $000001A4 VOL: 0
-;PCODE: $000001A5 VOL: 0
-; 0000 00FF         colloc = (KEY_PIN & 0x0F); // read the columns
-;PCODE: $000001A6 VOL: 0
-;PCODE: $000001A7 VOL: 0
-;PCODE: $000001A8 VOL: 0
-; 0000 0100         if (colloc != 0x0F)        // column detected
-;PCODE: $000001A9 VOL: 0
-;PCODE: $000001AA VOL: 0
-;PCODE: $000001AB VOL: 0
-; 0000 0101         {
-; 0000 0102             rowloc = 1; // save row location
-;PCODE: $000001AC VOL: 0
 ;PCODE: $000001AD VOL: 0
-; 0000 0103             break;      // exit while loop
+; 0000 0101     {
+; 0000 0102         KEY_PRT = 0xEF;            // ground row 0
 ;PCODE: $000001AE VOL: 0
-; 0000 0104         }
-; 0000 0105         KEY_PRT = 0xBF;            // ground row 2
 ;PCODE: $000001AF VOL: 0
+; 0000 0103         colloc = (KEY_PIN & 0x0F); // read the columns
 ;PCODE: $000001B0 VOL: 0
 ;PCODE: $000001B1 VOL: 0
-; 0000 0106         colloc = (KEY_PIN & 0x0F); // read the columns
 ;PCODE: $000001B2 VOL: 0
+; 0000 0104         if (colloc != 0x0F)        // column detected
 ;PCODE: $000001B3 VOL: 0
 ;PCODE: $000001B4 VOL: 0
-; 0000 0107         if (colloc != 0x0F)        // column detected
 ;PCODE: $000001B5 VOL: 0
+; 0000 0105         {
+; 0000 0106             rowloc = 0; // save row location
 ;PCODE: $000001B6 VOL: 0
 ;PCODE: $000001B7 VOL: 0
-; 0000 0108         {
-; 0000 0109             rowloc = 2; // save row location
+; 0000 0107             break;      // exit while loop
 ;PCODE: $000001B8 VOL: 0
+; 0000 0108         }
+; 0000 0109         KEY_PRT = 0xDF;            // ground row 1
 ;PCODE: $000001B9 VOL: 0
-; 0000 010A             break;      // exit while loop
 ;PCODE: $000001BA VOL: 0
-; 0000 010B         }
-; 0000 010C         KEY_PRT = 0x7F;            // ground row 3
 ;PCODE: $000001BB VOL: 0
+; 0000 010A         colloc = (KEY_PIN & 0x0F); // read the columns
 ;PCODE: $000001BC VOL: 0
 ;PCODE: $000001BD VOL: 0
-; 0000 010D         colloc = (KEY_PIN & 0x0F); // read the columns
 ;PCODE: $000001BE VOL: 0
+; 0000 010B         if (colloc != 0x0F)        // column detected
 ;PCODE: $000001BF VOL: 0
 ;PCODE: $000001C0 VOL: 0
-; 0000 010E         rowloc = 3;                // save row location
 ;PCODE: $000001C1 VOL: 0
+; 0000 010C         {
+; 0000 010D             rowloc = 1; // save row location
 ;PCODE: $000001C2 VOL: 0
-; 0000 010F         break;                     // exit while loop
 ;PCODE: $000001C3 VOL: 0
-; 0000 0110     }
+; 0000 010E             break;      // exit while loop
 ;PCODE: $000001C4 VOL: 0
+; 0000 010F         }
+; 0000 0110         KEY_PRT = 0xBF;            // ground row 2
 ;PCODE: $000001C5 VOL: 0
-; 0000 0111     // check column and send result to Port D
-; 0000 0112     if (colloc == 0x0E)
 ;PCODE: $000001C6 VOL: 0
 ;PCODE: $000001C7 VOL: 0
+; 0000 0111         colloc = (KEY_PIN & 0x0F); // read the columns
 ;PCODE: $000001C8 VOL: 0
-; 0000 0113         cl = 0;
 ;PCODE: $000001C9 VOL: 0
 ;PCODE: $000001CA VOL: 0
-; 0000 0114     else if (colloc == 0x0D)
+; 0000 0112         if (colloc != 0x0F)        // column detected
 ;PCODE: $000001CB VOL: 0
 ;PCODE: $000001CC VOL: 0
 ;PCODE: $000001CD VOL: 0
+; 0000 0113         {
+; 0000 0114             rowloc = 2; // save row location
 ;PCODE: $000001CE VOL: 0
 ;PCODE: $000001CF VOL: 0
-; 0000 0115         cl = 1;
+; 0000 0115             break;      // exit while loop
 ;PCODE: $000001D0 VOL: 0
+; 0000 0116         }
+; 0000 0117         KEY_PRT = 0x7F;            // ground row 3
 ;PCODE: $000001D1 VOL: 0
-; 0000 0116     else if (colloc == 0x0B)
 ;PCODE: $000001D2 VOL: 0
 ;PCODE: $000001D3 VOL: 0
+; 0000 0118         colloc = (KEY_PIN & 0x0F); // read the columns
 ;PCODE: $000001D4 VOL: 0
 ;PCODE: $000001D5 VOL: 0
 ;PCODE: $000001D6 VOL: 0
-; 0000 0117         cl = 2;
+; 0000 0119         rowloc = 3;                // save row location
 ;PCODE: $000001D7 VOL: 0
 ;PCODE: $000001D8 VOL: 0
-; 0000 0118     else
+; 0000 011A         break;                     // exit while loop
 ;PCODE: $000001D9 VOL: 0
+; 0000 011B     }
 ;PCODE: $000001DA VOL: 0
-; 0000 0119         cl = 3;
 ;PCODE: $000001DB VOL: 0
+; 0000 011C     // check column and send result to Port D
+; 0000 011D     if (colloc == 0x0E)
 ;PCODE: $000001DC VOL: 0
-; 0000 011A 
-; 0000 011B     KEY_PRT &= 0x0F; // ground all rows at once
 ;PCODE: $000001DD VOL: 0
 ;PCODE: $000001DE VOL: 0
+; 0000 011E         cl = 0;
 ;PCODE: $000001DF VOL: 0
 ;PCODE: $000001E0 VOL: 0
+; 0000 011F     else if (colloc == 0x0D)
 ;PCODE: $000001E1 VOL: 0
 ;PCODE: $000001E2 VOL: 0
-; 0000 011C 
-; 0000 011D     // inside menu level 1
-; 0000 011E     if (stage == STAGE_INIT_MENU)
 ;PCODE: $000001E3 VOL: 0
 ;PCODE: $000001E4 VOL: 0
-; 0000 011F     {
-; 0000 0120         switch (keypad[rowloc][cl] - '0')
 ;PCODE: $000001E5 VOL: 0
+; 0000 0120         cl = 1;
 ;PCODE: $000001E6 VOL: 0
 ;PCODE: $000001E7 VOL: 0
+; 0000 0121     else if (colloc == 0x0B)
 ;PCODE: $000001E8 VOL: 0
 ;PCODE: $000001E9 VOL: 0
 ;PCODE: $000001EA VOL: 0
 ;PCODE: $000001EB VOL: 0
 ;PCODE: $000001EC VOL: 0
+; 0000 0122         cl = 2;
 ;PCODE: $000001ED VOL: 0
-; 0000 0121         {
-; 0000 0122         case OPTION_ATTENDENCE:
 ;PCODE: $000001EE VOL: 0
+; 0000 0123     else
 ;PCODE: $000001EF VOL: 0
-; 0000 0123             stage = STAGE_ATTENDENC_MENU;
 ;PCODE: $000001F0 VOL: 0
+; 0000 0124         cl = 3;
 ;PCODE: $000001F1 VOL: 0
-; 0000 0124             break;
 ;PCODE: $000001F2 VOL: 0
 ; 0000 0125 
-; 0000 0126         case OPTION_TEMPERATURE_MONITORING:
+; 0000 0126     KEY_PRT &= 0x0F; // ground all rows at once
 ;PCODE: $000001F3 VOL: 0
 ;PCODE: $000001F4 VOL: 0
 ;PCODE: $000001F5 VOL: 0
-; 0000 0127             stage = STAGE_TEMPERATURE_MONITORING;
 ;PCODE: $000001F6 VOL: 0
 ;PCODE: $000001F7 VOL: 0
-; 0000 0128             break;
 ;PCODE: $000001F8 VOL: 0
-; 0000 0129         case OPTION_VIEW_PRESENT_STUDENTS:
+; 0000 0127 
+; 0000 0128     // inside menu level 1
+; 0000 0129     if (stage == STAGE_INIT_MENU)
 ;PCODE: $000001F9 VOL: 0
 ;PCODE: $000001FA VOL: 0
+; 0000 012A     {
+; 0000 012B         switch (keypad[rowloc][cl] - '0')
 ;PCODE: $000001FB VOL: 0
-; 0000 012A             stage = STAGE_VIEW_PRESENT_STUDENTS;
 ;PCODE: $000001FC VOL: 0
 ;PCODE: $000001FD VOL: 0
-; 0000 012B             break;
 ;PCODE: $000001FE VOL: 0
-; 0000 012C         case OPTION_RETRIEVE_STUDENT_DATA:
 ;PCODE: $000001FF VOL: 0
 ;PCODE: $00000200 VOL: 0
 ;PCODE: $00000201 VOL: 0
-; 0000 012D             stage = STAGE_RETRIEVE_STUDENT_DATA;
 ;PCODE: $00000202 VOL: 0
 ;PCODE: $00000203 VOL: 0
-; 0000 012E             break;
+; 0000 012C         {
+; 0000 012D         case OPTION_ATTENDENCE:
 ;PCODE: $00000204 VOL: 0
-; 0000 012F         case OPTION_STUDENT_MANAGEMENT:
 ;PCODE: $00000205 VOL: 0
+; 0000 012E             stage = STAGE_ATTENDENC_MENU;
 ;PCODE: $00000206 VOL: 0
 ;PCODE: $00000207 VOL: 0
-; 0000 0130             stage = STAGE_STUDENT_MANAGMENT;
+; 0000 012F             break;
 ;PCODE: $00000208 VOL: 0
+; 0000 0130 
+; 0000 0131         case OPTION_TEMPERATURE_MONITORING:
 ;PCODE: $00000209 VOL: 0
-; 0000 0131             break;
 ;PCODE: $0000020A VOL: 0
-; 0000 0132         case OPTION_TRAFFIC_MONITORING:
 ;PCODE: $0000020B VOL: 0
+; 0000 0132             stage = STAGE_TEMPERATURE_MONITORING;
 ;PCODE: $0000020C VOL: 0
 ;PCODE: $0000020D VOL: 0
-; 0000 0133             stage = STAGE_TRAFFIC_MONITORING;
+; 0000 0133             break;
 ;PCODE: $0000020E VOL: 0
+; 0000 0134         case OPTION_VIEW_PRESENT_STUDENTS:
 ;PCODE: $0000020F VOL: 0
-; 0000 0134             break;
 ;PCODE: $00000210 VOL: 0
-; 0000 0135         case 9:
 ;PCODE: $00000211 VOL: 0
+; 0000 0135             stage = STAGE_VIEW_PRESENT_STUDENTS;
 ;PCODE: $00000212 VOL: 0
 ;PCODE: $00000213 VOL: 0
-; 0000 0136 #asm("cli") // disable interrupts
+; 0000 0136             break;
 ;PCODE: $00000214 VOL: 0
-	cli
+; 0000 0137         case OPTION_RETRIEVE_STUDENT_DATA:
 ;PCODE: $00000215 VOL: 0
-; 0000 0137 
-; 0000 0138             lcdCommand(0x1);
 ;PCODE: $00000216 VOL: 0
 ;PCODE: $00000217 VOL: 0
-; 0000 0139             lcd_gotoxy(1, 1);
+; 0000 0138             stage = STAGE_RETRIEVE_STUDENT_DATA;
 ;PCODE: $00000218 VOL: 0
 ;PCODE: $00000219 VOL: 0
+; 0000 0139             break;
 ;PCODE: $0000021A VOL: 0
+; 0000 013A         case OPTION_STUDENT_MANAGEMENT:
 ;PCODE: $0000021B VOL: 0
-; 0000 013A             lcd_print("Clearing EEPROM ...");
 ;PCODE: $0000021C VOL: 0
 ;PCODE: $0000021D VOL: 0
+; 0000 013B             stage = STAGE_STUDENT_MANAGMENT;
 ;PCODE: $0000021E VOL: 0
-; 0000 013B             clear_eeprom();
 ;PCODE: $0000021F VOL: 0
-; 0000 013C #asm("sei") // enable interrupts
+; 0000 013C             break;
 ;PCODE: $00000220 VOL: 0
-	sei
+; 0000 013D         case OPTION_TRAFFIC_MONITORING:
 ;PCODE: $00000221 VOL: 0
-; 0000 013D             stage = STAGE_INIT_MENU;
 ;PCODE: $00000222 VOL: 0
-; 0000 013E         default:
 ;PCODE: $00000223 VOL: 0
-; 0000 013F             break;
+; 0000 013E             stage = STAGE_TRAFFIC_MONITORING;
 ;PCODE: $00000224 VOL: 0
-; 0000 0140         }
 ;PCODE: $00000225 VOL: 0
-; 0000 0141 
-; 0000 0142         if (keypad[rowloc][cl] == 'L')
+; 0000 013F             break;
 ;PCODE: $00000226 VOL: 0
+; 0000 0140         case 9:
 ;PCODE: $00000227 VOL: 0
 ;PCODE: $00000228 VOL: 0
 ;PCODE: $00000229 VOL: 0
+; 0000 0141 #asm("cli") // disable interrupts
 ;PCODE: $0000022A VOL: 0
+	cli
 ;PCODE: $0000022B VOL: 0
+; 0000 0142 
+; 0000 0143             lcdCommand(0x1);
 ;PCODE: $0000022C VOL: 0
 ;PCODE: $0000022D VOL: 0
+; 0000 0144             lcd_gotoxy(1, 1);
 ;PCODE: $0000022E VOL: 0
-; 0000 0143         {
-; 0000 0144             page_num = page_num > 0 ? page_num - 1 : (MENU_PAGE_COUNT - 1);
 ;PCODE: $0000022F VOL: 0
 ;PCODE: $00000230 VOL: 0
 ;PCODE: $00000231 VOL: 0
+; 0000 0145             lcd_print("Clearing EEPROM ...");
 ;PCODE: $00000232 VOL: 0
 ;PCODE: $00000233 VOL: 0
 ;PCODE: $00000234 VOL: 0
+; 0000 0146             clear_eeprom();
 ;PCODE: $00000235 VOL: 0
+; 0000 0147 #asm("sei") // enable interrupts
 ;PCODE: $00000236 VOL: 0
+	sei
 ;PCODE: $00000237 VOL: 0
+; 0000 0148             stage = STAGE_INIT_MENU;
 ;PCODE: $00000238 VOL: 0
+; 0000 0149         default:
 ;PCODE: $00000239 VOL: 0
+; 0000 014A             break;
 ;PCODE: $0000023A VOL: 0
-; 0000 0145         }
-; 0000 0146         if (keypad[rowloc][cl] == 'R')
+; 0000 014B         }
 ;PCODE: $0000023B VOL: 0
+; 0000 014C 
+; 0000 014D         if (keypad[rowloc][cl] == 'L')
 ;PCODE: $0000023C VOL: 0
 ;PCODE: $0000023D VOL: 0
 ;PCODE: $0000023E VOL: 0
@@ -938,8 +945,8 @@ _0xA:
 ;PCODE: $00000242 VOL: 0
 ;PCODE: $00000243 VOL: 0
 ;PCODE: $00000244 VOL: 0
-; 0000 0147         {
-; 0000 0148             page_num = (page_num + 1) % MENU_PAGE_COUNT;
+; 0000 014E         {
+; 0000 014F             page_num = page_num > 0 ? page_num - 1 : (MENU_PAGE_COUNT - 1);
 ;PCODE: $00000245 VOL: 0
 ;PCODE: $00000246 VOL: 0
 ;PCODE: $00000247 VOL: 0
@@ -947,17 +954,14 @@ _0xA:
 ;PCODE: $00000249 VOL: 0
 ;PCODE: $0000024A VOL: 0
 ;PCODE: $0000024B VOL: 0
-; 0000 0149         }
-; 0000 014A     }
 ;PCODE: $0000024C VOL: 0
-; 0000 014B     else if (stage == STAGE_ATTENDENC_MENU)
 ;PCODE: $0000024D VOL: 0
 ;PCODE: $0000024E VOL: 0
 ;PCODE: $0000024F VOL: 0
 ;PCODE: $00000250 VOL: 0
+; 0000 0150         }
+; 0000 0151         if (keypad[rowloc][cl] == 'R')
 ;PCODE: $00000251 VOL: 0
-; 0000 014C     {
-; 0000 014D         switch (keypad[rowloc][cl])
 ;PCODE: $00000252 VOL: 0
 ;PCODE: $00000253 VOL: 0
 ;PCODE: $00000254 VOL: 0
@@ -966,98 +970,100 @@ _0xA:
 ;PCODE: $00000257 VOL: 0
 ;PCODE: $00000258 VOL: 0
 ;PCODE: $00000259 VOL: 0
-; 0000 014E         {
-; 0000 014F         case 'C':
 ;PCODE: $0000025A VOL: 0
+; 0000 0152         {
+; 0000 0153             page_num = (page_num + 1) % MENU_PAGE_COUNT;
 ;PCODE: $0000025B VOL: 0
-; 0000 0150             stage = STAGE_INIT_MENU;
 ;PCODE: $0000025C VOL: 0
-; 0000 0151             break;
 ;PCODE: $0000025D VOL: 0
-; 0000 0152         case '1':
 ;PCODE: $0000025E VOL: 0
 ;PCODE: $0000025F VOL: 0
 ;PCODE: $00000260 VOL: 0
-; 0000 0153             memset(buffer, 0, 32);
 ;PCODE: $00000261 VOL: 0
+; 0000 0154         }
+; 0000 0155     }
 ;PCODE: $00000262 VOL: 0
+; 0000 0156     else if (stage == STAGE_ATTENDENC_MENU)
 ;PCODE: $00000263 VOL: 0
 ;PCODE: $00000264 VOL: 0
 ;PCODE: $00000265 VOL: 0
 ;PCODE: $00000266 VOL: 0
 ;PCODE: $00000267 VOL: 0
-; 0000 0154             stage = STAGE_SUBMIT_CODE;
+; 0000 0157     {
+; 0000 0158         switch (keypad[rowloc][cl])
 ;PCODE: $00000268 VOL: 0
 ;PCODE: $00000269 VOL: 0
-; 0000 0155             break;
 ;PCODE: $0000026A VOL: 0
-; 0000 0156         default:
 ;PCODE: $0000026B VOL: 0
-; 0000 0157             break;
 ;PCODE: $0000026C VOL: 0
-; 0000 0158         }
 ;PCODE: $0000026D VOL: 0
-; 0000 0159     }
-; 0000 015A     else if (stage == STAGE_SUBMIT_CODE)
 ;PCODE: $0000026E VOL: 0
 ;PCODE: $0000026F VOL: 0
+; 0000 0159         {
+; 0000 015A         case 'C':
 ;PCODE: $00000270 VOL: 0
 ;PCODE: $00000271 VOL: 0
+; 0000 015B             stage = STAGE_INIT_MENU;
 ;PCODE: $00000272 VOL: 0
-; 0000 015B     {
-; 0000 015C 
-; 0000 015D         if ((keypad[rowloc][cl] - '0') < 10)
+; 0000 015C             break;
 ;PCODE: $00000273 VOL: 0
+; 0000 015D         case '1':
 ;PCODE: $00000274 VOL: 0
 ;PCODE: $00000275 VOL: 0
 ;PCODE: $00000276 VOL: 0
+; 0000 015E             memset(buffer, 0, 32);
 ;PCODE: $00000277 VOL: 0
 ;PCODE: $00000278 VOL: 0
 ;PCODE: $00000279 VOL: 0
 ;PCODE: $0000027A VOL: 0
 ;PCODE: $0000027B VOL: 0
 ;PCODE: $0000027C VOL: 0
-; 0000 015E         {
-; 0000 015F             if (strlen(buffer) <= 30)
 ;PCODE: $0000027D VOL: 0
+; 0000 015F             stage = STAGE_SUBMIT_CODE;
 ;PCODE: $0000027E VOL: 0
 ;PCODE: $0000027F VOL: 0
+; 0000 0160             break;
 ;PCODE: $00000280 VOL: 0
-; 0000 0160             {
-; 0000 0161                 buffer[strlen(buffer)] = keypad[rowloc][cl];
+; 0000 0161         default:
 ;PCODE: $00000281 VOL: 0
+; 0000 0162             break;
 ;PCODE: $00000282 VOL: 0
+; 0000 0163         }
 ;PCODE: $00000283 VOL: 0
+; 0000 0164     }
+; 0000 0165     else if (stage == STAGE_SUBMIT_CODE)
 ;PCODE: $00000284 VOL: 0
 ;PCODE: $00000285 VOL: 0
 ;PCODE: $00000286 VOL: 0
 ;PCODE: $00000287 VOL: 0
 ;PCODE: $00000288 VOL: 0
+; 0000 0166     {
+; 0000 0167 
+; 0000 0168         if ((keypad[rowloc][cl] - '0') < 10)
 ;PCODE: $00000289 VOL: 0
 ;PCODE: $0000028A VOL: 0
 ;PCODE: $0000028B VOL: 0
 ;PCODE: $0000028C VOL: 0
 ;PCODE: $0000028D VOL: 0
-; 0000 0162                 buffer[strlen(buffer) + 1] = '\0';
 ;PCODE: $0000028E VOL: 0
 ;PCODE: $0000028F VOL: 0
 ;PCODE: $00000290 VOL: 0
 ;PCODE: $00000291 VOL: 0
 ;PCODE: $00000292 VOL: 0
+; 0000 0169         {
+; 0000 016A             if (strlen(buffer) <= 30)
 ;PCODE: $00000293 VOL: 0
-; 0000 0163                 lcdData(keypad[rowloc][cl]);
 ;PCODE: $00000294 VOL: 0
 ;PCODE: $00000295 VOL: 0
 ;PCODE: $00000296 VOL: 0
+; 0000 016B             {
+; 0000 016C                 buffer[strlen(buffer)] = keypad[rowloc][cl];
 ;PCODE: $00000297 VOL: 0
 ;PCODE: $00000298 VOL: 0
 ;PCODE: $00000299 VOL: 0
 ;PCODE: $0000029A VOL: 0
 ;PCODE: $0000029B VOL: 0
-; 0000 0164             }
-; 0000 0165         }
 ;PCODE: $0000029C VOL: 0
-; 0000 0166         else if (keypad[rowloc][cl] == 'D')
 ;PCODE: $0000029D VOL: 0
 ;PCODE: $0000029E VOL: 0
 ;PCODE: $0000029F VOL: 0
@@ -1065,267 +1071,266 @@ _0xA:
 ;PCODE: $000002A1 VOL: 0
 ;PCODE: $000002A2 VOL: 0
 ;PCODE: $000002A3 VOL: 0
+; 0000 016D                 buffer[strlen(buffer) + 1] = '\0';
 ;PCODE: $000002A4 VOL: 0
 ;PCODE: $000002A5 VOL: 0
 ;PCODE: $000002A6 VOL: 0
 ;PCODE: $000002A7 VOL: 0
-; 0000 0167         {
-; 0000 0168             buffer_len = strlen(buffer);
 ;PCODE: $000002A8 VOL: 0
 ;PCODE: $000002A9 VOL: 0
+; 0000 016E                 lcdData(keypad[rowloc][cl]);
 ;PCODE: $000002AA VOL: 0
-; 0000 0169             if (buffer_len > 0)
 ;PCODE: $000002AB VOL: 0
 ;PCODE: $000002AC VOL: 0
 ;PCODE: $000002AD VOL: 0
-; 0000 016A             {
-; 0000 016B                 buffer[buffer_len - 1] = '\0';
 ;PCODE: $000002AE VOL: 0
 ;PCODE: $000002AF VOL: 0
 ;PCODE: $000002B0 VOL: 0
 ;PCODE: $000002B1 VOL: 0
+; 0000 016F             }
+; 0000 0170         }
 ;PCODE: $000002B2 VOL: 0
+; 0000 0171         else if (keypad[rowloc][cl] == 'D')
 ;PCODE: $000002B3 VOL: 0
-; 0000 016C                 lcdCommand(0x10);
 ;PCODE: $000002B4 VOL: 0
 ;PCODE: $000002B5 VOL: 0
-; 0000 016D                 lcd_print(" ");
 ;PCODE: $000002B6 VOL: 0
 ;PCODE: $000002B7 VOL: 0
 ;PCODE: $000002B8 VOL: 0
-; 0000 016E                 lcdCommand(0x10);
 ;PCODE: $000002B9 VOL: 0
 ;PCODE: $000002BA VOL: 0
-; 0000 016F             }
-; 0000 0170         }
 ;PCODE: $000002BB VOL: 0
-; 0000 0171         else if (keypad[rowloc][cl] == 'E')
 ;PCODE: $000002BC VOL: 0
 ;PCODE: $000002BD VOL: 0
+; 0000 0172         {
+; 0000 0173             buffer_len = strlen(buffer);
 ;PCODE: $000002BE VOL: 0
 ;PCODE: $000002BF VOL: 0
 ;PCODE: $000002C0 VOL: 0
+; 0000 0174             if (buffer_len > 0)
 ;PCODE: $000002C1 VOL: 0
 ;PCODE: $000002C2 VOL: 0
 ;PCODE: $000002C3 VOL: 0
+; 0000 0175             {
+; 0000 0176                 buffer[buffer_len - 1] = '\0';
 ;PCODE: $000002C4 VOL: 0
 ;PCODE: $000002C5 VOL: 0
 ;PCODE: $000002C6 VOL: 0
-; 0000 0172         {
-; 0000 0173 
-; 0000 0174 #asm("cli")
 ;PCODE: $000002C7 VOL: 0
-	cli
 ;PCODE: $000002C8 VOL: 0
-; 0000 0175 
-; 0000 0176             if (strncmp(buffer, "40", 2) != 0 ||
-; 0000 0177                 strlen(buffer) != 8)
 ;PCODE: $000002C9 VOL: 0
+; 0000 0177                 lcdCommand(0x10);
 ;PCODE: $000002CA VOL: 0
 ;PCODE: $000002CB VOL: 0
+; 0000 0178                 lcd_print(" ");
 ;PCODE: $000002CC VOL: 0
 ;PCODE: $000002CD VOL: 0
 ;PCODE: $000002CE VOL: 0
+; 0000 0179                 lcdCommand(0x10);
 ;PCODE: $000002CF VOL: 0
 ;PCODE: $000002D0 VOL: 0
+; 0000 017A             }
+; 0000 017B         }
 ;PCODE: $000002D1 VOL: 0
+; 0000 017C         else if (keypad[rowloc][cl] == 'E')
 ;PCODE: $000002D2 VOL: 0
 ;PCODE: $000002D3 VOL: 0
 ;PCODE: $000002D4 VOL: 0
 ;PCODE: $000002D5 VOL: 0
 ;PCODE: $000002D6 VOL: 0
 ;PCODE: $000002D7 VOL: 0
-; 0000 0178             {
-; 0000 0179 
-; 0000 017A                 BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
 ;PCODE: $000002D8 VOL: 0
 ;PCODE: $000002D9 VOL: 0
-; 0000 017B                 lcdCommand(0x01);
 ;PCODE: $000002DA VOL: 0
 ;PCODE: $000002DB VOL: 0
-; 0000 017C                 lcd_gotoxy(1, 1);
 ;PCODE: $000002DC VOL: 0
+; 0000 017D         {
+; 0000 017E 
+; 0000 017F #asm("cli")
 ;PCODE: $000002DD VOL: 0
+	cli
 ;PCODE: $000002DE VOL: 0
+; 0000 0180 
+; 0000 0181             if (strncmp(buffer, "40", 2) != 0 ||
+; 0000 0182                 strlen(buffer) != 8)
 ;PCODE: $000002DF VOL: 0
-; 0000 017D                 lcd_print("Incorrect Student Code Format");
 ;PCODE: $000002E0 VOL: 0
 ;PCODE: $000002E1 VOL: 0
 ;PCODE: $000002E2 VOL: 0
-; 0000 017E                 lcd_gotoxy(1, 2);
 ;PCODE: $000002E3 VOL: 0
 ;PCODE: $000002E4 VOL: 0
 ;PCODE: $000002E5 VOL: 0
 ;PCODE: $000002E6 VOL: 0
-; 0000 017F                 lcd_print("You Will Back Menu In 2 Second");
 ;PCODE: $000002E7 VOL: 0
 ;PCODE: $000002E8 VOL: 0
 ;PCODE: $000002E9 VOL: 0
-; 0000 0180                 delay_ms(2000);
 ;PCODE: $000002EA VOL: 0
 ;PCODE: $000002EB VOL: 0
-; 0000 0181                 BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
 ;PCODE: $000002EC VOL: 0
 ;PCODE: $000002ED VOL: 0
-; 0000 0182             }
-; 0000 0183             else if (search_student_code() > 0)
+; 0000 0183             {
+; 0000 0184 
+; 0000 0185                 BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
 ;PCODE: $000002EE VOL: 0
 ;PCODE: $000002EF VOL: 0
+; 0000 0186                 lcdCommand(0x01);
 ;PCODE: $000002F0 VOL: 0
 ;PCODE: $000002F1 VOL: 0
+; 0000 0187                 lcd_gotoxy(1, 1);
 ;PCODE: $000002F2 VOL: 0
-; 0000 0184             {
-; 0000 0185                 BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
 ;PCODE: $000002F3 VOL: 0
 ;PCODE: $000002F4 VOL: 0
-; 0000 0186                 lcdCommand(0x01);
 ;PCODE: $000002F5 VOL: 0
+; 0000 0188                 lcd_print("Incorrect Student Code Format");
 ;PCODE: $000002F6 VOL: 0
-; 0000 0187                 lcd_gotoxy(1, 1);
 ;PCODE: $000002F7 VOL: 0
 ;PCODE: $000002F8 VOL: 0
+; 0000 0189                 lcd_gotoxy(1, 2);
 ;PCODE: $000002F9 VOL: 0
 ;PCODE: $000002FA VOL: 0
-; 0000 0188                 lcd_print("Duplicate Student Code Entered");
 ;PCODE: $000002FB VOL: 0
 ;PCODE: $000002FC VOL: 0
+; 0000 018A                 lcd_print("You Will Back Menu In 2 Second");
 ;PCODE: $000002FD VOL: 0
-; 0000 0189                 lcd_gotoxy(1, 2);
 ;PCODE: $000002FE VOL: 0
 ;PCODE: $000002FF VOL: 0
+; 0000 018B                 delay_ms(2000);
 ;PCODE: $00000300 VOL: 0
 ;PCODE: $00000301 VOL: 0
-; 0000 018A                 lcd_print("You Will Back Menu In 2 Second");
+; 0000 018C                 BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
 ;PCODE: $00000302 VOL: 0
 ;PCODE: $00000303 VOL: 0
+; 0000 018D             }
+; 0000 018E             else if (search_student_code() > 0)
 ;PCODE: $00000304 VOL: 0
-; 0000 018B                 delay_ms(2000);
 ;PCODE: $00000305 VOL: 0
 ;PCODE: $00000306 VOL: 0
-; 0000 018C                 BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
 ;PCODE: $00000307 VOL: 0
 ;PCODE: $00000308 VOL: 0
-; 0000 018D             }
-; 0000 018E             else
+; 0000 018F             {
+; 0000 0190                 BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
 ;PCODE: $00000309 VOL: 0
 ;PCODE: $0000030A VOL: 0
-; 0000 018F             {
-; 0000 0190                 // save the buffer to EEPROM
-; 0000 0191                 st_counts = read_byte_from_eeprom(0x0);
+; 0000 0191                 lcdCommand(0x01);
 ;PCODE: $0000030B VOL: 0
 ;PCODE: $0000030C VOL: 0
+; 0000 0192                 lcd_gotoxy(1, 1);
 ;PCODE: $0000030D VOL: 0
 ;PCODE: $0000030E VOL: 0
-; 0000 0192                 for (i = 0; i < 8; i++)
 ;PCODE: $0000030F VOL: 0
 ;PCODE: $00000310 VOL: 0
+; 0000 0193                 lcd_print("Duplicate Student Code Entered");
 ;PCODE: $00000311 VOL: 0
 ;PCODE: $00000312 VOL: 0
 ;PCODE: $00000313 VOL: 0
+; 0000 0194                 lcd_gotoxy(1, 2);
 ;PCODE: $00000314 VOL: 0
 ;PCODE: $00000315 VOL: 0
 ;PCODE: $00000316 VOL: 0
 ;PCODE: $00000317 VOL: 0
+; 0000 0195                 lcd_print("You Will Back Menu In 2 Second");
 ;PCODE: $00000318 VOL: 0
-; 0000 0193                 {
-; 0000 0194                     write_byte_to_eeprom(i + ((st_counts + 1) * 8), buffer[i]);
 ;PCODE: $00000319 VOL: 0
 ;PCODE: $0000031A VOL: 0
+; 0000 0196                 delay_ms(2000);
 ;PCODE: $0000031B VOL: 0
 ;PCODE: $0000031C VOL: 0
+; 0000 0197                 BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
 ;PCODE: $0000031D VOL: 0
 ;PCODE: $0000031E VOL: 0
+; 0000 0198             }
+; 0000 0199             else
 ;PCODE: $0000031F VOL: 0
 ;PCODE: $00000320 VOL: 0
+; 0000 019A             {
+; 0000 019B                 // save the buffer to EEPROM
+; 0000 019C                 st_counts = read_byte_from_eeprom(0x0);
 ;PCODE: $00000321 VOL: 0
 ;PCODE: $00000322 VOL: 0
 ;PCODE: $00000323 VOL: 0
-; 0000 0195                 }
 ;PCODE: $00000324 VOL: 0
+; 0000 019D                 for (i = 0; i < 8; i++)
 ;PCODE: $00000325 VOL: 0
 ;PCODE: $00000326 VOL: 0
 ;PCODE: $00000327 VOL: 0
 ;PCODE: $00000328 VOL: 0
 ;PCODE: $00000329 VOL: 0
-; 0000 0196                 write_byte_to_eeprom(0x0, st_counts + 1);
 ;PCODE: $0000032A VOL: 0
 ;PCODE: $0000032B VOL: 0
 ;PCODE: $0000032C VOL: 0
 ;PCODE: $0000032D VOL: 0
 ;PCODE: $0000032E VOL: 0
-; 0000 0197 
-; 0000 0198                 lcdCommand(0x01);
+; 0000 019E                 {
+; 0000 019F                     write_byte_to_eeprom(i + ((st_counts + 1) * 8), buffer[i]);
 ;PCODE: $0000032F VOL: 0
 ;PCODE: $00000330 VOL: 0
-; 0000 0199                 lcd_gotoxy(1, 1);
 ;PCODE: $00000331 VOL: 0
 ;PCODE: $00000332 VOL: 0
 ;PCODE: $00000333 VOL: 0
 ;PCODE: $00000334 VOL: 0
-; 0000 019A                 lcd_print("Student Code Successfully Added");
 ;PCODE: $00000335 VOL: 0
 ;PCODE: $00000336 VOL: 0
 ;PCODE: $00000337 VOL: 0
-; 0000 019B                 lcd_gotoxy(1, 2);
 ;PCODE: $00000338 VOL: 0
 ;PCODE: $00000339 VOL: 0
+; 0000 01A0                 }
 ;PCODE: $0000033A VOL: 0
 ;PCODE: $0000033B VOL: 0
-; 0000 019C                 lcd_print("You Will Back Menu In 2 Second");
 ;PCODE: $0000033C VOL: 0
 ;PCODE: $0000033D VOL: 0
 ;PCODE: $0000033E VOL: 0
-; 0000 019D                 delay_ms(2000);
 ;PCODE: $0000033F VOL: 0
+; 0000 01A1                 write_byte_to_eeprom(0x0, st_counts + 1);
 ;PCODE: $00000340 VOL: 0
-; 0000 019E             }
 ;PCODE: $00000341 VOL: 0
 ;PCODE: $00000342 VOL: 0
-; 0000 019F             memset(buffer, 0, 32);
 ;PCODE: $00000343 VOL: 0
 ;PCODE: $00000344 VOL: 0
+; 0000 01A2 
+; 0000 01A3                 lcdCommand(0x01);
 ;PCODE: $00000345 VOL: 0
 ;PCODE: $00000346 VOL: 0
+; 0000 01A4                 lcd_gotoxy(1, 1);
 ;PCODE: $00000347 VOL: 0
 ;PCODE: $00000348 VOL: 0
 ;PCODE: $00000349 VOL: 0
-; 0000 01A0 #asm("sei")
 ;PCODE: $0000034A VOL: 0
-	sei
+; 0000 01A5                 lcd_print("Student Code Successfully Added");
 ;PCODE: $0000034B VOL: 0
-; 0000 01A1             stage = STAGE_ATTENDENC_MENU;
 ;PCODE: $0000034C VOL: 0
 ;PCODE: $0000034D VOL: 0
-; 0000 01A2         }
-; 0000 01A3         else if (keypad[rowloc][cl] == 'C')
+; 0000 01A6                 lcd_gotoxy(1, 2);
 ;PCODE: $0000034E VOL: 0
 ;PCODE: $0000034F VOL: 0
 ;PCODE: $00000350 VOL: 0
 ;PCODE: $00000351 VOL: 0
+; 0000 01A7                 lcd_print("You Will Back Menu In 2 Second");
 ;PCODE: $00000352 VOL: 0
 ;PCODE: $00000353 VOL: 0
 ;PCODE: $00000354 VOL: 0
+; 0000 01A8                 delay_ms(2000);
 ;PCODE: $00000355 VOL: 0
 ;PCODE: $00000356 VOL: 0
+; 0000 01A9             }
 ;PCODE: $00000357 VOL: 0
 ;PCODE: $00000358 VOL: 0
-; 0000 01A4             stage = STAGE_ATTENDENC_MENU;
+; 0000 01AA             memset(buffer, 0, 32);
 ;PCODE: $00000359 VOL: 0
 ;PCODE: $0000035A VOL: 0
-; 0000 01A5     }
 ;PCODE: $0000035B VOL: 0
 ;PCODE: $0000035C VOL: 0
 ;PCODE: $0000035D VOL: 0
 ;PCODE: $0000035E VOL: 0
-; 0000 01A6     else if (stage == STAGE_TEMPERATURE_MONITORING)
 ;PCODE: $0000035F VOL: 0
+; 0000 01AB #asm("sei")
 ;PCODE: $00000360 VOL: 0
+	sei
 ;PCODE: $00000361 VOL: 0
+; 0000 01AC             stage = STAGE_ATTENDENC_MENU;
 ;PCODE: $00000362 VOL: 0
 ;PCODE: $00000363 VOL: 0
-; 0000 01A7     {
-; 0000 01A8 
-; 0000 01A9         if (keypad[rowloc][cl] == 'C')
+; 0000 01AD         }
+; 0000 01AE         else if (keypad[rowloc][cl] == 'C')
 ;PCODE: $00000364 VOL: 0
 ;PCODE: $00000365 VOL: 0
 ;PCODE: $00000366 VOL: 0
@@ -1335,66 +1340,68 @@ _0xA:
 ;PCODE: $0000036A VOL: 0
 ;PCODE: $0000036B VOL: 0
 ;PCODE: $0000036C VOL: 0
-; 0000 01AA             stage = STAGE_INIT_MENU;
 ;PCODE: $0000036D VOL: 0
-; 0000 01AB     }
 ;PCODE: $0000036E VOL: 0
-; 0000 01AC     else if (stage == STAGE_VIEW_PRESENT_STUDENTS)
+; 0000 01AF             stage = STAGE_ATTENDENC_MENU;
 ;PCODE: $0000036F VOL: 0
 ;PCODE: $00000370 VOL: 0
+; 0000 01B0     }
 ;PCODE: $00000371 VOL: 0
 ;PCODE: $00000372 VOL: 0
 ;PCODE: $00000373 VOL: 0
-; 0000 01AD     {
-; 0000 01AE         if (keypad[rowloc][cl] == 'C')
 ;PCODE: $00000374 VOL: 0
+; 0000 01B1     else if (stage == STAGE_TEMPERATURE_MONITORING)
 ;PCODE: $00000375 VOL: 0
 ;PCODE: $00000376 VOL: 0
 ;PCODE: $00000377 VOL: 0
 ;PCODE: $00000378 VOL: 0
 ;PCODE: $00000379 VOL: 0
+; 0000 01B2     {
+; 0000 01B3 
+; 0000 01B4         if (keypad[rowloc][cl] == 'C')
 ;PCODE: $0000037A VOL: 0
 ;PCODE: $0000037B VOL: 0
 ;PCODE: $0000037C VOL: 0
-; 0000 01AF             stage = STAGE_INIT_MENU;
 ;PCODE: $0000037D VOL: 0
-; 0000 01B0     }
 ;PCODE: $0000037E VOL: 0
-; 0000 01B1     else if (stage == STAGE_STUDENT_MANAGMENT)
 ;PCODE: $0000037F VOL: 0
 ;PCODE: $00000380 VOL: 0
 ;PCODE: $00000381 VOL: 0
 ;PCODE: $00000382 VOL: 0
+; 0000 01B5             stage = STAGE_INIT_MENU;
 ;PCODE: $00000383 VOL: 0
-; 0000 01B2     {
-; 0000 01B3         if (keypad[rowloc][cl] == 'C')
+; 0000 01B6     }
 ;PCODE: $00000384 VOL: 0
+; 0000 01B7     else if (stage == STAGE_VIEW_PRESENT_STUDENTS)
 ;PCODE: $00000385 VOL: 0
 ;PCODE: $00000386 VOL: 0
 ;PCODE: $00000387 VOL: 0
 ;PCODE: $00000388 VOL: 0
 ;PCODE: $00000389 VOL: 0
+; 0000 01B8     {
+; 0000 01B9         if (keypad[rowloc][cl] == 'C')
 ;PCODE: $0000038A VOL: 0
 ;PCODE: $0000038B VOL: 0
 ;PCODE: $0000038C VOL: 0
-; 0000 01B4             stage = STAGE_INIT_MENU;
 ;PCODE: $0000038D VOL: 0
-; 0000 01B5         else if (keypad[rowloc][cl] == '1')
 ;PCODE: $0000038E VOL: 0
 ;PCODE: $0000038F VOL: 0
 ;PCODE: $00000390 VOL: 0
 ;PCODE: $00000391 VOL: 0
 ;PCODE: $00000392 VOL: 0
+; 0000 01BA             stage = STAGE_INIT_MENU;
 ;PCODE: $00000393 VOL: 0
+; 0000 01BB     }
 ;PCODE: $00000394 VOL: 0
+; 0000 01BC     else if (stage == STAGE_STUDENT_MANAGMENT)
 ;PCODE: $00000395 VOL: 0
 ;PCODE: $00000396 VOL: 0
 ;PCODE: $00000397 VOL: 0
 ;PCODE: $00000398 VOL: 0
-; 0000 01B6             stage = STAGE_SEARCH_STUDENT;
 ;PCODE: $00000399 VOL: 0
+; 0000 01BD     {
+; 0000 01BE         if (keypad[rowloc][cl] == 'C')
 ;PCODE: $0000039A VOL: 0
-; 0000 01B7         else if (keypad[rowloc][cl] == '2')
 ;PCODE: $0000039B VOL: 0
 ;PCODE: $0000039C VOL: 0
 ;PCODE: $0000039D VOL: 0
@@ -1403,25 +1410,24 @@ _0xA:
 ;PCODE: $000003A0 VOL: 0
 ;PCODE: $000003A1 VOL: 0
 ;PCODE: $000003A2 VOL: 0
+; 0000 01BF             stage = STAGE_INIT_MENU;
 ;PCODE: $000003A3 VOL: 0
+; 0000 01C0         else if (keypad[rowloc][cl] == '1')
 ;PCODE: $000003A4 VOL: 0
 ;PCODE: $000003A5 VOL: 0
-; 0000 01B8             stage = STAGE_DELETE_STUDENT;
 ;PCODE: $000003A6 VOL: 0
 ;PCODE: $000003A7 VOL: 0
-; 0000 01B9     }
 ;PCODE: $000003A8 VOL: 0
 ;PCODE: $000003A9 VOL: 0
 ;PCODE: $000003AA VOL: 0
-; 0000 01BA     else if (stage == STAGE_SEARCH_STUDENT)
 ;PCODE: $000003AB VOL: 0
 ;PCODE: $000003AC VOL: 0
 ;PCODE: $000003AD VOL: 0
 ;PCODE: $000003AE VOL: 0
+; 0000 01C1             stage = STAGE_SEARCH_STUDENT;
 ;PCODE: $000003AF VOL: 0
-; 0000 01BB     {
-; 0000 01BC         if ((keypad[rowloc][cl] - '0') < 10)
 ;PCODE: $000003B0 VOL: 0
+; 0000 01C2         else if (keypad[rowloc][cl] == '2')
 ;PCODE: $000003B1 VOL: 0
 ;PCODE: $000003B2 VOL: 0
 ;PCODE: $000003B3 VOL: 0
@@ -1431,47 +1437,47 @@ _0xA:
 ;PCODE: $000003B7 VOL: 0
 ;PCODE: $000003B8 VOL: 0
 ;PCODE: $000003B9 VOL: 0
-; 0000 01BD         {
-; 0000 01BE             if (strlen(buffer) <= 30)
 ;PCODE: $000003BA VOL: 0
 ;PCODE: $000003BB VOL: 0
+; 0000 01C3             stage = STAGE_DELETE_STUDENT;
 ;PCODE: $000003BC VOL: 0
 ;PCODE: $000003BD VOL: 0
-; 0000 01BF             {
-; 0000 01C0                 buffer[strlen(buffer)] = keypad[rowloc][cl];
+; 0000 01C4     }
 ;PCODE: $000003BE VOL: 0
 ;PCODE: $000003BF VOL: 0
 ;PCODE: $000003C0 VOL: 0
+; 0000 01C5     else if (stage == STAGE_SEARCH_STUDENT)
 ;PCODE: $000003C1 VOL: 0
 ;PCODE: $000003C2 VOL: 0
 ;PCODE: $000003C3 VOL: 0
 ;PCODE: $000003C4 VOL: 0
 ;PCODE: $000003C5 VOL: 0
+; 0000 01C6     {
+; 0000 01C7         if ((keypad[rowloc][cl] - '0') < 10)
 ;PCODE: $000003C6 VOL: 0
 ;PCODE: $000003C7 VOL: 0
 ;PCODE: $000003C8 VOL: 0
 ;PCODE: $000003C9 VOL: 0
 ;PCODE: $000003CA VOL: 0
-; 0000 01C1                 buffer[strlen(buffer) + 1] = '\0';
 ;PCODE: $000003CB VOL: 0
 ;PCODE: $000003CC VOL: 0
 ;PCODE: $000003CD VOL: 0
 ;PCODE: $000003CE VOL: 0
 ;PCODE: $000003CF VOL: 0
+; 0000 01C8         {
+; 0000 01C9             if (strlen(buffer) <= 30)
 ;PCODE: $000003D0 VOL: 0
-; 0000 01C2                 lcdData(keypad[rowloc][cl]);
 ;PCODE: $000003D1 VOL: 0
 ;PCODE: $000003D2 VOL: 0
 ;PCODE: $000003D3 VOL: 0
+; 0000 01CA             {
+; 0000 01CB                 buffer[strlen(buffer)] = keypad[rowloc][cl];
 ;PCODE: $000003D4 VOL: 0
 ;PCODE: $000003D5 VOL: 0
 ;PCODE: $000003D6 VOL: 0
 ;PCODE: $000003D7 VOL: 0
 ;PCODE: $000003D8 VOL: 0
-; 0000 01C3             }
-; 0000 01C4         }
 ;PCODE: $000003D9 VOL: 0
-; 0000 01C5         else if (keypad[rowloc][cl] == 'D')
 ;PCODE: $000003DA VOL: 0
 ;PCODE: $000003DB VOL: 0
 ;PCODE: $000003DC VOL: 0
@@ -1479,162 +1485,162 @@ _0xA:
 ;PCODE: $000003DE VOL: 0
 ;PCODE: $000003DF VOL: 0
 ;PCODE: $000003E0 VOL: 0
+; 0000 01CC                 buffer[strlen(buffer) + 1] = '\0';
 ;PCODE: $000003E1 VOL: 0
 ;PCODE: $000003E2 VOL: 0
 ;PCODE: $000003E3 VOL: 0
 ;PCODE: $000003E4 VOL: 0
-; 0000 01C6         {
-; 0000 01C7             buffer_len = strlen(buffer);
 ;PCODE: $000003E5 VOL: 0
 ;PCODE: $000003E6 VOL: 0
+; 0000 01CD                 lcdData(keypad[rowloc][cl]);
 ;PCODE: $000003E7 VOL: 0
-; 0000 01C8             if (buffer_len > 0)
 ;PCODE: $000003E8 VOL: 0
 ;PCODE: $000003E9 VOL: 0
 ;PCODE: $000003EA VOL: 0
-; 0000 01C9             {
-; 0000 01CA                 buffer[buffer_len - 1] = '\0';
 ;PCODE: $000003EB VOL: 0
 ;PCODE: $000003EC VOL: 0
 ;PCODE: $000003ED VOL: 0
 ;PCODE: $000003EE VOL: 0
+; 0000 01CE             }
+; 0000 01CF         }
 ;PCODE: $000003EF VOL: 0
+; 0000 01D0         else if (keypad[rowloc][cl] == 'D')
 ;PCODE: $000003F0 VOL: 0
-; 0000 01CB                 lcdCommand(0x10);
 ;PCODE: $000003F1 VOL: 0
 ;PCODE: $000003F2 VOL: 0
-; 0000 01CC                 lcd_print(" ");
 ;PCODE: $000003F3 VOL: 0
 ;PCODE: $000003F4 VOL: 0
 ;PCODE: $000003F5 VOL: 0
-; 0000 01CD                 lcdCommand(0x10);
 ;PCODE: $000003F6 VOL: 0
 ;PCODE: $000003F7 VOL: 0
-; 0000 01CE             }
-; 0000 01CF         }
 ;PCODE: $000003F8 VOL: 0
-; 0000 01D0         else if (keypad[rowloc][cl] == 'E')
 ;PCODE: $000003F9 VOL: 0
 ;PCODE: $000003FA VOL: 0
+; 0000 01D1         {
+; 0000 01D2             buffer_len = strlen(buffer);
 ;PCODE: $000003FB VOL: 0
 ;PCODE: $000003FC VOL: 0
 ;PCODE: $000003FD VOL: 0
+; 0000 01D3             if (buffer_len > 0)
 ;PCODE: $000003FE VOL: 0
 ;PCODE: $000003FF VOL: 0
 ;PCODE: $00000400 VOL: 0
+; 0000 01D4             {
+; 0000 01D5                 buffer[buffer_len - 1] = '\0';
 ;PCODE: $00000401 VOL: 0
 ;PCODE: $00000402 VOL: 0
 ;PCODE: $00000403 VOL: 0
-; 0000 01D1         {
-; 0000 01D2             // search from eeprom data
-; 0000 01D3             unsigned char result = search_student_code();
-; 0000 01D4 
-; 0000 01D5             if (result > 0)
 ;PCODE: $00000404 VOL: 0
-;	i -> Y+7
-;	result -> Y+0
 ;PCODE: $00000405 VOL: 0
 ;PCODE: $00000406 VOL: 0
+; 0000 01D6                 lcdCommand(0x10);
 ;PCODE: $00000407 VOL: 0
 ;PCODE: $00000408 VOL: 0
+; 0000 01D7                 lcd_print(" ");
 ;PCODE: $00000409 VOL: 0
-; 0000 01D6             {
-; 0000 01D7                 lcdCommand(0x01);
 ;PCODE: $0000040A VOL: 0
 ;PCODE: $0000040B VOL: 0
-; 0000 01D8                 lcd_gotoxy(1, 1);
+; 0000 01D8                 lcdCommand(0x10);
 ;PCODE: $0000040C VOL: 0
 ;PCODE: $0000040D VOL: 0
+; 0000 01D9             }
+; 0000 01DA         }
 ;PCODE: $0000040E VOL: 0
+; 0000 01DB         else if (keypad[rowloc][cl] == 'E')
 ;PCODE: $0000040F VOL: 0
-; 0000 01D9                 lcd_print("Student Code Found");
 ;PCODE: $00000410 VOL: 0
 ;PCODE: $00000411 VOL: 0
 ;PCODE: $00000412 VOL: 0
-; 0000 01DA                 lcd_gotoxy(1, 2);
 ;PCODE: $00000413 VOL: 0
 ;PCODE: $00000414 VOL: 0
 ;PCODE: $00000415 VOL: 0
 ;PCODE: $00000416 VOL: 0
-; 0000 01DB                 lcd_print("You Will Back Menu In 5 Second");
 ;PCODE: $00000417 VOL: 0
 ;PCODE: $00000418 VOL: 0
 ;PCODE: $00000419 VOL: 0
-; 0000 01DC                 delay_ms(5000);
+; 0000 01DC         {
+; 0000 01DD             // search from eeprom data
+; 0000 01DE             unsigned char result = search_student_code();
+; 0000 01DF 
+; 0000 01E0             if (result > 0)
 ;PCODE: $0000041A VOL: 0
+;	i -> Y+7
+;	result -> Y+0
 ;PCODE: $0000041B VOL: 0
-; 0000 01DD             }
-; 0000 01DE             else
 ;PCODE: $0000041C VOL: 0
 ;PCODE: $0000041D VOL: 0
-; 0000 01DF             {
-; 0000 01E0                 lcdCommand(0x01);
 ;PCODE: $0000041E VOL: 0
 ;PCODE: $0000041F VOL: 0
-; 0000 01E1                 lcd_gotoxy(1, 1);
+; 0000 01E1             {
+; 0000 01E2                 lcdCommand(0x01);
 ;PCODE: $00000420 VOL: 0
 ;PCODE: $00000421 VOL: 0
+; 0000 01E3                 lcd_gotoxy(1, 1);
 ;PCODE: $00000422 VOL: 0
 ;PCODE: $00000423 VOL: 0
-; 0000 01E2                 lcd_print("Ops , Student Code Not Found");
 ;PCODE: $00000424 VOL: 0
 ;PCODE: $00000425 VOL: 0
+; 0000 01E4                 lcd_print("Student Code Found");
 ;PCODE: $00000426 VOL: 0
-; 0000 01E3                 lcd_gotoxy(1, 2);
 ;PCODE: $00000427 VOL: 0
 ;PCODE: $00000428 VOL: 0
+; 0000 01E5                 lcd_gotoxy(1, 2);
 ;PCODE: $00000429 VOL: 0
 ;PCODE: $0000042A VOL: 0
-; 0000 01E4                 lcd_print("You Will Back Menu In 5 Second");
 ;PCODE: $0000042B VOL: 0
 ;PCODE: $0000042C VOL: 0
+; 0000 01E6                 lcd_print("You Will Back Menu In 5 Second");
 ;PCODE: $0000042D VOL: 0
-; 0000 01E5                 delay_ms(5000);
 ;PCODE: $0000042E VOL: 0
 ;PCODE: $0000042F VOL: 0
-; 0000 01E6             }
+; 0000 01E7                 delay_ms(5000);
 ;PCODE: $00000430 VOL: 0
-; 0000 01E7             memset(buffer, 0, 32);
 ;PCODE: $00000431 VOL: 0
+; 0000 01E8             }
+; 0000 01E9             else
 ;PCODE: $00000432 VOL: 0
 ;PCODE: $00000433 VOL: 0
+; 0000 01EA             {
+; 0000 01EB                 lcdCommand(0x01);
 ;PCODE: $00000434 VOL: 0
 ;PCODE: $00000435 VOL: 0
+; 0000 01EC                 lcd_gotoxy(1, 1);
 ;PCODE: $00000436 VOL: 0
 ;PCODE: $00000437 VOL: 0
-; 0000 01E8             stage = STAGE_STUDENT_MANAGMENT;
 ;PCODE: $00000438 VOL: 0
 ;PCODE: $00000439 VOL: 0
-; 0000 01E9         }
+; 0000 01ED                 lcd_print("Ops , Student Code Not Found");
 ;PCODE: $0000043A VOL: 0
-; 0000 01EA         else if (keypad[rowloc][cl] == 'C')
 ;PCODE: $0000043B VOL: 0
 ;PCODE: $0000043C VOL: 0
+; 0000 01EE                 lcd_gotoxy(1, 2);
 ;PCODE: $0000043D VOL: 0
 ;PCODE: $0000043E VOL: 0
 ;PCODE: $0000043F VOL: 0
 ;PCODE: $00000440 VOL: 0
+; 0000 01EF                 lcd_print("You Will Back Menu In 5 Second");
 ;PCODE: $00000441 VOL: 0
 ;PCODE: $00000442 VOL: 0
 ;PCODE: $00000443 VOL: 0
+; 0000 01F0                 delay_ms(5000);
 ;PCODE: $00000444 VOL: 0
 ;PCODE: $00000445 VOL: 0
-; 0000 01EB             stage = STAGE_STUDENT_MANAGMENT;
+; 0000 01F1             }
 ;PCODE: $00000446 VOL: 0
+; 0000 01F2             memset(buffer, 0, 32);
 ;PCODE: $00000447 VOL: 0
-; 0000 01EC     }
 ;PCODE: $00000448 VOL: 0
 ;PCODE: $00000449 VOL: 0
 ;PCODE: $0000044A VOL: 0
 ;PCODE: $0000044B VOL: 0
-; 0000 01ED     else if (stage == STAGE_DELETE_STUDENT)
 ;PCODE: $0000044C VOL: 0
 ;PCODE: $0000044D VOL: 0
+; 0000 01F3             stage = STAGE_STUDENT_MANAGMENT;
 ;PCODE: $0000044E VOL: 0
 ;PCODE: $0000044F VOL: 0
+; 0000 01F4         }
 ;PCODE: $00000450 VOL: 0
-; 0000 01EE     {
-; 0000 01EF         if ((keypad[rowloc][cl] - '0') < 10)
+; 0000 01F5         else if (keypad[rowloc][cl] == 'C')
 ;PCODE: $00000451 VOL: 0
 ;PCODE: $00000452 VOL: 0
 ;PCODE: $00000453 VOL: 0
@@ -1645,47 +1651,47 @@ _0xA:
 ;PCODE: $00000458 VOL: 0
 ;PCODE: $00000459 VOL: 0
 ;PCODE: $0000045A VOL: 0
-; 0000 01F0         {
-; 0000 01F1             if (strlen(buffer) <= 30)
 ;PCODE: $0000045B VOL: 0
+; 0000 01F6             stage = STAGE_STUDENT_MANAGMENT;
 ;PCODE: $0000045C VOL: 0
 ;PCODE: $0000045D VOL: 0
+; 0000 01F7     }
 ;PCODE: $0000045E VOL: 0
-; 0000 01F2             {
-; 0000 01F3                 buffer[strlen(buffer)] = keypad[rowloc][cl];
 ;PCODE: $0000045F VOL: 0
 ;PCODE: $00000460 VOL: 0
 ;PCODE: $00000461 VOL: 0
+; 0000 01F8     else if (stage == STAGE_DELETE_STUDENT)
 ;PCODE: $00000462 VOL: 0
 ;PCODE: $00000463 VOL: 0
 ;PCODE: $00000464 VOL: 0
 ;PCODE: $00000465 VOL: 0
 ;PCODE: $00000466 VOL: 0
+; 0000 01F9     {
+; 0000 01FA         if ((keypad[rowloc][cl] - '0') < 10)
 ;PCODE: $00000467 VOL: 0
 ;PCODE: $00000468 VOL: 0
 ;PCODE: $00000469 VOL: 0
 ;PCODE: $0000046A VOL: 0
 ;PCODE: $0000046B VOL: 0
-; 0000 01F4                 buffer[strlen(buffer) + 1] = '\0';
 ;PCODE: $0000046C VOL: 0
 ;PCODE: $0000046D VOL: 0
 ;PCODE: $0000046E VOL: 0
 ;PCODE: $0000046F VOL: 0
 ;PCODE: $00000470 VOL: 0
+; 0000 01FB         {
+; 0000 01FC             if (strlen(buffer) <= 30)
 ;PCODE: $00000471 VOL: 0
-; 0000 01F5                 lcdData(keypad[rowloc][cl]);
 ;PCODE: $00000472 VOL: 0
 ;PCODE: $00000473 VOL: 0
 ;PCODE: $00000474 VOL: 0
+; 0000 01FD             {
+; 0000 01FE                 buffer[strlen(buffer)] = keypad[rowloc][cl];
 ;PCODE: $00000475 VOL: 0
 ;PCODE: $00000476 VOL: 0
 ;PCODE: $00000477 VOL: 0
 ;PCODE: $00000478 VOL: 0
 ;PCODE: $00000479 VOL: 0
-; 0000 01F6             }
-; 0000 01F7         }
 ;PCODE: $0000047A VOL: 0
-; 0000 01F8         else if (keypad[rowloc][cl] == 'D')
 ;PCODE: $0000047B VOL: 0
 ;PCODE: $0000047C VOL: 0
 ;PCODE: $0000047D VOL: 0
@@ -1693,666 +1699,654 @@ _0xA:
 ;PCODE: $0000047F VOL: 0
 ;PCODE: $00000480 VOL: 0
 ;PCODE: $00000481 VOL: 0
+; 0000 01FF                 buffer[strlen(buffer) + 1] = '\0';
 ;PCODE: $00000482 VOL: 0
 ;PCODE: $00000483 VOL: 0
 ;PCODE: $00000484 VOL: 0
 ;PCODE: $00000485 VOL: 0
-; 0000 01F9         {
-; 0000 01FA             buffer_len = strlen(buffer);
 ;PCODE: $00000486 VOL: 0
 ;PCODE: $00000487 VOL: 0
+; 0000 0200                 lcdData(keypad[rowloc][cl]);
 ;PCODE: $00000488 VOL: 0
-; 0000 01FB             if (buffer_len > 0)
 ;PCODE: $00000489 VOL: 0
 ;PCODE: $0000048A VOL: 0
 ;PCODE: $0000048B VOL: 0
-; 0000 01FC             {
-; 0000 01FD                 buffer[buffer_len - 1] = '\0';
 ;PCODE: $0000048C VOL: 0
 ;PCODE: $0000048D VOL: 0
 ;PCODE: $0000048E VOL: 0
 ;PCODE: $0000048F VOL: 0
+; 0000 0201             }
+; 0000 0202         }
 ;PCODE: $00000490 VOL: 0
+; 0000 0203         else if (keypad[rowloc][cl] == 'D')
 ;PCODE: $00000491 VOL: 0
-; 0000 01FE                 lcdCommand(0x10);
 ;PCODE: $00000492 VOL: 0
 ;PCODE: $00000493 VOL: 0
-; 0000 01FF                 lcd_print(" ");
 ;PCODE: $00000494 VOL: 0
 ;PCODE: $00000495 VOL: 0
 ;PCODE: $00000496 VOL: 0
-; 0000 0200                 lcdCommand(0x10);
 ;PCODE: $00000497 VOL: 0
 ;PCODE: $00000498 VOL: 0
-; 0000 0201             }
-; 0000 0202         }
 ;PCODE: $00000499 VOL: 0
-; 0000 0203         else if (keypad[rowloc][cl] == 'E')
 ;PCODE: $0000049A VOL: 0
 ;PCODE: $0000049B VOL: 0
+; 0000 0204         {
+; 0000 0205             buffer_len = strlen(buffer);
 ;PCODE: $0000049C VOL: 0
 ;PCODE: $0000049D VOL: 0
 ;PCODE: $0000049E VOL: 0
+; 0000 0206             if (buffer_len > 0)
 ;PCODE: $0000049F VOL: 0
 ;PCODE: $000004A0 VOL: 0
 ;PCODE: $000004A1 VOL: 0
+; 0000 0207             {
+; 0000 0208                 buffer[buffer_len - 1] = '\0';
 ;PCODE: $000004A2 VOL: 0
 ;PCODE: $000004A3 VOL: 0
 ;PCODE: $000004A4 VOL: 0
-; 0000 0204         {
-; 0000 0205             // search from eeprom data
-; 0000 0206             unsigned char result = search_student_code();
-; 0000 0207 
-; 0000 0208             if (result > 0)
 ;PCODE: $000004A5 VOL: 0
-;	i -> Y+7
-;	result -> Y+0
 ;PCODE: $000004A6 VOL: 0
 ;PCODE: $000004A7 VOL: 0
+; 0000 0209                 lcdCommand(0x10);
 ;PCODE: $000004A8 VOL: 0
 ;PCODE: $000004A9 VOL: 0
+; 0000 020A                 lcd_print(" ");
 ;PCODE: $000004AA VOL: 0
-; 0000 0209             {
-; 0000 020A                 lcdCommand(0x01);
 ;PCODE: $000004AB VOL: 0
 ;PCODE: $000004AC VOL: 0
-; 0000 020B                 lcd_gotoxy(1, 1);
+; 0000 020B                 lcdCommand(0x10);
 ;PCODE: $000004AD VOL: 0
 ;PCODE: $000004AE VOL: 0
+; 0000 020C             }
+; 0000 020D         }
 ;PCODE: $000004AF VOL: 0
+; 0000 020E         else if (keypad[rowloc][cl] == 'E')
 ;PCODE: $000004B0 VOL: 0
-; 0000 020C                 lcd_print("Student Code Found");
 ;PCODE: $000004B1 VOL: 0
 ;PCODE: $000004B2 VOL: 0
 ;PCODE: $000004B3 VOL: 0
-; 0000 020D                 lcd_gotoxy(1, 2);
 ;PCODE: $000004B4 VOL: 0
 ;PCODE: $000004B5 VOL: 0
 ;PCODE: $000004B6 VOL: 0
 ;PCODE: $000004B7 VOL: 0
-; 0000 020E                 lcd_print("Wait For Delete...");
 ;PCODE: $000004B8 VOL: 0
 ;PCODE: $000004B9 VOL: 0
 ;PCODE: $000004BA VOL: 0
-; 0000 020F                 delete_student_code(result);
+; 0000 020F         {
+; 0000 0210             // search from eeprom data
+; 0000 0211             unsigned char result = search_student_code();
+; 0000 0212 
+; 0000 0213             if (result > 0)
 ;PCODE: $000004BB VOL: 0
+;	i -> Y+7
+;	result -> Y+0
 ;PCODE: $000004BC VOL: 0
-; 0000 0210                 lcdCommand(0x01);
 ;PCODE: $000004BD VOL: 0
 ;PCODE: $000004BE VOL: 0
-; 0000 0211                 lcd_gotoxy(1, 1);
 ;PCODE: $000004BF VOL: 0
 ;PCODE: $000004C0 VOL: 0
+; 0000 0214             {
+; 0000 0215                 lcdCommand(0x01);
 ;PCODE: $000004C1 VOL: 0
 ;PCODE: $000004C2 VOL: 0
-; 0000 0212                 lcd_print("Student Code Was Deleted");
+; 0000 0216                 lcd_gotoxy(1, 1);
 ;PCODE: $000004C3 VOL: 0
 ;PCODE: $000004C4 VOL: 0
 ;PCODE: $000004C5 VOL: 0
-; 0000 0213                 lcd_gotoxy(1, 2);
 ;PCODE: $000004C6 VOL: 0
+; 0000 0217                 lcd_print("Student Code Found");
 ;PCODE: $000004C7 VOL: 0
 ;PCODE: $000004C8 VOL: 0
 ;PCODE: $000004C9 VOL: 0
-; 0000 0214                 lcd_print("You Will Back Menu In 2 Second");
+; 0000 0218                 lcd_gotoxy(1, 2);
 ;PCODE: $000004CA VOL: 0
 ;PCODE: $000004CB VOL: 0
 ;PCODE: $000004CC VOL: 0
-; 0000 0215                 delay_ms(2000);
 ;PCODE: $000004CD VOL: 0
+; 0000 0219                 lcd_print("Wait For Delete...");
 ;PCODE: $000004CE VOL: 0
-; 0000 0216             }
-; 0000 0217             else
 ;PCODE: $000004CF VOL: 0
 ;PCODE: $000004D0 VOL: 0
-; 0000 0218             {
-; 0000 0219                 lcdCommand(0x01);
+; 0000 021A                 delete_student_code(result);
 ;PCODE: $000004D1 VOL: 0
 ;PCODE: $000004D2 VOL: 0
-; 0000 021A                 lcd_gotoxy(1, 1);
+; 0000 021B                 lcdCommand(0x01);
 ;PCODE: $000004D3 VOL: 0
 ;PCODE: $000004D4 VOL: 0
+; 0000 021C                 lcd_gotoxy(1, 1);
 ;PCODE: $000004D5 VOL: 0
 ;PCODE: $000004D6 VOL: 0
-; 0000 021B                 lcd_print("Ops , Student Code Not Found");
 ;PCODE: $000004D7 VOL: 0
 ;PCODE: $000004D8 VOL: 0
+; 0000 021D                 lcd_print("Student Code Was Deleted");
 ;PCODE: $000004D9 VOL: 0
-; 0000 021C                 lcd_gotoxy(1, 2);
 ;PCODE: $000004DA VOL: 0
 ;PCODE: $000004DB VOL: 0
+; 0000 021E                 lcd_gotoxy(1, 2);
 ;PCODE: $000004DC VOL: 0
 ;PCODE: $000004DD VOL: 0
-; 0000 021D                 lcd_print("You Will Back Menu In 2 Second");
 ;PCODE: $000004DE VOL: 0
 ;PCODE: $000004DF VOL: 0
+; 0000 021F                 lcd_print("You Will Back Menu In 2 Second");
 ;PCODE: $000004E0 VOL: 0
-; 0000 021E                 delay_ms(2000);
 ;PCODE: $000004E1 VOL: 0
 ;PCODE: $000004E2 VOL: 0
-; 0000 021F             }
+; 0000 0220                 delay_ms(2000);
 ;PCODE: $000004E3 VOL: 0
-; 0000 0220             memset(buffer, 0, 32);
 ;PCODE: $000004E4 VOL: 0
+; 0000 0221             }
+; 0000 0222             else
 ;PCODE: $000004E5 VOL: 0
 ;PCODE: $000004E6 VOL: 0
+; 0000 0223             {
+; 0000 0224                 lcdCommand(0x01);
 ;PCODE: $000004E7 VOL: 0
 ;PCODE: $000004E8 VOL: 0
+; 0000 0225                 lcd_gotoxy(1, 1);
 ;PCODE: $000004E9 VOL: 0
 ;PCODE: $000004EA VOL: 0
-; 0000 0221             stage = STAGE_STUDENT_MANAGMENT;
 ;PCODE: $000004EB VOL: 0
 ;PCODE: $000004EC VOL: 0
-; 0000 0222         }
+; 0000 0226                 lcd_print("Ops , Student Code Not Found");
 ;PCODE: $000004ED VOL: 0
-; 0000 0223     }
 ;PCODE: $000004EE VOL: 0
 ;PCODE: $000004EF VOL: 0
+; 0000 0227                 lcd_gotoxy(1, 2);
 ;PCODE: $000004F0 VOL: 0
-; 0000 0224     else if (stage == STAGE_TRAFFIC_MONITORING)
 ;PCODE: $000004F1 VOL: 0
 ;PCODE: $000004F2 VOL: 0
 ;PCODE: $000004F3 VOL: 0
+; 0000 0228                 lcd_print("You Will Back Menu In 2 Second");
 ;PCODE: $000004F4 VOL: 0
 ;PCODE: $000004F5 VOL: 0
-; 0000 0225     {
-; 0000 0226         if (keypad[rowloc][cl] == 'C')
 ;PCODE: $000004F6 VOL: 0
+; 0000 0229                 delay_ms(2000);
 ;PCODE: $000004F7 VOL: 0
 ;PCODE: $000004F8 VOL: 0
+; 0000 022A             }
 ;PCODE: $000004F9 VOL: 0
+; 0000 022B             memset(buffer, 0, 32);
 ;PCODE: $000004FA VOL: 0
 ;PCODE: $000004FB VOL: 0
 ;PCODE: $000004FC VOL: 0
 ;PCODE: $000004FD VOL: 0
 ;PCODE: $000004FE VOL: 0
-; 0000 0227             stage = STAGE_INIT_MENU;
 ;PCODE: $000004FF VOL: 0
-; 0000 0228     }
 ;PCODE: $00000500 VOL: 0
-; 0000 0229 }
+; 0000 022C             stage = STAGE_STUDENT_MANAGMENT;
 ;PCODE: $00000501 VOL: 0
 ;PCODE: $00000502 VOL: 0
+; 0000 022D         }
 ;PCODE: $00000503 VOL: 0
+; 0000 022E     }
 ;PCODE: $00000504 VOL: 0
 ;PCODE: $00000505 VOL: 0
 ;PCODE: $00000506 VOL: 0
+; 0000 022F     else if (stage == STAGE_TRAFFIC_MONITORING)
 ;PCODE: $00000507 VOL: 0
 ;PCODE: $00000508 VOL: 0
 ;PCODE: $00000509 VOL: 0
 ;PCODE: $0000050A VOL: 0
 ;PCODE: $0000050B VOL: 0
+; 0000 0230     {
+; 0000 0231         if (keypad[rowloc][cl] == 'C')
 ;PCODE: $0000050C VOL: 0
 ;PCODE: $0000050D VOL: 0
 ;PCODE: $0000050E VOL: 0
-
-	.DSEG
-_0x51:
-	.BYTE 0x1DF
-;
-;void lcdCommand(unsigned char cmnd)
-; 0000 022C {
-
-	.CSEG
 ;PCODE: $0000050F VOL: 0
 ;PCODE: $00000510 VOL: 0
-; 0000 022D     LCD_PRT = (LCD_PRT & 0x0F) | (cmnd & 0xF0);
 ;PCODE: $00000511 VOL: 0
-;	cmnd -> Y+0
 ;PCODE: $00000512 VOL: 0
 ;PCODE: $00000513 VOL: 0
 ;PCODE: $00000514 VOL: 0
+; 0000 0232             stage = STAGE_INIT_MENU;
 ;PCODE: $00000515 VOL: 0
+; 0000 0233     }
 ;PCODE: $00000516 VOL: 0
+; 0000 0234 }
 ;PCODE: $00000517 VOL: 0
 ;PCODE: $00000518 VOL: 0
-; 0000 022E     LCD_PRT &= ~(1 << LCD_RS); // RS = 0 for command
 ;PCODE: $00000519 VOL: 0
 ;PCODE: $0000051A VOL: 0
-; 0000 022F     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
 ;PCODE: $0000051B VOL: 0
 ;PCODE: $0000051C VOL: 0
-; 0000 0230     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
 ;PCODE: $0000051D VOL: 0
 ;PCODE: $0000051E VOL: 0
-; 0000 0231     delay_us(1 * 16);          // wait to make EN wider
 ;PCODE: $0000051F VOL: 0
-; 0000 0232     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
 ;PCODE: $00000520 VOL: 0
 ;PCODE: $00000521 VOL: 0
-; 0000 0233     delay_us(20 * 16);         // wait
 ;PCODE: $00000522 VOL: 0
-; 0000 0234     LCD_PRT = (LCD_PRT & 0x0F) | (cmnd << 4);
 ;PCODE: $00000523 VOL: 0
 ;PCODE: $00000524 VOL: 0
+
+	.DSEG
+_0x54:
+	.BYTE 0x1DF
+;
+;void lcdCommand(unsigned char cmnd)
+; 0000 0237 {
+
+	.CSEG
 ;PCODE: $00000525 VOL: 0
 ;PCODE: $00000526 VOL: 0
+; 0000 0238     LCD_PRT = (LCD_PRT & 0x0F) | (cmnd & 0xF0);
 ;PCODE: $00000527 VOL: 0
+;	cmnd -> Y+0
 ;PCODE: $00000528 VOL: 0
 ;PCODE: $00000529 VOL: 0
-; 0000 0235     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
 ;PCODE: $0000052A VOL: 0
 ;PCODE: $0000052B VOL: 0
-; 0000 0236     delay_us(1 * 16);          // wait to make EN wider
 ;PCODE: $0000052C VOL: 0
-; 0000 0237     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
 ;PCODE: $0000052D VOL: 0
 ;PCODE: $0000052E VOL: 0
-; 0000 0238 }
+; 0000 0239     LCD_PRT &= ~(1 << LCD_RS); // RS = 0 for command
 ;PCODE: $0000052F VOL: 0
 ;PCODE: $00000530 VOL: 0
+; 0000 023A     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
 ;PCODE: $00000531 VOL: 0
-;void lcdData(unsigned char data)
-; 0000 023A {
 ;PCODE: $00000532 VOL: 0
+; 0000 023B     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
 ;PCODE: $00000533 VOL: 0
-; 0000 023B     LCD_PRT = (LCD_PRT & 0x0F) | (data & 0xF0);
 ;PCODE: $00000534 VOL: 0
-;	data -> Y+0
+; 0000 023C     delay_us(1 * 16);          // wait to make EN wider
 ;PCODE: $00000535 VOL: 0
+; 0000 023D     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
 ;PCODE: $00000536 VOL: 0
 ;PCODE: $00000537 VOL: 0
+; 0000 023E     delay_us(20 * 16);         // wait
 ;PCODE: $00000538 VOL: 0
+; 0000 023F     LCD_PRT = (LCD_PRT & 0x0F) | (cmnd << 4);
 ;PCODE: $00000539 VOL: 0
 ;PCODE: $0000053A VOL: 0
 ;PCODE: $0000053B VOL: 0
-; 0000 023C     LCD_PRT |= (1 << LCD_RS);  // RS = 1 for data
 ;PCODE: $0000053C VOL: 0
 ;PCODE: $0000053D VOL: 0
-; 0000 023D     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
 ;PCODE: $0000053E VOL: 0
 ;PCODE: $0000053F VOL: 0
-; 0000 023E     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
+; 0000 0240     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
 ;PCODE: $00000540 VOL: 0
 ;PCODE: $00000541 VOL: 0
-; 0000 023F     delay_us(1 * 16);          // wait to make EN wider
+; 0000 0241     delay_us(1 * 16);          // wait to make EN wider
 ;PCODE: $00000542 VOL: 0
-; 0000 0240     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
+; 0000 0242     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
 ;PCODE: $00000543 VOL: 0
 ;PCODE: $00000544 VOL: 0
-; 0000 0241     LCD_PRT = (LCD_PRT & 0x0F) | (data << 4);
+; 0000 0243 }
 ;PCODE: $00000545 VOL: 0
 ;PCODE: $00000546 VOL: 0
 ;PCODE: $00000547 VOL: 0
+;void lcdData(unsigned char data)
+; 0000 0245 {
 ;PCODE: $00000548 VOL: 0
 ;PCODE: $00000549 VOL: 0
+; 0000 0246     LCD_PRT = (LCD_PRT & 0x0F) | (data & 0xF0);
 ;PCODE: $0000054A VOL: 0
+;	data -> Y+0
 ;PCODE: $0000054B VOL: 0
-; 0000 0242     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
 ;PCODE: $0000054C VOL: 0
 ;PCODE: $0000054D VOL: 0
-; 0000 0243     delay_us(1 * 16);          // wait to make EN wider
 ;PCODE: $0000054E VOL: 0
-; 0000 0244     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
 ;PCODE: $0000054F VOL: 0
 ;PCODE: $00000550 VOL: 0
-; 0000 0245 }
 ;PCODE: $00000551 VOL: 0
+; 0000 0247     LCD_PRT |= (1 << LCD_RS);  // RS = 1 for data
 ;PCODE: $00000552 VOL: 0
 ;PCODE: $00000553 VOL: 0
-;void lcd_init()
-; 0000 0247 {
+; 0000 0248     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
 ;PCODE: $00000554 VOL: 0
 ;PCODE: $00000555 VOL: 0
-; 0000 0248     LCD_DDR = 0xFF;            // LCD port is output
+; 0000 0249     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
 ;PCODE: $00000556 VOL: 0
 ;PCODE: $00000557 VOL: 0
-; 0000 0249     LCD_PRT &= ~(1 << LCD_EN); // LCD_EN = 0
+; 0000 024A     delay_us(1 * 16);          // wait to make EN wider
 ;PCODE: $00000558 VOL: 0
+; 0000 024B     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
 ;PCODE: $00000559 VOL: 0
-; 0000 024A     delay_us(2000 * 16);       // wait for stable power
 ;PCODE: $0000055A VOL: 0
-; 0000 024B     lcdCommand(0x33);          //$33 for 4-bit mode
+; 0000 024C     LCD_PRT = (LCD_PRT & 0x0F) | (data << 4);
 ;PCODE: $0000055B VOL: 0
 ;PCODE: $0000055C VOL: 0
-; 0000 024C     delay_us(100 * 16);        // wait
 ;PCODE: $0000055D VOL: 0
-; 0000 024D     lcdCommand(0x32);          //$32 for 4-bit mode
 ;PCODE: $0000055E VOL: 0
 ;PCODE: $0000055F VOL: 0
-; 0000 024E     delay_us(100 * 16);        // wait
 ;PCODE: $00000560 VOL: 0
-; 0000 024F     lcdCommand(0x28);          //$28 for 4-bit mode
 ;PCODE: $00000561 VOL: 0
+; 0000 024D     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
 ;PCODE: $00000562 VOL: 0
-; 0000 0250     delay_us(100 * 16);        // wait
 ;PCODE: $00000563 VOL: 0
-; 0000 0251     lcdCommand(0x0c);          // display on, cursor off
+; 0000 024E     delay_us(1 * 16);          // wait to make EN wider
 ;PCODE: $00000564 VOL: 0
+; 0000 024F     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
 ;PCODE: $00000565 VOL: 0
-; 0000 0252     delay_us(100 * 16);        // wait
 ;PCODE: $00000566 VOL: 0
-; 0000 0253     lcdCommand(0x01);          // clear LCD
+; 0000 0250 }
 ;PCODE: $00000567 VOL: 0
 ;PCODE: $00000568 VOL: 0
-; 0000 0254     delay_us(2000 * 16);       // wait
 ;PCODE: $00000569 VOL: 0
-; 0000 0255     lcdCommand(0x06);          // shift cursor right
+;void lcd_init()
+; 0000 0252 {
 ;PCODE: $0000056A VOL: 0
 ;PCODE: $0000056B VOL: 0
-; 0000 0256     delay_us(100 * 16);
+; 0000 0253     LCD_DDR = 0xFF;            // LCD port is output
 ;PCODE: $0000056C VOL: 0
-; 0000 0257 }
 ;PCODE: $0000056D VOL: 0
+; 0000 0254     LCD_PRT &= ~(1 << LCD_EN); // LCD_EN = 0
 ;PCODE: $0000056E VOL: 0
-;void lcd_gotoxy(unsigned char x, unsigned char y)
-; 0000 0259 {
 ;PCODE: $0000056F VOL: 0
+; 0000 0255     delay_us(2000 * 16);       // wait for stable power
 ;PCODE: $00000570 VOL: 0
-; 0000 025A     unsigned char firstCharAdr[] = {0x80, 0xC0, 0x94, 0xD4};
-; 0000 025B     lcdCommand(firstCharAdr[y - 1] + x - 1);
+; 0000 0256     lcdCommand(0x33);          //$33 for 4-bit mode
 ;PCODE: $00000571 VOL: 0
 ;PCODE: $00000572 VOL: 0
+; 0000 0257     delay_us(100 * 16);        // wait
 ;PCODE: $00000573 VOL: 0
+; 0000 0258     lcdCommand(0x32);          //$32 for 4-bit mode
 ;PCODE: $00000574 VOL: 0
 ;PCODE: $00000575 VOL: 0
+; 0000 0259     delay_us(100 * 16);        // wait
 ;PCODE: $00000576 VOL: 0
+; 0000 025A     lcdCommand(0x28);          //$28 for 4-bit mode
 ;PCODE: $00000577 VOL: 0
 ;PCODE: $00000578 VOL: 0
+; 0000 025B     delay_us(100 * 16);        // wait
 ;PCODE: $00000579 VOL: 0
+; 0000 025C     lcdCommand(0x0c);          // display on, cursor off
 ;PCODE: $0000057A VOL: 0
-;	x -> Y+5
-;	y -> Y+4
-;	firstCharAdr -> Y+0
 ;PCODE: $0000057B VOL: 0
+; 0000 025D     delay_us(100 * 16);        // wait
 ;PCODE: $0000057C VOL: 0
+; 0000 025E     lcdCommand(0x01);          // clear LCD
 ;PCODE: $0000057D VOL: 0
 ;PCODE: $0000057E VOL: 0
+; 0000 025F     delay_us(2000 * 16);       // wait
 ;PCODE: $0000057F VOL: 0
+; 0000 0260     lcdCommand(0x06);          // shift cursor right
 ;PCODE: $00000580 VOL: 0
 ;PCODE: $00000581 VOL: 0
+; 0000 0261     delay_us(100 * 16);
 ;PCODE: $00000582 VOL: 0
+; 0000 0262 }
 ;PCODE: $00000583 VOL: 0
 ;PCODE: $00000584 VOL: 0
-; 0000 025C     delay_us(100 * 16);
+;void lcd_gotoxy(unsigned char x, unsigned char y)
+; 0000 0264 {
 ;PCODE: $00000585 VOL: 0
-; 0000 025D }
 ;PCODE: $00000586 VOL: 0
+; 0000 0265     unsigned char firstCharAdr[] = {0x80, 0xC0, 0x94, 0xD4};
+; 0000 0266     lcdCommand(firstCharAdr[y - 1] + x - 1);
 ;PCODE: $00000587 VOL: 0
 ;PCODE: $00000588 VOL: 0
-;void lcd_print(char *str)
-; 0000 025F {
 ;PCODE: $00000589 VOL: 0
 ;PCODE: $0000058A VOL: 0
-; 0000 0260     unsigned char i = 0;
-; 0000 0261     while (str[i] != 0)
 ;PCODE: $0000058B VOL: 0
 ;PCODE: $0000058C VOL: 0
-;	*str -> Y+1
-;	i -> R17
 ;PCODE: $0000058D VOL: 0
 ;PCODE: $0000058E VOL: 0
 ;PCODE: $0000058F VOL: 0
 ;PCODE: $00000590 VOL: 0
+;	x -> Y+5
+;	y -> Y+4
+;	firstCharAdr -> Y+0
 ;PCODE: $00000591 VOL: 0
 ;PCODE: $00000592 VOL: 0
 ;PCODE: $00000593 VOL: 0
 ;PCODE: $00000594 VOL: 0
-; 0000 0262     {
-; 0000 0263         lcdData(str[i]);
 ;PCODE: $00000595 VOL: 0
 ;PCODE: $00000596 VOL: 0
 ;PCODE: $00000597 VOL: 0
 ;PCODE: $00000598 VOL: 0
-; 0000 0264         i++;
 ;PCODE: $00000599 VOL: 0
 ;PCODE: $0000059A VOL: 0
-; 0000 0265     }
+; 0000 0267     delay_us(100 * 16);
 ;PCODE: $0000059B VOL: 0
+; 0000 0268 }
 ;PCODE: $0000059C VOL: 0
-; 0000 0266 }
 ;PCODE: $0000059D VOL: 0
 ;PCODE: $0000059E VOL: 0
+;void lcd_print(char *str)
+; 0000 026A {
 ;PCODE: $0000059F VOL: 0
 ;PCODE: $000005A0 VOL: 0
+; 0000 026B     unsigned char i = 0;
+; 0000 026C     while (str[i] != 0)
 ;PCODE: $000005A1 VOL: 0
-;
-;void show_temperature()
-; 0000 0269 {
 ;PCODE: $000005A2 VOL: 0
+;	*str -> Y+1
+;	i -> R17
 ;PCODE: $000005A3 VOL: 0
-; 0000 026A     unsigned char temperatureVal = 0;
-; 0000 026B     unsigned char temperatureRep[3];
-; 0000 026C 
-; 0000 026D     ADMUX = 0xE0;
 ;PCODE: $000005A4 VOL: 0
 ;PCODE: $000005A5 VOL: 0
-;	temperatureVal -> R17
-;	temperatureRep -> Y+1
 ;PCODE: $000005A6 VOL: 0
 ;PCODE: $000005A7 VOL: 0
 ;PCODE: $000005A8 VOL: 0
 ;PCODE: $000005A9 VOL: 0
-; 0000 026E     ADCSRA = 0x87;
 ;PCODE: $000005AA VOL: 0
+; 0000 026D     {
+; 0000 026E         lcdData(str[i]);
 ;PCODE: $000005AB VOL: 0
-; 0000 026F 
-; 0000 0270     lcdCommand(0x01);
 ;PCODE: $000005AC VOL: 0
 ;PCODE: $000005AD VOL: 0
-; 0000 0271     lcd_gotoxy(1, 1);
 ;PCODE: $000005AE VOL: 0
+; 0000 026F         i++;
 ;PCODE: $000005AF VOL: 0
 ;PCODE: $000005B0 VOL: 0
+; 0000 0270     }
 ;PCODE: $000005B1 VOL: 0
-; 0000 0272     lcd_print("temperature(C):");
 ;PCODE: $000005B2 VOL: 0
+; 0000 0271 }
 ;PCODE: $000005B3 VOL: 0
 ;PCODE: $000005B4 VOL: 0
-; 0000 0273 
-; 0000 0274     while (stage == STAGE_TEMPERATURE_MONITORING)
 ;PCODE: $000005B5 VOL: 0
 ;PCODE: $000005B6 VOL: 0
 ;PCODE: $000005B7 VOL: 0
+;
+;void show_temperature()
+; 0000 0274 {
 ;PCODE: $000005B8 VOL: 0
-; 0000 0275     {
-; 0000 0276         ADCSRA |= (1 << ADSC);
 ;PCODE: $000005B9 VOL: 0
+; 0000 0275     unsigned char temperatureVal = 0;
+; 0000 0276     unsigned char temperatureRep[3];
+; 0000 0277 
+; 0000 0278     ADMUX = 0xE0;
 ;PCODE: $000005BA VOL: 0
-; 0000 0277         while ((ADCSRA & (1 << ADIF)) == 0)
 ;PCODE: $000005BB VOL: 0
+;	temperatureVal -> R17
+;	temperatureRep -> Y+1
 ;PCODE: $000005BC VOL: 0
 ;PCODE: $000005BD VOL: 0
 ;PCODE: $000005BE VOL: 0
-; 0000 0278             ;
 ;PCODE: $000005BF VOL: 0
+; 0000 0279     ADCSRA = 0x87;
 ;PCODE: $000005C0 VOL: 0
-; 0000 0279         if (ADCH != temperatureVal)
 ;PCODE: $000005C1 VOL: 0
+; 0000 027A 
+; 0000 027B     lcdCommand(0x01);
 ;PCODE: $000005C2 VOL: 0
 ;PCODE: $000005C3 VOL: 0
-; 0000 027A         {
-; 0000 027B             temperatureVal = ADCH;
+; 0000 027C     lcd_gotoxy(1, 1);
 ;PCODE: $000005C4 VOL: 0
 ;PCODE: $000005C5 VOL: 0
-; 0000 027C             itoa(temperatureVal, temperatureRep);
 ;PCODE: $000005C6 VOL: 0
 ;PCODE: $000005C7 VOL: 0
+; 0000 027D     lcd_print("temperature(C):");
 ;PCODE: $000005C8 VOL: 0
 ;PCODE: $000005C9 VOL: 0
 ;PCODE: $000005CA VOL: 0
-; 0000 027D             lcd_gotoxy(17, 1);
+; 0000 027E 
+; 0000 027F     while (stage == STAGE_TEMPERATURE_MONITORING)
 ;PCODE: $000005CB VOL: 0
 ;PCODE: $000005CC VOL: 0
 ;PCODE: $000005CD VOL: 0
 ;PCODE: $000005CE VOL: 0
-; 0000 027E             lcd_print(temperatureRep);
+; 0000 0280     {
+; 0000 0281         ADCSRA |= (1 << ADSC);
 ;PCODE: $000005CF VOL: 0
 ;PCODE: $000005D0 VOL: 0
-; 0000 027F             lcd_print(" ");
+; 0000 0282         while ((ADCSRA & (1 << ADIF)) == 0)
 ;PCODE: $000005D1 VOL: 0
 ;PCODE: $000005D2 VOL: 0
 ;PCODE: $000005D3 VOL: 0
-; 0000 0280         }
-; 0000 0281         delay_ms(500);
 ;PCODE: $000005D4 VOL: 0
+; 0000 0283             ;
 ;PCODE: $000005D5 VOL: 0
 ;PCODE: $000005D6 VOL: 0
-; 0000 0282     }
+; 0000 0284         if (ADCH != temperatureVal)
 ;PCODE: $000005D7 VOL: 0
 ;PCODE: $000005D8 VOL: 0
-; 0000 0283 
-; 0000 0284     ADCSRA = 0x0;
 ;PCODE: $000005D9 VOL: 0
+; 0000 0285         {
+; 0000 0286             temperatureVal = ADCH;
 ;PCODE: $000005DA VOL: 0
-; 0000 0285 }
 ;PCODE: $000005DB VOL: 0
+; 0000 0287             itoa(temperatureVal, temperatureRep);
 ;PCODE: $000005DC VOL: 0
 ;PCODE: $000005DD VOL: 0
 ;PCODE: $000005DE VOL: 0
 ;PCODE: $000005DF VOL: 0
-
-	.DSEG
-_0x9F:
-	.BYTE 0x12
-;
-;void show_menu()
-; 0000 0288 {
-
-	.CSEG
 ;PCODE: $000005E0 VOL: 0
+; 0000 0288             lcd_gotoxy(17, 1);
 ;PCODE: $000005E1 VOL: 0
-; 0000 0289 
-; 0000 028A     while (stage == STAGE_INIT_MENU)
 ;PCODE: $000005E2 VOL: 0
 ;PCODE: $000005E3 VOL: 0
 ;PCODE: $000005E4 VOL: 0
-; 0000 028B     {
-; 0000 028C         lcdCommand(0x01);
+; 0000 0289             lcd_print(temperatureRep);
 ;PCODE: $000005E5 VOL: 0
 ;PCODE: $000005E6 VOL: 0
-; 0000 028D         lcd_gotoxy(1, 1);
+; 0000 028A             lcd_print(" ");
 ;PCODE: $000005E7 VOL: 0
 ;PCODE: $000005E8 VOL: 0
 ;PCODE: $000005E9 VOL: 0
+; 0000 028B         }
+; 0000 028C         delay_ms(500);
 ;PCODE: $000005EA VOL: 0
-; 0000 028E         if (page_num == 0)
 ;PCODE: $000005EB VOL: 0
 ;PCODE: $000005EC VOL: 0
-; 0000 028F         {
-; 0000 0290             lcd_print("1: Attendance Initialization");
+; 0000 028D     }
 ;PCODE: $000005ED VOL: 0
 ;PCODE: $000005EE VOL: 0
+; 0000 028E 
+; 0000 028F     ADCSRA = 0x0;
 ;PCODE: $000005EF VOL: 0
-; 0000 0291             lcd_gotoxy(1, 2);
 ;PCODE: $000005F0 VOL: 0
+; 0000 0290 }
 ;PCODE: $000005F1 VOL: 0
 ;PCODE: $000005F2 VOL: 0
 ;PCODE: $000005F3 VOL: 0
-; 0000 0292             lcd_print("2: Student Management");
 ;PCODE: $000005F4 VOL: 0
 ;PCODE: $000005F5 VOL: 0
+
+	.DSEG
+_0xA2:
+	.BYTE 0x12
+;
+;void show_menu()
+; 0000 0293 {
+
+	.CSEG
 ;PCODE: $000005F6 VOL: 0
-; 0000 0293             while (page_num == 0 && stage == STAGE_INIT_MENU)
 ;PCODE: $000005F7 VOL: 0
+; 0000 0294 
+; 0000 0295     while (stage == STAGE_INIT_MENU)
 ;PCODE: $000005F8 VOL: 0
 ;PCODE: $000005F9 VOL: 0
 ;PCODE: $000005FA VOL: 0
+; 0000 0296     {
+; 0000 0297         lcdCommand(0x01);
 ;PCODE: $000005FB VOL: 0
 ;PCODE: $000005FC VOL: 0
+; 0000 0298         lcd_gotoxy(1, 1);
 ;PCODE: $000005FD VOL: 0
 ;PCODE: $000005FE VOL: 0
 ;PCODE: $000005FF VOL: 0
-; 0000 0294                 ;
 ;PCODE: $00000600 VOL: 0
+; 0000 0299         if (page_num == 0)
 ;PCODE: $00000601 VOL: 0
-; 0000 0295         }
-; 0000 0296         else if (page_num == 1)
 ;PCODE: $00000602 VOL: 0
+; 0000 029A         {
+; 0000 029B             lcd_print("1: Attendance Initialization");
 ;PCODE: $00000603 VOL: 0
 ;PCODE: $00000604 VOL: 0
 ;PCODE: $00000605 VOL: 0
+; 0000 029C             lcd_gotoxy(1, 2);
 ;PCODE: $00000606 VOL: 0
-; 0000 0297         {
-; 0000 0298             lcd_print("3: View Present Students ");
 ;PCODE: $00000607 VOL: 0
 ;PCODE: $00000608 VOL: 0
 ;PCODE: $00000609 VOL: 0
-; 0000 0299             lcd_gotoxy(1, 2);
+; 0000 029D             lcd_print("2: Student Management");
 ;PCODE: $0000060A VOL: 0
 ;PCODE: $0000060B VOL: 0
 ;PCODE: $0000060C VOL: 0
+; 0000 029E             while (page_num == 0 && stage == STAGE_INIT_MENU)
 ;PCODE: $0000060D VOL: 0
-; 0000 029A             lcd_print("4: Temperature Monitoring");
 ;PCODE: $0000060E VOL: 0
 ;PCODE: $0000060F VOL: 0
 ;PCODE: $00000610 VOL: 0
-; 0000 029B             while (page_num == 1 && stage == STAGE_INIT_MENU)
 ;PCODE: $00000611 VOL: 0
 ;PCODE: $00000612 VOL: 0
 ;PCODE: $00000613 VOL: 0
 ;PCODE: $00000614 VOL: 0
 ;PCODE: $00000615 VOL: 0
+; 0000 029F                 ;
 ;PCODE: $00000616 VOL: 0
 ;PCODE: $00000617 VOL: 0
+; 0000 02A0         }
+; 0000 02A1         else if (page_num == 1)
 ;PCODE: $00000618 VOL: 0
 ;PCODE: $00000619 VOL: 0
 ;PCODE: $0000061A VOL: 0
-; 0000 029C                 ;
 ;PCODE: $0000061B VOL: 0
 ;PCODE: $0000061C VOL: 0
-; 0000 029D         }
-; 0000 029E         else if (page_num == 2)
+; 0000 02A2         {
+; 0000 02A3             lcd_print("3: View Present Students ");
 ;PCODE: $0000061D VOL: 0
 ;PCODE: $0000061E VOL: 0
 ;PCODE: $0000061F VOL: 0
+; 0000 02A4             lcd_gotoxy(1, 2);
 ;PCODE: $00000620 VOL: 0
 ;PCODE: $00000621 VOL: 0
-; 0000 029F         {
-; 0000 02A0             lcd_print("5: Retrieve Student Data");
 ;PCODE: $00000622 VOL: 0
 ;PCODE: $00000623 VOL: 0
+; 0000 02A5             lcd_print("4: Temperature Monitoring");
 ;PCODE: $00000624 VOL: 0
-; 0000 02A1             lcd_gotoxy(1, 2);
 ;PCODE: $00000625 VOL: 0
 ;PCODE: $00000626 VOL: 0
+; 0000 02A6             while (page_num == 1 && stage == STAGE_INIT_MENU)
 ;PCODE: $00000627 VOL: 0
 ;PCODE: $00000628 VOL: 0
-; 0000 02A2             lcd_print("6: Traffic Monitoring");
 ;PCODE: $00000629 VOL: 0
 ;PCODE: $0000062A VOL: 0
 ;PCODE: $0000062B VOL: 0
-; 0000 02A3             while (page_num == 2 && stage == STAGE_INIT_MENU)
 ;PCODE: $0000062C VOL: 0
 ;PCODE: $0000062D VOL: 0
 ;PCODE: $0000062E VOL: 0
 ;PCODE: $0000062F VOL: 0
 ;PCODE: $00000630 VOL: 0
+; 0000 02A7                 ;
 ;PCODE: $00000631 VOL: 0
 ;PCODE: $00000632 VOL: 0
+; 0000 02A8         }
+; 0000 02A9         else if (page_num == 2)
 ;PCODE: $00000633 VOL: 0
 ;PCODE: $00000634 VOL: 0
 ;PCODE: $00000635 VOL: 0
-; 0000 02A4                 ;
 ;PCODE: $00000636 VOL: 0
 ;PCODE: $00000637 VOL: 0
-; 0000 02A5         }
-; 0000 02A6     }
+; 0000 02AA         {
+; 0000 02AB             lcd_print("5: Retrieve Student Data");
 ;PCODE: $00000638 VOL: 0
 ;PCODE: $00000639 VOL: 0
 ;PCODE: $0000063A VOL: 0
+; 0000 02AC             lcd_gotoxy(1, 2);
 ;PCODE: $0000063B VOL: 0
 ;PCODE: $0000063C VOL: 0
-; 0000 02A7 }
 ;PCODE: $0000063D VOL: 0
 ;PCODE: $0000063E VOL: 0
-
-	.DSEG
-_0xAB:
-	.BYTE 0x96
-;
-;void clear_eeprom()
-; 0000 02AA {
-
-	.CSEG
+; 0000 02AD             lcd_print("6: Traffic Monitoring");
 ;PCODE: $0000063F VOL: 0
 ;PCODE: $00000640 VOL: 0
-; 0000 02AB     unsigned int i;
-; 0000 02AC 
-; 0000 02AD     for (i = 0; i <= 1023; i++)
 ;PCODE: $00000641 VOL: 0
+; 0000 02AE             while (page_num == 2 && stage == STAGE_INIT_MENU)
 ;PCODE: $00000642 VOL: 0
-;	i -> R16,R17
 ;PCODE: $00000643 VOL: 0
 ;PCODE: $00000644 VOL: 0
 ;PCODE: $00000645 VOL: 0
@@ -2362,242 +2356,256 @@ _0xAB:
 ;PCODE: $00000649 VOL: 0
 ;PCODE: $0000064A VOL: 0
 ;PCODE: $0000064B VOL: 0
-; 0000 02AE     {
-; 0000 02AF         // Wait for the previous write to complete
-; 0000 02B0         while (EECR & (1 << EEWE))
+; 0000 02AF                 ;
 ;PCODE: $0000064C VOL: 0
 ;PCODE: $0000064D VOL: 0
+; 0000 02B0         }
+; 0000 02B1     }
 ;PCODE: $0000064E VOL: 0
 ;PCODE: $0000064F VOL: 0
-; 0000 02B1             ;
 ;PCODE: $00000650 VOL: 0
 ;PCODE: $00000651 VOL: 0
-; 0000 02B2 
-; 0000 02B3         // Set up address registers
-; 0000 02B4         EEARH = (i >> 8) & 0x03; // High byte (bits 8-9)
 ;PCODE: $00000652 VOL: 0
+; 0000 02B2 }
 ;PCODE: $00000653 VOL: 0
 ;PCODE: $00000654 VOL: 0
+
+	.DSEG
+_0xAE:
+	.BYTE 0x96
+;
+;void clear_eeprom()
+; 0000 02B5 {
+
+	.CSEG
 ;PCODE: $00000655 VOL: 0
-; 0000 02B5         EEARL = i & 0xFF;        // Low byte (bits 0-7)
 ;PCODE: $00000656 VOL: 0
+; 0000 02B6     unsigned int i;
+; 0000 02B7 
+; 0000 02B8     for (i = 0; i <= 1023; i++)
 ;PCODE: $00000657 VOL: 0
 ;PCODE: $00000658 VOL: 0
-; 0000 02B6 
-; 0000 02B7         // Set up data register
-; 0000 02B8         EEDR = 0; // Write 0 to EEPROM
+;	i -> R16,R17
 ;PCODE: $00000659 VOL: 0
 ;PCODE: $0000065A VOL: 0
-; 0000 02B9 
-; 0000 02BA         // Enable write
-; 0000 02BB         EECR |= (1 << EEMWE); // Master write enable
 ;PCODE: $0000065B VOL: 0
 ;PCODE: $0000065C VOL: 0
-; 0000 02BC         EECR |= (1 << EEWE);  // Start EEPROM write
 ;PCODE: $0000065D VOL: 0
 ;PCODE: $0000065E VOL: 0
-; 0000 02BD     }
 ;PCODE: $0000065F VOL: 0
 ;PCODE: $00000660 VOL: 0
 ;PCODE: $00000661 VOL: 0
+; 0000 02B9     {
+; 0000 02BA         // Wait for the previous write to complete
+; 0000 02BB         while (EECR & (1 << EEWE))
 ;PCODE: $00000662 VOL: 0
 ;PCODE: $00000663 VOL: 0
-; 0000 02BE }
 ;PCODE: $00000664 VOL: 0
 ;PCODE: $00000665 VOL: 0
+; 0000 02BC             ;
 ;PCODE: $00000666 VOL: 0
-;
-;unsigned char read_byte_from_eeprom(unsigned int addr)
-; 0000 02C1 {
 ;PCODE: $00000667 VOL: 0
+; 0000 02BD 
+; 0000 02BE         // Set up address registers
+; 0000 02BF         EEARH = (i >> 8) & 0x03; // High byte (bits 8-9)
 ;PCODE: $00000668 VOL: 0
-; 0000 02C2     unsigned char x;
-; 0000 02C3     // Wait for the previous write to complete
-; 0000 02C4     while (EECR & (1 << EEWE))
 ;PCODE: $00000669 VOL: 0
 ;PCODE: $0000066A VOL: 0
-;	addr -> Y+1
-;	x -> R17
 ;PCODE: $0000066B VOL: 0
+; 0000 02C0         EEARL = i & 0xFF;        // Low byte (bits 0-7)
 ;PCODE: $0000066C VOL: 0
 ;PCODE: $0000066D VOL: 0
 ;PCODE: $0000066E VOL: 0
-; 0000 02C5         ;
+; 0000 02C1 
+; 0000 02C2         // Set up data register
+; 0000 02C3         EEDR = 0; // Write 0 to EEPROM
 ;PCODE: $0000066F VOL: 0
 ;PCODE: $00000670 VOL: 0
-; 0000 02C6 
-; 0000 02C7     // Set up address registers
-; 0000 02C8     EEARH = (addr >> 8) & 0x03; // High byte (bits 8-9)
+; 0000 02C4 
+; 0000 02C5         // Enable write
+; 0000 02C6         EECR |= (1 << EEMWE); // Master write enable
 ;PCODE: $00000671 VOL: 0
 ;PCODE: $00000672 VOL: 0
+; 0000 02C7         EECR |= (1 << EEWE);  // Start EEPROM write
 ;PCODE: $00000673 VOL: 0
 ;PCODE: $00000674 VOL: 0
-; 0000 02C9     EEARL = addr & 0xFF;        // Low byte (bits 0-7)
+; 0000 02C8     }
 ;PCODE: $00000675 VOL: 0
 ;PCODE: $00000676 VOL: 0
 ;PCODE: $00000677 VOL: 0
-; 0000 02CA     EECR |= (1 << EERE);        // Read Enable
 ;PCODE: $00000678 VOL: 0
 ;PCODE: $00000679 VOL: 0
-; 0000 02CB     x = EEDR;
+; 0000 02C9 }
 ;PCODE: $0000067A VOL: 0
 ;PCODE: $0000067B VOL: 0
-; 0000 02CC     return x;
 ;PCODE: $0000067C VOL: 0
+;
+;unsigned char read_byte_from_eeprom(unsigned int addr)
+; 0000 02CC {
 ;PCODE: $0000067D VOL: 0
 ;PCODE: $0000067E VOL: 0
+; 0000 02CD     unsigned char x;
+; 0000 02CE     // Wait for the previous write to complete
+; 0000 02CF     while (EECR & (1 << EEWE))
 ;PCODE: $0000067F VOL: 0
 ;PCODE: $00000680 VOL: 0
-; 0000 02CD }
+;	addr -> Y+1
+;	x -> R17
 ;PCODE: $00000681 VOL: 0
-;
-;void write_byte_to_eeprom(unsigned int addr, unsigned char value)
-; 0000 02D0 {
 ;PCODE: $00000682 VOL: 0
 ;PCODE: $00000683 VOL: 0
-; 0000 02D1     // Wait for the previous write to complete
-; 0000 02D2     while (EECR & (1 << EEWE))
 ;PCODE: $00000684 VOL: 0
-;	addr -> Y+1
-;	value -> Y+0
+; 0000 02D0         ;
 ;PCODE: $00000685 VOL: 0
 ;PCODE: $00000686 VOL: 0
+; 0000 02D1 
+; 0000 02D2     // Set up address registers
+; 0000 02D3     EEARH = (addr >> 8) & 0x03; // High byte (bits 8-9)
 ;PCODE: $00000687 VOL: 0
 ;PCODE: $00000688 VOL: 0
-; 0000 02D3         ;
 ;PCODE: $00000689 VOL: 0
 ;PCODE: $0000068A VOL: 0
-; 0000 02D4 
-; 0000 02D5     // Set up address registers
-; 0000 02D6     EEARH = (addr >> 8) & 0x03; // High byte (bits 8-9)
+; 0000 02D4     EEARL = addr & 0xFF;        // Low byte (bits 0-7)
 ;PCODE: $0000068B VOL: 0
 ;PCODE: $0000068C VOL: 0
 ;PCODE: $0000068D VOL: 0
+; 0000 02D5     EECR |= (1 << EERE);        // Read Enable
 ;PCODE: $0000068E VOL: 0
-; 0000 02D7     EEARL = addr & 0xFF;        // Low byte (bits 0-7)
 ;PCODE: $0000068F VOL: 0
+; 0000 02D6     x = EEDR;
 ;PCODE: $00000690 VOL: 0
 ;PCODE: $00000691 VOL: 0
-; 0000 02D8 
-; 0000 02D9     // Set up data register
-; 0000 02DA     EEDR = value; // Write 0 to EEPROM
+; 0000 02D7     return x;
 ;PCODE: $00000692 VOL: 0
 ;PCODE: $00000693 VOL: 0
-; 0000 02DB 
-; 0000 02DC     // Enable write
-; 0000 02DD     EECR |= (1 << EEMWE); // Master write enable
 ;PCODE: $00000694 VOL: 0
 ;PCODE: $00000695 VOL: 0
-; 0000 02DE     EECR |= (1 << EEWE);  // Start EEPROM write
 ;PCODE: $00000696 VOL: 0
+; 0000 02D8 }
 ;PCODE: $00000697 VOL: 0
-; 0000 02DF }
+;
+;void write_byte_to_eeprom(unsigned int addr, unsigned char value)
+; 0000 02DB {
 ;PCODE: $00000698 VOL: 0
 ;PCODE: $00000699 VOL: 0
+; 0000 02DC     // Wait for the previous write to complete
+; 0000 02DD     while (EECR & (1 << EEWE))
 ;PCODE: $0000069A VOL: 0
-;
-;void USART_Transmit(unsigned char data)
-; 0000 02E2 {
+;	addr -> Y+1
+;	value -> Y+0
 ;PCODE: $0000069B VOL: 0
 ;PCODE: $0000069C VOL: 0
-; 0000 02E3     while (!(UCSRA & (1 << UDRE)))
 ;PCODE: $0000069D VOL: 0
-;	data -> Y+0
 ;PCODE: $0000069E VOL: 0
+; 0000 02DE         ;
 ;PCODE: $0000069F VOL: 0
 ;PCODE: $000006A0 VOL: 0
+; 0000 02DF 
+; 0000 02E0     // Set up address registers
+; 0000 02E1     EEARH = (addr >> 8) & 0x03; // High byte (bits 8-9)
 ;PCODE: $000006A1 VOL: 0
-; 0000 02E4         ;
 ;PCODE: $000006A2 VOL: 0
 ;PCODE: $000006A3 VOL: 0
-; 0000 02E5     UDR = data;
 ;PCODE: $000006A4 VOL: 0
+; 0000 02E2     EEARL = addr & 0xFF;        // Low byte (bits 0-7)
 ;PCODE: $000006A5 VOL: 0
-; 0000 02E6 }
 ;PCODE: $000006A6 VOL: 0
 ;PCODE: $000006A7 VOL: 0
+; 0000 02E3 
+; 0000 02E4     // Set up data register
+; 0000 02E5     EEDR = value; // Write 0 to EEPROM
 ;PCODE: $000006A8 VOL: 0
-;
-;void USART_init(unsigned int ubrr)
-; 0000 02E9 {
 ;PCODE: $000006A9 VOL: 0
+; 0000 02E6 
+; 0000 02E7     // Enable write
+; 0000 02E8     EECR |= (1 << EEMWE); // Master write enable
 ;PCODE: $000006AA VOL: 0
-; 0000 02EA     UBRRL = (unsigned char)ubrr;
 ;PCODE: $000006AB VOL: 0
-;	ubrr -> Y+0
+; 0000 02E9     EECR |= (1 << EEWE);  // Start EEPROM write
 ;PCODE: $000006AC VOL: 0
 ;PCODE: $000006AD VOL: 0
-; 0000 02EB     UBRRH = (unsigned char)(ubrr >> 8);
+; 0000 02EA }
 ;PCODE: $000006AE VOL: 0
 ;PCODE: $000006AF VOL: 0
 ;PCODE: $000006B0 VOL: 0
-; 0000 02EC     UCSRB = (1 << RXEN) | (1 << TXEN);
+;
+;void USART_Transmit(unsigned char data)
+; 0000 02ED {
 ;PCODE: $000006B1 VOL: 0
 ;PCODE: $000006B2 VOL: 0
-; 0000 02ED     UCSRC = (1 << UCSZ1) | (1 << UCSZ0); // Set UCSZ1 and UCSZ0 for 8-bit data
+; 0000 02EE     while (!(UCSRA & (1 << UDRE)))
 ;PCODE: $000006B3 VOL: 0
+;	data -> Y+0
 ;PCODE: $000006B4 VOL: 0
-; 0000 02EE }
 ;PCODE: $000006B5 VOL: 0
 ;PCODE: $000006B6 VOL: 0
 ;PCODE: $000006B7 VOL: 0
-;
-;unsigned char search_student_code()
-; 0000 02F1 {
+; 0000 02EF         ;
 ;PCODE: $000006B8 VOL: 0
 ;PCODE: $000006B9 VOL: 0
-; 0000 02F2     unsigned char st_counts, i, j;
-; 0000 02F3     char temp[10];
-; 0000 02F4 
-; 0000 02F5     st_counts = read_byte_from_eeprom(0x0);
+; 0000 02F0     UDR = data;
 ;PCODE: $000006BA VOL: 0
 ;PCODE: $000006BB VOL: 0
+; 0000 02F1 }
+;PCODE: $000006BC VOL: 0
+;PCODE: $000006BD VOL: 0
+;PCODE: $000006BE VOL: 0
+;
+;void USART_init(unsigned int ubrr)
+; 0000 02F4 {
+;PCODE: $000006BF VOL: 0
+;PCODE: $000006C0 VOL: 0
+; 0000 02F5     UBRRL = (unsigned char)ubrr;
+;PCODE: $000006C1 VOL: 0
+;	ubrr -> Y+0
+;PCODE: $000006C2 VOL: 0
+;PCODE: $000006C3 VOL: 0
+; 0000 02F6     UBRRH = (unsigned char)(ubrr >> 8);
+;PCODE: $000006C4 VOL: 0
+;PCODE: $000006C5 VOL: 0
+;PCODE: $000006C6 VOL: 0
+; 0000 02F7     UCSRB = (1 << RXEN) | (1 << TXEN);
+;PCODE: $000006C7 VOL: 0
+;PCODE: $000006C8 VOL: 0
+; 0000 02F8     UCSRC = (1 << UCSZ1) | (1 << UCSZ0); // Set UCSZ1 and UCSZ0 for 8-bit data
+;PCODE: $000006C9 VOL: 0
+;PCODE: $000006CA VOL: 0
+; 0000 02F9 }
+;PCODE: $000006CB VOL: 0
+;PCODE: $000006CC VOL: 0
+;PCODE: $000006CD VOL: 0
+;
+;unsigned char search_student_code()
+; 0000 02FC {
+;PCODE: $000006CE VOL: 0
+;PCODE: $000006CF VOL: 0
+; 0000 02FD     unsigned char st_counts, i, j;
+; 0000 02FE     char temp[10];
+; 0000 02FF 
+; 0000 0300     st_counts = read_byte_from_eeprom(0x0);
+;PCODE: $000006D0 VOL: 0
+;PCODE: $000006D1 VOL: 0
 ;	st_counts -> R17
 ;	i -> R16
 ;	j -> R19
 ;	temp -> Y+4
-;PCODE: $000006BC VOL: 0
-;PCODE: $000006BD VOL: 0
-;PCODE: $000006BE VOL: 0
-;PCODE: $000006BF VOL: 0
-; 0000 02F6 
-; 0000 02F7     for (i = 0; i < st_counts; i++)
-;PCODE: $000006C0 VOL: 0
-;PCODE: $000006C1 VOL: 0
-;PCODE: $000006C2 VOL: 0
-;PCODE: $000006C3 VOL: 0
-;PCODE: $000006C4 VOL: 0
-;PCODE: $000006C5 VOL: 0
-;PCODE: $000006C6 VOL: 0
-;PCODE: $000006C7 VOL: 0
-;PCODE: $000006C8 VOL: 0
-; 0000 02F8     {
-; 0000 02F9         memset(temp, 0, 10);
-;PCODE: $000006C9 VOL: 0
-;PCODE: $000006CA VOL: 0
-;PCODE: $000006CB VOL: 0
-;PCODE: $000006CC VOL: 0
-;PCODE: $000006CD VOL: 0
-;PCODE: $000006CE VOL: 0
-;PCODE: $000006CF VOL: 0
-; 0000 02FA         for (j = 0; j < 8; j++)
-;PCODE: $000006D0 VOL: 0
-;PCODE: $000006D1 VOL: 0
 ;PCODE: $000006D2 VOL: 0
 ;PCODE: $000006D3 VOL: 0
 ;PCODE: $000006D4 VOL: 0
 ;PCODE: $000006D5 VOL: 0
+; 0000 0301 
+; 0000 0302     for (i = 0; i < st_counts; i++)
 ;PCODE: $000006D6 VOL: 0
 ;PCODE: $000006D7 VOL: 0
 ;PCODE: $000006D8 VOL: 0
-; 0000 02FB         {
-; 0000 02FC             temp[j] = read_byte_from_eeprom(j + ((i + 1) * 8));
 ;PCODE: $000006D9 VOL: 0
 ;PCODE: $000006DA VOL: 0
 ;PCODE: $000006DB VOL: 0
 ;PCODE: $000006DC VOL: 0
 ;PCODE: $000006DD VOL: 0
 ;PCODE: $000006DE VOL: 0
+; 0000 0303     {
+; 0000 0304         memset(temp, 0, 10);
 ;PCODE: $000006DF VOL: 0
 ;PCODE: $000006E0 VOL: 0
 ;PCODE: $000006E1 VOL: 0
@@ -2605,22 +2613,22 @@ _0xAB:
 ;PCODE: $000006E3 VOL: 0
 ;PCODE: $000006E4 VOL: 0
 ;PCODE: $000006E5 VOL: 0
+; 0000 0305         for (j = 0; j < 8; j++)
 ;PCODE: $000006E6 VOL: 0
 ;PCODE: $000006E7 VOL: 0
-; 0000 02FD         }
 ;PCODE: $000006E8 VOL: 0
 ;PCODE: $000006E9 VOL: 0
 ;PCODE: $000006EA VOL: 0
 ;PCODE: $000006EB VOL: 0
 ;PCODE: $000006EC VOL: 0
-; 0000 02FE         temp[j] = '\0';
 ;PCODE: $000006ED VOL: 0
 ;PCODE: $000006EE VOL: 0
+; 0000 0306         {
+; 0000 0307             temp[j] = read_byte_from_eeprom(j + ((i + 1) * 8));
 ;PCODE: $000006EF VOL: 0
 ;PCODE: $000006F0 VOL: 0
 ;PCODE: $000006F1 VOL: 0
 ;PCODE: $000006F2 VOL: 0
-; 0000 02FF         if (strncmp(temp, buffer , 8) == 0)
 ;PCODE: $000006F3 VOL: 0
 ;PCODE: $000006F4 VOL: 0
 ;PCODE: $000006F5 VOL: 0
@@ -2629,209 +2637,202 @@ _0xAB:
 ;PCODE: $000006F8 VOL: 0
 ;PCODE: $000006F9 VOL: 0
 ;PCODE: $000006FA VOL: 0
-; 0000 0300             return (i + 1);
 ;PCODE: $000006FB VOL: 0
 ;PCODE: $000006FC VOL: 0
 ;PCODE: $000006FD VOL: 0
+; 0000 0308         }
 ;PCODE: $000006FE VOL: 0
 ;PCODE: $000006FF VOL: 0
-; 0000 0301     }
 ;PCODE: $00000700 VOL: 0
 ;PCODE: $00000701 VOL: 0
 ;PCODE: $00000702 VOL: 0
+; 0000 0309         temp[j] = '\0';
 ;PCODE: $00000703 VOL: 0
 ;PCODE: $00000704 VOL: 0
 ;PCODE: $00000705 VOL: 0
-; 0000 0302 
-; 0000 0303     return 0;
 ;PCODE: $00000706 VOL: 0
 ;PCODE: $00000707 VOL: 0
 ;PCODE: $00000708 VOL: 0
+; 0000 030A         if (strncmp(temp, buffer, 8) == 0)
 ;PCODE: $00000709 VOL: 0
-; 0000 0304 }
 ;PCODE: $0000070A VOL: 0
-;
-;void delete_student_code(unsigned char index)
-; 0000 0307 {
 ;PCODE: $0000070B VOL: 0
 ;PCODE: $0000070C VOL: 0
-; 0000 0308     unsigned char st_counts, i, j;
-; 0000 0309     unsigned char temp;
-; 0000 030A 
-; 0000 030B     st_counts = read_byte_from_eeprom(0x0);
 ;PCODE: $0000070D VOL: 0
 ;PCODE: $0000070E VOL: 0
-;	index -> Y+4
-;	st_counts -> R17
-;	i -> R16
-;	j -> R19
-;	temp -> R18
 ;PCODE: $0000070F VOL: 0
 ;PCODE: $00000710 VOL: 0
+; 0000 030B             return (i + 1);
 ;PCODE: $00000711 VOL: 0
 ;PCODE: $00000712 VOL: 0
-; 0000 030C 
-; 0000 030D     for (i = index; i <= st_counts; i++)
 ;PCODE: $00000713 VOL: 0
 ;PCODE: $00000714 VOL: 0
 ;PCODE: $00000715 VOL: 0
+; 0000 030C     }
 ;PCODE: $00000716 VOL: 0
 ;PCODE: $00000717 VOL: 0
 ;PCODE: $00000718 VOL: 0
 ;PCODE: $00000719 VOL: 0
 ;PCODE: $0000071A VOL: 0
 ;PCODE: $0000071B VOL: 0
-; 0000 030E     {
-; 0000 030F         for (j = 0; j < 8; j++)
+; 0000 030D 
+; 0000 030E     return 0;
 ;PCODE: $0000071C VOL: 0
 ;PCODE: $0000071D VOL: 0
 ;PCODE: $0000071E VOL: 0
 ;PCODE: $0000071F VOL: 0
+; 0000 030F }
 ;PCODE: $00000720 VOL: 0
+;
+;void delete_student_code(unsigned char index)
+; 0000 0312 {
 ;PCODE: $00000721 VOL: 0
 ;PCODE: $00000722 VOL: 0
+; 0000 0313     unsigned char st_counts, i, j;
+; 0000 0314     unsigned char temp;
+; 0000 0315 
+; 0000 0316     st_counts = read_byte_from_eeprom(0x0);
 ;PCODE: $00000723 VOL: 0
 ;PCODE: $00000724 VOL: 0
-; 0000 0310         {
-; 0000 0311             temp = read_byte_from_eeprom(j + ((i + 1) * 8));
+;	index -> Y+4
+;	st_counts -> R17
+;	i -> R16
+;	j -> R19
+;	temp -> R18
 ;PCODE: $00000725 VOL: 0
 ;PCODE: $00000726 VOL: 0
 ;PCODE: $00000727 VOL: 0
 ;PCODE: $00000728 VOL: 0
+; 0000 0317 
+; 0000 0318     for (i = index; i <= st_counts; i++)
 ;PCODE: $00000729 VOL: 0
 ;PCODE: $0000072A VOL: 0
 ;PCODE: $0000072B VOL: 0
 ;PCODE: $0000072C VOL: 0
 ;PCODE: $0000072D VOL: 0
-; 0000 0312             write_byte_to_eeprom(j + ((i) * 8), temp);
 ;PCODE: $0000072E VOL: 0
 ;PCODE: $0000072F VOL: 0
 ;PCODE: $00000730 VOL: 0
 ;PCODE: $00000731 VOL: 0
+; 0000 0319     {
+; 0000 031A         for (j = 0; j < 8; j++)
 ;PCODE: $00000732 VOL: 0
 ;PCODE: $00000733 VOL: 0
 ;PCODE: $00000734 VOL: 0
 ;PCODE: $00000735 VOL: 0
-; 0000 0313         }
 ;PCODE: $00000736 VOL: 0
 ;PCODE: $00000737 VOL: 0
 ;PCODE: $00000738 VOL: 0
 ;PCODE: $00000739 VOL: 0
 ;PCODE: $0000073A VOL: 0
-; 0000 0314     }
+; 0000 031B         {
+; 0000 031C             temp = read_byte_from_eeprom(j + ((i + 1) * 8));
 ;PCODE: $0000073B VOL: 0
 ;PCODE: $0000073C VOL: 0
 ;PCODE: $0000073D VOL: 0
 ;PCODE: $0000073E VOL: 0
 ;PCODE: $0000073F VOL: 0
-; 0000 0315     write_byte_to_eeprom(0x0, st_counts - 1);
 ;PCODE: $00000740 VOL: 0
 ;PCODE: $00000741 VOL: 0
 ;PCODE: $00000742 VOL: 0
 ;PCODE: $00000743 VOL: 0
+; 0000 031D             write_byte_to_eeprom(j + ((i) * 8), temp);
 ;PCODE: $00000744 VOL: 0
-; 0000 0316 }
 ;PCODE: $00000745 VOL: 0
 ;PCODE: $00000746 VOL: 0
 ;PCODE: $00000747 VOL: 0
 ;PCODE: $00000748 VOL: 0
-;
-;void HCSR04Init()
-; 0000 0319 {
 ;PCODE: $00000749 VOL: 0
 ;PCODE: $0000074A VOL: 0
-; 0000 031A     US_DDR |= (1 << US_TRIG_POS); // Trigger pin as output
 ;PCODE: $0000074B VOL: 0
+; 0000 031E         }
 ;PCODE: $0000074C VOL: 0
-; 0000 031B     US_DDR &= ~(1 << US_ECHO_POS); // Echo pin as input
 ;PCODE: $0000074D VOL: 0
 ;PCODE: $0000074E VOL: 0
-; 0000 031C }
 ;PCODE: $0000074F VOL: 0
 ;PCODE: $00000750 VOL: 0
-;
-;void HCSR04Trigger()
-; 0000 031F {
+; 0000 031F     }
 ;PCODE: $00000751 VOL: 0
 ;PCODE: $00000752 VOL: 0
-; 0000 0320     US_PORT |= (1 << US_TRIG_POS); // Set trigger pin high
 ;PCODE: $00000753 VOL: 0
 ;PCODE: $00000754 VOL: 0
-; 0000 0321     delay_us(15);                  // Wait for 15 microseconds
 ;PCODE: $00000755 VOL: 0
-; 0000 0322     US_PORT &= ~(1 << US_TRIG_POS); // Set trigger pin low
+; 0000 0320     write_byte_to_eeprom(0x0, st_counts - 1);
 ;PCODE: $00000756 VOL: 0
 ;PCODE: $00000757 VOL: 0
-; 0000 0323 }
 ;PCODE: $00000758 VOL: 0
 ;PCODE: $00000759 VOL: 0
-;
-;uint16_t GetPulseWidth()
-; 0000 0326 {
 ;PCODE: $0000075A VOL: 0
+; 0000 0321 }
 ;PCODE: $0000075B VOL: 0
-; 0000 0327     uint32_t i, result;
-; 0000 0328 
-; 0000 0329     // Wait for rising edge on Echo pin
-; 0000 032A     for (i = 0; i < 600000; i++) {
 ;PCODE: $0000075C VOL: 0
-;	i -> Y+4
-;	result -> Y+0
 ;PCODE: $0000075D VOL: 0
 ;PCODE: $0000075E VOL: 0
+;
+;void HCSR04Init()
+; 0000 0324 {
 ;PCODE: $0000075F VOL: 0
 ;PCODE: $00000760 VOL: 0
+; 0000 0325     US_DDR |= (1 << US_TRIG_POS);  // Trigger pin as output
 ;PCODE: $00000761 VOL: 0
 ;PCODE: $00000762 VOL: 0
+; 0000 0326     US_DDR &= ~(1 << US_ECHO_POS); // Echo pin as input
 ;PCODE: $00000763 VOL: 0
 ;PCODE: $00000764 VOL: 0
+; 0000 0327 }
 ;PCODE: $00000765 VOL: 0
 ;PCODE: $00000766 VOL: 0
-; 0000 032B         if (!(US_PIN & (1 << US_ECHO_POS)))
+;
+;void HCSR04Trigger()
+; 0000 032A {
 ;PCODE: $00000767 VOL: 0
 ;PCODE: $00000768 VOL: 0
+; 0000 032B     US_PORT |= (1 << US_TRIG_POS);  // Set trigger pin high
 ;PCODE: $00000769 VOL: 0
-; 0000 032C             continue;
 ;PCODE: $0000076A VOL: 0
-; 0000 032D         else
+; 0000 032C     delay_us(15);                   // Wait for 15 microseconds
 ;PCODE: $0000076B VOL: 0
+; 0000 032D     US_PORT &= ~(1 << US_TRIG_POS); // Set trigger pin low
 ;PCODE: $0000076C VOL: 0
-; 0000 032E             break;
 ;PCODE: $0000076D VOL: 0
-; 0000 032F     }
+; 0000 032E }
 ;PCODE: $0000076E VOL: 0
 ;PCODE: $0000076F VOL: 0
+;
+;uint16_t GetPulseWidth()
+; 0000 0331 {
 ;PCODE: $00000770 VOL: 0
 ;PCODE: $00000771 VOL: 0
+; 0000 0332     uint32_t i, result;
+; 0000 0333 
+; 0000 0334     // Wait for rising edge on Echo pin
+; 0000 0335     for (i = 0; i < 600000; i++)
 ;PCODE: $00000772 VOL: 0
+;	i -> Y+4
+;	result -> Y+0
 ;PCODE: $00000773 VOL: 0
 ;PCODE: $00000774 VOL: 0
-; 0000 0330 
-; 0000 0331     if (i == 600000)
 ;PCODE: $00000775 VOL: 0
 ;PCODE: $00000776 VOL: 0
 ;PCODE: $00000777 VOL: 0
-; 0000 0332         return US_ERROR; // Timeout error if no rising edge detected
 ;PCODE: $00000778 VOL: 0
 ;PCODE: $00000779 VOL: 0
 ;PCODE: $0000077A VOL: 0
-; 0000 0333 
-; 0000 0334     // Start timer with prescaler 8
-; 0000 0335     TCCR1A = 0x00;
 ;PCODE: $0000077B VOL: 0
 ;PCODE: $0000077C VOL: 0
+; 0000 0336     {
+; 0000 0337         if (!(US_PIN & (1 << US_ECHO_POS)))
 ;PCODE: $0000077D VOL: 0
-; 0000 0336     TCCR1B = (1 << CS11) | (1 << CS10);
 ;PCODE: $0000077E VOL: 0
 ;PCODE: $0000077F VOL: 0
-; 0000 0337     TCNT1 = 0x00; // Reset timer
+; 0000 0338             continue;
 ;PCODE: $00000780 VOL: 0
+; 0000 0339         else
 ;PCODE: $00000781 VOL: 0
-; 0000 0338 
-; 0000 0339     // Wait for falling edge on Echo pin
-; 0000 033A     for (i = 0; i < 600000; i++) {
 ;PCODE: $00000782 VOL: 0
+; 0000 033A             break;
 ;PCODE: $00000783 VOL: 0
+; 0000 033B     }
 ;PCODE: $00000784 VOL: 0
 ;PCODE: $00000785 VOL: 0
 ;PCODE: $00000786 VOL: 0
@@ -2839,239 +2840,281 @@ _0xAB:
 ;PCODE: $00000788 VOL: 0
 ;PCODE: $00000789 VOL: 0
 ;PCODE: $0000078A VOL: 0
+; 0000 033C 
+; 0000 033D     if (i == 600000)
 ;PCODE: $0000078B VOL: 0
-; 0000 033B         if (!(US_PIN & (1 << US_ECHO_POS)))
 ;PCODE: $0000078C VOL: 0
 ;PCODE: $0000078D VOL: 0
+; 0000 033E         return US_ERROR; // Timeout error if no rising edge detected
 ;PCODE: $0000078E VOL: 0
-; 0000 033C             break;  // Falling edge detected
 ;PCODE: $0000078F VOL: 0
-; 0000 033D         if (TCNT1 > 60000)
 ;PCODE: $00000790 VOL: 0
+; 0000 033F 
+; 0000 0340     // Start timer with prescaler 8
+; 0000 0341     TCCR1A = 0x00;
 ;PCODE: $00000791 VOL: 0
 ;PCODE: $00000792 VOL: 0
 ;PCODE: $00000793 VOL: 0
-; 0000 033E             return US_NO_OBSTACLE; // No obstacle in range
+; 0000 0342     TCCR1B = (1 << CS11) | (1 << CS10);
 ;PCODE: $00000794 VOL: 0
 ;PCODE: $00000795 VOL: 0
+; 0000 0343     TCNT1 = 0x00; // Reset timer
 ;PCODE: $00000796 VOL: 0
-; 0000 033F     }
 ;PCODE: $00000797 VOL: 0
+; 0000 0344 
+; 0000 0345     // Wait for falling edge on Echo pin
+; 0000 0346     for (i = 0; i < 600000; i++)
 ;PCODE: $00000798 VOL: 0
 ;PCODE: $00000799 VOL: 0
 ;PCODE: $0000079A VOL: 0
 ;PCODE: $0000079B VOL: 0
 ;PCODE: $0000079C VOL: 0
 ;PCODE: $0000079D VOL: 0
-; 0000 0340 
-; 0000 0341     result = TCNT1; // Capture timer value
 ;PCODE: $0000079E VOL: 0
 ;PCODE: $0000079F VOL: 0
 ;PCODE: $000007A0 VOL: 0
-; 0000 0342     TCCR1B = 0x00; // Stop timer
 ;PCODE: $000007A1 VOL: 0
+; 0000 0347     {
+; 0000 0348         if (!(US_PIN & (1 << US_ECHO_POS)))
 ;PCODE: $000007A2 VOL: 0
-; 0000 0343 
-; 0000 0344     if (result > 60000)
 ;PCODE: $000007A3 VOL: 0
 ;PCODE: $000007A4 VOL: 0
+; 0000 0349             break; // Falling edge detected
 ;PCODE: $000007A5 VOL: 0
-; 0000 0345         return US_NO_OBSTACLE;
+; 0000 034A         if (TCNT1 > 60000)
 ;PCODE: $000007A6 VOL: 0
 ;PCODE: $000007A7 VOL: 0
 ;PCODE: $000007A8 VOL: 0
-; 0000 0346     else
 ;PCODE: $000007A9 VOL: 0
-; 0000 0347         return (result >> 1); // Return the measured pulse width
+; 0000 034B             return US_NO_OBSTACLE; // No obstacle in range
 ;PCODE: $000007AA VOL: 0
 ;PCODE: $000007AB VOL: 0
 ;PCODE: $000007AC VOL: 0
+; 0000 034C     }
 ;PCODE: $000007AD VOL: 0
-; 0000 0348 }
 ;PCODE: $000007AE VOL: 0
 ;PCODE: $000007AF VOL: 0
 ;PCODE: $000007B0 VOL: 0
 ;PCODE: $000007B1 VOL: 0
-;
-;void startSonar()
-; 0000 034B {
 ;PCODE: $000007B2 VOL: 0
 ;PCODE: $000007B3 VOL: 0
-; 0000 034C     char numberString[16];
-; 0000 034D     uint16_t pulseWidth;    // Pulse width from echo
-; 0000 034E     int distance, previous_distance = -1;
-; 0000 034F     static int previous_count = -1;
+; 0000 034D 
+; 0000 034E     result = TCNT1; // Capture timer value
+;PCODE: $000007B4 VOL: 0
+;PCODE: $000007B5 VOL: 0
+;PCODE: $000007B6 VOL: 0
+; 0000 034F     TCCR1B = 0x00;  // Stop timer
+;PCODE: $000007B7 VOL: 0
+;PCODE: $000007B8 VOL: 0
+; 0000 0350 
+; 0000 0351     if (result > 60000)
+;PCODE: $000007B9 VOL: 0
+;PCODE: $000007BA VOL: 0
+;PCODE: $000007BB VOL: 0
+; 0000 0352         return US_NO_OBSTACLE;
+;PCODE: $000007BC VOL: 0
+;PCODE: $000007BD VOL: 0
+;PCODE: $000007BE VOL: 0
+; 0000 0353     else
+;PCODE: $000007BF VOL: 0
+; 0000 0354         return (result >> 1); // Return the measured pulse width
+;PCODE: $000007C0 VOL: 0
+;PCODE: $000007C1 VOL: 0
+;PCODE: $000007C2 VOL: 0
+;PCODE: $000007C3 VOL: 0
+; 0000 0355 }
+;PCODE: $000007C4 VOL: 0
+;PCODE: $000007C5 VOL: 0
+;PCODE: $000007C6 VOL: 0
+;PCODE: $000007C7 VOL: 0
+;
+;void startSonar()
+; 0000 0358 {
+;PCODE: $000007C8 VOL: 0
+;PCODE: $000007C9 VOL: 0
+; 0000 0359     char numberString[16];
+; 0000 035A     uint16_t pulseWidth; // Pulse width from echo
+; 0000 035B     int distance, previous_distance = -1;
+; 0000 035C     static int previous_count = -1;
 
 	.DSEG
 
 	.CSEG
-; 0000 0350 
-; 0000 0351     lcdCommand(0x01);
-;PCODE: $000007B4 VOL: 0
-;PCODE: $000007B5 VOL: 0
+; 0000 035D 
+; 0000 035E     lcdCommand(0x01);
+;PCODE: $000007CA VOL: 0
+;PCODE: $000007CB VOL: 0
 ;	numberString -> Y+6
 ;	pulseWidth -> R16,R17
 ;	distance -> R18,R19
 ;	previous_distance -> R20,R21
-;PCODE: $000007B6 VOL: 0
-;PCODE: $000007B7 VOL: 0
-;PCODE: $000007B8 VOL: 0
-;PCODE: $000007B9 VOL: 0
-; 0000 0352     lcd_gotoxy(1, 1);
-;PCODE: $000007BA VOL: 0
-;PCODE: $000007BB VOL: 0
-;PCODE: $000007BC VOL: 0
-;PCODE: $000007BD VOL: 0
-; 0000 0353     lcd_print("Distance: ");
-;PCODE: $000007BE VOL: 0
-;PCODE: $000007BF VOL: 0
-;PCODE: $000007C0 VOL: 0
-; 0000 0354 
-; 0000 0355     while(stage == STAGE_TRAFFIC_MONITORING){
-;PCODE: $000007C1 VOL: 0
-;PCODE: $000007C2 VOL: 0
-;PCODE: $000007C3 VOL: 0
-;PCODE: $000007C4 VOL: 0
-; 0000 0356         HCSR04Trigger();              // Send trigger pulse
-;PCODE: $000007C5 VOL: 0
-; 0000 0357         pulseWidth = GetPulseWidth();  // Measure echo pulse
-;PCODE: $000007C6 VOL: 0
-;PCODE: $000007C7 VOL: 0
-; 0000 0358 
-; 0000 0359         if (pulseWidth == US_ERROR) {
-;PCODE: $000007C8 VOL: 0
-;PCODE: $000007C9 VOL: 0
-;PCODE: $000007CA VOL: 0
-; 0000 035A             lcdCommand(0x01);
-;PCODE: $000007CB VOL: 0
 ;PCODE: $000007CC VOL: 0
-; 0000 035B             lcd_gotoxy(1, 1);
 ;PCODE: $000007CD VOL: 0
 ;PCODE: $000007CE VOL: 0
 ;PCODE: $000007CF VOL: 0
+; 0000 035F     lcd_gotoxy(1, 1);
 ;PCODE: $000007D0 VOL: 0
-; 0000 035C             lcd_print("Error");        // Display error message
 ;PCODE: $000007D1 VOL: 0
 ;PCODE: $000007D2 VOL: 0
 ;PCODE: $000007D3 VOL: 0
-; 0000 035D         } else if (pulseWidth == US_NO_OBSTACLE) {
+; 0000 0360     lcd_print("Distance: ");
 ;PCODE: $000007D4 VOL: 0
 ;PCODE: $000007D5 VOL: 0
 ;PCODE: $000007D6 VOL: 0
+; 0000 0361 
+; 0000 0362     while (stage == STAGE_TRAFFIC_MONITORING)
 ;PCODE: $000007D7 VOL: 0
 ;PCODE: $000007D8 VOL: 0
-; 0000 035E             lcdCommand(0x01);
 ;PCODE: $000007D9 VOL: 0
 ;PCODE: $000007DA VOL: 0
-; 0000 035F             lcd_gotoxy(1, 1);
+; 0000 0363     {
+; 0000 0364         HCSR04Trigger();              // Send trigger pulse
 ;PCODE: $000007DB VOL: 0
+; 0000 0365         pulseWidth = GetPulseWidth(); // Measure echo pulse
 ;PCODE: $000007DC VOL: 0
 ;PCODE: $000007DD VOL: 0
+; 0000 0366 
+; 0000 0367         if (pulseWidth == US_ERROR)
 ;PCODE: $000007DE VOL: 0
-; 0000 0360             lcd_print("No Obstacle");  // Display no obstacle message
 ;PCODE: $000007DF VOL: 0
 ;PCODE: $000007E0 VOL: 0
+; 0000 0368         {
+; 0000 0369             lcdCommand(0x01);
 ;PCODE: $000007E1 VOL: 0
-; 0000 0361         } else {
 ;PCODE: $000007E2 VOL: 0
+; 0000 036A             lcd_gotoxy(1, 1);
 ;PCODE: $000007E3 VOL: 0
-; 0000 0362             distance = (int)((pulseWidth * 0.034 / 2) + 0.5);
 ;PCODE: $000007E4 VOL: 0
 ;PCODE: $000007E5 VOL: 0
 ;PCODE: $000007E6 VOL: 0
+; 0000 036B             lcd_print("Error"); // Display error message
 ;PCODE: $000007E7 VOL: 0
 ;PCODE: $000007E8 VOL: 0
 ;PCODE: $000007E9 VOL: 0
+; 0000 036C         }
+; 0000 036D         else if (pulseWidth == US_NO_OBSTACLE)
 ;PCODE: $000007EA VOL: 0
 ;PCODE: $000007EB VOL: 0
 ;PCODE: $000007EC VOL: 0
 ;PCODE: $000007ED VOL: 0
 ;PCODE: $000007EE VOL: 0
-; 0000 0363 
-; 0000 0364             if(distance != previous_distance){
+; 0000 036E         {
+; 0000 036F             lcdCommand(0x01);
 ;PCODE: $000007EF VOL: 0
 ;PCODE: $000007F0 VOL: 0
+; 0000 0370             lcd_gotoxy(1, 1);
 ;PCODE: $000007F1 VOL: 0
-; 0000 0365                 previous_distance = distance;
 ;PCODE: $000007F2 VOL: 0
 ;PCODE: $000007F3 VOL: 0
-; 0000 0366                 // Display distance on LCD
-; 0000 0367                 itoa(distance, numberString); // Convert distance to string
 ;PCODE: $000007F4 VOL: 0
+; 0000 0371             lcd_print("No Obstacle"); // Display no obstacle message
 ;PCODE: $000007F5 VOL: 0
 ;PCODE: $000007F6 VOL: 0
-; 0000 0368                 lcd_gotoxy(11,1);
 ;PCODE: $000007F7 VOL: 0
+; 0000 0372         }
+; 0000 0373         else
 ;PCODE: $000007F8 VOL: 0
 ;PCODE: $000007F9 VOL: 0
+; 0000 0374         {
+; 0000 0375             distance = (int)((pulseWidth * 0.034 / 2) + 0.5);
 ;PCODE: $000007FA VOL: 0
-; 0000 0369                 lcd_print(numberString);
 ;PCODE: $000007FB VOL: 0
 ;PCODE: $000007FC VOL: 0
-; 0000 036A                 lcd_print(" cm ");
 ;PCODE: $000007FD VOL: 0
 ;PCODE: $000007FE VOL: 0
 ;PCODE: $000007FF VOL: 0
-; 0000 036B             }
-; 0000 036C             // Counting logic based on distance
-; 0000 036D             if (distance < 6) {
 ;PCODE: $00000800 VOL: 0
 ;PCODE: $00000801 VOL: 0
 ;PCODE: $00000802 VOL: 0
 ;PCODE: $00000803 VOL: 0
-; 0000 036E                 US_count++;  // Increment count if distance is below threshold
 ;PCODE: $00000804 VOL: 0
-; 0000 036F             }
-; 0000 0370 
-; 0000 0371 
-; 0000 0372             // Update count on LCD only if it changes
-; 0000 0373             if (US_count != previous_count) {
+; 0000 0376 
+; 0000 0377             if (distance != previous_distance)
 ;PCODE: $00000805 VOL: 0
 ;PCODE: $00000806 VOL: 0
 ;PCODE: $00000807 VOL: 0
+; 0000 0378             {
+; 0000 0379                 previous_distance = distance;
 ;PCODE: $00000808 VOL: 0
 ;PCODE: $00000809 VOL: 0
+; 0000 037A                 // Display distance on LCD
+; 0000 037B                 itoa(distance, numberString); // Convert distance to string
 ;PCODE: $0000080A VOL: 0
-; 0000 0374                 previous_count = US_count;
 ;PCODE: $0000080B VOL: 0
 ;PCODE: $0000080C VOL: 0
+; 0000 037C                 lcd_gotoxy(11, 1);
 ;PCODE: $0000080D VOL: 0
-; 0000 0375                 lcd_gotoxy(1, 2); // Move to second line
 ;PCODE: $0000080E VOL: 0
 ;PCODE: $0000080F VOL: 0
 ;PCODE: $00000810 VOL: 0
+; 0000 037D                 lcd_print(numberString);
 ;PCODE: $00000811 VOL: 0
-; 0000 0376                 itoa(US_count, numberString);
 ;PCODE: $00000812 VOL: 0
+; 0000 037E                 lcd_print(" cm ");
 ;PCODE: $00000813 VOL: 0
 ;PCODE: $00000814 VOL: 0
 ;PCODE: $00000815 VOL: 0
+; 0000 037F             }
+; 0000 0380             // Counting logic based on distance
+; 0000 0381             if (distance < 6)
 ;PCODE: $00000816 VOL: 0
-; 0000 0377                 lcd_print("Count: ");
 ;PCODE: $00000817 VOL: 0
 ;PCODE: $00000818 VOL: 0
 ;PCODE: $00000819 VOL: 0
-; 0000 0378                 lcd_print(numberString);
+; 0000 0382             {
+; 0000 0383                 US_count++; // Increment count if distance is below threshold
 ;PCODE: $0000081A VOL: 0
+; 0000 0384             }
+; 0000 0385 
+; 0000 0386             // Update count on LCD only if it changes
+; 0000 0387             if (US_count != previous_count)
 ;PCODE: $0000081B VOL: 0
-; 0000 0379             }
-; 0000 037A         }
 ;PCODE: $0000081C VOL: 0
 ;PCODE: $0000081D VOL: 0
 ;PCODE: $0000081E VOL: 0
-; 0000 037B         delay_ms(100);
 ;PCODE: $0000081F VOL: 0
 ;PCODE: $00000820 VOL: 0
+; 0000 0388             {
+; 0000 0389                 previous_count = US_count;
 ;PCODE: $00000821 VOL: 0
-; 0000 037C     }
 ;PCODE: $00000822 VOL: 0
 ;PCODE: $00000823 VOL: 0
-; 0000 037D }
+; 0000 038A                 lcd_gotoxy(1, 2); // Move to second line
 ;PCODE: $00000824 VOL: 0
 ;PCODE: $00000825 VOL: 0
 ;PCODE: $00000826 VOL: 0
 ;PCODE: $00000827 VOL: 0
+; 0000 038B                 itoa(US_count, numberString);
+;PCODE: $00000828 VOL: 0
+;PCODE: $00000829 VOL: 0
+;PCODE: $0000082A VOL: 0
+;PCODE: $0000082B VOL: 0
+;PCODE: $0000082C VOL: 0
+; 0000 038C                 lcd_print("Count: ");
+;PCODE: $0000082D VOL: 0
+;PCODE: $0000082E VOL: 0
+;PCODE: $0000082F VOL: 0
+; 0000 038D                 lcd_print(numberString);
+;PCODE: $00000830 VOL: 0
+;PCODE: $00000831 VOL: 0
+; 0000 038E             }
+; 0000 038F         }
+;PCODE: $00000832 VOL: 0
+;PCODE: $00000833 VOL: 0
+;PCODE: $00000834 VOL: 0
+; 0000 0390         delay_ms(100);
+;PCODE: $00000835 VOL: 0
+;PCODE: $00000836 VOL: 0
+;PCODE: $00000837 VOL: 0
+; 0000 0391     }
+;PCODE: $00000838 VOL: 0
+;PCODE: $00000839 VOL: 0
+; 0000 0392 }
+;PCODE: $0000083A VOL: 0
+;PCODE: $0000083B VOL: 0
+;PCODE: $0000083C VOL: 0
+;PCODE: $0000083D VOL: 0
 
 	.DSEG
-_0xE9:
+_0xEC:
 	.BYTE 0x2A
