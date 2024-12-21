@@ -27,7 +27,7 @@ PageIndex0=0
 OF1=microFinalProjectCodes.c
 Active1=1
 EditorPanel1=0
-TimeStamp1=1502485412
+TimeStamp1=1502590069
 PageIndex1=1
 [CompilerDebug]
 Chip=ATmega32
@@ -516,12 +516,12 @@ Row=0
 Column=0
 ScrollPosX=0
 ScrollPosY=0
-TimeStamp=1502486128
+TimeStamp=1502712659
 [BookmarksFoldedCode]
 Files=1
 F1=microFinalProjectCodes.c
 [Bookmarks1]
-TimeStamp=1502493805
+TimeStamp=1502590069
 Row=0
 Column=0
 ScrollPosX=0
@@ -536,8 +536,6 @@ BK6=-1
 BK7=-1
 BK8=-1
 BK9=-1
-[FoldedCode1]
-Blocks=0
 [HeadersList]
 Files=1
 F1=C:\Users\HP\Downloads\final_micro\attendance-avr\microFinalProjectCodes.c
@@ -551,3 +549,5 @@ F5=C:\cvavr\inc\stdlib.h
 F6=C:\cvavr\inc\string.h
 F7=C:\cvavr\inc\eeprom.h
 F8=C:\cvavr\inc\stdint.h
+[FoldedCode1]
+Blocks=0
