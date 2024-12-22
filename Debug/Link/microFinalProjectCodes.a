@@ -354,7 +354,7 @@
 ; 0000 00A6                 lcd_print(buffer);
 ;PCODE: $000000A8 VOL: 0
 ;PCODE: $000000A9 VOL: 0
-; 0000 00A7                 delay_ms(5000); // wait
+; 0000 00A7                 delay_ms(3000); // wait
 ;PCODE: $000000AA VOL: 0
 ;PCODE: $000000AB VOL: 0
 ; 0000 00A8                 memset(buffer,0,32);

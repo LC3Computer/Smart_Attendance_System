@@ -1881,9 +1881,9 @@ _0x1F:
 ; 0000 00A5                 lcd_gotoxy(1, 2);
 ; 0000 00A6                 lcd_print(buffer);
 	CALL SUBOPT_0x8
-; 0000 00A7                 delay_ms(5000); // wait
-	LDI  R26,LOW(5000)
-	LDI  R27,HIGH(5000)
+; 0000 00A7                 delay_ms(3000); // wait
+	LDI  R26,LOW(3000)
+	LDI  R27,HIGH(3000)
 	CALL _delay_ms
 ; 0000 00A8                 memset(buffer,0,32);
 	CALL SUBOPT_0x9

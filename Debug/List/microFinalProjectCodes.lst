@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.30  C:\Users\Asus\Documents\attendance-avr\Debug\List\microFinalProjectCodes.asm Sun Dec 22 08:49:54 2024
+AVRASM ver. 2.1.30  C:\Users\Asus\Documents\attendance-avr\Debug\List\microFinalProjectCodes.asm Sun Dec 22 08:57:15 2024
 
 C:\Users\Asus\Documents\attendance-avr\Debug\List\microFinalProjectCodes.asm(1088): warning: Register r4 already defined by the .DEF directive
 C:\Users\Asus\Documents\attendance-avr\Debug\List\microFinalProjectCodes.asm(1089): warning: Register r5 already defined by the .DEF directive
@@ -2293,9 +2293,9 @@ C:\Users\Asus\Documents\attendance-avr\Debug\List\microFinalProjectCodes.asm(126
                  ; 0000 00A5                 lcd_gotoxy(1, 2);
                  ; 0000 00A6                 lcd_print(buffer);
 00038d 940e 0aff 	CALL SUBOPT_0x8
-                 ; 0000 00A7                 delay_ms(5000); // wait
-00038f e8a8      	LDI  R26,LOW(5000)
-000390 e1b3      	LDI  R27,HIGH(5000)
+                 ; 0000 00A7                 delay_ms(3000); // wait
+00038f eba8      	LDI  R26,LOW(3000)
+000390 e0bb      	LDI  R27,HIGH(3000)
 000391 940e 0bc8 	CALL _delay_ms
                  ; 0000 00A8                 memset(buffer,0,32);
 000393 940e 0b03 	CALL SUBOPT_0x9
