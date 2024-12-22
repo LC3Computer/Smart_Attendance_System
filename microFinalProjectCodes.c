@@ -39,6 +39,7 @@ unsigned char read_byte_from_eeprom(unsigned int addr);
 void write_byte_to_eeprom(unsigned int addr, unsigned char value);
 void USART_init(unsigned int ubrr);
 void USART_Transmit(unsigned char data);
+unsigned char USART_Receive();
 unsigned char search_student_code();
 void delete_student_code(unsigned char index);
 void HCSR04Init();
@@ -71,6 +72,7 @@ enum stages
     STAGE_INIT_MENU,
     STAGE_ATTENDENC_MENU,
     STAGE_SUBMIT_CODE,
+    STAGE_SUBMIT_WITH_CARD,
     STAGE_TEMPERATURE_MONITORING,
     STAGE_VIEW_PRESENT_STUDENTS,
     STAGE_RETRIEVE_STUDENT_DATA,
@@ -98,6 +100,7 @@ void main(void)
 {
     int i, j;
     unsigned char st_counts;
+    unsigned char data;
     KEY_DDR = 0xF0;
     KEY_PRT = 0xFF;
     KEY_PRT &= 0x0F;                  // ground all rows at once
@@ -123,7 +126,7 @@ void main(void)
             lcd_gotoxy(1, 1);
             lcd_print("1 : Submit Student Code");
             lcd_gotoxy(1, 2);
-            lcd_print("    press cancel to back");
+            lcd_print("2 : Submit With Card");
             while (stage == STAGE_ATTENDENC_MENU)
                 ;
         }
@@ -139,6 +142,31 @@ void main(void)
                 ;
             lcdCommand(0x0c);   // display on, cursor off
             delay_us(100 * 16); // wait
+        }
+        else if(stage == STAGE_SUBMIT_WITH_CARD)
+        {
+            while (stage == STAGE_SUBMIT_WITH_CARD)
+            {
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Bring your card near device:");
+                lcd_gotoxy(1, 2);
+                delay_us(100 * 16); // wait
+                while((data = USART_Receive()) != '\r'){
+                    if(strlen(buffer) > 10 || stage != STAGE_SUBMIT_WITH_CARD) 
+                        break;
+                    buffer[strlen(buffer)] = data;
+                }
+                if(stage != STAGE_SUBMIT_WITH_CARD || strlen(buffer) > 10)
+                    break;
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Student added with ID:");
+                lcd_gotoxy(1, 2);
+                lcd_print(buffer);
+                delay_ms(3000); // wait
+                memset(buffer,0,32);              
+            }
         }
         else if (stage == STAGE_TEMPERATURE_MONITORING)
         {
@@ -336,7 +364,6 @@ interrupt[EXT_INT0] void int0_routine(void)
         case OPTION_ATTENDENCE:
             stage = STAGE_ATTENDENC_MENU;
             break;
-
         case OPTION_TEMPERATURE_MONITORING:
             stage = STAGE_TEMPERATURE_MONITORING;
             break;
@@ -393,6 +420,10 @@ interrupt[EXT_INT0] void int0_routine(void)
         case '1':
             memset(buffer, 0, 32);
             stage = STAGE_SUBMIT_CODE;
+            break;
+        case '2':
+            memset(buffer, 0, 32);
+            stage = STAGE_SUBMIT_WITH_CARD;
             break;
         default:
             break;
@@ -478,6 +509,14 @@ interrupt[EXT_INT0] void int0_routine(void)
         }
         else if (keypad[rowloc][cl] == 'C')
             stage = STAGE_ATTENDENC_MENU;
+    }
+    else if (stage == STAGE_SUBMIT_WITH_CARD)
+    {
+        if (keypad[rowloc][cl] == 'C')
+        {
+            memset(buffer, 0, 32);
+            stage = STAGE_ATTENDENC_MENU;
+        }
     }
     else if (stage == STAGE_TEMPERATURE_MONITORING)
     {
@@ -904,6 +943,12 @@ void USART_Transmit(unsigned char data)
     while (!(UCSRA & (1 << UDRE)))
         ;
     UDR = data;
+}
+
+unsigned char USART_Receive()
+{
+    while(!(UCSRA & (1 << RXC)) && stage == STAGE_SUBMIT_WITH_CARD);
+    return UDR;
 }
 
 void USART_init(unsigned int ubrr)
