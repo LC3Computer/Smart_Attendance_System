@@ -124,9 +124,9 @@ void main(void)
         {
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
-            lcd_print("1 : Submit Student Code");
+            lcd_print("1: Submit Student Code");
             lcd_gotoxy(1, 2);
-            lcd_print("2 : Submit With Card");
+            lcd_print("2: Submit With Card");
             while (stage == STAGE_ATTENDENC_MENU)
                 ;
         }
@@ -153,19 +153,50 @@ void main(void)
                 lcd_gotoxy(1, 2);
                 delay_us(100 * 16); // wait
                 while((data = USART_Receive()) != '\r'){
-                    if(strlen(buffer) > 10 || stage != STAGE_SUBMIT_WITH_CARD) 
+                    if(stage != STAGE_SUBMIT_WITH_CARD) 
                         break;
                     buffer[strlen(buffer)] = data;
                 }
-                if(stage != STAGE_SUBMIT_WITH_CARD || strlen(buffer) > 10)
+                if(stage != STAGE_SUBMIT_WITH_CARD){
+                    memset(buffer,0,32);
                     break;
-                lcdCommand(0x01);
-                lcd_gotoxy(1, 1);
-                lcd_print("Student added with ID:");
-                lcd_gotoxy(1, 2);
-                lcd_print(buffer);
-                delay_ms(3000); // wait
-                memset(buffer,0,32);              
+                }            
+                if (strncmp(buffer, "40", 2) != 0 ||
+                        strlen(buffer) != 8)
+                {
+                    lcdCommand(0x01);
+                    lcd_gotoxy(1, 1);
+                    lcd_print("Invalid Card");
+                    BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
+                    delay_ms(2000);
+                    BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
+                }
+                else{            
+                    if (search_student_code() > 0){
+                        BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
+                        lcdCommand(0x01);
+                        lcd_gotoxy(1, 1);
+                        lcd_print("Duplicate Student Code");
+                        delay_ms(2000);
+                        BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
+                    }
+                    else{
+                        // save the buffer to EEPROM
+                        st_counts = read_byte_from_eeprom(0x0);
+                        for (i = 0; i < 8; i++)
+                        {
+                            write_byte_to_eeprom(i + ((st_counts + 1) * 8), buffer[i]);
+                        }
+                        write_byte_to_eeprom(0x0, st_counts + 1);
+                        lcdCommand(0x01);
+                        lcd_gotoxy(1, 1);
+                        lcd_print("Student added with ID:");
+                        lcd_gotoxy(1, 2);
+                        lcd_print(buffer);
+                        delay_ms(3000); // wait
+                    }                     
+                }     
+                memset(buffer,0,32);               
             }
         }
         else if (stage == STAGE_TEMPERATURE_MONITORING)
