@@ -5,16 +5,17 @@
 #include <string.h>
 #include <eeprom.h>
 #include <stdint.h>
+#include <stdio.h>
 
-#define LCD_PRT PORTB // LCD DATA PORT
-#define LCD_DDR DDRB  // LCD DATA DDR
-#define LCD_PIN PINB  // LCD DATA PIN
+#define LCD_PRT PORTA // LCD DATA PORT
+#define LCD_DDR DDRA  // LCD DATA DDR
+#define LCD_PIN PINA  // LCD DATA PIN
 #define LCD_RS 0      // LCD RS
 #define LCD_RW 1      // LCD RW
 #define LCD_EN 2      // LCD EN
-#define KEY_PRT PORTC // keyboard PORT
-#define KEY_DDR DDRC  // keyboard DDR
-#define KEY_PIN PINC  // keyboard PIN
+#define KEY_PRT PORTB // keyboard PORT
+#define KEY_DDR DDRB  // keyboard DDR
+#define KEY_PIN PINB  // keyboard PIN
 #define BUZZER_DDR DDRD
 #define BUZZER_PRT PORTD
 #define BUZZER_NUM 7
@@ -47,6 +48,14 @@ void HCSR04Trigger();
 uint16_t GetPulseWidth();
 void startSonar();
 unsigned int simple_hash(const char *str);
+void I2C_init();
+void I2C_start();
+void I2C_write(unsigned char data);
+unsigned char I2C_read(unsigned char ackVal);
+void I2C_stop();
+void rtc_init();
+void rtc_getTime(unsigned char*, unsigned char*, unsigned char*);
+void rtc_getDate(unsigned char*, unsigned char*, unsigned char*, unsigned char*);
 
 /* keypad mapping :
 C : Cancel
@@ -66,6 +75,8 @@ unsigned char page_num = 0;
 unsigned char US_count = 0;
 const unsigned int secret = 3940;
 char logged_in = 0;
+char* days[7]= {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
+char time[20];
 
 enum stages
 {
@@ -101,6 +112,7 @@ void main(void)
     int i, j;
     unsigned char st_counts;
     unsigned char data;
+
     KEY_DDR = 0xF0;
     KEY_PRT = 0xFF;
     KEY_PRT &= 0x0F;                  // ground all rows at once
@@ -111,6 +123,7 @@ void main(void)
     USART_init(0x33);
     HCSR04Init(); // Initialize ultrasonic sensor
     lcd_init();
+    rtc_init();
 
 #asm("sei")           // enable interrupts
     lcdCommand(0x01); // clear LCD
@@ -145,6 +158,7 @@ void main(void)
         }
         else if(stage == STAGE_SUBMIT_WITH_CARD)
         {
+            memset(buffer,0,32);
             while (stage == STAGE_SUBMIT_WITH_CARD)
             {
                 lcdCommand(0x01);
@@ -344,6 +358,8 @@ void main(void)
 interrupt[EXT_INT0] void int0_routine(void)
 {
     unsigned char colloc, rowloc, cl, st_counts, buffer_len;
+    unsigned char second, minute, hour;
+    unsigned char day, date, month, year;
     int i;
 
     // detect the key
@@ -436,9 +452,25 @@ interrupt[EXT_INT0] void int0_routine(void)
         {
             page_num = page_num > 0 ? page_num - 1 : (MENU_PAGE_COUNT - 1);
         }
-        if (keypad[rowloc][cl] == 'R')
+        else if (keypad[rowloc][cl] == 'R')
         {
             page_num = (page_num + 1) % MENU_PAGE_COUNT;
+        }
+        else if(keypad[rowloc][cl] == 'O')
+        {
+            while(1){
+                lcdCommand(0x1);
+                rtc_getTime(&hour, &minute, &second);
+                sprintf(time, "%02x:%02x:%02x  ", hour, minute, second);
+                lcd_gotoxy(1,1);
+                lcd_print(time);
+                rtc_getDate(&year, &month, &date, &day);
+                sprintf(time, "20%02x/%02x/%02x  %3s", year, month, date, days[day - 1]);
+                lcd_gotoxy(1,2);
+                lcd_print(time);
+                delay_ms(1000);
+            }
+
         }
     }
     else if (stage == STAGE_ATTENDENC_MENU)
@@ -845,12 +877,13 @@ void show_temperature()
     unsigned char temperatureVal = 0;
     unsigned char temperatureRep[3];
 
-    ADMUX = 0xE0;
+    DDRA &= ~(1 << 3);
+    ADMUX = 0xE3;
     ADCSRA = 0x87;
 
     lcdCommand(0x01);
     lcd_gotoxy(1, 1);
-    lcd_print("temperature(C):");
+    lcd_print("Temperature(C):");
 
     while (stage == STAGE_TEMPERATURE_MONITORING)
     {
@@ -1059,7 +1092,7 @@ uint16_t GetPulseWidth()
     if (i == 600000)
         return US_ERROR; // Timeout error if no rising edge detected
 
-    // Start timer with prescaler 8
+    // Start timer with prescaler 64
     TCCR1A = 0x00;
     TCCR1B = (1 << CS11) | (1 << CS10);
     TCNT1 = 0x00; // Reset timer
@@ -1152,4 +1185,78 @@ unsigned int simple_hash(const char *str)
         str++;
     }
     return hash;
+}
+
+void I2C_init()
+{
+    TWSR = 0x00;
+    TWBR = 0x47;
+    TWCR = 0x04;
+}
+
+void I2C_start()
+{
+    TWCR = (1 << TWINT) | (1 << TWSTA) | (1 << TWEN);
+    while(!(TWCR & (1 << TWINT)));
+}
+
+void I2C_write(unsigned char data)
+{
+    TWDR = data;
+    TWCR = (1 << TWINT) | (1 << TWEN);
+    while(!(TWCR & (1 << TWINT)));
+}
+
+unsigned char I2C_read(unsigned char ackVal)
+{
+    TWCR = (1 << TWINT) | (1 << TWEN) | (ackVal << TWEA);
+    while(!(TWCR & (1 << TWINT)));
+    return TWDR;
+}
+
+void I2C_stop()
+{
+    TWCR = (1 << TWINT) | (1 << TWEN) | (1 << TWSTO);
+    while(TWCR & (1 << TWSTO));
+}
+
+void rtc_init()
+{
+    I2C_init();
+    I2C_start();
+    I2C_write(0xD0);
+    I2C_write(0x07);
+    I2C_write(0x00);
+    I2C_stop();
+}
+
+void rtc_getTime(unsigned char* hour, unsigned char* minute, unsigned char* second)
+{
+    I2C_start();
+    I2C_write(0xD0);
+    I2C_write(0x00);
+    I2C_stop();
+
+    I2C_start();
+    I2C_write(0xD1);
+    *second = I2C_read(1);
+    *minute = I2C_read(1);
+    *hour = I2C_read(0);
+    I2C_stop();
+}
+
+void rtc_getDate(unsigned char* year, unsigned char* month, unsigned char* date, unsigned char* day)
+{
+    I2C_start();
+    I2C_write(0xD0);
+    I2C_write(0x03);
+    I2C_stop();
+
+    I2C_start();
+    I2C_write(0xD1);
+    *day = I2C_read(1);
+    *date = I2C_read(1);
+    *month = I2C_read(1);
+    *year = I2C_read(0);
+    I2C_stop();
 }
