@@ -19,7 +19,7 @@
 #define BUZZER_DDR DDRD
 #define BUZZER_PRT PORTD
 #define BUZZER_NUM 7
-#define MENU_PAGE_COUNT 4
+#define MENU_PAGE_COUNT 5
 #define US_ERROR -1       // Error indicator
 #define US_NO_OBSTACLE -2 // No obstacle indicator
 #define US_PORT PORTD     // Ultrasonic sensor connected to PORTB
@@ -56,6 +56,7 @@ void I2C_stop();
 void rtc_init();
 void rtc_getTime(unsigned char*, unsigned char*, unsigned char*);
 void rtc_getDate(unsigned char*, unsigned char*, unsigned char*, unsigned char*);
+void Timer2_Init();
 
 /* keypad mapping :
 C : Cancel
@@ -64,12 +65,12 @@ D : Delete
 L : Left
 R : Right
 E : Enter  */
-unsigned char keypad[4][4] = {'7', '8', '9', 'O',
-                              '4', '5', '6', 'D',
-                              '1', '2', '3', 'C',
-                              'L', '0', 'R', 'E'};
+unsigned char keypad[4][4] = {{'7', '8', '9', 'O'},
+                              {'4', '5', '6', 'D'},
+                              {'1', '2', '3', 'C'},
+                              {'L', '0', 'R', 'E'}};
 
-unsigned int stage = 0;
+unsigned char stage = 0;
 char buffer[32] = "";
 unsigned char page_num = 0;
 unsigned char US_count = 0;
@@ -77,6 +78,8 @@ const unsigned int secret = 3940;
 char logged_in = 0;
 char* days[7]= {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
 char time[20];
+unsigned char submitTime = 5;
+unsigned char timerCount = 0;
 
 enum stages
 {
@@ -93,6 +96,8 @@ enum stages
     STAGE_TRAFFIC_MONITORING,
     STAGE_LOGIN_WITH_ADMIN,
     STAGE_CLEAR_EEPROM,
+    STAGE_SHOW_CLOCK,
+    STAGE_SET_TIMER,
 };
 
 enum menu_options
@@ -105,6 +110,7 @@ enum menu_options
     OPTION_TRAFFIC_MONITORING = 6,
     OPTION_LOGIN_WITH_ADMIN = 7,
     OPTION_LOGOUT = 8,
+    OPTION_SET_TIMER = 9,
 };
 
 void main(void)
@@ -112,6 +118,8 @@ void main(void)
     int i, j;
     unsigned char st_counts;
     unsigned char data;
+    unsigned char second, minute, hour;
+    unsigned char day, date, month, year;
 
     KEY_DDR = 0xF0;
     KEY_PRT = 0xFF;
@@ -145,6 +153,14 @@ void main(void)
         }
         else if (stage == STAGE_SUBMIT_CODE)
         {
+            if(submitTime == 0)
+            {
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Time for submit is finished");
+                delay_ms(2000);
+                stage = STAGE_INIT_MENU;
+            }
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
             lcd_print("Enter your student code:");
@@ -161,6 +177,15 @@ void main(void)
             memset(buffer,0,32);
             while (stage == STAGE_SUBMIT_WITH_CARD)
             {
+                if(submitTime == 0)
+                {
+                    lcdCommand(0x01);
+                    lcd_gotoxy(1, 1);
+                    lcd_print("Time for submit is finished");
+                    delay_ms(2000);
+                    stage = STAGE_INIT_MENU;
+                    break;
+                }
                 lcdCommand(0x01);
                 lcd_gotoxy(1, 1);
                 lcd_print("Bring your card near device:");
@@ -351,15 +376,52 @@ void main(void)
                 delay_us(100 * 16);
             }
         }
+        else if (stage == STAGE_SET_TIMER)
+        {
+            lcdCommand(0x01);
+            lcd_gotoxy(1, 1);
+            lcdCommand(0x0c); // display on, cursor off
+            itoa(submitTime, buffer);
+            lcd_print("Set Timer(minutes): ");
+            lcd_print(buffer);
+            delay_us(100 * 16); // wait
+            while(stage == STAGE_SET_TIMER);     
+            delay_us(100 * 16);
+        }
+        else if(stage == STAGE_SHOW_CLOCK)
+        {
+            while(stage == STAGE_SHOW_CLOCK){
+                lcdCommand(0x01);
+                rtc_getTime(&hour, &minute, &second);
+                sprintf(time, "%02x:%02x:%02x  ", hour, minute, second);
+                lcd_gotoxy(1,1);
+                lcd_print(time);
+                rtc_getDate(&year, &month, &date, &day);
+                sprintf(time, "20%02x/%02x/%02x  %3s", year, month, date, days[day - 1]);
+                lcd_gotoxy(1,2);
+                lcd_print(time);
+                delay_ms(1000);
+            }
+        }
     }
+}
+
+interrupt[TIM2_OVF] void timer2_ovf_isr(void)
+{
+    timerCount++;
+    if(timerCount == 60){
+        submitTime--;
+        timerCount = 0;
+    }
+    TCNT2 = 0;
+    if(submitTime == 0)
+        TIMSK = 0;
 }
 
 // int0 (keypad) service routine
 interrupt[EXT_INT0] void int0_routine(void)
 {
     unsigned char colloc, rowloc, cl, st_counts, buffer_len;
-    unsigned char second, minute, hour;
-    unsigned char day, date, month, year;
     int i;
 
     // detect the key
@@ -429,6 +491,9 @@ interrupt[EXT_INT0] void int0_routine(void)
         case OPTION_LOGIN_WITH_ADMIN:
             stage = STAGE_LOGIN_WITH_ADMIN;
             break;
+        case OPTION_SET_TIMER:
+            stage = STAGE_SET_TIMER;
+            break;
         case OPTION_LOGOUT:
 #asm("cli") // disable interrupts
             if (logged_in == 1)
@@ -458,19 +523,7 @@ interrupt[EXT_INT0] void int0_routine(void)
         }
         else if(keypad[rowloc][cl] == 'O')
         {
-            while(1){
-                lcdCommand(0x1);
-                rtc_getTime(&hour, &minute, &second);
-                sprintf(time, "%02x:%02x:%02x  ", hour, minute, second);
-                lcd_gotoxy(1,1);
-                lcd_print(time);
-                rtc_getDate(&year, &month, &date, &day);
-                sprintf(time, "20%02x/%02x/%02x  %3s", year, month, date, days[day - 1]);
-                lcd_gotoxy(1,2);
-                lcd_print(time);
-                delay_ms(1000);
-            }
-
+            stage = STAGE_SHOW_CLOCK;
         }
     }
     else if (stage == STAGE_ATTENDENC_MENU)
@@ -520,11 +573,19 @@ interrupt[EXT_INT0] void int0_routine(void)
                 lcdCommand(0x10);
             }
         }
+        else if(keypad[rowloc][cl] == 'O')
+        {
+            lcdCommand(0xC0);
+            for(i = 0; i < strlen(buffer); i++)
+                lcd_print(" ");
+            lcdCommand(0xC0);
+            memset(buffer, 0, 32);
+        }
         else if (keypad[rowloc][cl] == 'E')
         {
 
 #asm("cli")
-
+ 
             if (strncmp(buffer, "40", 2) != 0 ||
                 strlen(buffer) != 8)
             {
@@ -583,7 +644,6 @@ interrupt[EXT_INT0] void int0_routine(void)
     }
     else if (stage == STAGE_TEMPERATURE_MONITORING)
     {
-
         if (keypad[rowloc][cl] == 'C')
             stage = STAGE_INIT_MENU;
     }
@@ -637,6 +697,14 @@ interrupt[EXT_INT0] void int0_routine(void)
                 lcd_print(" ");
                 lcdCommand(0x10);
             }
+        }
+        else if (keypad[rowloc][cl] == 'O')
+        {
+            lcdCommand(0xC0);
+            for(i = 0; i < strlen(buffer); i++)
+                lcd_print(" ");
+            lcdCommand(0xC0);
+            memset(buffer, 0, 32);
         }
         else if (keypad[rowloc][cl] == 'E')
         {
@@ -694,6 +762,14 @@ interrupt[EXT_INT0] void int0_routine(void)
                 lcdCommand(0x10);
             }
         }
+        else if (keypad[rowloc][cl] == 'O')
+        {
+            lcdCommand(0xC0);
+            for(i = 0; i < strlen(buffer); i++)
+                lcd_print(" ");
+            lcdCommand(0xC0);
+            memset(buffer, 0, 32);
+        }
         else if (keypad[rowloc][cl] == 'E')
         {
             // search from eeprom data
@@ -732,6 +808,51 @@ interrupt[EXT_INT0] void int0_routine(void)
         if (keypad[rowloc][cl] == 'C')
             stage = STAGE_INIT_MENU;
     }
+    else if (stage == STAGE_SHOW_CLOCK)
+    {
+        if (keypad[rowloc][cl] == 'C')
+            stage = STAGE_INIT_MENU;
+    }
+    else if (stage == STAGE_SET_TIMER)
+    {
+        if (keypad[rowloc][cl] == 'C')
+        {
+            memset(buffer, 0, 32);
+            stage = STAGE_INIT_MENU;
+        }
+
+        else if(keypad[rowloc][cl] == 'R')
+        {
+            if(submitTime < 20){
+                submitTime++;
+                itoa(submitTime, buffer);
+                lcd_gotoxy(21,1);
+                lcd_print(buffer);
+                lcd_print("  ");
+            }
+        }
+        else if(keypad[rowloc][cl] == 'L')
+        {
+            if(submitTime > 1){
+                submitTime--;
+                itoa(submitTime, buffer);
+                lcd_gotoxy(21,1);
+                lcd_print(buffer);
+                lcd_print("  ");
+            }
+        }
+        else if(keypad[rowloc][cl] == 'E')
+        {
+            lcdCommand(0x01);
+            lcd_gotoxy(1,1);
+            lcd_print("Timer started");
+            memset(buffer, 0, 32);
+            delay_ms(2000);
+            Timer2_Init();
+            stage = STAGE_INIT_MENU;
+        }
+
+    }
     else if (stage == STAGE_LOGIN_WITH_ADMIN && logged_in != 1)
     {
         if (keypad[rowloc][cl] == 'C')
@@ -759,6 +880,14 @@ interrupt[EXT_INT0] void int0_routine(void)
                 lcd_print(" ");
                 lcdCommand(0x10);
             }
+        }
+        else if (keypad[rowloc][cl] == 'O')
+        {
+            lcdCommand(0xC0);
+            for(i = 0; i < strlen(buffer); i++)
+                lcd_print(" ");
+            lcdCommand(0xC0);
+            memset(buffer, 0, 32);
         }
         else if (keypad[rowloc][cl] == 'E')
         {
@@ -906,7 +1035,6 @@ void show_temperature()
 
 void show_menu()
 {
-
     while (stage == STAGE_INIT_MENU)
     {
         lcdCommand(0x01);
@@ -941,6 +1069,12 @@ void show_menu()
             lcd_gotoxy(1, 2);
             lcd_print("8: Logout");
             while (page_num == 3 && stage == STAGE_INIT_MENU)
+                ;
+        }
+        else if (page_num == 4)
+        {
+            lcd_print("9: Set Timer");
+            while (page_num == 4 && stage == STAGE_INIT_MENU)
                 ;
         }
     }
@@ -1072,7 +1206,7 @@ void HCSR04Init()
 void HCSR04Trigger()
 {
     US_PORT |= (1 << US_TRIG_POS);  // Set trigger pin high
-    delay_us(15);                   // Wait for 15 microseconds
+    delay_us(15 * 16);              // Wait for 15 microseconds
     US_PORT &= ~(1 << US_TRIG_POS); // Set trigger pin low
 }
 
@@ -1172,7 +1306,7 @@ void startSonar()
                 lcd_print(numberString);
             }
         }
-        delay_ms(100);
+        delay_ms(500);
     }
 }
 
@@ -1259,4 +1393,23 @@ void rtc_getDate(unsigned char* year, unsigned char* month, unsigned char* date,
     *month = I2C_read(1);
     *year = I2C_read(0);
     I2C_stop();
+}
+
+void Timer2_Init() 
+{
+    //Disable timer2 interrupts
+    TIMSK = 0;
+    //Enable asynchronous mode
+    ASSR = (1 << AS2);
+    //set initial counter value
+    TCNT2 = 0;
+    //set prescaller 128
+    TCCR2 = 0;
+    TCCR2 |= (1 << CS22) | ( 1 << CS00);
+    //wait for registers update
+    while (ASSR & ((1 << TCN2UB) | (1 << TCR2UB)));
+    //clear interrupt flags
+    TIFR = (1 << TOV2);
+    //enable TOV2 interrupt
+    TIMSK  = (1 << TOIE2);
 }

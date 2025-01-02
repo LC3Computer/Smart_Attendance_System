@@ -4,27 +4,36 @@
 #include <stdlib.h>
 #include <string.h>
 #include <eeprom.h>
+#include <stdint.h>
+#include <stdio.h>
+#include 
 
-#define LCD_PRT PORTB // LCD DATA PORT
-#define LCD_DDR DDRB  // LCD DATA DDR
-#define LCD_PIN PINB  // LCD DATA PIN
+#define LCD_PRT PORTA // LCD DATA PORT
+#define LCD_DDR DDRA  // LCD DATA DDR
+#define LCD_PIN PINA  // LCD DATA PIN
 #define LCD_RS 0      // LCD RS
 #define LCD_RW 1      // LCD RW
 #define LCD_EN 2      // LCD EN
-#define KEY_PRT PORTC // keyboard PORT
-#define KEY_DDR DDRC  // keyboard DDR
-#define KEY_PIN PINC  // keyboard PIN
+#define KEY_PRT PORTB // keyboard PORT
+#define KEY_DDR DDRB  // keyboard DDR
+#define KEY_PIN PINB  // keyboard PIN
 #define BUZZER_DDR DDRD
 #define BUZZER_PRT PORTD
 #define BUZZER_NUM 7
-#define MENU_PAGE_COUNT 3
+#define MENU_PAGE_COUNT 5
+#define US_ERROR -1       // Error indicator
+#define US_NO_OBSTACLE -2 // No obstacle indicator
+#define US_PORT PORTD     // Ultrasonic sensor connected to PORTB
+#define US_PIN PIND       // Ultrasonic PIN register
+#define US_DDR DDRD       // Ultrasonic data direction register
+#define US_TRIG_POS 5     // Trigger pin connected to PD5
+#define US_ECHO_POS 6     // Echo pin connected to PD6
 
 void lcdCommand(unsigned char cmnd);
 void lcdData(unsigned char data);
 void lcd_init();
 void lcd_gotoxy(unsigned char x, unsigned char y);
 void lcd_print(char *str);
-void LCM35_init();
 void show_temperature();
 void show_menu();
 void clear_eeprom();
@@ -32,8 +41,23 @@ unsigned char read_byte_from_eeprom(unsigned int addr);
 void write_byte_to_eeprom(unsigned int addr, unsigned char value);
 void USART_init(unsigned int ubrr);
 void USART_Transmit(unsigned char data);
+unsigned char USART_Receive();
 unsigned char search_student_code();
 void delete_student_code(unsigned char index);
+void HCSR04Init();
+void HCSR04Trigger();
+uint16_t GetPulseWidth();
+void startSonar();
+unsigned int simple_hash(const char *str);
+void I2C_init();
+void I2C_start();
+void I2C_write(unsigned char data);
+unsigned char I2C_read(unsigned char ackVal);
+void I2C_stop();
+void rtc_init();
+void rtc_getTime(unsigned char*, unsigned char*, unsigned char*);
+void rtc_getDate(unsigned char*, unsigned char*, unsigned char*, unsigned char*);
+void Timer2_Init();
 
 /* keypad mapping :
 C : Cancel
@@ -42,26 +66,39 @@ D : Delete
 L : Left
 R : Right
 E : Enter  */
-unsigned char keypad[4][4] = {'7', '8', '9', 'O',
-                              '4', '5', '6', 'D',
-                              '1', '2', '3', 'C',
-                              'L', '0', 'R', 'E'};
+unsigned char keypad[4][4] = {{'7', '8', '9', 'O'},
+                              {'4', '5', '6', 'D'},
+                              {'1', '2', '3', 'C'},
+                              {'L', '0', 'R', 'E'}};
 
-unsigned int stage = 0;
+unsigned char stage = 0;
 char buffer[32] = "";
 unsigned char page_num = 0;
+unsigned char US_count = 0;
+const unsigned int secret = 3940;
+char logged_in = 0;
+char* days[7]= {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
+char time[20];
+unsigned char submitTime = 5;
+unsigned char timerCount = 0;
 
 enum stages
 {
     STAGE_INIT_MENU,
     STAGE_ATTENDENC_MENU,
     STAGE_SUBMIT_CODE,
+    STAGE_SUBMIT_WITH_CARD,
     STAGE_TEMPERATURE_MONITORING,
     STAGE_VIEW_PRESENT_STUDENTS,
     STAGE_RETRIEVE_STUDENT_DATA,
     STAGE_STUDENT_MANAGMENT,
     STAGE_SEARCH_STUDENT,
     STAGE_DELETE_STUDENT,
+    STAGE_TRAFFIC_MONITORING,
+    STAGE_LOGIN_WITH_ADMIN,
+    STAGE_CLEAR_EEPROM,
+    STAGE_SHOW_CLOCK,
+    STAGE_SET_TIMER,
 };
 
 enum menu_options
@@ -72,12 +109,19 @@ enum menu_options
     OPTION_TEMPERATURE_MONITORING = 4,
     OPTION_RETRIEVE_STUDENT_DATA = 5,
     OPTION_TRAFFIC_MONITORING = 6,
+    OPTION_LOGIN_WITH_ADMIN = 7,
+    OPTION_LOGOUT = 8,
+    OPTION_SET_TIMER = 9,
 };
 
 void main(void)
 {
     int i, j;
     unsigned char st_counts;
+    unsigned char data;
+    unsigned char second, minute, hour;
+    unsigned char day, date, month, year;
+
     KEY_DDR = 0xF0;
     KEY_PRT = 0xFF;
     KEY_PRT &= 0x0F;                  // ground all rows at once
@@ -85,12 +129,13 @@ void main(void)
     GICR = (1 << INT0);               // enable external interrupt 0
     BUZZER_DDR |= (1 << BUZZER_NUM);  // make buzzer pin output
     BUZZER_PRT &= ~(1 << BUZZER_NUM); // disable buzzer
-    lcd_init();
     USART_init(0x33);
+    HCSR04Init(); // Initialize ultrasonic sensor
+    lcd_init();
+    rtc_init();
 
 #asm("sei")           // enable interrupts
     lcdCommand(0x01); // clear LCD
-    LCM35_init();
     while (1)
     {
         if (stage == STAGE_INIT_MENU)
@@ -101,15 +146,14 @@ void main(void)
         {
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
-            lcd_print("1 : Submit Student Code");
+            lcd_print("1: Submit Student Code");
             lcd_gotoxy(1, 2);
-            lcd_print("    press cancel to back");
+            lcd_print("2: Submit With Card");
             while (stage == STAGE_ATTENDENC_MENU)
                 ;
         }
         else if (stage == STAGE_SUBMIT_CODE)
         {
-            memset(buffer, 0, 32);
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
             lcd_print("Enter your student code:");
@@ -120,6 +164,71 @@ void main(void)
                 ;
             lcdCommand(0x0c);   // display on, cursor off
             delay_us(100 * 16); // wait
+        }
+        else if(stage == STAGE_SUBMIT_WITH_CARD)
+        {
+            memset(buffer,0,32);
+            while (stage == STAGE_SUBMIT_WITH_CARD)
+            {
+                if(submitTime == 0)
+                {
+                    lcdCommand(0x01);
+                    lcd_gotoxy(1, 1);
+                    lcd_print("Time for submit is finished");
+                    delay_ms(2000);
+                    break;
+                }
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Bring your card near device:");
+                lcd_gotoxy(1, 2);
+                delay_us(100 * 16); // wait
+                while((data = USART_Receive()) != '\r'){
+                    if(stage != STAGE_SUBMIT_WITH_CARD) 
+                        break;
+                    buffer[strlen(buffer)] = data;
+                }
+                if(stage != STAGE_SUBMIT_WITH_CARD){
+                    memset(buffer,0,32);
+                    break;
+                }            
+                if (strncmp(buffer, "40", 2) != 0 ||
+                        strlen(buffer) != 8)
+                {
+                    lcdCommand(0x01);
+                    lcd_gotoxy(1, 1);
+                    lcd_print("Invalid Card");
+                    BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
+                    delay_ms(2000);
+                    BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
+                }
+                else{            
+                    if (search_student_code() > 0){
+                        BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
+                        lcdCommand(0x01);
+                        lcd_gotoxy(1, 1);
+                        lcd_print("Duplicate Student Code");
+                        delay_ms(2000);
+                        BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
+                    }
+                    else{
+                        // save the buffer to EEPROM
+                        st_counts = read_byte_from_eeprom(0x0);
+                        for (i = 0; i < 8; i++)
+                        {
+                            write_byte_to_eeprom(i + ((st_counts + 1) * 8), buffer[i]);
+                        }
+                        write_byte_to_eeprom(0x0, st_counts + 1);
+                        lcdCommand(0x01);
+                        lcd_gotoxy(1, 1);
+                        lcd_print("Student added with ID:");
+                        lcd_gotoxy(1, 2);
+                        lcd_print(buffer);
+                        delay_ms(3000); // wait
+                    }                     
+                }     
+                memset(buffer,0,32);               
+            }
         }
         else if (stage == STAGE_TEMPERATURE_MONITORING)
         {
@@ -169,10 +278,21 @@ void main(void)
                 {
                     USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 8)));
                 }
+
                 USART_Transmit('\r');
                 USART_Transmit('\r');
+
                 delay_ms(500);
             }
+            for (j = 0; j < 8; j++)
+            {
+                USART_Transmit('=');
+            }
+
+            USART_Transmit('\r');
+            USART_Transmit('\r');
+            delay_ms(500);
+
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
             lcd_print("Usart Transmit Finished");
@@ -191,7 +311,6 @@ void main(void)
         }
         else if (stage == STAGE_SEARCH_STUDENT)
         {
-            memset(buffer, 0, 32);
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
             lcd_print("Enter Student Code For Search:");
@@ -205,7 +324,6 @@ void main(void)
         }
         else if (stage == STAGE_DELETE_STUDENT)
         {
-            memset(buffer, 0, 32);
             lcdCommand(0x01);
             lcd_gotoxy(1, 1);
             lcd_print("Enter Student Code For Delete:");
@@ -216,6 +334,64 @@ void main(void)
                 ;
             lcdCommand(0x0c); // display on, cursor off
             delay_us(100 * 16);
+        }
+        else if (stage == STAGE_TRAFFIC_MONITORING)
+        {
+            startSonar();
+            stage = STAGE_INIT_MENU;
+        }
+        else if (stage == STAGE_LOGIN_WITH_ADMIN)
+        {
+            lcdCommand(0x01);
+            lcd_gotoxy(1, 1);
+            lcd_print("Enter Secret Code (or cancel)");
+            lcd_gotoxy(1, 2);
+            lcdCommand(0x0f);   // display on, cursor blinking
+            delay_us(100 * 16); // wait
+            while (stage == STAGE_LOGIN_WITH_ADMIN && logged_in == 0)
+                ;
+            if (logged_in == 1)
+            {
+                lcdCommand(0x0c); // display on, cursor off
+                delay_us(100 * 16);
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("1 : Clear EEPROM");
+                lcd_gotoxy(1, 2);
+                lcd_print("    press cancel to back");
+                while (stage == STAGE_LOGIN_WITH_ADMIN)
+                    ;
+            }
+            else
+            {
+                lcdCommand(0x0c); // display on, cursor off
+                delay_us(100 * 16);
+            }
+        }
+        else if (stage == STAGE_SET_TIMER)
+        {
+            lcdCommand(0x01);
+            lcd_gotoxy(1, 1);
+            lcdCommand(0x0c); // display on, cursor off
+            lcd_print("Set Timer(minutes): 5");
+            delay_us(100 * 16); // wait
+            while(stage == STAGE_SET_TIMER);     
+            delay_us(100 * 16);
+        }
+        else if(stage == STAGE_SHOW_CLOCK)
+        {
+            while(stage == STAGE_SHOW_CLOCK){
+                lcdCommand(0x01);
+                rtc_getTime(&hour, &minute, &second);
+                sprintf(time, "%02x:%02x:%02x  ", hour, minute, second);
+                lcd_gotoxy(1,1);
+                lcd_print(time);
+                rtc_getDate(&year, &month, &date, &day);
+                sprintf(time, "20%02x/%02x/%02x  %3s", year, month, date, days[day - 1]);
+                lcd_gotoxy(1,2);
+                lcd_print(time);
+                delay_ms(1000);
+            }
         }
     }
 }
@@ -275,7 +451,6 @@ interrupt[EXT_INT0] void int0_routine(void)
         case OPTION_ATTENDENCE:
             stage = STAGE_ATTENDENC_MENU;
             break;
-
         case OPTION_TEMPERATURE_MONITORING:
             stage = STAGE_TEMPERATURE_MONITORING;
             break;
@@ -288,15 +463,30 @@ interrupt[EXT_INT0] void int0_routine(void)
         case OPTION_STUDENT_MANAGEMENT:
             stage = STAGE_STUDENT_MANAGMENT;
             break;
-        case 9:
+        case OPTION_TRAFFIC_MONITORING:
+            stage = STAGE_TRAFFIC_MONITORING;
+            break;
+        case OPTION_LOGIN_WITH_ADMIN:
+            stage = STAGE_LOGIN_WITH_ADMIN;
+            break;
+        case OPTION_SET_TIMER:
+            stage = STAGE_SET_TIMER;
+            break;
+        case OPTION_LOGOUT:
 #asm("cli") // disable interrupts
-
-            lcdCommand(0x1);
-            lcd_gotoxy(1, 1);
-            lcd_print("Clearing EEPROM ...");
-            clear_eeprom();
-#asm("sei") // enable interrupts
-            stage = STAGE_INIT_MENU;
+            if (logged_in == 1)
+            {
+                lcdCommand(0x1);
+                lcd_gotoxy(1, 1);
+                lcd_print("Logout ...");
+                lcd_gotoxy(1, 2);
+                lcd_print("Going To Admin Page In 2 Sec");
+                delay_ms(2000);
+                logged_in = 0;
+#asm("sei")
+                stage = STAGE_LOGIN_WITH_ADMIN;
+            }
+            break;
         default:
             break;
         }
@@ -305,9 +495,13 @@ interrupt[EXT_INT0] void int0_routine(void)
         {
             page_num = page_num > 0 ? page_num - 1 : (MENU_PAGE_COUNT - 1);
         }
-        if (keypad[rowloc][cl] == 'R')
+        else if (keypad[rowloc][cl] == 'R')
         {
             page_num = (page_num + 1) % MENU_PAGE_COUNT;
+        }
+        else if(keypad[rowloc][cl] == 'O')
+        {
+            stage = STAGE_SHOW_CLOCK;
         }
     }
     else if (stage == STAGE_ATTENDENC_MENU)
@@ -318,7 +512,12 @@ interrupt[EXT_INT0] void int0_routine(void)
             stage = STAGE_INIT_MENU;
             break;
         case '1':
+            memset(buffer, 0, 32);
             stage = STAGE_SUBMIT_CODE;
+            break;
+        case '2':
+            memset(buffer, 0, 32);
+            stage = STAGE_SUBMIT_WITH_CARD;
             break;
         default:
             break;
@@ -327,6 +526,11 @@ interrupt[EXT_INT0] void int0_routine(void)
     else if (stage == STAGE_SUBMIT_CODE)
     {
 
+        if (keypad[rowloc][cl] == 'C')
+        {
+            memset(buffer, 0, 32);
+            stage = STAGE_ATTENDENC_MENU;
+        }
         if ((keypad[rowloc][cl] - '0') < 10)
         {
             if (strlen(buffer) <= 30)
@@ -347,19 +551,34 @@ interrupt[EXT_INT0] void int0_routine(void)
                 lcdCommand(0x10);
             }
         }
+        else if(keypad[rowloc][cl] == 'O')
+        {
+            lcdCommand(0xC0);
+            for(i = 0; i < strlen(buffer); i++)
+                lcd_print(" ");
+            lcdCommand(0xC0);
+            memset(buffer, 0, 32);
+        }
         else if (keypad[rowloc][cl] == 'E')
         {
 
 #asm("cli")
 
-            if (strncmp(buffer, "40", 2) != 0 ||
+            if(submitTime == 0)
+            {
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Time for submit is finished");
+                delay_ms(2000);
+            }
+            else if (strncmp(buffer, "40", 2) != 0 ||
                 strlen(buffer) != 8)
             {
 
                 BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
                 lcdCommand(0x01);
                 lcd_gotoxy(1, 1);
-                lcd_print("Incorrect Suudent Code Format");
+                lcd_print("Incorrect Student Code Format");
                 lcd_gotoxy(1, 2);
                 lcd_print("You Will Back Menu In 2 Second");
                 delay_ms(2000);
@@ -370,7 +589,7 @@ interrupt[EXT_INT0] void int0_routine(void)
                 BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
                 lcdCommand(0x01);
                 lcd_gotoxy(1, 1);
-                lcd_print("Duplicate Suudent Code Entered");
+                lcd_print("Duplicate Student Code Entered");
                 lcd_gotoxy(1, 2);
                 lcd_print("You Will Back Menu In 2 Second");
                 delay_ms(2000);
@@ -400,9 +619,16 @@ interrupt[EXT_INT0] void int0_routine(void)
         else if (keypad[rowloc][cl] == 'C')
             stage = STAGE_ATTENDENC_MENU;
     }
+    else if (stage == STAGE_SUBMIT_WITH_CARD)
+    {
+        if (keypad[rowloc][cl] == 'C')
+        {
+            memset(buffer, 0, 32);
+            stage = STAGE_ATTENDENC_MENU;
+        }
+    }
     else if (stage == STAGE_TEMPERATURE_MONITORING)
     {
-
         if (keypad[rowloc][cl] == 'C')
             stage = STAGE_INIT_MENU;
     }
@@ -417,12 +643,27 @@ interrupt[EXT_INT0] void int0_routine(void)
             stage = STAGE_INIT_MENU;
         else if (keypad[rowloc][cl] == '1')
             stage = STAGE_SEARCH_STUDENT;
-        else if (keypad[rowloc][cl] == '2')
+        else if (keypad[rowloc][cl] == '2' && logged_in == 1)
             stage = STAGE_DELETE_STUDENT;
+        else if (keypad[rowloc][cl] == '2' && logged_in == 0)
+        {
+            lcdCommand(0x01);
+            lcd_gotoxy(1, 1);
+            lcd_print("You Must First Login");
+            lcd_gotoxy(1, 2);
+            lcd_print("You Will Go Admin Page 2 Sec");
+            delay_ms(2000);
+            stage = STAGE_LOGIN_WITH_ADMIN;
+        }
     }
     else if (stage == STAGE_SEARCH_STUDENT)
     {
-        if ((keypad[rowloc][cl] - '0') < 10)
+        if (keypad[rowloc][cl] == 'C')
+        {
+            memset(buffer, 0, 32);
+            stage = STAGE_STUDENT_MANAGMENT;
+        }
+        else if ((keypad[rowloc][cl] - '0') < 10)
         {
             if (strlen(buffer) <= 30)
             {
@@ -441,6 +682,14 @@ interrupt[EXT_INT0] void int0_routine(void)
                 lcd_print(" ");
                 lcdCommand(0x10);
             }
+        }
+        else if (keypad[rowloc][cl] == 'O')
+        {
+            lcdCommand(0xC0);
+            for(i = 0; i < strlen(buffer); i++)
+                lcd_print(" ");
+            lcdCommand(0xC0);
+            memset(buffer, 0, 32);
         }
         else if (keypad[rowloc][cl] == 'E')
         {
@@ -453,8 +702,8 @@ interrupt[EXT_INT0] void int0_routine(void)
                 lcd_gotoxy(1, 1);
                 lcd_print("Student Code Found");
                 lcd_gotoxy(1, 2);
-                lcd_print("You Will Back Menu In 5 Second");
-                delay_ms(5000);
+                lcd_print("You Will Back Menu In 2 Second");
+                delay_ms(2000);
             }
             else
             {
@@ -462,8 +711,8 @@ interrupt[EXT_INT0] void int0_routine(void)
                 lcd_gotoxy(1, 1);
                 lcd_print("Ops , Student Code Not Found");
                 lcd_gotoxy(1, 2);
-                lcd_print("You Will Back Menu In 5 Second");
-                delay_ms(5000);
+                lcd_print("You Will Back Menu In 2 Second");
+                delay_ms(2000);
             }
             memset(buffer, 0, 32);
             stage = STAGE_STUDENT_MANAGMENT;
@@ -473,7 +722,12 @@ interrupt[EXT_INT0] void int0_routine(void)
     }
     else if (stage == STAGE_DELETE_STUDENT)
     {
-        if ((keypad[rowloc][cl] - '0') < 10)
+        if (keypad[rowloc][cl] == 'C')
+        {
+            memset(buffer, 0, 32);
+            stage = STAGE_STUDENT_MANAGMENT;
+        }
+        else if ((keypad[rowloc][cl] - '0') < 10)
         {
             if (strlen(buffer) <= 30)
             {
@@ -492,6 +746,14 @@ interrupt[EXT_INT0] void int0_routine(void)
                 lcd_print(" ");
                 lcdCommand(0x10);
             }
+        }
+        else if (keypad[rowloc][cl] == 'O')
+        {
+            lcdCommand(0xC0);
+            for(i = 0; i < strlen(buffer); i++)
+                lcd_print(" ");
+            lcdCommand(0xC0);
+            memset(buffer, 0, 32);
         }
         else if (keypad[rowloc][cl] == 'E')
         {
@@ -525,6 +787,150 @@ interrupt[EXT_INT0] void int0_routine(void)
             memset(buffer, 0, 32);
             stage = STAGE_STUDENT_MANAGMENT;
         }
+    }
+    else if (stage == STAGE_TRAFFIC_MONITORING)
+    {
+        if (keypad[rowloc][cl] == 'C')
+            stage = STAGE_INIT_MENU;
+    }
+    else if (stage == STAGE_SHOW_CLOCK)
+    {
+        if (keypad[rowloc][cl] == 'C')
+            stage = STAGE_INIT_MENU;
+    }
+    else if (stage == STAGE_SET_TIMER)
+    {
+        if (keypad[rowloc][cl] == 'C')
+        {
+            memset(buffer, 0, 32);
+            stage = STAGE_INIT_MENU;
+        }
+
+        else if(keypad[rowloc][cl] == 'R')
+        {
+            if(submitTime < 20){
+                submitTime++;
+                itoa(submitTime, buffer);
+                lcd_gotoxy(21,1);
+                lcd_print(buffer);
+                lcd_print("  ");
+            }
+        }
+        else if(keypad[rowloc][cl] == 'L')
+        {
+            if(submitTime > 1){
+                submitTime--;
+                itoa(submitTime, buffer);
+                lcd_gotoxy(21,1);
+                lcd_print(buffer);
+                lcd_print("  ");
+            }
+        }
+        else if(keypad[rowloc][cl] == 'E')
+        {
+            lcdCommand(0x01);
+            lcd_gotoxy(1,1);
+            lcd_print("Timer started");
+            memset(buffer, 0, 32);
+            delay_ms(2000);
+            Timer2_Init();
+            stage = STAGE_INIT_MENU;
+        }
+
+    }
+    else if (stage == STAGE_LOGIN_WITH_ADMIN && logged_in != 1)
+    {
+        if (keypad[rowloc][cl] == 'C')
+        {
+            memset(buffer, 0, 32);
+            stage = STAGE_INIT_MENU;
+        }
+
+        else if ((keypad[rowloc][cl] - '0') < 10)
+        {
+            if (strlen(buffer) <= 30)
+            {
+                buffer[strlen(buffer)] = keypad[rowloc][cl];
+                buffer[strlen(buffer) + 1] = '\0';
+                lcdData(keypad[rowloc][cl]);
+            }
+        }
+        else if (keypad[rowloc][cl] == 'D')
+        {
+            buffer_len = strlen(buffer);
+            if (buffer_len > 0)
+            {
+                buffer[buffer_len - 1] = '\0';
+                lcdCommand(0x10);
+                lcd_print(" ");
+                lcdCommand(0x10);
+            }
+        }
+        else if (keypad[rowloc][cl] == 'O')
+        {
+            lcdCommand(0xC0);
+            for(i = 0; i < strlen(buffer); i++)
+                lcd_print(" ");
+            lcdCommand(0xC0);
+            memset(buffer, 0, 32);
+        }
+        else if (keypad[rowloc][cl] == 'E')
+        {
+            // search from eeprom data
+            unsigned int input_hash = simple_hash(buffer);
+
+            if (input_hash == secret)
+            {
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Login Successfully");
+                lcd_gotoxy(1, 2);
+                lcd_print("Wait...");
+                delay_ms(2000);
+                logged_in = 1;
+            }
+            else
+            {
+                lcdCommand(0x01);
+                lcd_gotoxy(1, 1);
+                lcd_print("Ops , secret is incorrect");
+                lcd_gotoxy(1, 2);
+                lcd_print("You Will Back Menu In 2 Second");
+                delay_ms(2000);
+            }
+            memset(buffer, 0, 32);
+            stage = STAGE_INIT_MENU;
+        }
+    }
+    else if (stage == STAGE_LOGIN_WITH_ADMIN && logged_in != 0)
+    {
+        switch (keypad[rowloc][cl])
+        {
+        case 'C':
+            stage = STAGE_INIT_MENU;
+            break;
+        case '1':
+#asm("cli") // disable interrupts
+            lcdCommand(0x1);
+            lcd_gotoxy(1, 1);
+            lcd_print("Clearing EEPROM ...");
+            clear_eeprom();
+#asm("sei") // enable interrupts
+            break;
+        default:
+            break;
+        }
+        memset(buffer, 0, 32);
+        stage = STAGE_INIT_MENU;
+    }
+}
+
+interrupt [TIM2_COMP] void timer2_comp_isr(void)
+{
+    timerCount++;
+    if(timerCount == 60){
+        submitTime--;
+        timerCount = 0;
     }
 }
 
@@ -589,19 +995,18 @@ void lcd_print(char *str)
     }
 }
 
-void LCM35_init()
-{
-    ADMUX = 0xE0;
-    ADCSRA = 0x87;
-}
-
 void show_temperature()
 {
     unsigned char temperatureVal = 0;
     unsigned char temperatureRep[3];
+
+    DDRA &= ~(1 << 3);
+    ADMUX = 0xE3;
+    ADCSRA = 0x87;
+
     lcdCommand(0x01);
     lcd_gotoxy(1, 1);
-    lcd_print("temperature(C):");
+    lcd_print("Temperature(C):");
 
     while (stage == STAGE_TEMPERATURE_MONITORING)
     {
@@ -618,11 +1023,12 @@ void show_temperature()
         }
         delay_ms(500);
     }
+
+    ADCSRA = 0x0;
 }
 
 void show_menu()
 {
-
     while (stage == STAGE_INIT_MENU)
     {
         lcdCommand(0x01);
@@ -649,6 +1055,20 @@ void show_menu()
             lcd_gotoxy(1, 2);
             lcd_print("6: Traffic Monitoring");
             while (page_num == 2 && stage == STAGE_INIT_MENU)
+                ;
+        }
+        else if (page_num == 3)
+        {
+            lcd_print("7: Login With Admin");
+            lcd_gotoxy(1, 2);
+            lcd_print("8: Logout");
+            while (page_num == 3 && stage == STAGE_INIT_MENU)
+                ;
+        }
+        else if (page_num == 4)
+        {
+            lcd_print("9: Set Timer");
+            while (page_num == 4 && stage == STAGE_INIT_MENU)
                 ;
         }
     }
@@ -717,6 +1137,12 @@ void USART_Transmit(unsigned char data)
     UDR = data;
 }
 
+unsigned char USART_Receive()
+{
+    while(!(UCSRA & (1 << RXC)) && stage == STAGE_SUBMIT_WITH_CARD);
+    return UDR;
+}
+
 void USART_init(unsigned int ubrr)
 {
     UBRRL = (unsigned char)ubrr;
@@ -740,7 +1166,7 @@ unsigned char search_student_code()
             temp[j] = read_byte_from_eeprom(j + ((i + 1) * 8));
         }
         temp[j] = '\0';
-        if (strncmp(temp, buffer , 8) == 0)
+        if (strncmp(temp, buffer, 8) == 0)
             return (i + 1);
     }
 
@@ -763,4 +1189,220 @@ void delete_student_code(unsigned char index)
         }
     }
     write_byte_to_eeprom(0x0, st_counts - 1);
+}
+
+void HCSR04Init()
+{
+    US_DDR |= (1 << US_TRIG_POS);  // Trigger pin as output
+    US_DDR &= ~(1 << US_ECHO_POS); // Echo pin as input
+}
+
+void HCSR04Trigger()
+{
+    US_PORT |= (1 << US_TRIG_POS);  // Set trigger pin high
+    delay_us(15 * 16);              // Wait for 15 microseconds
+    US_PORT &= ~(1 << US_TRIG_POS); // Set trigger pin low
+}
+
+uint16_t GetPulseWidth()
+{
+    uint32_t i, result;
+
+    // Wait for rising edge on Echo pin
+    for (i = 0; i < 600000; i++)
+    {
+        if (!(US_PIN & (1 << US_ECHO_POS)))
+            continue;
+        else
+            break;
+    }
+
+    if (i == 600000)
+        return US_ERROR; // Timeout error if no rising edge detected
+
+    // Start timer with prescaler 64
+    TCCR1A = 0x00;
+    TCCR1B = (1 << CS11) | (1 << CS10);
+    TCNT1 = 0x00; // Reset timer
+
+    // Wait for falling edge on Echo pin
+    for (i = 0; i < 600000; i++)
+    {
+        if (!(US_PIN & (1 << US_ECHO_POS)))
+            break; // Falling edge detected
+        if (TCNT1 > 60000)
+            return US_NO_OBSTACLE; // No obstacle in range
+    }
+
+    result = TCNT1; // Capture timer value
+    TCCR1B = 0x00;  // Stop timer
+
+    if (result > 60000)
+        return US_NO_OBSTACLE;
+    else
+        return (result >> 1); // Return the measured pulse width
+}
+
+void startSonar()
+{
+    char numberString[16];
+    uint16_t pulseWidth; // Pulse width from echo
+    int distance, previous_distance = -1;
+    static int previous_count = -1;
+
+    lcdCommand(0x01);
+    lcd_gotoxy(1, 1);
+    lcd_print("Distance: ");
+
+    while (stage == STAGE_TRAFFIC_MONITORING)
+    {
+        HCSR04Trigger();              // Send trigger pulse
+        pulseWidth = GetPulseWidth(); // Measure echo pulse
+
+        if (pulseWidth == US_ERROR)
+        {
+            lcdCommand(0x01);
+            lcd_gotoxy(1, 1);
+            lcd_print("Error"); // Display error message
+        }
+        else if (pulseWidth == US_NO_OBSTACLE)
+        {
+            lcdCommand(0x01);
+            lcd_gotoxy(1, 1);
+            lcd_print("No Obstacle"); // Display no obstacle message
+        }
+        else
+        {
+            distance = (int)((pulseWidth * 0.034 / 2) + 0.5);
+
+            if (distance != previous_distance)
+            {
+                previous_distance = distance;
+                // Display distance on LCD
+                itoa(distance, numberString); // Convert distance to string
+                lcd_gotoxy(11, 1);
+                lcd_print(numberString);
+                lcd_print(" cm ");
+            }
+            // Counting logic based on distance
+            if (distance < 6)
+            {
+                US_count++; // Increment count if distance is below threshold
+            }
+
+            // Update count on LCD only if it changes
+            if (US_count != previous_count)
+            {
+                previous_count = US_count;
+                lcd_gotoxy(1, 2); // Move to second line
+                itoa(US_count, numberString);
+                lcd_print("Count: ");
+                lcd_print(numberString);
+            }
+        }
+        delay_ms(500);
+    }
+}
+
+unsigned int simple_hash(const char *str)
+{
+    unsigned int hash = 0;
+    while (*str)
+    {
+        hash = (hash * 31) + *str; // A basic hash formula
+        str++;
+    }
+    return hash;
+}
+
+void I2C_init()
+{
+    TWSR = 0x00;
+    TWBR = 0x47;
+    TWCR = 0x04;
+}
+
+void I2C_start()
+{
+    TWCR = (1 << TWINT) | (1 << TWSTA) | (1 << TWEN);
+    while(!(TWCR & (1 << TWINT)));
+}
+
+void I2C_write(unsigned char data)
+{
+    TWDR = data;
+    TWCR = (1 << TWINT) | (1 << TWEN);
+    while(!(TWCR & (1 << TWINT)));
+}
+
+unsigned char I2C_read(unsigned char ackVal)
+{
+    TWCR = (1 << TWINT) | (1 << TWEN) | (ackVal << TWEA);
+    while(!(TWCR & (1 << TWINT)));
+    return TWDR;
+}
+
+void I2C_stop()
+{
+    TWCR = (1 << TWINT) | (1 << TWEN) | (1 << TWSTO);
+    while(TWCR & (1 << TWSTO));
+}
+
+void rtc_init()
+{
+    I2C_init();
+    I2C_start();
+    I2C_write(0xD0);
+    I2C_write(0x07);
+    I2C_write(0x00);
+    I2C_stop();
+}
+
+void rtc_getTime(unsigned char* hour, unsigned char* minute, unsigned char* second)
+{
+    I2C_start();
+    I2C_write(0xD0);
+    I2C_write(0x00);
+    I2C_stop();
+
+    I2C_start();
+    I2C_write(0xD1);
+    *second = I2C_read(1);
+    *minute = I2C_read(1);
+    *hour = I2C_read(0);
+    I2C_stop();
+}
+
+void rtc_getDate(unsigned char* year, unsigned char* month, unsigned char* date, unsigned char* day)
+{
+    I2C_start();
+    I2C_write(0xD0);
+    I2C_write(0x03);
+    I2C_stop();
+
+    I2C_start();
+    I2C_write(0xD1);
+    *day = I2C_read(1);
+    *date = I2C_read(1);
+    *month = I2C_read(1);
+    *year = I2C_read(0);
+    I2C_stop();
+}
+
+void Timer2_Init() 
+{
+    //Disable timer2 interrupts
+    TIMSK = 0;
+    //Enable asynchronous mode
+    ASSR = (1 << AS2);
+    //set initial counter value
+    TCNT2 = 0;
+    //set prescaller 128
+    TCCR2 |= (1 << CS22) | ( 1 << CS00);
+    //wait for registers update
+    while (ASSR & ((1 << TCN2UB) | (1 << TCR2UB)));
+    //clear interrupt flags
+    TIFR = (1 << TOV2);
+    //enable TOV2 interrupt
+    TIMSK  = (1 << TOIE2);
 }
