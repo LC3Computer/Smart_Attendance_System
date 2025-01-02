@@ -75,9 +75,9 @@ char buffer[32] = "";
 unsigned char page_num = 0;
 unsigned char US_count = 0;
 const unsigned int secret = 3940;
-char logged_in = 0;
+char logged_in = 1;
 char* days[7]= {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
-char time[20];
+char time[20] = "";
 unsigned char submitTime = 5;
 unsigned char timerCount = 0;
 
@@ -224,7 +224,19 @@ void main(void)
                         st_counts = read_byte_from_eeprom(0x0);
                         for (i = 0; i < 8; i++)
                         {
-                            write_byte_to_eeprom(i + ((st_counts + 1) * 8), buffer[i]);
+                            write_byte_to_eeprom(i + ((st_counts + 1) * 16), buffer[i]);
+                        }
+                        rtc_getTime(&hour, &minute, &second);
+                        sprintf(time, "%02x%02x", hour, minute);
+                        for (i = 0; i < 4; i++)
+                        {
+                            write_byte_to_eeprom(i + ((st_counts + 1) * 16 + 8), time[i]);
+                        }
+                        rtc_getDate(&year, &month, &date, &day);
+                        sprintf(time, "%02x%02x", month, date);
+                        for (i = 4; i < 8; i++)
+                        {
+                            write_byte_to_eeprom(i + ((st_counts + 1) * 16 + 8), time[i - 4]);
                         }
                         write_byte_to_eeprom(0x0, st_counts + 1);
                         lcdCommand(0x01);
@@ -259,13 +271,32 @@ void main(void)
                 memset(buffer, 0, 32);
                 for (j = 0; j < 8; j++)
                 {
-                    buffer[j] = read_byte_from_eeprom(j + ((i + 1) * 8));
+                    buffer[j] = read_byte_from_eeprom(j + ((i + 1) * 16));
                 }
                 buffer[j] = '\0';
                 lcdCommand(0x01);
                 lcd_gotoxy(1, 1);
                 lcd_print(buffer);
-                delay_ms(1000);
+
+                memset(buffer, 0, 32);
+                for (j = 0; j < 8; j++)
+                {
+                    buffer[j] = read_byte_from_eeprom(j + ((i + 1) * 16) + 8);
+                }
+                buffer[j] = '\0';
+                lcd_gotoxy(1, 2);
+                snprintf(time, 3, "%s", buffer);
+                lcd_print(time);
+                lcd_print(":");
+                snprintf(time, 3, "%s", buffer + 2);
+                lcd_print(time);
+                lcd_print(" ");
+                snprintf(time, 3, "%s", buffer + 4);
+                lcd_print(time);
+                lcd_print("/");
+                snprintf(time, 3, "%s", buffer + 6);
+                lcd_print(time);
+                delay_ms(2000);
             }
 
             lcdCommand(0x01);
@@ -284,7 +315,29 @@ void main(void)
             {
                 for (j = 0; j < 8; j++)
                 {
-                    USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 8)));
+                    USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 16)));
+                }
+
+                USART_Transmit('\r');
+                
+                for (j = 0; j < 2; j++)
+                {
+                    USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 16) + 8));
+                }
+                USART_Transmit(':');
+                for (j = 2; j < 4; j++)
+                {
+                    USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 16) + 8));
+                }
+                USART_Transmit(' ');
+                for (j = 4; j < 6; j++)
+                {
+                    USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 16) + 8));
+                }
+                USART_Transmit('/');
+                for (j = 6; j < 8; j++)
+                {
+                    USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 16) + 8));
                 }
 
                 USART_Transmit('\r');
@@ -423,6 +476,8 @@ interrupt[EXT_INT0] void int0_routine(void)
 {
     unsigned char colloc, rowloc, cl, st_counts, buffer_len;
     int i;
+    unsigned char second, minute, hour;
+    unsigned char day, date, month, year;
 
     // detect the key
     while (1)
@@ -547,7 +602,6 @@ interrupt[EXT_INT0] void int0_routine(void)
     }
     else if (stage == STAGE_SUBMIT_CODE)
     {
-
         if (keypad[rowloc][cl] == 'C')
         {
             memset(buffer, 0, 32);
@@ -589,7 +643,6 @@ interrupt[EXT_INT0] void int0_routine(void)
             if (strncmp(buffer, "40", 2) != 0 ||
                 strlen(buffer) != 8)
             {
-
                 BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
                 lcdCommand(0x01);
                 lcd_gotoxy(1, 1);
@@ -616,7 +669,19 @@ interrupt[EXT_INT0] void int0_routine(void)
                 st_counts = read_byte_from_eeprom(0x0);
                 for (i = 0; i < 8; i++)
                 {
-                    write_byte_to_eeprom(i + ((st_counts + 1) * 8), buffer[i]);
+                    write_byte_to_eeprom(i + ((st_counts + 1) * 16), buffer[i]);
+                }
+                rtc_getTime(&hour, &minute, &second);
+                sprintf(time, "%02x%02x", hour, minute);
+                for (i = 0; i < 4; i++)
+                {
+                    write_byte_to_eeprom(i + ((st_counts + 1) * 16 + 8), time[i]);
+                }
+                rtc_getDate(&year, &month, &date, &day);
+                sprintf(time, "%02x%02x", month, date);
+                for (i = 4; i < 8; i++)
+                {
+                    write_byte_to_eeprom(i + ((st_counts + 1) * 16 + 8), time[i - 4]);
                 }
                 write_byte_to_eeprom(0x0, st_counts + 1);
 
@@ -1169,7 +1234,7 @@ unsigned char search_student_code()
         memset(temp, 0, 10);
         for (j = 0; j < 8; j++)
         {
-            temp[j] = read_byte_from_eeprom(j + ((i + 1) * 8));
+            temp[j] = read_byte_from_eeprom(j + ((i + 1) * 16));
         }
         temp[j] = '\0';
         if (strncmp(temp, buffer, 8) == 0)
@@ -1190,8 +1255,13 @@ void delete_student_code(unsigned char index)
     {
         for (j = 0; j < 8; j++)
         {
-            temp = read_byte_from_eeprom(j + ((i + 1) * 8));
-            write_byte_to_eeprom(j + ((i) * 8), temp);
+            temp = read_byte_from_eeprom(j + ((i + 1) * 16));
+            write_byte_to_eeprom(j + (i * 16), temp);
+        }
+        for (j = 0; j < 8; j++)
+        {
+            temp = read_byte_from_eeprom(j + ((i + 1) * 16) + 8);
+            write_byte_to_eeprom(j + (i * 16) + 8, temp);
         }
     }
     write_byte_to_eeprom(0x0, st_counts - 1);
