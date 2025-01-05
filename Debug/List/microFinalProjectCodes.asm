@@ -1138,7 +1138,11 @@ _0x3:
 _0x5:
 	.DB  LOW(_0x4),HIGH(_0x4),LOW(_0x4+4),HIGH(_0x4+4),LOW(_0x4+8),HIGH(_0x4+8),LOW(_0x4+12),HIGH(_0x4+12)
 	.DB  LOW(_0x4+16),HIGH(_0x4+16),LOW(_0x4+20),HIGH(_0x4+20),LOW(_0x4+24),HIGH(_0x4+24)
-_0x19B:
+_0x6:
+	.DB  0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0
+	.DB  0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0
+	.DB  0x0,0x0,0x0,0x0
+_0x19D:
 	.DB  0xFF,0xFF
 _0x0:
 	.DB  0x53,0x75,0x6E,0x0,0x4D,0x6F,0x6E,0x0
@@ -1339,319 +1343,319 @@ __GLOBAL_INI_TBL:
 	.DW  _0x5*2
 
 	.DW  0x17
-	.DW  _0xC
+	.DW  _0xD
 	.DW  _0x0*2+28
 
 	.DW  0x14
-	.DW  _0xC+23
+	.DW  _0xD+23
 	.DW  _0x0*2+51
 
 	.DW  0x1C
-	.DW  _0xC+43
+	.DW  _0xD+43
 	.DW  _0x0*2+71
 
 	.DW  0x19
-	.DW  _0xC+71
+	.DW  _0xD+71
 	.DW  _0x0*2+99
 
 	.DW  0x1C
-	.DW  _0xC+96
+	.DW  _0xD+96
 	.DW  _0x0*2+71
 
 	.DW  0x1D
-	.DW  _0xC+124
+	.DW  _0xD+124
 	.DW  _0x0*2+124
 
 	.DW  0x03
-	.DW  _0xC+153
+	.DW  _0xD+153
 	.DW  _0x0*2+153
 
 	.DW  0x0D
-	.DW  _0xC+156
+	.DW  _0xD+156
 	.DW  _0x0*2+156
 
 	.DW  0x17
-	.DW  _0xC+169
+	.DW  _0xD+169
 	.DW  _0x0*2+169
 
 	.DW  0x17
-	.DW  _0xC+192
+	.DW  _0xD+192
 	.DW  _0x0*2+201
 
 	.DW  0x16
-	.DW  _0xC+215
+	.DW  _0xD+215
 	.DW  _0x0*2+224
 
 	.DW  0x02
-	.DW  _0xC+237
+	.DW  _0xD+237
 	.DW  _0x0*2+122
 
 	.DW  0x02
-	.DW  _0xC+239
+	.DW  _0xD+239
 	.DW  _0x0*2+244
 
 	.DW  0x02
-	.DW  _0xC+241
+	.DW  _0xD+241
 	.DW  _0x0*2+249
 
 	.DW  0x18
-	.DW  _0xC+243
+	.DW  _0xD+243
 	.DW  _0x0*2+251
 
 	.DW  0x16
-	.DW  _0xC+267
+	.DW  _0xD+267
 	.DW  _0x0*2+275
 
 	.DW  0x18
-	.DW  _0xC+289
+	.DW  _0xD+289
 	.DW  _0x0*2+297
 
 	.DW  0x12
-	.DW  _0xC+313
+	.DW  _0xD+313
 	.DW  _0x0*2+321
 
 	.DW  0x12
-	.DW  _0xC+331
+	.DW  _0xD+331
 	.DW  _0x0*2+339
 
 	.DW  0x1F
-	.DW  _0xC+349
+	.DW  _0xD+349
 	.DW  _0x0*2+357
 
 	.DW  0x1F
-	.DW  _0xC+380
+	.DW  _0xD+380
 	.DW  _0x0*2+388
 
 	.DW  0x1E
-	.DW  _0xC+411
+	.DW  _0xD+411
 	.DW  _0x0*2+419
 
 	.DW  0x11
-	.DW  _0xC+441
+	.DW  _0xD+441
 	.DW  _0x0*2+449
 
 	.DW  0x19
-	.DW  _0xC+458
+	.DW  _0xD+458
 	.DW  _0x0*2+466
 
 	.DW  0x15
-	.DW  _0xC+483
+	.DW  _0xD+483
 	.DW  _0x0*2+491
 
 	.DW  0x0B
-	.DW  _0x9B
+	.DW  _0x9D
 	.DW  _0x0*2+551
 
 	.DW  0x1D
-	.DW  _0x9B+11
+	.DW  _0x9D+11
 	.DW  _0x0*2+562
 
 	.DW  0x02
-	.DW  _0x9B+40
+	.DW  _0x9D+40
 	.DW  _0x0*2+244
 
 	.DW  0x02
-	.DW  _0x9B+42
+	.DW  _0x9D+42
 	.DW  _0x0*2+244
 
 	.DW  0x03
-	.DW  _0x9B+44
+	.DW  _0x9D+44
 	.DW  _0x0*2+153
 
 	.DW  0x1E
-	.DW  _0x9B+47
+	.DW  _0x9D+47
 	.DW  _0x0*2+591
 
 	.DW  0x1F
-	.DW  _0x9B+77
+	.DW  _0x9D+77
 	.DW  _0x0*2+621
 
 	.DW  0x1F
-	.DW  _0x9B+108
+	.DW  _0x9D+108
 	.DW  _0x0*2+652
 
 	.DW  0x1F
-	.DW  _0x9B+139
+	.DW  _0x9D+139
 	.DW  _0x0*2+621
 
 	.DW  0x20
-	.DW  _0x9B+170
+	.DW  _0x9D+170
 	.DW  _0x0*2+683
 
 	.DW  0x1F
-	.DW  _0x9B+202
+	.DW  _0x9D+202
 	.DW  _0x0*2+621
 
 	.DW  0x15
-	.DW  _0x9B+233
+	.DW  _0x9D+233
 	.DW  _0x0*2+715
 
 	.DW  0x1D
-	.DW  _0x9B+254
+	.DW  _0x9D+254
 	.DW  _0x0*2+736
 
 	.DW  0x02
-	.DW  _0x9B+283
+	.DW  _0x9D+283
 	.DW  _0x0*2+244
 
 	.DW  0x02
-	.DW  _0x9B+285
+	.DW  _0x9D+285
 	.DW  _0x0*2+244
 
 	.DW  0x13
-	.DW  _0x9B+287
+	.DW  _0x9D+287
 	.DW  _0x0*2+765
 
 	.DW  0x1F
-	.DW  _0x9B+306
+	.DW  _0x9D+306
 	.DW  _0x0*2+621
 
 	.DW  0x1D
-	.DW  _0x9B+337
+	.DW  _0x9D+337
 	.DW  _0x0*2+784
 
 	.DW  0x1F
-	.DW  _0x9B+366
+	.DW  _0x9D+366
 	.DW  _0x0*2+621
 
 	.DW  0x02
-	.DW  _0x9B+397
+	.DW  _0x9D+397
 	.DW  _0x0*2+244
 
 	.DW  0x02
-	.DW  _0x9B+399
+	.DW  _0x9D+399
 	.DW  _0x0*2+244
 
 	.DW  0x13
-	.DW  _0x9B+401
+	.DW  _0x9D+401
 	.DW  _0x0*2+765
 
 	.DW  0x13
-	.DW  _0x9B+420
+	.DW  _0x9D+420
 	.DW  _0x0*2+813
 
 	.DW  0x19
-	.DW  _0x9B+439
+	.DW  _0x9D+439
 	.DW  _0x0*2+832
 
 	.DW  0x1F
-	.DW  _0x9B+464
+	.DW  _0x9D+464
 	.DW  _0x0*2+621
 
 	.DW  0x1D
-	.DW  _0x9B+495
+	.DW  _0x9D+495
 	.DW  _0x0*2+784
 
 	.DW  0x1F
-	.DW  _0x9B+524
+	.DW  _0x9D+524
 	.DW  _0x0*2+621
 
 	.DW  0x03
-	.DW  _0x9B+555
+	.DW  _0x9D+555
 	.DW  _0x0*2+526
 
 	.DW  0x03
-	.DW  _0x9B+558
+	.DW  _0x9D+558
 	.DW  _0x0*2+526
 
 	.DW  0x0E
-	.DW  _0x9B+561
+	.DW  _0x9D+561
 	.DW  _0x0*2+857
 
 	.DW  0x02
-	.DW  _0x9B+575
+	.DW  _0x9D+575
 	.DW  _0x0*2+244
 
 	.DW  0x02
-	.DW  _0x9B+577
+	.DW  _0x9D+577
 	.DW  _0x0*2+244
 
 	.DW  0x13
-	.DW  _0x9B+579
+	.DW  _0x9D+579
 	.DW  _0x0*2+871
 
 	.DW  0x08
-	.DW  _0x9B+598
+	.DW  _0x9D+598
 	.DW  _0x0*2+890
 
 	.DW  0x1A
-	.DW  _0x9B+606
+	.DW  _0x9D+606
 	.DW  _0x0*2+898
 
 	.DW  0x1F
-	.DW  _0x9B+632
+	.DW  _0x9D+632
 	.DW  _0x0*2+621
 
 	.DW  0x14
-	.DW  _0x9B+663
+	.DW  _0x9D+663
 	.DW  _0x0*2+924
 
 	.DW  0x10
-	.DW  _0x13C
+	.DW  _0x13E
 	.DW  _0x0*2+944
 
 	.DW  0x02
-	.DW  _0x13C+16
+	.DW  _0x13E+16
 	.DW  _0x0*2+244
 
 	.DW  0x1D
-	.DW  _0x148
+	.DW  _0x14A
 	.DW  _0x0*2+960
 
 	.DW  0x16
-	.DW  _0x148+29
+	.DW  _0x14A+29
 	.DW  _0x0*2+989
 
 	.DW  0x1A
-	.DW  _0x148+51
+	.DW  _0x14A+51
 	.DW  _0x0*2+1011
 
 	.DW  0x1A
-	.DW  _0x148+77
+	.DW  _0x14A+77
 	.DW  _0x0*2+1037
 
 	.DW  0x19
-	.DW  _0x148+103
+	.DW  _0x14A+103
 	.DW  _0x0*2+1063
 
 	.DW  0x16
-	.DW  _0x148+128
+	.DW  _0x14A+128
 	.DW  _0x0*2+1088
 
 	.DW  0x14
-	.DW  _0x148+150
+	.DW  _0x14A+150
 	.DW  _0x0*2+1110
 
 	.DW  0x0A
-	.DW  _0x148+170
+	.DW  _0x14A+170
 	.DW  _0x0*2+1130
 
 	.DW  0x0D
-	.DW  _0x148+180
+	.DW  _0x14A+180
 	.DW  _0x0*2+1140
 
 	.DW  0x02
 	.DW  _previous_count_S0000015000
-	.DW  _0x19B*2
+	.DW  _0x19D*2
 
 	.DW  0x0B
-	.DW  _0x19C
+	.DW  _0x19E
 	.DW  _0x0*2+1153
 
 	.DW  0x06
-	.DW  _0x19C+11
+	.DW  _0x19E+11
 	.DW  _0x0*2+1164
 
 	.DW  0x0C
-	.DW  _0x19C+17
+	.DW  _0x19E+17
 	.DW  _0x0*2+1170
 
 	.DW  0x05
-	.DW  _0x19C+29
+	.DW  _0x19E+29
 	.DW  _0x0*2+1182
 
 	.DW  0x08
-	.DW  _0x19C+34
+	.DW  _0x19E+34
 	.DW  _0x0*2+1187
 
 	.DW  0x01
@@ -1876,257 +1880,265 @@ _main:
 ; 0000 0078     unsigned char data;
 ; 0000 0079     unsigned char second, minute, hour;
 ; 0000 007A     unsigned char day, date, month, year;
-; 0000 007B 
-; 0000 007C     KEY_DDR = 0xF0;
-	SBIW R28,7
+; 0000 007B     char Date[20] = "";
+; 0000 007C 
+; 0000 007D     KEY_DDR = 0xF0;
+	SBIW R28,27
+	LDI  R24,20
+	LDI  R26,LOW(0)
+	LDI  R27,HIGH(0)
+	LDI  R30,LOW(_0x6*2)
+	LDI  R31,HIGH(_0x6*2)
+	CALL __INITLOCB
 ;	i -> R16,R17
 ;	j -> R18,R19
 ;	st_counts -> R21
 ;	data -> R20
-;	second -> Y+6
-;	minute -> Y+5
-;	hour -> Y+4
-;	day -> Y+3
-;	date -> Y+2
-;	month -> Y+1
-;	year -> Y+0
+;	second -> Y+26
+;	minute -> Y+25
+;	hour -> Y+24
+;	day -> Y+23
+;	date -> Y+22
+;	month -> Y+21
+;	year -> Y+20
+;	Date -> Y+0
 	LDI  R30,LOW(240)
 	OUT  0x17,R30
-; 0000 007D     KEY_PRT = 0xFF;
+; 0000 007E     KEY_PRT = 0xFF;
 	LDI  R30,LOW(255)
 	OUT  0x18,R30
-; 0000 007E     KEY_PRT &= 0x0F;                  // ground all rows at once
+; 0000 007F     KEY_PRT &= 0x0F;                  // ground all rows at once
 	IN   R30,0x18
 	ANDI R30,LOW(0xF)
 	OUT  0x18,R30
-; 0000 007F     MCUCR = 0x02;                     // make INT0 falling edge triggered
+; 0000 0080     MCUCR = 0x02;                     // make INT0 falling edge triggered
 	LDI  R30,LOW(2)
 	OUT  0x35,R30
-; 0000 0080     GICR = (1 << INT0);               // enable external interrupt 0
+; 0000 0081     GICR = (1 << INT0);               // enable external interrupt 0
 	LDI  R30,LOW(64)
 	OUT  0x3B,R30
-; 0000 0081     BUZZER_DDR |= (1 << BUZZER_NUM);  // make buzzer pin output
+; 0000 0082     BUZZER_DDR |= (1 << BUZZER_NUM);  // make buzzer pin output
 	SBI  0x11,7
-; 0000 0082     BUZZER_PRT &= ~(1 << BUZZER_NUM); // disable buzzer
+; 0000 0083     BUZZER_PRT &= ~(1 << BUZZER_NUM); // disable buzzer
 	CBI  0x12,7
-; 0000 0083     USART_init(0x33);
+; 0000 0084     USART_init(0x33);
 	LDI  R26,LOW(51)
 	LDI  R27,0
 	CALL _USART_init
-; 0000 0084     HCSR04Init(); // Initialize ultrasonic sensor
+; 0000 0085     HCSR04Init(); // Initialize ultrasonic sensor
 	CALL _HCSR04Init
-; 0000 0085     lcd_init();
+; 0000 0086     lcd_init();
 	CALL _lcd_init
-; 0000 0086     rtc_init();
+; 0000 0087     rtc_init();
 	CALL _rtc_init
-; 0000 0087 
-; 0000 0088 #asm("sei")           // enable interrupts
+; 0000 0088 
+; 0000 0089 #asm("sei")           // enable interrupts
 	sei
-; 0000 0089     lcdCommand(0x01); // clear LCD
+; 0000 008A     lcdCommand(0x01); // clear LCD
 	LDI  R26,LOW(1)
 	CALL _lcdCommand
-; 0000 008A     while (1)
-_0x6:
-; 0000 008B     {
-; 0000 008C         if (stage == STAGE_INIT_MENU)
+; 0000 008B     while (1)
+_0x7:
+; 0000 008C     {
+; 0000 008D         if (stage == STAGE_INIT_MENU)
 	TST  R5
-	BRNE _0x9
-; 0000 008D         {
-; 0000 008E             show_menu();
+	BRNE _0xA
+; 0000 008E         {
+; 0000 008F             show_menu();
 	CALL _show_menu
-; 0000 008F         }
-; 0000 0090         else if (stage == STAGE_ATTENDENC_MENU)
-	RJMP _0xA
-_0x9:
+; 0000 0090         }
+; 0000 0091         else if (stage == STAGE_ATTENDENC_MENU)
+	RJMP _0xB
+_0xA:
 	LDI  R30,LOW(1)
 	CP   R30,R5
-	BRNE _0xB
-; 0000 0091         {
-; 0000 0092             lcdCommand(0x01);
+	BRNE _0xC
+; 0000 0092         {
+; 0000 0093             lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 0093             lcd_gotoxy(1, 1);
-; 0000 0094             lcd_print("1: Submit Student Code");
-	__POINTW2MN _0xC,0
+; 0000 0094             lcd_gotoxy(1, 1);
+; 0000 0095             lcd_print("1: Submit Student Code");
+	__POINTW2MN _0xD,0
 	CALL SUBOPT_0x1
-; 0000 0095             lcd_gotoxy(1, 2);
-; 0000 0096             lcd_print("2: Submit With Card");
-	__POINTW2MN _0xC,23
+; 0000 0096             lcd_gotoxy(1, 2);
+; 0000 0097             lcd_print("2: Submit With Card");
+	__POINTW2MN _0xD,23
 	CALL _lcd_print
-; 0000 0097             while (stage == STAGE_ATTENDENC_MENU)
-_0xD:
+; 0000 0098             while (stage == STAGE_ATTENDENC_MENU)
+_0xE:
 	LDI  R30,LOW(1)
 	CP   R30,R5
-	BREQ _0xD
-; 0000 0098                 ;
-; 0000 0099         }
-; 0000 009A         else if (stage == STAGE_SUBMIT_CODE)
-	RJMP _0x10
-_0xB:
+	BREQ _0xE
+; 0000 0099                 ;
+; 0000 009A         }
+; 0000 009B         else if (stage == STAGE_SUBMIT_CODE)
+	RJMP _0x11
+_0xC:
 	LDI  R30,LOW(2)
 	CP   R30,R5
-	BRNE _0x11
-; 0000 009B         {
-; 0000 009C             if(submitTime == 0)
-	TST  R9
 	BRNE _0x12
-; 0000 009D             {
-; 0000 009E                 lcdCommand(0x01);
+; 0000 009C         {
+; 0000 009D             if(submitTime == 0)
+	TST  R9
+	BRNE _0x13
+; 0000 009E             {
+; 0000 009F                 lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 009F                 lcd_gotoxy(1, 1);
-; 0000 00A0                 lcd_print("Time for submit is finished");
-	__POINTW2MN _0xC,43
+; 0000 00A0                 lcd_gotoxy(1, 1);
+; 0000 00A1                 lcd_print("Time for submit is finished");
+	__POINTW2MN _0xD,43
 	CALL SUBOPT_0x2
-; 0000 00A1                 delay_ms(2000);
-; 0000 00A2                 stage = STAGE_INIT_MENU;
-; 0000 00A3             }
-; 0000 00A4             lcdCommand(0x01);
-_0x12:
-	CALL SUBOPT_0x0
-; 0000 00A5             lcd_gotoxy(1, 1);
-; 0000 00A6             lcd_print("Enter your student code:");
-	__POINTW2MN _0xC,71
-	CALL SUBOPT_0x1
-; 0000 00A7             lcd_gotoxy(1, 2);
-; 0000 00A8             lcdCommand(0x0f);   // display on, cursor blinking
-	CALL SUBOPT_0x3
-; 0000 00A9             delay_us(100 * 16); // wait
-; 0000 00AA             while (stage == STAGE_SUBMIT_CODE)
+; 0000 00A2                 delay_ms(2000);
+; 0000 00A3                 stage = STAGE_INIT_MENU;
+; 0000 00A4             }
+; 0000 00A5             lcdCommand(0x01);
 _0x13:
+	CALL SUBOPT_0x0
+; 0000 00A6             lcd_gotoxy(1, 1);
+; 0000 00A7             lcd_print("Enter your student code:");
+	__POINTW2MN _0xD,71
+	CALL SUBOPT_0x1
+; 0000 00A8             lcd_gotoxy(1, 2);
+; 0000 00A9             lcdCommand(0x0f);   // display on, cursor blinking
+	CALL SUBOPT_0x3
+; 0000 00AA             delay_us(100 * 16); // wait
+; 0000 00AB             while (stage == STAGE_SUBMIT_CODE)
+_0x14:
 	LDI  R30,LOW(2)
 	CP   R30,R5
-	BREQ _0x13
-; 0000 00AB                 ;
-; 0000 00AC             lcdCommand(0x0c);   // display on, cursor off
+	BREQ _0x14
+; 0000 00AC                 ;
+; 0000 00AD             lcdCommand(0x0c);   // display on, cursor off
 	CALL SUBOPT_0x4
-; 0000 00AD             delay_us(100 * 16); // wait
-; 0000 00AE         }
-; 0000 00AF         else if(stage == STAGE_SUBMIT_WITH_CARD)
-	RJMP _0x16
-_0x11:
-	LDI  R30,LOW(3)
-	CP   R30,R5
-	BREQ PC+2
+; 0000 00AE             delay_us(100 * 16); // wait
+; 0000 00AF         }
+; 0000 00B0         else if(stage == STAGE_SUBMIT_WITH_CARD)
 	RJMP _0x17
-; 0000 00B0         {
-; 0000 00B1             memset(buffer,0,32);
-	CALL SUBOPT_0x5
-; 0000 00B2             while (stage == STAGE_SUBMIT_WITH_CARD)
-_0x18:
+_0x12:
 	LDI  R30,LOW(3)
 	CP   R30,R5
 	BREQ PC+2
-	RJMP _0x1A
-; 0000 00B3             {
-; 0000 00B4                 if(submitTime == 0)
+	RJMP _0x18
+; 0000 00B1         {
+; 0000 00B2             memset(buffer,0,32);
+	CALL SUBOPT_0x5
+; 0000 00B3             while (stage == STAGE_SUBMIT_WITH_CARD)
+_0x19:
+	LDI  R30,LOW(3)
+	CP   R30,R5
+	BREQ PC+2
+	RJMP _0x1B
+; 0000 00B4             {
+; 0000 00B5                 if(submitTime == 0)
 	TST  R9
-	BRNE _0x1B
-; 0000 00B5                 {
-; 0000 00B6                     lcdCommand(0x01);
+	BRNE _0x1C
+; 0000 00B6                 {
+; 0000 00B7                     lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 00B7                     lcd_gotoxy(1, 1);
-; 0000 00B8                     lcd_print("Time for submit is finished");
-	__POINTW2MN _0xC,96
+; 0000 00B8                     lcd_gotoxy(1, 1);
+; 0000 00B9                     lcd_print("Time for submit is finished");
+	__POINTW2MN _0xD,96
 	CALL SUBOPT_0x2
-; 0000 00B9                     delay_ms(2000);
-; 0000 00BA                     stage = STAGE_INIT_MENU;
-; 0000 00BB                     break;
-	RJMP _0x1A
-; 0000 00BC                 }
-; 0000 00BD                 lcdCommand(0x01);
-_0x1B:
-	CALL SUBOPT_0x0
-; 0000 00BE                 lcd_gotoxy(1, 1);
-; 0000 00BF                 lcd_print("Bring your card near device:");
-	__POINTW2MN _0xC,124
-	CALL SUBOPT_0x1
-; 0000 00C0                 lcd_gotoxy(1, 2);
-; 0000 00C1                 delay_us(100 * 16); // wait
-	CALL SUBOPT_0x6
-; 0000 00C2                 while((data = USART_Receive()) != '\r'){
+; 0000 00BA                     delay_ms(2000);
+; 0000 00BB                     stage = STAGE_INIT_MENU;
+; 0000 00BC                     break;
+	RJMP _0x1B
+; 0000 00BD                 }
+; 0000 00BE                 lcdCommand(0x01);
 _0x1C:
+	CALL SUBOPT_0x0
+; 0000 00BF                 lcd_gotoxy(1, 1);
+; 0000 00C0                 lcd_print("Bring your card near device:");
+	__POINTW2MN _0xD,124
+	CALL SUBOPT_0x1
+; 0000 00C1                 lcd_gotoxy(1, 2);
+; 0000 00C2                 delay_us(100 * 16); // wait
+	CALL SUBOPT_0x6
+; 0000 00C3                 while((data = USART_Receive()) != '\r'){
+_0x1D:
 	CALL _USART_Receive
 	MOV  R20,R30
 	CPI  R30,LOW(0xD)
-	BREQ _0x1E
-; 0000 00C3                     if(stage != STAGE_SUBMIT_WITH_CARD)
+	BREQ _0x1F
+; 0000 00C4                     if(stage != STAGE_SUBMIT_WITH_CARD)
 	LDI  R30,LOW(3)
 	CP   R30,R5
-	BRNE _0x1E
-; 0000 00C4                         break;
-; 0000 00C5                     buffer[strlen(buffer)] = data;
+	BRNE _0x1F
+; 0000 00C5                         break;
+; 0000 00C6                     buffer[strlen(buffer)] = data;
 	CALL SUBOPT_0x7
 	SUBI R30,LOW(-_buffer)
 	SBCI R31,HIGH(-_buffer)
 	ST   Z,R20
-; 0000 00C6                 }
-	RJMP _0x1C
-_0x1E:
-; 0000 00C7                 if(stage != STAGE_SUBMIT_WITH_CARD){
+; 0000 00C7                 }
+	RJMP _0x1D
+_0x1F:
+; 0000 00C8                 if(stage != STAGE_SUBMIT_WITH_CARD){
 	LDI  R30,LOW(3)
 	CP   R30,R5
-	BREQ _0x20
-; 0000 00C8                     memset(buffer,0,32);
+	BREQ _0x21
+; 0000 00C9                     memset(buffer,0,32);
 	CALL SUBOPT_0x5
-; 0000 00C9                     break;
-	RJMP _0x1A
-; 0000 00CA                 }
-; 0000 00CB                 if (strncmp(buffer, "40", 2) != 0 ||
-_0x20:
-; 0000 00CC                         strlen(buffer) != 8)
+; 0000 00CA                     break;
+	RJMP _0x1B
+; 0000 00CB                 }
+; 0000 00CC                 if (strncmp(buffer, "40", 2) != 0 ||
+_0x21:
+; 0000 00CD                         strlen(buffer) != 8)
 	CALL SUBOPT_0x8
-	__POINTW1MN _0xC,153
+	__POINTW1MN _0xD,153
 	CALL SUBOPT_0x9
-	BRNE _0x22
+	BRNE _0x23
 	CALL SUBOPT_0x7
 	CPI  R30,LOW(0x8)
 	LDI  R26,HIGH(0x8)
 	CPC  R31,R26
-	BREQ _0x21
-_0x22:
-; 0000 00CD                 {
-; 0000 00CE                     lcdCommand(0x01);
+	BREQ _0x22
+_0x23:
+; 0000 00CE                 {
+; 0000 00CF                     lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 00CF                     lcd_gotoxy(1, 1);
-; 0000 00D0                     lcd_print("Invalid Card");
-	__POINTW2MN _0xC,156
+; 0000 00D0                     lcd_gotoxy(1, 1);
+; 0000 00D1                     lcd_print("Invalid Card");
+	__POINTW2MN _0xD,156
 	CALL _lcd_print
-; 0000 00D1                     BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
+; 0000 00D2                     BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
 	SBI  0x12,7
-; 0000 00D2                     delay_ms(2000);
+; 0000 00D3                     delay_ms(2000);
 	CALL SUBOPT_0xA
-; 0000 00D3                     BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
-; 0000 00D4                 }
-; 0000 00D5                 else{
-	RJMP _0x24
-_0x21:
-; 0000 00D6                     if (search_student_code() > 0){
+; 0000 00D4                     BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
+; 0000 00D5                 }
+; 0000 00D6                 else{
+	RJMP _0x25
+_0x22:
+; 0000 00D7                     if (search_student_code() > 0){
 	CALL _search_student_code
 	CPI  R30,LOW(0x1)
-	BRLO _0x25
-; 0000 00D7                         BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
+	BRLO _0x26
+; 0000 00D8                         BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
 	SBI  0x12,7
-; 0000 00D8                         lcdCommand(0x01);
+; 0000 00D9                         lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 00D9                         lcd_gotoxy(1, 1);
-; 0000 00DA                         lcd_print("Duplicate Student Code");
-	__POINTW2MN _0xC,169
+; 0000 00DA                         lcd_gotoxy(1, 1);
+; 0000 00DB                         lcd_print("Duplicate Student Code");
+	__POINTW2MN _0xD,169
 	CALL SUBOPT_0xB
-; 0000 00DB                         delay_ms(2000);
-; 0000 00DC                         BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
-; 0000 00DD                     }
-; 0000 00DE                     else{
-	RJMP _0x26
-_0x25:
-; 0000 00DF                         // save the buffer to EEPROM
-; 0000 00E0                         st_counts = read_byte_from_eeprom(0x0);
+; 0000 00DC                         delay_ms(2000);
+; 0000 00DD                         BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
+; 0000 00DE                     }
+; 0000 00DF                     else{
+	RJMP _0x27
+_0x26:
+; 0000 00E0                         // save the buffer to EEPROM
+; 0000 00E1                         st_counts = read_byte_from_eeprom(0x0);
 	CALL SUBOPT_0xC
-; 0000 00E1                         for (i = 0; i < 8; i++)
+; 0000 00E2                         for (i = 0; i < 8; i++)
 	__GETWRN 16,17,0
-_0x28:
+_0x29:
 	__CPWRN 16,17,8
-	BRGE _0x29
-; 0000 00E2                         {
-; 0000 00E3                             write_byte_to_eeprom(i + ((st_counts + 1) * 16), buffer[i]);
+	BRGE _0x2A
+; 0000 00E3                         {
+; 0000 00E4                             write_byte_to_eeprom(i + ((st_counts + 1) * 16), buffer[i]);
 	CALL SUBOPT_0xD
 	CALL SUBOPT_0xE
 	LDI  R26,LOW(_buffer)
@@ -2135,23 +2147,23 @@ _0x28:
 	ADC  R27,R17
 	LD   R26,X
 	CALL _write_byte_to_eeprom
-; 0000 00E4                         }
+; 0000 00E5                         }
 	__ADDWRN 16,17,1
-	RJMP _0x28
-_0x29:
-; 0000 00E5                         rtc_getTime(&hour, &minute, &second);
+	RJMP _0x29
+_0x2A:
+; 0000 00E6                         rtc_getTime(&hour, &minute, &second);
 	CALL SUBOPT_0xF
-; 0000 00E6                         sprintf(time, "%02x%02x", hour, minute);
+; 0000 00E7                         sprintf(time, "%02x%02x", hour, minute);
 	CALL SUBOPT_0x10
 	CALL SUBOPT_0x11
 	CALL SUBOPT_0x12
-; 0000 00E7                         for (i = 0; i < 4; i++)
+; 0000 00E8                         for (i = 0; i < 4; i++)
 	__GETWRN 16,17,0
-_0x2B:
+_0x2C:
 	__CPWRN 16,17,4
-	BRGE _0x2C
-; 0000 00E8                         {
-; 0000 00E9                             write_byte_to_eeprom(i + ((st_counts + 1) * 16 + 8), time[i]);
+	BRGE _0x2D
+; 0000 00E9                         {
+; 0000 00EA                             write_byte_to_eeprom(i + ((st_counts + 1) * 16 + 8), time[i]);
 	CALL SUBOPT_0xD
 	ADIW R30,8
 	CALL SUBOPT_0xE
@@ -2161,122 +2173,122 @@ _0x2B:
 	ADC  R27,R17
 	LD   R26,X
 	CALL _write_byte_to_eeprom
-; 0000 00EA                         }
+; 0000 00EB                         }
 	__ADDWRN 16,17,1
-	RJMP _0x2B
-_0x2C:
-; 0000 00EB                         rtc_getDate(&year, &month, &date, &day);
+	RJMP _0x2C
+_0x2D:
+; 0000 00EC                         rtc_getDate(&year, &month, &date, &day);
 	CALL SUBOPT_0x13
-; 0000 00EC                         sprintf(time, "%02x%02x", month, date);
+; 0000 00ED                         sprintf(time, "%02x%02x", month, date);
 	CALL SUBOPT_0x10
-	LDD  R30,Y+5
+	LDD  R30,Y+25
 	CALL SUBOPT_0x14
-	LDD  R30,Y+10
+	LDD  R30,Y+30
 	CALL SUBOPT_0x14
 	CALL SUBOPT_0x12
-; 0000 00ED                         for (i = 4; i < 8; i++)
+; 0000 00EE                         for (i = 4; i < 8; i++)
 	__GETWRN 16,17,4
-_0x2E:
+_0x2F:
 	__CPWRN 16,17,8
-	BRGE _0x2F
-; 0000 00EE                         {
-; 0000 00EF                             write_byte_to_eeprom(i + ((st_counts + 1) * 16 + 8), time[i - 4]);
+	BRGE _0x30
+; 0000 00EF                         {
+; 0000 00F0                             write_byte_to_eeprom(i + ((st_counts + 1) * 16 + 8), time[i - 4]);
 	CALL SUBOPT_0xD
 	ADIW R30,8
 	CALL SUBOPT_0xE
 	MOVW R30,R16
 	CALL SUBOPT_0x15
-; 0000 00F0                         }
+; 0000 00F1                         }
 	__ADDWRN 16,17,1
-	RJMP _0x2E
-_0x2F:
-; 0000 00F1                         write_byte_to_eeprom(0x0, st_counts + 1);
+	RJMP _0x2F
+_0x30:
+; 0000 00F2                         write_byte_to_eeprom(0x0, st_counts + 1);
 	CALL SUBOPT_0x16
 	MOV  R26,R21
 	SUBI R26,-LOW(1)
 	CALL _write_byte_to_eeprom
-; 0000 00F2                         lcdCommand(0x01);
+; 0000 00F3                         lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 00F3                         lcd_gotoxy(1, 1);
-; 0000 00F4                         lcd_print("Student added with ID:");
-	__POINTW2MN _0xC,192
+; 0000 00F4                         lcd_gotoxy(1, 1);
+; 0000 00F5                         lcd_print("Student added with ID:");
+	__POINTW2MN _0xD,192
 	CALL SUBOPT_0x1
-; 0000 00F5                         lcd_gotoxy(1, 2);
-; 0000 00F6                         lcd_print(buffer);
+; 0000 00F6                         lcd_gotoxy(1, 2);
+; 0000 00F7                         lcd_print(buffer);
 	CALL SUBOPT_0x17
-; 0000 00F7                         delay_ms(3000); // wait
+; 0000 00F8                         delay_ms(3000); // wait
 	LDI  R26,LOW(3000)
 	LDI  R27,HIGH(3000)
 	CALL _delay_ms
-; 0000 00F8                     }
-_0x26:
-; 0000 00F9                 }
-_0x24:
-; 0000 00FA                 memset(buffer,0,32);
+; 0000 00F9                     }
+_0x27:
+; 0000 00FA                 }
+_0x25:
+; 0000 00FB                 memset(buffer,0,32);
 	CALL SUBOPT_0x5
-; 0000 00FB             }
-	RJMP _0x18
-_0x1A:
-; 0000 00FC         }
-; 0000 00FD         else if (stage == STAGE_TEMPERATURE_MONITORING)
-	RJMP _0x30
-_0x17:
+; 0000 00FC             }
+	RJMP _0x19
+_0x1B:
+; 0000 00FD         }
+; 0000 00FE         else if (stage == STAGE_TEMPERATURE_MONITORING)
+	RJMP _0x31
+_0x18:
 	LDI  R30,LOW(4)
 	CP   R30,R5
-	BRNE _0x31
-; 0000 00FE         {
-; 0000 00FF             show_temperature();
+	BRNE _0x32
+; 0000 00FF         {
+; 0000 0100             show_temperature();
 	CALL _show_temperature
-; 0000 0100         }
-; 0000 0101         else if (stage == STAGE_VIEW_PRESENT_STUDENTS)
-	RJMP _0x32
-_0x31:
+; 0000 0101         }
+; 0000 0102         else if (stage == STAGE_VIEW_PRESENT_STUDENTS)
+	RJMP _0x33
+_0x32:
 	LDI  R30,LOW(5)
 	CP   R30,R5
 	BREQ PC+2
-	RJMP _0x33
-; 0000 0102         {
-; 0000 0103             lcdCommand(0x01);
+	RJMP _0x34
+; 0000 0103         {
+; 0000 0104             lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 0104             lcd_gotoxy(1, 1);
-; 0000 0105             lcd_print("Number of students : ");
-	__POINTW2MN _0xC,215
+; 0000 0105             lcd_gotoxy(1, 1);
+; 0000 0106             lcd_print("Number of students : ");
+	__POINTW2MN _0xD,215
 	CALL SUBOPT_0x1
-; 0000 0106             lcd_gotoxy(1, 2);
-; 0000 0107             st_counts = read_byte_from_eeprom(0x0);
+; 0000 0107             lcd_gotoxy(1, 2);
+; 0000 0108             st_counts = read_byte_from_eeprom(0x0);
 	CALL SUBOPT_0xC
-; 0000 0108             memset(buffer, 0, 32);
+; 0000 0109             memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 0109             itoa(st_counts, buffer);
+; 0000 010A             itoa(st_counts, buffer);
 	MOV  R30,R21
 	CALL SUBOPT_0x18
-; 0000 010A             lcd_print(buffer);
+; 0000 010B             lcd_print(buffer);
 	CALL SUBOPT_0x17
-; 0000 010B             delay_ms(1000);
+; 0000 010C             delay_ms(1000);
 	LDI  R26,LOW(1000)
 	LDI  R27,HIGH(1000)
 	CALL _delay_ms
-; 0000 010C 
-; 0000 010D             for (i = 0; i < st_counts; i++)
+; 0000 010D 
+; 0000 010E             for (i = 0; i < st_counts; i++)
 	__GETWRN 16,17,0
-_0x35:
+_0x36:
 	MOV  R30,R21
 	MOVW R26,R16
 	LDI  R31,0
 	CP   R26,R30
 	CPC  R27,R31
 	BRLT PC+2
-	RJMP _0x36
-; 0000 010E             {
-; 0000 010F                 memset(buffer, 0, 32);
+	RJMP _0x37
+; 0000 010F             {
+; 0000 0110                 memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 0110                 for (j = 0; j < 8; j++)
+; 0000 0111                 for (j = 0; j < 8; j++)
 	__GETWRN 18,19,0
-_0x38:
+_0x39:
 	__CPWRN 18,19,8
-	BRGE _0x39
-; 0000 0111                 {
-; 0000 0112                     buffer[j] = read_byte_from_eeprom(j + ((i + 1) * 16));
+	BRGE _0x3A
+; 0000 0112                 {
+; 0000 0113                     buffer[j] = read_byte_from_eeprom(j + ((i + 1) * 16));
 	MOVW R30,R18
 	SUBI R30,LOW(-_buffer)
 	SBCI R31,HIGH(-_buffer)
@@ -2288,27 +2300,27 @@ _0x38:
 	POP  R26
 	POP  R27
 	ST   X,R30
-; 0000 0113                 }
+; 0000 0114                 }
 	__ADDWRN 18,19,1
-	RJMP _0x38
-_0x39:
-; 0000 0114                 buffer[j] = '\0';
+	RJMP _0x39
+_0x3A:
+; 0000 0115                 buffer[j] = '\0';
 	CALL SUBOPT_0x1A
-; 0000 0115                 lcdCommand(0x01);
+; 0000 0116                 lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 0116                 lcd_gotoxy(1, 1);
-; 0000 0117                 lcd_print(buffer);
+; 0000 0117                 lcd_gotoxy(1, 1);
+; 0000 0118                 lcd_print(buffer);
 	CALL SUBOPT_0x17
-; 0000 0118 
-; 0000 0119                 memset(buffer, 0, 32);
+; 0000 0119 
+; 0000 011A                 memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 011A                 for (j = 0; j < 8; j++)
+; 0000 011B                 for (j = 0; j < 8; j++)
 	__GETWRN 18,19,0
-_0x3B:
+_0x3C:
 	__CPWRN 18,19,8
-	BRGE _0x3C
-; 0000 011B                 {
-; 0000 011C                     buffer[j] = read_byte_from_eeprom(j + ((i + 1) * 16) + 8);
+	BRGE _0x3D
+; 0000 011C                 {
+; 0000 011D                     buffer[j] = read_byte_from_eeprom(j + ((i + 1) * 16) + 8);
 	MOVW R30,R18
 	SUBI R30,LOW(-_buffer)
 	SBCI R31,HIGH(-_buffer)
@@ -2319,451 +2331,460 @@ _0x3B:
 	POP  R26
 	POP  R27
 	ST   X,R30
-; 0000 011D                 }
+; 0000 011E                 }
 	__ADDWRN 18,19,1
-	RJMP _0x3B
-_0x3C:
-; 0000 011E                 buffer[j] = '\0';
+	RJMP _0x3C
+_0x3D:
+; 0000 011F                 buffer[j] = '\0';
 	CALL SUBOPT_0x1A
-; 0000 011F                 lcd_gotoxy(1, 2);
+; 0000 0120                 lcd_gotoxy(1, 2);
 	CALL SUBOPT_0x1C
-; 0000 0120                 snprintf(time, 3, "%s", buffer);
+; 0000 0121                 snprintf(time, 3, "%s", buffer);
 	CALL SUBOPT_0x1D
 	LDI  R30,LOW(_buffer)
 	LDI  R31,HIGH(_buffer)
 	CALL SUBOPT_0x1E
-; 0000 0121                 lcd_print(time);
-; 0000 0122                 lcd_print(":");
-	__POINTW2MN _0xC,237
+; 0000 0122                 lcd_print(time);
+; 0000 0123                 lcd_print(":");
+	__POINTW2MN _0xD,237
 	CALL SUBOPT_0x1F
-; 0000 0123                 snprintf(time, 3, "%s", buffer + 2);
+; 0000 0124                 snprintf(time, 3, "%s", buffer + 2);
 	__POINTW1MN _buffer,2
 	CALL SUBOPT_0x1E
-; 0000 0124                 lcd_print(time);
-; 0000 0125                 lcd_print(" ");
-	__POINTW2MN _0xC,239
+; 0000 0125                 lcd_print(time);
+; 0000 0126                 lcd_print(" ");
+	__POINTW2MN _0xD,239
 	CALL SUBOPT_0x1F
-; 0000 0126                 snprintf(time, 3, "%s", buffer + 4);
+; 0000 0127                 snprintf(time, 3, "%s", buffer + 4);
 	__POINTW1MN _buffer,4
 	CALL SUBOPT_0x1E
-; 0000 0127                 lcd_print(time);
-; 0000 0128                 lcd_print("/");
-	__POINTW2MN _0xC,241
+; 0000 0128                 lcd_print(time);
+; 0000 0129                 lcd_print("/");
+	__POINTW2MN _0xD,241
 	CALL SUBOPT_0x1F
-; 0000 0129                 snprintf(time, 3, "%s", buffer + 6);
+; 0000 012A                 snprintf(time, 3, "%s", buffer + 6);
 	__POINTW1MN _buffer,6
 	CALL SUBOPT_0x1E
-; 0000 012A                 lcd_print(time);
-; 0000 012B                 delay_ms(2000);
+; 0000 012B                 lcd_print(time);
+; 0000 012C                 delay_ms(2000);
 	CALL SUBOPT_0x20
-; 0000 012C             }
+; 0000 012D             }
 	__ADDWRN 16,17,1
-	RJMP _0x35
-_0x36:
-; 0000 012D 
-; 0000 012E             lcdCommand(0x01);
+	RJMP _0x36
+_0x37:
+; 0000 012E 
+; 0000 012F             lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 012F             lcd_gotoxy(1, 1);
-; 0000 0130             lcd_print("Press Cancel To Go Back");
-	__POINTW2MN _0xC,243
+; 0000 0130             lcd_gotoxy(1, 1);
+; 0000 0131             lcd_print("Press Cancel To Go Back");
+	__POINTW2MN _0xD,243
 	CALL _lcd_print
-; 0000 0131             while (stage == STAGE_VIEW_PRESENT_STUDENTS)
-_0x3D:
+; 0000 0132             while (stage == STAGE_VIEW_PRESENT_STUDENTS)
+_0x3E:
 	LDI  R30,LOW(5)
 	CP   R30,R5
-	BREQ _0x3D
-; 0000 0132                 ;
-; 0000 0133         }
-; 0000 0134         else if (stage == STAGE_RETRIEVE_STUDENT_DATA)
-	RJMP _0x40
-_0x33:
+	BREQ _0x3E
+; 0000 0133                 ;
+; 0000 0134         }
+; 0000 0135         else if (stage == STAGE_RETRIEVE_STUDENT_DATA)
+	RJMP _0x41
+_0x34:
 	LDI  R30,LOW(6)
 	CP   R30,R5
 	BREQ PC+2
-	RJMP _0x41
-; 0000 0135         {
-; 0000 0136             lcdCommand(0x01);
+	RJMP _0x42
+; 0000 0136         {
+; 0000 0137             lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 0137             lcd_gotoxy(1, 1);
-; 0000 0138             lcd_print("Start Transferring...");
-	__POINTW2MN _0xC,267
-	RCALL _lcd_print
-; 0000 0139             st_counts = read_byte_from_eeprom(0x0);
+; 0000 0138             lcd_gotoxy(1, 1);
+; 0000 0139             lcd_print("Start Transferring...");
+	__POINTW2MN _0xD,267
+	CALL _lcd_print
+; 0000 013A             st_counts = read_byte_from_eeprom(0x0);
 	CALL SUBOPT_0xC
-; 0000 013A             for (i = 0; i < st_counts; i++)
+; 0000 013B             for (i = 0; i < st_counts; i++)
 	__GETWRN 16,17,0
-_0x43:
+_0x44:
 	MOV  R30,R21
 	MOVW R26,R16
 	LDI  R31,0
 	CP   R26,R30
 	CPC  R27,R31
 	BRLT PC+2
-	RJMP _0x44
-; 0000 013B             {
-; 0000 013C                 for (j = 0; j < 8; j++)
+	RJMP _0x45
+; 0000 013C             {
+; 0000 013D                 for (j = 0; j < 8; j++)
 	__GETWRN 18,19,0
-_0x46:
+_0x47:
 	__CPWRN 18,19,8
-	BRGE _0x47
-; 0000 013D                 {
-; 0000 013E                     USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 16)));
+	BRGE _0x48
+; 0000 013E                 {
+; 0000 013F                     USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 16)));
 	CALL SUBOPT_0x19
 	MOVW R26,R30
 	CALL _read_byte_from_eeprom
 	MOV  R26,R30
 	CALL _USART_Transmit
-; 0000 013F                 }
+; 0000 0140                 }
 	__ADDWRN 18,19,1
-	RJMP _0x46
-_0x47:
-; 0000 0140 
-; 0000 0141                 USART_Transmit('\r');
+	RJMP _0x47
+_0x48:
+; 0000 0141 
+; 0000 0142                 USART_Transmit('\r');
 	LDI  R26,LOW(13)
 	CALL _USART_Transmit
-; 0000 0142 
-; 0000 0143                 for (j = 0; j < 2; j++)
+; 0000 0143 
+; 0000 0144                 for (j = 0; j < 2; j++)
 	__GETWRN 18,19,0
-_0x49:
+_0x4A:
 	__CPWRN 18,19,2
-	BRGE _0x4A
-; 0000 0144                 {
-; 0000 0145                     USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 16) + 8));
+	BRGE _0x4B
+; 0000 0145                 {
+; 0000 0146                     USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 16) + 8));
 	CALL SUBOPT_0x19
 	CALL SUBOPT_0x1B
 	MOV  R26,R30
 	CALL _USART_Transmit
-; 0000 0146                 }
+; 0000 0147                 }
 	__ADDWRN 18,19,1
-	RJMP _0x49
-_0x4A:
-; 0000 0147                 USART_Transmit(':');
+	RJMP _0x4A
+_0x4B:
+; 0000 0148                 USART_Transmit(':');
 	LDI  R26,LOW(58)
 	CALL _USART_Transmit
-; 0000 0148                 for (j = 2; j < 4; j++)
+; 0000 0149                 for (j = 2; j < 4; j++)
 	__GETWRN 18,19,2
-_0x4C:
+_0x4D:
 	__CPWRN 18,19,4
-	BRGE _0x4D
-; 0000 0149                 {
-; 0000 014A                     USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 16) + 8));
+	BRGE _0x4E
+; 0000 014A                 {
+; 0000 014B                     USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 16) + 8));
 	CALL SUBOPT_0x19
 	CALL SUBOPT_0x1B
 	MOV  R26,R30
 	CALL _USART_Transmit
-; 0000 014B                 }
+; 0000 014C                 }
 	__ADDWRN 18,19,1
-	RJMP _0x4C
-_0x4D:
-; 0000 014C                 USART_Transmit(' ');
+	RJMP _0x4D
+_0x4E:
+; 0000 014D                 USART_Transmit(' ');
 	LDI  R26,LOW(32)
 	CALL _USART_Transmit
-; 0000 014D                 for (j = 4; j < 6; j++)
+; 0000 014E                 for (j = 4; j < 6; j++)
 	__GETWRN 18,19,4
-_0x4F:
+_0x50:
 	__CPWRN 18,19,6
-	BRGE _0x50
-; 0000 014E                 {
-; 0000 014F                     USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 16) + 8));
+	BRGE _0x51
+; 0000 014F                 {
+; 0000 0150                     USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 16) + 8));
 	CALL SUBOPT_0x19
 	CALL SUBOPT_0x1B
 	MOV  R26,R30
 	CALL _USART_Transmit
-; 0000 0150                 }
+; 0000 0151                 }
 	__ADDWRN 18,19,1
-	RJMP _0x4F
-_0x50:
-; 0000 0151                 USART_Transmit('/');
+	RJMP _0x50
+_0x51:
+; 0000 0152                 USART_Transmit('/');
 	LDI  R26,LOW(47)
 	CALL _USART_Transmit
-; 0000 0152                 for (j = 6; j < 8; j++)
+; 0000 0153                 for (j = 6; j < 8; j++)
 	__GETWRN 18,19,6
-_0x52:
+_0x53:
 	__CPWRN 18,19,8
-	BRGE _0x53
-; 0000 0153                 {
-; 0000 0154                     USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 16) + 8));
+	BRGE _0x54
+; 0000 0154                 {
+; 0000 0155                     USART_Transmit(read_byte_from_eeprom(j + ((i + 1) * 16) + 8));
 	CALL SUBOPT_0x19
 	CALL SUBOPT_0x1B
 	MOV  R26,R30
 	CALL _USART_Transmit
-; 0000 0155                 }
+; 0000 0156                 }
 	__ADDWRN 18,19,1
-	RJMP _0x52
-_0x53:
-; 0000 0156 
-; 0000 0157                 USART_Transmit('\r');
-	CALL SUBOPT_0x21
+	RJMP _0x53
+_0x54:
+; 0000 0157 
 ; 0000 0158                 USART_Transmit('\r');
-; 0000 0159 
-; 0000 015A                 delay_ms(500);
-; 0000 015B             }
+	CALL SUBOPT_0x21
+; 0000 0159                 USART_Transmit('\r');
+; 0000 015A 
+; 0000 015B                 delay_ms(500);
+; 0000 015C             }
 	__ADDWRN 16,17,1
-	RJMP _0x43
-_0x44:
-; 0000 015C             for (j = 0; j < 8; j++)
+	RJMP _0x44
+_0x45:
+; 0000 015D             for (j = 0; j < 8; j++)
 	__GETWRN 18,19,0
-_0x55:
+_0x56:
 	__CPWRN 18,19,8
-	BRGE _0x56
-; 0000 015D             {
-; 0000 015E                 USART_Transmit('=');
+	BRGE _0x57
+; 0000 015E             {
+; 0000 015F                 USART_Transmit('=');
 	LDI  R26,LOW(61)
 	CALL _USART_Transmit
-; 0000 015F             }
+; 0000 0160             }
 	__ADDWRN 18,19,1
-	RJMP _0x55
-_0x56:
-; 0000 0160 
-; 0000 0161             USART_Transmit('\r');
-	CALL SUBOPT_0x21
+	RJMP _0x56
+_0x57:
+; 0000 0161 
 ; 0000 0162             USART_Transmit('\r');
-; 0000 0163             delay_ms(500);
-; 0000 0164 
-; 0000 0165             lcdCommand(0x01);
+	CALL SUBOPT_0x21
+; 0000 0163             USART_Transmit('\r');
+; 0000 0164             delay_ms(500);
+; 0000 0165 
+; 0000 0166             lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 0166             lcd_gotoxy(1, 1);
-; 0000 0167             lcd_print("Usart Transmit Finished");
-	__POINTW2MN _0xC,289
+; 0000 0167             lcd_gotoxy(1, 1);
+; 0000 0168             lcd_print("Usart Transmit Finished");
+	__POINTW2MN _0xD,289
 	CALL SUBOPT_0x2
-; 0000 0168             delay_ms(2000);
-; 0000 0169             stage = STAGE_INIT_MENU;
-; 0000 016A         }
-; 0000 016B         else if (stage == STAGE_STUDENT_MANAGMENT)
-	RJMP _0x57
-_0x41:
+; 0000 0169             delay_ms(2000);
+; 0000 016A             stage = STAGE_INIT_MENU;
+; 0000 016B         }
+; 0000 016C         else if (stage == STAGE_STUDENT_MANAGMENT)
+	RJMP _0x58
+_0x42:
 	LDI  R30,LOW(7)
 	CP   R30,R5
-	BRNE _0x58
-; 0000 016C         {
-; 0000 016D             lcdCommand(0x01);
+	BRNE _0x59
+; 0000 016D         {
+; 0000 016E             lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 016E             lcd_gotoxy(1, 1);
-; 0000 016F             lcd_print("1: Search Student");
-	__POINTW2MN _0xC,313
+; 0000 016F             lcd_gotoxy(1, 1);
+; 0000 0170             lcd_print("1: Search Student");
+	__POINTW2MN _0xD,313
 	CALL SUBOPT_0x1
-; 0000 0170             lcd_gotoxy(1, 2);
-; 0000 0171             lcd_print("2: Delete Student");
-	__POINTW2MN _0xC,331
+; 0000 0171             lcd_gotoxy(1, 2);
+; 0000 0172             lcd_print("2: Delete Student");
+	__POINTW2MN _0xD,331
 	RCALL _lcd_print
-; 0000 0172             while (stage == STAGE_STUDENT_MANAGMENT)
-_0x59:
+; 0000 0173             while (stage == STAGE_STUDENT_MANAGMENT)
+_0x5A:
 	LDI  R30,LOW(7)
 	CP   R30,R5
-	BREQ _0x59
-; 0000 0173                 ;
-; 0000 0174         }
-; 0000 0175         else if (stage == STAGE_SEARCH_STUDENT)
-	RJMP _0x5C
-_0x58:
+	BREQ _0x5A
+; 0000 0174                 ;
+; 0000 0175         }
+; 0000 0176         else if (stage == STAGE_SEARCH_STUDENT)
+	RJMP _0x5D
+_0x59:
 	LDI  R30,LOW(8)
 	CP   R30,R5
-	BRNE _0x5D
-; 0000 0176         {
-; 0000 0177             lcdCommand(0x01);
+	BRNE _0x5E
+; 0000 0177         {
+; 0000 0178             lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 0178             lcd_gotoxy(1, 1);
-; 0000 0179             lcd_print("Enter Student Code For Search:");
-	__POINTW2MN _0xC,349
+; 0000 0179             lcd_gotoxy(1, 1);
+; 0000 017A             lcd_print("Enter Student Code For Search:");
+	__POINTW2MN _0xD,349
 	CALL SUBOPT_0x1
-; 0000 017A             lcd_gotoxy(1, 2);
-; 0000 017B             lcdCommand(0x0f);   // display on, cursor blinking
+; 0000 017B             lcd_gotoxy(1, 2);
+; 0000 017C             lcdCommand(0x0f);   // display on, cursor blinking
 	CALL SUBOPT_0x3
-; 0000 017C             delay_us(100 * 16); // wait
-; 0000 017D             while (stage == STAGE_SEARCH_STUDENT)
+; 0000 017D             delay_us(100 * 16); // wait
+; 0000 017E             while (stage == STAGE_SEARCH_STUDENT)
+_0x5F:
+	LDI  R30,LOW(8)
+	CP   R30,R5
+	BREQ _0x5F
+; 0000 017F                 ;
+; 0000 0180             lcdCommand(0x0c);   // display on, cursor off
+	CALL SUBOPT_0x4
+; 0000 0181             delay_us(100 * 16); // wait
+; 0000 0182         }
+; 0000 0183         else if (stage == STAGE_DELETE_STUDENT)
+	RJMP _0x62
 _0x5E:
-	LDI  R30,LOW(8)
-	CP   R30,R5
-	BREQ _0x5E
-; 0000 017E                 ;
-; 0000 017F             lcdCommand(0x0c);   // display on, cursor off
-	CALL SUBOPT_0x4
-; 0000 0180             delay_us(100 * 16); // wait
-; 0000 0181         }
-; 0000 0182         else if (stage == STAGE_DELETE_STUDENT)
-	RJMP _0x61
-_0x5D:
 	LDI  R30,LOW(9)
 	CP   R30,R5
-	BRNE _0x62
-; 0000 0183         {
-; 0000 0184             lcdCommand(0x01);
+	BRNE _0x63
+; 0000 0184         {
+; 0000 0185             lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 0185             lcd_gotoxy(1, 1);
-; 0000 0186             lcd_print("Enter Student Code For Delete:");
-	__POINTW2MN _0xC,380
+; 0000 0186             lcd_gotoxy(1, 1);
+; 0000 0187             lcd_print("Enter Student Code For Delete:");
+	__POINTW2MN _0xD,380
 	CALL SUBOPT_0x1
-; 0000 0187             lcd_gotoxy(1, 2);
-; 0000 0188             lcdCommand(0x0f);   // display on, cursor blinking
+; 0000 0188             lcd_gotoxy(1, 2);
+; 0000 0189             lcdCommand(0x0f);   // display on, cursor blinking
 	CALL SUBOPT_0x3
-; 0000 0189             delay_us(100 * 16); // wait
-; 0000 018A             while (stage == STAGE_DELETE_STUDENT)
-_0x63:
+; 0000 018A             delay_us(100 * 16); // wait
+; 0000 018B             while (stage == STAGE_DELETE_STUDENT)
+_0x64:
 	LDI  R30,LOW(9)
 	CP   R30,R5
-	BREQ _0x63
-; 0000 018B                 ;
-; 0000 018C             lcdCommand(0x0c); // display on, cursor off
+	BREQ _0x64
+; 0000 018C                 ;
+; 0000 018D             lcdCommand(0x0c); // display on, cursor off
 	CALL SUBOPT_0x4
-; 0000 018D             delay_us(100 * 16);
-; 0000 018E         }
-; 0000 018F         else if (stage == STAGE_TRAFFIC_MONITORING)
-	RJMP _0x66
-_0x62:
+; 0000 018E             delay_us(100 * 16);
+; 0000 018F         }
+; 0000 0190         else if (stage == STAGE_TRAFFIC_MONITORING)
+	RJMP _0x67
+_0x63:
 	LDI  R30,LOW(10)
 	CP   R30,R5
-	BRNE _0x67
-; 0000 0190         {
-; 0000 0191             startSonar();
+	BRNE _0x68
+; 0000 0191         {
+; 0000 0192             startSonar();
 	CALL _startSonar
-; 0000 0192             stage = STAGE_INIT_MENU;
+; 0000 0193             stage = STAGE_INIT_MENU;
 	CLR  R5
-; 0000 0193         }
-; 0000 0194         else if (stage == STAGE_LOGIN_WITH_ADMIN)
-	RJMP _0x68
-_0x67:
+; 0000 0194         }
+; 0000 0195         else if (stage == STAGE_LOGIN_WITH_ADMIN)
+	RJMP _0x69
+_0x68:
 	LDI  R30,LOW(11)
 	CP   R30,R5
-	BRNE _0x69
-; 0000 0195         {
-; 0000 0196             lcdCommand(0x01);
+	BRNE _0x6A
+; 0000 0196         {
+; 0000 0197             lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 0197             lcd_gotoxy(1, 1);
-; 0000 0198             lcd_print("Enter Secret Code (or cancel)");
-	__POINTW2MN _0xC,411
+; 0000 0198             lcd_gotoxy(1, 1);
+; 0000 0199             lcd_print("Enter Secret Code (or cancel)");
+	__POINTW2MN _0xD,411
 	CALL SUBOPT_0x1
-; 0000 0199             lcd_gotoxy(1, 2);
-; 0000 019A             lcdCommand(0x0f);   // display on, cursor blinking
+; 0000 019A             lcd_gotoxy(1, 2);
+; 0000 019B             lcdCommand(0x0f);   // display on, cursor blinking
 	CALL SUBOPT_0x3
-; 0000 019B             delay_us(100 * 16); // wait
-; 0000 019C             while (stage == STAGE_LOGIN_WITH_ADMIN && logged_in == 0)
-_0x6A:
+; 0000 019C             delay_us(100 * 16); // wait
+; 0000 019D             while (stage == STAGE_LOGIN_WITH_ADMIN && logged_in == 0)
+_0x6B:
 	LDI  R30,LOW(11)
 	CP   R30,R5
-	BRNE _0x6D
+	BRNE _0x6E
 	TST  R6
-	BREQ _0x6E
-_0x6D:
-	RJMP _0x6C
+	BREQ _0x6F
 _0x6E:
-; 0000 019D                 ;
-	RJMP _0x6A
-_0x6C:
-; 0000 019E             if (logged_in == 1)
+	RJMP _0x6D
+_0x6F:
+; 0000 019E                 ;
+	RJMP _0x6B
+_0x6D:
+; 0000 019F             if (logged_in == 1)
 	LDI  R30,LOW(1)
 	CP   R30,R6
-	BRNE _0x6F
-; 0000 019F             {
-; 0000 01A0                 lcdCommand(0x0c); // display on, cursor off
+	BRNE _0x70
+; 0000 01A0             {
+; 0000 01A1                 lcdCommand(0x0c); // display on, cursor off
 	CALL SUBOPT_0x4
-; 0000 01A1                 delay_us(100 * 16);
-; 0000 01A2                 lcdCommand(0x01);
+; 0000 01A2                 delay_us(100 * 16);
+; 0000 01A3                 lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 01A3                 lcd_gotoxy(1, 1);
-; 0000 01A4                 lcd_print("1 : Clear EEPROM");
-	__POINTW2MN _0xC,441
+; 0000 01A4                 lcd_gotoxy(1, 1);
+; 0000 01A5                 lcd_print("1 : Clear EEPROM");
+	__POINTW2MN _0xD,441
 	CALL SUBOPT_0x1
-; 0000 01A5                 lcd_gotoxy(1, 2);
-; 0000 01A6                 lcd_print("    press cancel to back");
-	__POINTW2MN _0xC,458
+; 0000 01A6                 lcd_gotoxy(1, 2);
+; 0000 01A7                 lcd_print("    press cancel to back");
+	__POINTW2MN _0xD,458
 	RCALL _lcd_print
-; 0000 01A7                 while (stage == STAGE_LOGIN_WITH_ADMIN)
-_0x70:
+; 0000 01A8                 while (stage == STAGE_LOGIN_WITH_ADMIN)
+_0x71:
 	LDI  R30,LOW(11)
 	CP   R30,R5
-	BREQ _0x70
-; 0000 01A8                     ;
-; 0000 01A9             }
-; 0000 01AA             else
-	RJMP _0x73
-_0x6F:
-; 0000 01AB             {
-; 0000 01AC                 lcdCommand(0x0c); // display on, cursor off
-	CALL SUBOPT_0x4
-; 0000 01AD                 delay_us(100 * 16);
-; 0000 01AE             }
-_0x73:
-; 0000 01AF         }
-; 0000 01B0         else if (stage == STAGE_SET_TIMER)
+	BREQ _0x71
+; 0000 01A9                     ;
+; 0000 01AA             }
+; 0000 01AB             else
 	RJMP _0x74
-_0x69:
+_0x70:
+; 0000 01AC             {
+; 0000 01AD                 lcdCommand(0x0c); // display on, cursor off
+	CALL SUBOPT_0x4
+; 0000 01AE                 delay_us(100 * 16);
+; 0000 01AF             }
+_0x74:
+; 0000 01B0         }
+; 0000 01B1         else if (stage == STAGE_SET_TIMER)
+	RJMP _0x75
+_0x6A:
 	LDI  R30,LOW(14)
 	CP   R30,R5
-	BRNE _0x75
-; 0000 01B1         {
-; 0000 01B2             lcdCommand(0x01);
+	BRNE _0x76
+; 0000 01B2         {
+; 0000 01B3             lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 01B3             lcd_gotoxy(1, 1);
-; 0000 01B4             lcdCommand(0x0c); // display on, cursor off
+; 0000 01B4             lcd_gotoxy(1, 1);
+; 0000 01B5             lcdCommand(0x0c); // display on, cursor off
 	LDI  R26,LOW(12)
 	RCALL _lcdCommand
-; 0000 01B5             itoa(submitTime, buffer);
+; 0000 01B6             itoa(submitTime, buffer);
 	MOV  R30,R9
 	CALL SUBOPT_0x18
-; 0000 01B6             lcd_print("Set Timer(minutes): ");
-	__POINTW2MN _0xC,483
+; 0000 01B7             lcd_print("Set Timer(minutes): ");
+	__POINTW2MN _0xD,483
 	RCALL _lcd_print
-; 0000 01B7             lcd_print(buffer);
+; 0000 01B8             lcd_print(buffer);
 	CALL SUBOPT_0x17
-; 0000 01B8             delay_us(100 * 16); // wait
+; 0000 01B9             delay_us(100 * 16); // wait
 	CALL SUBOPT_0x6
-; 0000 01B9             while(stage == STAGE_SET_TIMER);
-_0x76:
+; 0000 01BA             while(stage == STAGE_SET_TIMER);
+_0x77:
 	LDI  R30,LOW(14)
 	CP   R30,R5
-	BREQ _0x76
-; 0000 01BA             delay_us(100 * 16);
+	BREQ _0x77
+; 0000 01BB             delay_us(100 * 16);
 	CALL SUBOPT_0x6
-; 0000 01BB         }
-; 0000 01BC         else if(stage == STAGE_SHOW_CLOCK)
-	RJMP _0x79
-_0x75:
-	LDI  R30,LOW(13)
-	CP   R30,R5
-	BREQ PC+2
+; 0000 01BC         }
+; 0000 01BD         else if(stage == STAGE_SHOW_CLOCK)
 	RJMP _0x7A
-; 0000 01BD         {
-; 0000 01BE             while(stage == STAGE_SHOW_CLOCK){
-_0x7B:
+_0x76:
 	LDI  R30,LOW(13)
 	CP   R30,R5
 	BREQ PC+2
-	RJMP _0x7D
-; 0000 01BF                 lcdCommand(0x01);
+	RJMP _0x7B
+; 0000 01BE         {
+; 0000 01BF             lcdCommand(0x01);
 	LDI  R26,LOW(1)
 	RCALL _lcdCommand
-; 0000 01C0                 rtc_getTime(&hour, &minute, &second);
+; 0000 01C0             memset(Date, 0, 20);
+	MOVW R30,R28
+	ST   -Y,R31
+	ST   -Y,R30
+	LDI  R30,LOW(0)
+	ST   -Y,R30
+	LDI  R26,LOW(20)
+	LDI  R27,0
+	CALL _memset
+; 0000 01C1             while(stage == STAGE_SHOW_CLOCK){
+_0x7C:
+	LDI  R30,LOW(13)
+	CP   R30,R5
+	BREQ PC+2
+	RJMP _0x7E
+; 0000 01C2                 rtc_getTime(&hour, &minute, &second);
 	CALL SUBOPT_0xF
-; 0000 01C1                 sprintf(time, "%02x:%02x:%02x  ", hour, minute, second);
+; 0000 01C3                 sprintf(time, "%02x:%02x:%02x  ", hour, minute, second);
 	__POINTW1FN _0x0,512
 	ST   -Y,R31
 	ST   -Y,R30
 	CALL SUBOPT_0x11
-	LDD  R30,Y+18
+	LDD  R30,Y+38
 	CALL SUBOPT_0x14
 	LDI  R24,12
 	CALL _sprintf
 	ADIW R28,16
-; 0000 01C2                 lcd_gotoxy(1,1);
+; 0000 01C4                 lcd_gotoxy(1,1);
 	LDI  R30,LOW(1)
 	CALL SUBOPT_0x22
-; 0000 01C3                 lcd_print(time);
+; 0000 01C5                 lcd_print(time);
 	LDI  R26,LOW(_time)
 	LDI  R27,HIGH(_time)
 	RCALL _lcd_print
-; 0000 01C4                 rtc_getDate(&year, &month, &date, &day);
+; 0000 01C6                 rtc_getDate(&year, &month, &date, &day);
 	CALL SUBOPT_0x13
-; 0000 01C5                 sprintf(time, "20%02x/%02x/%02x  %3s", year, month, date, days[day - 1]);
+; 0000 01C7                 sprintf(time, "20%02x/%02x/%02x  %3s", year, month, date, days[day - 1]);
 	__POINTW1FN _0x0,529
 	ST   -Y,R31
 	ST   -Y,R30
-	LDD  R30,Y+4
+	LDD  R30,Y+24
 	CALL SUBOPT_0x14
-	LDD  R30,Y+9
+	LDD  R30,Y+29
 	CALL SUBOPT_0x14
-	LDD  R30,Y+14
+	LDD  R30,Y+34
 	CALL SUBOPT_0x14
-	LDD  R30,Y+19
+	LDD  R30,Y+39
 	LDI  R31,0
 	SBIW R30,1
 	LDI  R26,LOW(_days)
@@ -2779,47 +2800,63 @@ _0x7B:
 	LDI  R24,16
 	CALL _sprintf
 	ADIW R28,20
-; 0000 01C6                 lcd_gotoxy(1,2);
+; 0000 01C8                 if(strcmp(time, Date) != 0){
+	CALL SUBOPT_0x23
+	MOVW R26,R28
+	ADIW R26,2
+	CALL _strcmp
+	CPI  R30,0
+	BREQ _0x7F
+; 0000 01C9                     lcd_gotoxy(1,2);
 	CALL SUBOPT_0x1C
-; 0000 01C7                 lcd_print(time);
+; 0000 01CA                     lcd_print(time);
 	LDI  R26,LOW(_time)
 	LDI  R27,HIGH(_time)
 	RCALL _lcd_print
-; 0000 01C8                 delay_ms(1000);
+; 0000 01CB                     strcpy(Date, time);
+	MOVW R30,R28
+	ST   -Y,R31
+	ST   -Y,R30
+	LDI  R26,LOW(_time)
+	LDI  R27,HIGH(_time)
+	CALL _strcpy
+; 0000 01CC                 }
+; 0000 01CD                 delay_ms(1000);
+_0x7F:
 	LDI  R26,LOW(1000)
 	LDI  R27,HIGH(1000)
 	CALL _delay_ms
-; 0000 01C9             }
-	RJMP _0x7B
-_0x7D:
-; 0000 01CA         }
-; 0000 01CB     }
-_0x7A:
-_0x79:
-_0x74:
-_0x68:
-_0x66:
-_0x61:
-_0x5C:
-_0x57:
-_0x40:
-_0x32:
-_0x30:
-_0x16:
-_0x10:
-_0xA:
-	RJMP _0x6
-; 0000 01CC }
+; 0000 01CE             }
+	RJMP _0x7C
 _0x7E:
-	RJMP _0x7E
+; 0000 01CF         }
+; 0000 01D0     }
+_0x7B:
+_0x7A:
+_0x75:
+_0x69:
+_0x67:
+_0x62:
+_0x5D:
+_0x58:
+_0x41:
+_0x33:
+_0x31:
+_0x17:
+_0x11:
+_0xB:
+	RJMP _0x7
+; 0000 01D1 }
+_0x80:
+	RJMP _0x80
 ; .FEND
 
 	.DSEG
-_0xC:
+_0xD:
 	.BYTE 0x1F8
 ;
 ;interrupt[TIM2_OVF] void timer2_ovf_isr(void)
-; 0000 01CF {
+; 0000 01D4 {
 
 	.CSEG
 _timer2_ovf_isr:
@@ -2827,28 +2864,28 @@ _timer2_ovf_isr:
 	ST   -Y,R30
 	IN   R30,SREG
 	ST   -Y,R30
-; 0000 01D0     timerCount++;
+; 0000 01D5     timerCount++;
 	INC  R8
-; 0000 01D1     if(timerCount == 60){
+; 0000 01D6     if(timerCount == 60){
 	LDI  R30,LOW(60)
 	CP   R30,R8
-	BRNE _0x7F
-; 0000 01D2         submitTime--;
+	BRNE _0x81
+; 0000 01D7         submitTime--;
 	DEC  R9
-; 0000 01D3         timerCount = 0;
+; 0000 01D8         timerCount = 0;
 	CLR  R8
-; 0000 01D4     }
-; 0000 01D5     TCNT2 = 0;
-_0x7F:
+; 0000 01D9     }
+; 0000 01DA     TCNT2 = 0;
+_0x81:
 	LDI  R30,LOW(0)
 	OUT  0x24,R30
-; 0000 01D6     if(submitTime == 0)
+; 0000 01DB     if(submitTime == 0)
 	TST  R9
-	BRNE _0x80
-; 0000 01D7         TIMSK = 0;
+	BRNE _0x82
+; 0000 01DC         TIMSK = 0;
 	OUT  0x39,R30
-; 0000 01D8 }
-_0x80:
+; 0000 01DD }
+_0x82:
 	LD   R30,Y+
 	OUT  SREG,R30
 	LD   R30,Y+
@@ -2857,7 +2894,7 @@ _0x80:
 ;
 ;// int0 (keypad) service routine
 ;interrupt[EXT_INT0] void int0_routine(void)
-; 0000 01DC {
+; 0000 01E1 {
 _int0_routine:
 ; .FSTART _int0_routine
 	ST   -Y,R0
@@ -2873,13 +2910,13 @@ _int0_routine:
 	ST   -Y,R31
 	IN   R30,SREG
 	ST   -Y,R30
-; 0000 01DD     unsigned char colloc, rowloc, cl, st_counts, buffer_len;
-; 0000 01DE     int i;
-; 0000 01DF     unsigned char second, minute, hour;
-; 0000 01E0     unsigned char day, date, month, year;
-; 0000 01E1 
-; 0000 01E2     // detect the key
-; 0000 01E3     while (1)
+; 0000 01E2     unsigned char colloc, rowloc, cl, st_counts, buffer_len;
+; 0000 01E3     int i;
+; 0000 01E4     unsigned char second, minute, hour;
+; 0000 01E5     unsigned char day, date, month, year;
+; 0000 01E6 
+; 0000 01E7     // detect the key
+; 0000 01E8     while (1)
 	SBIW R28,8
 	CALL __SAVELOCR6
 ;	colloc -> R17
@@ -2895,259 +2932,259 @@ _int0_routine:
 ;	date -> Y+8
 ;	month -> Y+7
 ;	year -> Y+6
-; 0000 01E4     {
-; 0000 01E5         KEY_PRT = 0xEF;            // ground row 0
+; 0000 01E9     {
+; 0000 01EA         KEY_PRT = 0xEF;            // ground row 0
 	LDI  R30,LOW(239)
-	CALL SUBOPT_0x23
-; 0000 01E6         colloc = (KEY_PIN & 0x0F); // read the columns
-; 0000 01E7         if (colloc != 0x0F)        // column detected
-	BREQ _0x84
-; 0000 01E8         {
-; 0000 01E9             rowloc = 0; // save row location
-	LDI  R16,LOW(0)
-; 0000 01EA             break;      // exit while loop
-	RJMP _0x83
-; 0000 01EB         }
-; 0000 01EC         KEY_PRT = 0xDF;            // ground row 1
-_0x84:
-	LDI  R30,LOW(223)
-	CALL SUBOPT_0x23
-; 0000 01ED         colloc = (KEY_PIN & 0x0F); // read the columns
-; 0000 01EE         if (colloc != 0x0F)        // column detected
-	BREQ _0x85
-; 0000 01EF         {
-; 0000 01F0             rowloc = 1; // save row location
-	LDI  R16,LOW(1)
-; 0000 01F1             break;      // exit while loop
-	RJMP _0x83
-; 0000 01F2         }
-; 0000 01F3         KEY_PRT = 0xBF;            // ground row 2
-_0x85:
-	LDI  R30,LOW(191)
-	CALL SUBOPT_0x23
-; 0000 01F4         colloc = (KEY_PIN & 0x0F); // read the columns
-; 0000 01F5         if (colloc != 0x0F)        // column detected
+	CALL SUBOPT_0x24
+; 0000 01EB         colloc = (KEY_PIN & 0x0F); // read the columns
+; 0000 01EC         if (colloc != 0x0F)        // column detected
 	BREQ _0x86
-; 0000 01F6         {
-; 0000 01F7             rowloc = 2; // save row location
-	LDI  R16,LOW(2)
-; 0000 01F8             break;      // exit while loop
-	RJMP _0x83
-; 0000 01F9         }
-; 0000 01FA         KEY_PRT = 0x7F;            // ground row 3
+; 0000 01ED         {
+; 0000 01EE             rowloc = 0; // save row location
+	LDI  R16,LOW(0)
+; 0000 01EF             break;      // exit while loop
+	RJMP _0x85
+; 0000 01F0         }
+; 0000 01F1         KEY_PRT = 0xDF;            // ground row 1
 _0x86:
+	LDI  R30,LOW(223)
+	CALL SUBOPT_0x24
+; 0000 01F2         colloc = (KEY_PIN & 0x0F); // read the columns
+; 0000 01F3         if (colloc != 0x0F)        // column detected
+	BREQ _0x87
+; 0000 01F4         {
+; 0000 01F5             rowloc = 1; // save row location
+	LDI  R16,LOW(1)
+; 0000 01F6             break;      // exit while loop
+	RJMP _0x85
+; 0000 01F7         }
+; 0000 01F8         KEY_PRT = 0xBF;            // ground row 2
+_0x87:
+	LDI  R30,LOW(191)
+	CALL SUBOPT_0x24
+; 0000 01F9         colloc = (KEY_PIN & 0x0F); // read the columns
+; 0000 01FA         if (colloc != 0x0F)        // column detected
+	BREQ _0x88
+; 0000 01FB         {
+; 0000 01FC             rowloc = 2; // save row location
+	LDI  R16,LOW(2)
+; 0000 01FD             break;      // exit while loop
+	RJMP _0x85
+; 0000 01FE         }
+; 0000 01FF         KEY_PRT = 0x7F;            // ground row 3
+_0x88:
 	LDI  R30,LOW(127)
 	OUT  0x18,R30
-; 0000 01FB         colloc = (KEY_PIN & 0x0F); // read the columns
+; 0000 0200         colloc = (KEY_PIN & 0x0F); // read the columns
 	IN   R30,0x16
 	ANDI R30,LOW(0xF)
 	MOV  R17,R30
-; 0000 01FC         rowloc = 3;                // save row location
+; 0000 0201         rowloc = 3;                // save row location
 	LDI  R16,LOW(3)
-; 0000 01FD         break;                     // exit while loop
-; 0000 01FE     }
-_0x83:
-; 0000 01FF     // check column and send result to Port D
-; 0000 0200     if (colloc == 0x0E)
+; 0000 0202         break;                     // exit while loop
+; 0000 0203     }
+_0x85:
+; 0000 0204     // check column and send result to Port D
+; 0000 0205     if (colloc == 0x0E)
 	CPI  R17,14
-	BRNE _0x87
-; 0000 0201         cl = 0;
-	LDI  R19,LOW(0)
-; 0000 0202     else if (colloc == 0x0D)
-	RJMP _0x88
-_0x87:
-	CPI  R17,13
 	BRNE _0x89
-; 0000 0203         cl = 1;
-	LDI  R19,LOW(1)
-; 0000 0204     else if (colloc == 0x0B)
+; 0000 0206         cl = 0;
+	LDI  R19,LOW(0)
+; 0000 0207     else if (colloc == 0x0D)
 	RJMP _0x8A
 _0x89:
-	CPI  R17,11
+	CPI  R17,13
 	BRNE _0x8B
-; 0000 0205         cl = 2;
-	LDI  R19,LOW(2)
-; 0000 0206     else
+; 0000 0208         cl = 1;
+	LDI  R19,LOW(1)
+; 0000 0209     else if (colloc == 0x0B)
 	RJMP _0x8C
 _0x8B:
-; 0000 0207         cl = 3;
+	CPI  R17,11
+	BRNE _0x8D
+; 0000 020A         cl = 2;
+	LDI  R19,LOW(2)
+; 0000 020B     else
+	RJMP _0x8E
+_0x8D:
+; 0000 020C         cl = 3;
 	LDI  R19,LOW(3)
-; 0000 0208 
-; 0000 0209     KEY_PRT &= 0x0F; // ground all rows at once
+; 0000 020D 
+; 0000 020E     KEY_PRT &= 0x0F; // ground all rows at once
+_0x8E:
 _0x8C:
 _0x8A:
-_0x88:
 	IN   R30,0x18
 	ANDI R30,LOW(0xF)
 	OUT  0x18,R30
-; 0000 020A 
-; 0000 020B     // inside menu level 1
-; 0000 020C     if (stage == STAGE_INIT_MENU)
+; 0000 020F 
+; 0000 0210     // inside menu level 1
+; 0000 0211     if (stage == STAGE_INIT_MENU)
 	TST  R5
 	BREQ PC+2
-	RJMP _0x8D
-; 0000 020D     {
-; 0000 020E         switch (keypad[rowloc][cl] - '0')
-	CALL SUBOPT_0x24
+	RJMP _0x8F
+; 0000 0212     {
+; 0000 0213         switch (keypad[rowloc][cl] - '0')
+	CALL SUBOPT_0x25
 	LD   R30,X
 	LDI  R31,0
 	SBIW R30,48
-; 0000 020F         {
-; 0000 0210         case OPTION_ATTENDENCE:
+; 0000 0214         {
+; 0000 0215         case OPTION_ATTENDENCE:
 	CPI  R30,LOW(0x1)
 	LDI  R26,HIGH(0x1)
 	CPC  R31,R26
-	BRNE _0x91
-; 0000 0211             stage = STAGE_ATTENDENC_MENU;
+	BRNE _0x93
+; 0000 0216             stage = STAGE_ATTENDENC_MENU;
 	LDI  R30,LOW(1)
 	MOV  R5,R30
-; 0000 0212             break;
-	RJMP _0x90
-; 0000 0213         case OPTION_TEMPERATURE_MONITORING:
-_0x91:
+; 0000 0217             break;
+	RJMP _0x92
+; 0000 0218         case OPTION_TEMPERATURE_MONITORING:
+_0x93:
 	CPI  R30,LOW(0x4)
 	LDI  R26,HIGH(0x4)
 	CPC  R31,R26
-	BRNE _0x92
-; 0000 0214             stage = STAGE_TEMPERATURE_MONITORING;
+	BRNE _0x94
+; 0000 0219             stage = STAGE_TEMPERATURE_MONITORING;
 	LDI  R30,LOW(4)
 	MOV  R5,R30
-; 0000 0215             break;
-	RJMP _0x90
-; 0000 0216         case OPTION_VIEW_PRESENT_STUDENTS:
-_0x92:
+; 0000 021A             break;
+	RJMP _0x92
+; 0000 021B         case OPTION_VIEW_PRESENT_STUDENTS:
+_0x94:
 	CPI  R30,LOW(0x3)
 	LDI  R26,HIGH(0x3)
 	CPC  R31,R26
-	BRNE _0x93
-; 0000 0217             stage = STAGE_VIEW_PRESENT_STUDENTS;
+	BRNE _0x95
+; 0000 021C             stage = STAGE_VIEW_PRESENT_STUDENTS;
 	LDI  R30,LOW(5)
 	MOV  R5,R30
-; 0000 0218             break;
-	RJMP _0x90
-; 0000 0219         case OPTION_RETRIEVE_STUDENT_DATA:
-_0x93:
+; 0000 021D             break;
+	RJMP _0x92
+; 0000 021E         case OPTION_RETRIEVE_STUDENT_DATA:
+_0x95:
 	CPI  R30,LOW(0x5)
 	LDI  R26,HIGH(0x5)
 	CPC  R31,R26
-	BRNE _0x94
-; 0000 021A             stage = STAGE_RETRIEVE_STUDENT_DATA;
+	BRNE _0x96
+; 0000 021F             stage = STAGE_RETRIEVE_STUDENT_DATA;
 	LDI  R30,LOW(6)
 	MOV  R5,R30
-; 0000 021B             break;
-	RJMP _0x90
-; 0000 021C         case OPTION_STUDENT_MANAGEMENT:
-_0x94:
+; 0000 0220             break;
+	RJMP _0x92
+; 0000 0221         case OPTION_STUDENT_MANAGEMENT:
+_0x96:
 	CPI  R30,LOW(0x2)
 	LDI  R26,HIGH(0x2)
 	CPC  R31,R26
-	BRNE _0x95
-; 0000 021D             stage = STAGE_STUDENT_MANAGMENT;
+	BRNE _0x97
+; 0000 0222             stage = STAGE_STUDENT_MANAGMENT;
 	LDI  R30,LOW(7)
 	MOV  R5,R30
-; 0000 021E             break;
-	RJMP _0x90
-; 0000 021F         case OPTION_TRAFFIC_MONITORING:
-_0x95:
+; 0000 0223             break;
+	RJMP _0x92
+; 0000 0224         case OPTION_TRAFFIC_MONITORING:
+_0x97:
 	CPI  R30,LOW(0x6)
 	LDI  R26,HIGH(0x6)
 	CPC  R31,R26
-	BRNE _0x96
-; 0000 0220             stage = STAGE_TRAFFIC_MONITORING;
+	BRNE _0x98
+; 0000 0225             stage = STAGE_TRAFFIC_MONITORING;
 	LDI  R30,LOW(10)
 	MOV  R5,R30
-; 0000 0221             break;
-	RJMP _0x90
-; 0000 0222         case OPTION_LOGIN_WITH_ADMIN:
-_0x96:
+; 0000 0226             break;
+	RJMP _0x92
+; 0000 0227         case OPTION_LOGIN_WITH_ADMIN:
+_0x98:
 	CPI  R30,LOW(0x7)
 	LDI  R26,HIGH(0x7)
 	CPC  R31,R26
-	BRNE _0x97
-; 0000 0223             stage = STAGE_LOGIN_WITH_ADMIN;
+	BRNE _0x99
+; 0000 0228             stage = STAGE_LOGIN_WITH_ADMIN;
 	LDI  R30,LOW(11)
 	MOV  R5,R30
-; 0000 0224             break;
-	RJMP _0x90
-; 0000 0225         case OPTION_SET_TIMER:
-_0x97:
+; 0000 0229             break;
+	RJMP _0x92
+; 0000 022A         case OPTION_SET_TIMER:
+_0x99:
 	CPI  R30,LOW(0x9)
 	LDI  R26,HIGH(0x9)
 	CPC  R31,R26
-	BRNE _0x98
-; 0000 0226             stage = STAGE_SET_TIMER;
+	BRNE _0x9A
+; 0000 022B             stage = STAGE_SET_TIMER;
 	LDI  R30,LOW(14)
 	MOV  R5,R30
-; 0000 0227             break;
-	RJMP _0x90
-; 0000 0228         case OPTION_LOGOUT:
-_0x98:
+; 0000 022C             break;
+	RJMP _0x92
+; 0000 022D         case OPTION_LOGOUT:
+_0x9A:
 	CPI  R30,LOW(0x8)
 	LDI  R26,HIGH(0x8)
 	CPC  R31,R26
-	BRNE _0x9C
-; 0000 0229 #asm("cli") // disable interrupts
+	BRNE _0x9E
+; 0000 022E #asm("cli") // disable interrupts
 	cli
-; 0000 022A             if (logged_in == 1)
+; 0000 022F             if (logged_in == 1)
 	LDI  R30,LOW(1)
 	CP   R30,R6
-	BRNE _0x9A
-; 0000 022B             {
-; 0000 022C                 lcdCommand(0x1);
+	BRNE _0x9C
+; 0000 0230             {
+; 0000 0231                 lcdCommand(0x1);
 	CALL SUBOPT_0x0
-; 0000 022D                 lcd_gotoxy(1, 1);
-; 0000 022E                 lcd_print("Logout ...");
-	__POINTW2MN _0x9B,0
+; 0000 0232                 lcd_gotoxy(1, 1);
+; 0000 0233                 lcd_print("Logout ...");
+	__POINTW2MN _0x9D,0
 	CALL SUBOPT_0x1
-; 0000 022F                 lcd_gotoxy(1, 2);
-; 0000 0230                 lcd_print("Going To Admin Page In 2 Sec");
-	__POINTW2MN _0x9B,11
-	CALL SUBOPT_0x25
-; 0000 0231                 delay_ms(2000);
-; 0000 0232                 logged_in = 0;
+; 0000 0234                 lcd_gotoxy(1, 2);
+; 0000 0235                 lcd_print("Going To Admin Page In 2 Sec");
+	__POINTW2MN _0x9D,11
+	CALL SUBOPT_0x26
+; 0000 0236                 delay_ms(2000);
+; 0000 0237                 logged_in = 0;
 	CLR  R6
-; 0000 0233 #asm("sei")
+; 0000 0238 #asm("sei")
 	sei
-; 0000 0234                 stage = STAGE_LOGIN_WITH_ADMIN;
+; 0000 0239                 stage = STAGE_LOGIN_WITH_ADMIN;
 	LDI  R30,LOW(11)
 	MOV  R5,R30
-; 0000 0235             }
-; 0000 0236             break;
-_0x9A:
-; 0000 0237         default:
+; 0000 023A             }
+; 0000 023B             break;
 _0x9C:
-; 0000 0238             break;
-; 0000 0239         }
-_0x90:
-; 0000 023A 
-; 0000 023B         if (keypad[rowloc][cl] == 'L')
-	CALL SUBOPT_0x24
+; 0000 023C         default:
+_0x9E:
+; 0000 023D             break;
+; 0000 023E         }
+_0x92:
+; 0000 023F 
+; 0000 0240         if (keypad[rowloc][cl] == 'L')
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x4C)
-	BRNE _0x9D
-; 0000 023C         {
-; 0000 023D             page_num = page_num > 0 ? page_num - 1 : (MENU_PAGE_COUNT - 1);
+	BRNE _0x9F
+; 0000 0241         {
+; 0000 0242             page_num = page_num > 0 ? page_num - 1 : (MENU_PAGE_COUNT - 1);
 	LDI  R30,LOW(0)
 	CP   R30,R4
-	BRSH _0x9E
+	BRSH _0xA0
 	MOV  R30,R4
 	LDI  R31,0
 	SBIW R30,1
-	RJMP _0x9F
-_0x9E:
-	LDI  R30,LOW(4)
-_0x9F:
-	MOV  R4,R30
-; 0000 023E         }
-; 0000 023F         else if (keypad[rowloc][cl] == 'R')
 	RJMP _0xA1
-_0x9D:
-	CALL SUBOPT_0x24
+_0xA0:
+	LDI  R30,LOW(4)
+_0xA1:
+	MOV  R4,R30
+; 0000 0243         }
+; 0000 0244         else if (keypad[rowloc][cl] == 'R')
+	RJMP _0xA3
+_0x9F:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x52)
-	BRNE _0xA2
-; 0000 0240         {
-; 0000 0241             page_num = (page_num + 1) % MENU_PAGE_COUNT;
+	BRNE _0xA4
+; 0000 0245         {
+; 0000 0246             page_num = (page_num + 1) % MENU_PAGE_COUNT;
 	MOV  R30,R4
 	LDI  R31,0
 	ADIW R30,1
@@ -3156,263 +3193,263 @@ _0x9D:
 	LDI  R31,HIGH(5)
 	CALL __MODW21
 	MOV  R4,R30
-; 0000 0242         }
-; 0000 0243         else if(keypad[rowloc][cl] == 'O')
-	RJMP _0xA3
-_0xA2:
-	CALL SUBOPT_0x24
+; 0000 0247         }
+; 0000 0248         else if(keypad[rowloc][cl] == 'O')
+	RJMP _0xA5
+_0xA4:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x4F)
-	BRNE _0xA4
-; 0000 0244         {
-; 0000 0245             stage = STAGE_SHOW_CLOCK;
+	BRNE _0xA6
+; 0000 0249         {
+; 0000 024A             stage = STAGE_SHOW_CLOCK;
 	LDI  R30,LOW(13)
 	MOV  R5,R30
-; 0000 0246         }
-; 0000 0247     }
-_0xA4:
+; 0000 024B         }
+; 0000 024C     }
+_0xA6:
+_0xA5:
 _0xA3:
-_0xA1:
-; 0000 0248     else if (stage == STAGE_ATTENDENC_MENU)
-	RJMP _0xA5
-_0x8D:
+; 0000 024D     else if (stage == STAGE_ATTENDENC_MENU)
+	RJMP _0xA7
+_0x8F:
 	LDI  R30,LOW(1)
 	CP   R30,R5
-	BRNE _0xA6
-; 0000 0249     {
-; 0000 024A         switch (keypad[rowloc][cl])
-	CALL SUBOPT_0x24
+	BRNE _0xA8
+; 0000 024E     {
+; 0000 024F         switch (keypad[rowloc][cl])
+	CALL SUBOPT_0x25
 	LD   R30,X
 	LDI  R31,0
-; 0000 024B         {
-; 0000 024C         case 'C':
+; 0000 0250         {
+; 0000 0251         case 'C':
 	CPI  R30,LOW(0x43)
 	LDI  R26,HIGH(0x43)
 	CPC  R31,R26
-	BRNE _0xAA
-; 0000 024D             stage = STAGE_INIT_MENU;
+	BRNE _0xAC
+; 0000 0252             stage = STAGE_INIT_MENU;
 	CLR  R5
-; 0000 024E             break;
-	RJMP _0xA9
-; 0000 024F         case '1':
-_0xAA:
+; 0000 0253             break;
+	RJMP _0xAB
+; 0000 0254         case '1':
+_0xAC:
 	CPI  R30,LOW(0x31)
 	LDI  R26,HIGH(0x31)
 	CPC  R31,R26
-	BRNE _0xAB
-; 0000 0250             memset(buffer, 0, 32);
+	BRNE _0xAD
+; 0000 0255             memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 0251             stage = STAGE_SUBMIT_CODE;
+; 0000 0256             stage = STAGE_SUBMIT_CODE;
 	LDI  R30,LOW(2)
 	MOV  R5,R30
-; 0000 0252             break;
-	RJMP _0xA9
-; 0000 0253         case '2':
-_0xAB:
+; 0000 0257             break;
+	RJMP _0xAB
+; 0000 0258         case '2':
+_0xAD:
 	CPI  R30,LOW(0x32)
 	LDI  R26,HIGH(0x32)
 	CPC  R31,R26
-	BRNE _0xAD
-; 0000 0254             memset(buffer, 0, 32);
+	BRNE _0xAF
+; 0000 0259             memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 0255             stage = STAGE_SUBMIT_WITH_CARD;
+; 0000 025A             stage = STAGE_SUBMIT_WITH_CARD;
 	LDI  R30,LOW(3)
 	MOV  R5,R30
-; 0000 0256             break;
-; 0000 0257         default:
-_0xAD:
-; 0000 0258             break;
-; 0000 0259         }
-_0xA9:
-; 0000 025A     }
-; 0000 025B     else if (stage == STAGE_SUBMIT_CODE)
-	RJMP _0xAE
-_0xA6:
+; 0000 025B             break;
+; 0000 025C         default:
+_0xAF:
+; 0000 025D             break;
+; 0000 025E         }
+_0xAB:
+; 0000 025F     }
+; 0000 0260     else if (stage == STAGE_SUBMIT_CODE)
+	RJMP _0xB0
+_0xA8:
 	LDI  R30,LOW(2)
 	CP   R30,R5
 	BREQ PC+2
-	RJMP _0xAF
-; 0000 025C     {
-; 0000 025D         if (keypad[rowloc][cl] == 'C')
-	CALL SUBOPT_0x24
+	RJMP _0xB1
+; 0000 0261     {
+; 0000 0262         if (keypad[rowloc][cl] == 'C')
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x43)
-	BRNE _0xB0
-; 0000 025E         {
-; 0000 025F             memset(buffer, 0, 32);
+	BRNE _0xB2
+; 0000 0263         {
+; 0000 0264             memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 0260             stage = STAGE_ATTENDENC_MENU;
+; 0000 0265             stage = STAGE_ATTENDENC_MENU;
 	LDI  R30,LOW(1)
 	MOV  R5,R30
-; 0000 0261         }
-; 0000 0262         if ((keypad[rowloc][cl] - '0') < 10)
-_0xB0:
-	CALL SUBOPT_0x24
+; 0000 0266         }
+; 0000 0267         if ((keypad[rowloc][cl] - '0') < 10)
+_0xB2:
+	CALL SUBOPT_0x25
 	LD   R30,X
 	LDI  R31,0
 	SBIW R30,58
-	BRGE _0xB1
-; 0000 0263         {
-; 0000 0264             if (strlen(buffer) <= 30)
+	BRGE _0xB3
+; 0000 0268         {
+; 0000 0269             if (strlen(buffer) <= 30)
 	CALL SUBOPT_0x7
 	SBIW R30,31
-	BRSH _0xB2
-; 0000 0265             {
-; 0000 0266                 buffer[strlen(buffer)] = keypad[rowloc][cl];
+	BRSH _0xB4
+; 0000 026A             {
+; 0000 026B                 buffer[strlen(buffer)] = keypad[rowloc][cl];
 	CALL SUBOPT_0x7
-	CALL SUBOPT_0x26
 	CALL SUBOPT_0x27
-; 0000 0267                 buffer[strlen(buffer) + 1] = '\0';
 	CALL SUBOPT_0x28
-; 0000 0268                 lcdData(keypad[rowloc][cl]);
+; 0000 026C                 buffer[strlen(buffer) + 1] = '\0';
+	CALL SUBOPT_0x29
+; 0000 026D                 lcdData(keypad[rowloc][cl]);
 	LD   R26,X
 	RCALL _lcdData
-; 0000 0269             }
-; 0000 026A         }
-_0xB2:
-; 0000 026B         else if (keypad[rowloc][cl] == 'D')
-	RJMP _0xB3
-_0xB1:
-	CALL SUBOPT_0x24
+; 0000 026E             }
+; 0000 026F         }
+_0xB4:
+; 0000 0270         else if (keypad[rowloc][cl] == 'D')
+	RJMP _0xB5
+_0xB3:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x44)
-	BRNE _0xB4
-; 0000 026C         {
-; 0000 026D             buffer_len = strlen(buffer);
+	BRNE _0xB6
+; 0000 0271         {
+; 0000 0272             buffer_len = strlen(buffer);
 	CALL SUBOPT_0x7
 	MOV  R21,R30
-; 0000 026E             if (buffer_len > 0)
+; 0000 0273             if (buffer_len > 0)
 	CPI  R21,1
-	BRLO _0xB5
-; 0000 026F             {
-; 0000 0270                 buffer[buffer_len - 1] = '\0';
-	CALL SUBOPT_0x29
-; 0000 0271                 lcdCommand(0x10);
-; 0000 0272                 lcd_print(" ");
-	__POINTW2MN _0x9B,40
+	BRLO _0xB7
+; 0000 0274             {
+; 0000 0275                 buffer[buffer_len - 1] = '\0';
 	CALL SUBOPT_0x2A
-; 0000 0273                 lcdCommand(0x10);
-; 0000 0274             }
-; 0000 0275         }
-_0xB5:
-; 0000 0276         else if(keypad[rowloc][cl] == 'O')
-	RJMP _0xB6
-_0xB4:
-	CALL SUBOPT_0x24
+; 0000 0276                 lcdCommand(0x10);
+; 0000 0277                 lcd_print(" ");
+	__POINTW2MN _0x9D,40
+	CALL SUBOPT_0x2B
+; 0000 0278                 lcdCommand(0x10);
+; 0000 0279             }
+; 0000 027A         }
+_0xB7:
+; 0000 027B         else if(keypad[rowloc][cl] == 'O')
+	RJMP _0xB8
+_0xB6:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x4F)
-	BRNE _0xB7
-; 0000 0277         {
-; 0000 0278             lcdCommand(0xC0);
-	CALL SUBOPT_0x2B
-; 0000 0279             for(i = 0; i < strlen(buffer); i++)
-_0xB9:
-	CALL SUBOPT_0x7
+	BRNE _0xB9
+; 0000 027C         {
+; 0000 027D             lcdCommand(0xC0);
 	CALL SUBOPT_0x2C
-	BRSH _0xBA
-; 0000 027A                 lcd_print(" ");
-	__POINTW2MN _0x9B,42
-	RCALL _lcd_print
+; 0000 027E             for(i = 0; i < strlen(buffer); i++)
+_0xBB:
+	CALL SUBOPT_0x7
 	CALL SUBOPT_0x2D
-	RJMP _0xB9
-_0xBA:
-; 0000 027B lcdCommand(0xC0);
+	BRSH _0xBC
+; 0000 027F                 lcd_print(" ");
+	__POINTW2MN _0x9D,42
+	RCALL _lcd_print
 	CALL SUBOPT_0x2E
-; 0000 027C             memset(buffer, 0, 32);
-; 0000 027D         }
-; 0000 027E         else if (keypad[rowloc][cl] == 'E')
 	RJMP _0xBB
-_0xB7:
-	CALL SUBOPT_0x24
+_0xBC:
+; 0000 0280 lcdCommand(0xC0);
+	CALL SUBOPT_0x2F
+; 0000 0281             memset(buffer, 0, 32);
+; 0000 0282         }
+; 0000 0283         else if (keypad[rowloc][cl] == 'E')
+	RJMP _0xBD
+_0xB9:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x45)
 	BREQ PC+2
-	RJMP _0xBC
-; 0000 027F         {
-; 0000 0280 
-; 0000 0281 #asm("cli")
+	RJMP _0xBE
+; 0000 0284         {
+; 0000 0285 
+; 0000 0286 #asm("cli")
 	cli
-; 0000 0282 
-; 0000 0283             if (strncmp(buffer, "40", 2) != 0 ||
-; 0000 0284                 strlen(buffer) != 8)
+; 0000 0287 
+; 0000 0288             if (strncmp(buffer, "40", 2) != 0 ||
+; 0000 0289                 strlen(buffer) != 8)
 	CALL SUBOPT_0x8
-	__POINTW1MN _0x9B,44
+	__POINTW1MN _0x9D,44
 	CALL SUBOPT_0x9
-	BRNE _0xBE
+	BRNE _0xC0
 	CALL SUBOPT_0x7
 	CPI  R30,LOW(0x8)
 	LDI  R26,HIGH(0x8)
 	CPC  R31,R26
-	BREQ _0xBD
-_0xBE:
-; 0000 0285             {
-; 0000 0286                 BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
+	BREQ _0xBF
+_0xC0:
+; 0000 028A             {
+; 0000 028B                 BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
 	SBI  0x12,7
-; 0000 0287                 lcdCommand(0x01);
+; 0000 028C                 lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 0288                 lcd_gotoxy(1, 1);
-; 0000 0289                 lcd_print("Incorrect Student Code Format");
-	__POINTW2MN _0x9B,47
+; 0000 028D                 lcd_gotoxy(1, 1);
+; 0000 028E                 lcd_print("Incorrect Student Code Format");
+	__POINTW2MN _0x9D,47
 	CALL SUBOPT_0x1
-; 0000 028A                 lcd_gotoxy(1, 2);
-; 0000 028B                 lcd_print("You Will Back Menu In 2 Second");
-	__POINTW2MN _0x9B,77
+; 0000 028F                 lcd_gotoxy(1, 2);
+; 0000 0290                 lcd_print("You Will Back Menu In 2 Second");
+	__POINTW2MN _0x9D,77
 	CALL SUBOPT_0xB
-; 0000 028C                 delay_ms(2000);
-; 0000 028D                 BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
-; 0000 028E             }
-; 0000 028F             else if (search_student_code() > 0)
-	RJMP _0xC0
-_0xBD:
+; 0000 0291                 delay_ms(2000);
+; 0000 0292                 BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
+; 0000 0293             }
+; 0000 0294             else if (search_student_code() > 0)
+	RJMP _0xC2
+_0xBF:
 	RCALL _search_student_code
 	CPI  R30,LOW(0x1)
-	BRLO _0xC1
-; 0000 0290             {
-; 0000 0291                 BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
+	BRLO _0xC3
+; 0000 0295             {
+; 0000 0296                 BUZZER_PRT |= (1 << BUZZER_NUM); // turn on buzzer
 	SBI  0x12,7
-; 0000 0292                 lcdCommand(0x01);
+; 0000 0297                 lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 0293                 lcd_gotoxy(1, 1);
-; 0000 0294                 lcd_print("Duplicate Student Code Entered");
-	__POINTW2MN _0x9B,108
+; 0000 0298                 lcd_gotoxy(1, 1);
+; 0000 0299                 lcd_print("Duplicate Student Code Entered");
+	__POINTW2MN _0x9D,108
 	CALL SUBOPT_0x1
-; 0000 0295                 lcd_gotoxy(1, 2);
-; 0000 0296                 lcd_print("You Will Back Menu In 2 Second");
-	__POINTW2MN _0x9B,139
+; 0000 029A                 lcd_gotoxy(1, 2);
+; 0000 029B                 lcd_print("You Will Back Menu In 2 Second");
+	__POINTW2MN _0x9D,139
 	CALL SUBOPT_0xB
-; 0000 0297                 delay_ms(2000);
-; 0000 0298                 BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
-; 0000 0299             }
-; 0000 029A             else
-	RJMP _0xC2
-_0xC1:
-; 0000 029B             {
-; 0000 029C                 // save the buffer to EEPROM
-; 0000 029D                 st_counts = read_byte_from_eeprom(0x0);
-	CALL SUBOPT_0x2F
+; 0000 029C                 delay_ms(2000);
+; 0000 029D                 BUZZER_PRT &= ~(1 << BUZZER_NUM); // turn off buzzer
+; 0000 029E             }
+; 0000 029F             else
+	RJMP _0xC4
+_0xC3:
+; 0000 02A0             {
+; 0000 02A1                 // save the buffer to EEPROM
+; 0000 02A2                 st_counts = read_byte_from_eeprom(0x0);
+	CALL SUBOPT_0x30
 	MOV  R18,R30
-; 0000 029E                 for (i = 0; i < 8; i++)
+; 0000 02A3                 for (i = 0; i < 8; i++)
 	LDI  R30,LOW(0)
 	STD  Y+12,R30
 	STD  Y+12+1,R30
-_0xC4:
+_0xC6:
 	LDD  R26,Y+12
 	LDD  R27,Y+12+1
 	SBIW R26,8
-	BRGE _0xC5
-; 0000 029F                 {
-; 0000 02A0                     write_byte_to_eeprom(i + ((st_counts + 1) * 16), buffer[i]);
-	CALL SUBOPT_0x30
+	BRGE _0xC7
+; 0000 02A4                 {
+; 0000 02A5                     write_byte_to_eeprom(i + ((st_counts + 1) * 16), buffer[i]);
 	CALL SUBOPT_0x31
+	CALL SUBOPT_0x32
 	SUBI R30,LOW(-_buffer)
 	SBCI R31,HIGH(-_buffer)
 	LD   R26,Z
 	RCALL _write_byte_to_eeprom
-; 0000 02A1                 }
-	CALL SUBOPT_0x2D
-	RJMP _0xC4
-_0xC5:
-; 0000 02A2                 rtc_getTime(&hour, &minute, &second);
+; 0000 02A6                 }
+	CALL SUBOPT_0x2E
+	RJMP _0xC6
+_0xC7:
+; 0000 02A7                 rtc_getTime(&hour, &minute, &second);
 	MOVW R30,R28
 	ADIW R30,10
 	ST   -Y,R31
@@ -3426,36 +3463,37 @@ _0xC5:
 	PUSH R20
 	RCALL _rtc_getTime
 	POP  R20
-; 0000 02A3                 sprintf(time, "%02x%02x", hour, minute);
-	CALL SUBOPT_0x32
+; 0000 02A8                 sprintf(time, "%02x%02x", hour, minute);
+	CALL SUBOPT_0x23
+	CALL SUBOPT_0x10
 	LDD  R30,Y+14
 	CALL SUBOPT_0x14
 	LDD  R30,Y+19
 	CALL SUBOPT_0x14
 	CALL SUBOPT_0x12
-; 0000 02A4                 for (i = 0; i < 4; i++)
+; 0000 02A9                 for (i = 0; i < 4; i++)
 	LDI  R30,LOW(0)
 	STD  Y+12,R30
 	STD  Y+12+1,R30
-_0xC7:
+_0xC9:
 	LDD  R26,Y+12
 	LDD  R27,Y+12+1
 	SBIW R26,4
-	BRGE _0xC8
-; 0000 02A5                 {
-; 0000 02A6                     write_byte_to_eeprom(i + ((st_counts + 1) * 16 + 8), time[i]);
-	CALL SUBOPT_0x30
-	ADIW R30,8
+	BRGE _0xCA
+; 0000 02AA                 {
+; 0000 02AB                     write_byte_to_eeprom(i + ((st_counts + 1) * 16 + 8), time[i]);
 	CALL SUBOPT_0x31
+	ADIW R30,8
+	CALL SUBOPT_0x32
 	SUBI R30,LOW(-_time)
 	SBCI R31,HIGH(-_time)
 	LD   R26,Z
 	RCALL _write_byte_to_eeprom
-; 0000 02A7                 }
-	CALL SUBOPT_0x2D
-	RJMP _0xC7
-_0xC8:
-; 0000 02A8                 rtc_getDate(&year, &month, &date, &day);
+; 0000 02AC                 }
+	CALL SUBOPT_0x2E
+	RJMP _0xC9
+_0xCA:
+; 0000 02AD                 rtc_getDate(&year, &month, &date, &day);
 	MOVW R30,R28
 	ADIW R30,6
 	ST   -Y,R31
@@ -3471,304 +3509,305 @@ _0xC8:
 	MOVW R26,R28
 	ADIW R26,15
 	RCALL _rtc_getDate
-; 0000 02A9                 sprintf(time, "%02x%02x", month, date);
-	CALL SUBOPT_0x32
+; 0000 02AE                 sprintf(time, "%02x%02x", month, date);
+	CALL SUBOPT_0x23
+	CALL SUBOPT_0x10
 	LDD  R30,Y+11
 	CALL SUBOPT_0x14
 	LDD  R30,Y+16
 	CALL SUBOPT_0x14
 	CALL SUBOPT_0x12
-; 0000 02AA                 for (i = 4; i < 8; i++)
+; 0000 02AF                 for (i = 4; i < 8; i++)
 	LDI  R30,LOW(4)
 	LDI  R31,HIGH(4)
 	STD  Y+12,R30
 	STD  Y+12+1,R31
-_0xCA:
+_0xCC:
 	LDD  R26,Y+12
 	LDD  R27,Y+12+1
 	SBIW R26,8
-	BRGE _0xCB
-; 0000 02AB                 {
-; 0000 02AC                     write_byte_to_eeprom(i + ((st_counts + 1) * 16 + 8), time[i - 4]);
-	CALL SUBOPT_0x30
-	ADIW R30,8
+	BRGE _0xCD
+; 0000 02B0                 {
+; 0000 02B1                     write_byte_to_eeprom(i + ((st_counts + 1) * 16 + 8), time[i - 4]);
 	CALL SUBOPT_0x31
+	ADIW R30,8
+	CALL SUBOPT_0x32
 	CALL SUBOPT_0x15
-; 0000 02AD                 }
-	CALL SUBOPT_0x2D
-	RJMP _0xCA
-_0xCB:
-; 0000 02AE                 write_byte_to_eeprom(0x0, st_counts + 1);
+; 0000 02B2                 }
+	CALL SUBOPT_0x2E
+	RJMP _0xCC
+_0xCD:
+; 0000 02B3                 write_byte_to_eeprom(0x0, st_counts + 1);
 	CALL SUBOPT_0x16
 	MOV  R26,R18
 	SUBI R26,-LOW(1)
 	RCALL _write_byte_to_eeprom
-; 0000 02AF 
-; 0000 02B0                 lcdCommand(0x01);
+; 0000 02B4 
+; 0000 02B5                 lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 02B1                 lcd_gotoxy(1, 1);
-; 0000 02B2                 lcd_print("Student Code Successfully Added");
-	__POINTW2MN _0x9B,170
+; 0000 02B6                 lcd_gotoxy(1, 1);
+; 0000 02B7                 lcd_print("Student Code Successfully Added");
+	__POINTW2MN _0x9D,170
 	CALL SUBOPT_0x1
-; 0000 02B3                 lcd_gotoxy(1, 2);
-; 0000 02B4                 lcd_print("You Will Back Menu In 2 Second");
-	__POINTW2MN _0x9B,202
-	CALL SUBOPT_0x25
-; 0000 02B5                 delay_ms(2000);
-; 0000 02B6             }
+; 0000 02B8                 lcd_gotoxy(1, 2);
+; 0000 02B9                 lcd_print("You Will Back Menu In 2 Second");
+	__POINTW2MN _0x9D,202
+	CALL SUBOPT_0x26
+; 0000 02BA                 delay_ms(2000);
+; 0000 02BB             }
+_0xC4:
 _0xC2:
-_0xC0:
-; 0000 02B7             memset(buffer, 0, 32);
+; 0000 02BC             memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 02B8 #asm("sei")
+; 0000 02BD #asm("sei")
 	sei
-; 0000 02B9             stage = STAGE_ATTENDENC_MENU;
-	RJMP _0x1B9
-; 0000 02BA         }
-; 0000 02BB         else if (keypad[rowloc][cl] == 'C')
-_0xBC:
-	CALL SUBOPT_0x24
+; 0000 02BE             stage = STAGE_ATTENDENC_MENU;
+	RJMP _0x1BB
+; 0000 02BF         }
+; 0000 02C0         else if (keypad[rowloc][cl] == 'C')
+_0xBE:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x43)
-	BRNE _0xCD
-; 0000 02BC             stage = STAGE_ATTENDENC_MENU;
-_0x1B9:
+	BRNE _0xCF
+; 0000 02C1             stage = STAGE_ATTENDENC_MENU;
+_0x1BB:
 	LDI  R30,LOW(1)
 	MOV  R5,R30
-; 0000 02BD     }
-_0xCD:
-_0xBB:
-_0xB6:
-_0xB3:
-; 0000 02BE     else if (stage == STAGE_SUBMIT_WITH_CARD)
-	RJMP _0xCE
-_0xAF:
+; 0000 02C2     }
+_0xCF:
+_0xBD:
+_0xB8:
+_0xB5:
+; 0000 02C3     else if (stage == STAGE_SUBMIT_WITH_CARD)
+	RJMP _0xD0
+_0xB1:
 	LDI  R30,LOW(3)
 	CP   R30,R5
-	BRNE _0xCF
-; 0000 02BF     {
-; 0000 02C0         if (keypad[rowloc][cl] == 'C')
-	CALL SUBOPT_0x24
+	BRNE _0xD1
+; 0000 02C4     {
+; 0000 02C5         if (keypad[rowloc][cl] == 'C')
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x43)
-	BRNE _0xD0
-; 0000 02C1         {
-; 0000 02C2             memset(buffer, 0, 32);
+	BRNE _0xD2
+; 0000 02C6         {
+; 0000 02C7             memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 02C3             stage = STAGE_ATTENDENC_MENU;
+; 0000 02C8             stage = STAGE_ATTENDENC_MENU;
 	LDI  R30,LOW(1)
 	MOV  R5,R30
-; 0000 02C4         }
-; 0000 02C5     }
-_0xD0:
-; 0000 02C6     else if (stage == STAGE_TEMPERATURE_MONITORING)
-	RJMP _0xD1
-_0xCF:
+; 0000 02C9         }
+; 0000 02CA     }
+_0xD2:
+; 0000 02CB     else if (stage == STAGE_TEMPERATURE_MONITORING)
+	RJMP _0xD3
+_0xD1:
 	LDI  R30,LOW(4)
 	CP   R30,R5
-	BRNE _0xD2
-; 0000 02C7     {
-; 0000 02C8         if (keypad[rowloc][cl] == 'C')
-	CALL SUBOPT_0x24
-	LD   R26,X
-	CPI  R26,LOW(0x43)
-	BRNE _0xD3
-; 0000 02C9             stage = STAGE_INIT_MENU;
-	CLR  R5
-; 0000 02CA     }
-_0xD3:
-; 0000 02CB     else if (stage == STAGE_VIEW_PRESENT_STUDENTS)
-	RJMP _0xD4
-_0xD2:
-	LDI  R30,LOW(5)
-	CP   R30,R5
-	BRNE _0xD5
+	BRNE _0xD4
 ; 0000 02CC     {
 ; 0000 02CD         if (keypad[rowloc][cl] == 'C')
-	CALL SUBOPT_0x24
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x43)
-	BRNE _0xD6
+	BRNE _0xD5
 ; 0000 02CE             stage = STAGE_INIT_MENU;
 	CLR  R5
 ; 0000 02CF     }
-_0xD6:
-; 0000 02D0     else if (stage == STAGE_STUDENT_MANAGMENT)
-	RJMP _0xD7
 _0xD5:
-	LDI  R30,LOW(7)
+; 0000 02D0     else if (stage == STAGE_VIEW_PRESENT_STUDENTS)
+	RJMP _0xD6
+_0xD4:
+	LDI  R30,LOW(5)
 	CP   R30,R5
-	BRNE _0xD8
+	BRNE _0xD7
 ; 0000 02D1     {
 ; 0000 02D2         if (keypad[rowloc][cl] == 'C')
-	CALL SUBOPT_0x24
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x43)
-	BRNE _0xD9
+	BRNE _0xD8
 ; 0000 02D3             stage = STAGE_INIT_MENU;
 	CLR  R5
-; 0000 02D4         else if (keypad[rowloc][cl] == '1')
-	RJMP _0xDA
-_0xD9:
-	CALL SUBOPT_0x24
+; 0000 02D4     }
+_0xD8:
+; 0000 02D5     else if (stage == STAGE_STUDENT_MANAGMENT)
+	RJMP _0xD9
+_0xD7:
+	LDI  R30,LOW(7)
+	CP   R30,R5
+	BRNE _0xDA
+; 0000 02D6     {
+; 0000 02D7         if (keypad[rowloc][cl] == 'C')
+	CALL SUBOPT_0x25
+	LD   R26,X
+	CPI  R26,LOW(0x43)
+	BRNE _0xDB
+; 0000 02D8             stage = STAGE_INIT_MENU;
+	CLR  R5
+; 0000 02D9         else if (keypad[rowloc][cl] == '1')
+	RJMP _0xDC
+_0xDB:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x31)
-	BRNE _0xDB
-; 0000 02D5             stage = STAGE_SEARCH_STUDENT;
+	BRNE _0xDD
+; 0000 02DA             stage = STAGE_SEARCH_STUDENT;
 	LDI  R30,LOW(8)
-	RJMP _0x1BA
-; 0000 02D6         else if (keypad[rowloc][cl] == '2' && logged_in == 1)
-_0xDB:
-	CALL SUBOPT_0x24
+	RJMP _0x1BC
+; 0000 02DB         else if (keypad[rowloc][cl] == '2' && logged_in == 1)
+_0xDD:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x32)
-	BRNE _0xDE
+	BRNE _0xE0
 	LDI  R30,LOW(1)
 	CP   R30,R6
-	BREQ _0xDF
-_0xDE:
-	RJMP _0xDD
-_0xDF:
-; 0000 02D7             stage = STAGE_DELETE_STUDENT;
+	BREQ _0xE1
+_0xE0:
+	RJMP _0xDF
+_0xE1:
+; 0000 02DC             stage = STAGE_DELETE_STUDENT;
 	LDI  R30,LOW(9)
-	RJMP _0x1BA
-; 0000 02D8         else if (keypad[rowloc][cl] == '2' && logged_in == 0)
-_0xDD:
-	CALL SUBOPT_0x24
+	RJMP _0x1BC
+; 0000 02DD         else if (keypad[rowloc][cl] == '2' && logged_in == 0)
+_0xDF:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x32)
-	BRNE _0xE2
+	BRNE _0xE4
 	TST  R6
-	BREQ _0xE3
-_0xE2:
-	RJMP _0xE1
-_0xE3:
-; 0000 02D9         {
-; 0000 02DA             lcdCommand(0x01);
+	BREQ _0xE5
+_0xE4:
+	RJMP _0xE3
+_0xE5:
+; 0000 02DE         {
+; 0000 02DF             lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 02DB             lcd_gotoxy(1, 1);
-; 0000 02DC             lcd_print("You Must First Login");
-	__POINTW2MN _0x9B,233
+; 0000 02E0             lcd_gotoxy(1, 1);
+; 0000 02E1             lcd_print("You Must First Login");
+	__POINTW2MN _0x9D,233
 	CALL SUBOPT_0x1
-; 0000 02DD             lcd_gotoxy(1, 2);
-; 0000 02DE             lcd_print("You Will Go Admin Page 2 Sec");
-	__POINTW2MN _0x9B,254
-	CALL SUBOPT_0x25
-; 0000 02DF             delay_ms(2000);
-; 0000 02E0             stage = STAGE_LOGIN_WITH_ADMIN;
+; 0000 02E2             lcd_gotoxy(1, 2);
+; 0000 02E3             lcd_print("You Will Go Admin Page 2 Sec");
+	__POINTW2MN _0x9D,254
+	CALL SUBOPT_0x26
+; 0000 02E4             delay_ms(2000);
+; 0000 02E5             stage = STAGE_LOGIN_WITH_ADMIN;
 	LDI  R30,LOW(11)
-_0x1BA:
+_0x1BC:
 	MOV  R5,R30
-; 0000 02E1         }
-; 0000 02E2     }
-_0xE1:
+; 0000 02E6         }
+; 0000 02E7     }
+_0xE3:
+_0xDC:
+; 0000 02E8     else if (stage == STAGE_SEARCH_STUDENT)
+	RJMP _0xE6
 _0xDA:
-; 0000 02E3     else if (stage == STAGE_SEARCH_STUDENT)
-	RJMP _0xE4
-_0xD8:
 	LDI  R30,LOW(8)
 	CP   R30,R5
 	BREQ PC+2
-	RJMP _0xE5
-; 0000 02E4     {
-; 0000 02E5         if (keypad[rowloc][cl] == 'C')
-	CALL SUBOPT_0x24
+	RJMP _0xE7
+; 0000 02E9     {
+; 0000 02EA         if (keypad[rowloc][cl] == 'C')
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x43)
-	BRNE _0xE6
-; 0000 02E6         {
-; 0000 02E7             memset(buffer, 0, 32);
+	BRNE _0xE8
+; 0000 02EB         {
+; 0000 02EC             memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 02E8             stage = STAGE_STUDENT_MANAGMENT;
-	RJMP _0x1BB
-; 0000 02E9         }
-; 0000 02EA         else if ((keypad[rowloc][cl] - '0') < 10)
-_0xE6:
-	CALL SUBOPT_0x24
+; 0000 02ED             stage = STAGE_STUDENT_MANAGMENT;
+	RJMP _0x1BD
+; 0000 02EE         }
+; 0000 02EF         else if ((keypad[rowloc][cl] - '0') < 10)
+_0xE8:
+	CALL SUBOPT_0x25
 	LD   R30,X
 	LDI  R31,0
 	SBIW R30,58
-	BRGE _0xE8
-; 0000 02EB         {
-; 0000 02EC             if (strlen(buffer) <= 30)
+	BRGE _0xEA
+; 0000 02F0         {
+; 0000 02F1             if (strlen(buffer) <= 30)
 	CALL SUBOPT_0x7
 	SBIW R30,31
-	BRSH _0xE9
-; 0000 02ED             {
-; 0000 02EE                 buffer[strlen(buffer)] = keypad[rowloc][cl];
+	BRSH _0xEB
+; 0000 02F2             {
+; 0000 02F3                 buffer[strlen(buffer)] = keypad[rowloc][cl];
 	CALL SUBOPT_0x7
-	CALL SUBOPT_0x26
 	CALL SUBOPT_0x27
-; 0000 02EF                 buffer[strlen(buffer) + 1] = '\0';
 	CALL SUBOPT_0x28
-; 0000 02F0                 lcdData(keypad[rowloc][cl]);
+; 0000 02F4                 buffer[strlen(buffer) + 1] = '\0';
+	CALL SUBOPT_0x29
+; 0000 02F5                 lcdData(keypad[rowloc][cl]);
 	LD   R26,X
 	RCALL _lcdData
-; 0000 02F1             }
-; 0000 02F2         }
-_0xE9:
-; 0000 02F3         else if (keypad[rowloc][cl] == 'D')
-	RJMP _0xEA
-_0xE8:
-	CALL SUBOPT_0x24
+; 0000 02F6             }
+; 0000 02F7         }
+_0xEB:
+; 0000 02F8         else if (keypad[rowloc][cl] == 'D')
+	RJMP _0xEC
+_0xEA:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x44)
-	BRNE _0xEB
-; 0000 02F4         {
-; 0000 02F5             buffer_len = strlen(buffer);
+	BRNE _0xED
+; 0000 02F9         {
+; 0000 02FA             buffer_len = strlen(buffer);
 	CALL SUBOPT_0x7
 	MOV  R21,R30
-; 0000 02F6             if (buffer_len > 0)
+; 0000 02FB             if (buffer_len > 0)
 	CPI  R21,1
-	BRLO _0xEC
-; 0000 02F7             {
-; 0000 02F8                 buffer[buffer_len - 1] = '\0';
-	CALL SUBOPT_0x29
-; 0000 02F9                 lcdCommand(0x10);
-; 0000 02FA                 lcd_print(" ");
-	__POINTW2MN _0x9B,283
+	BRLO _0xEE
+; 0000 02FC             {
+; 0000 02FD                 buffer[buffer_len - 1] = '\0';
 	CALL SUBOPT_0x2A
-; 0000 02FB                 lcdCommand(0x10);
-; 0000 02FC             }
-; 0000 02FD         }
-_0xEC:
-; 0000 02FE         else if (keypad[rowloc][cl] == 'O')
-	RJMP _0xED
-_0xEB:
-	CALL SUBOPT_0x24
+; 0000 02FE                 lcdCommand(0x10);
+; 0000 02FF                 lcd_print(" ");
+	__POINTW2MN _0x9D,283
+	CALL SUBOPT_0x2B
+; 0000 0300                 lcdCommand(0x10);
+; 0000 0301             }
+; 0000 0302         }
+_0xEE:
+; 0000 0303         else if (keypad[rowloc][cl] == 'O')
+	RJMP _0xEF
+_0xED:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x4F)
-	BRNE _0xEE
-; 0000 02FF         {
-; 0000 0300             lcdCommand(0xC0);
-	CALL SUBOPT_0x2B
-; 0000 0301             for(i = 0; i < strlen(buffer); i++)
-_0xF0:
-	CALL SUBOPT_0x7
+	BRNE _0xF0
+; 0000 0304         {
+; 0000 0305             lcdCommand(0xC0);
 	CALL SUBOPT_0x2C
-	BRSH _0xF1
-; 0000 0302                 lcd_print(" ");
-	__POINTW2MN _0x9B,285
-	RCALL _lcd_print
+; 0000 0306             for(i = 0; i < strlen(buffer); i++)
+_0xF2:
+	CALL SUBOPT_0x7
 	CALL SUBOPT_0x2D
-	RJMP _0xF0
-_0xF1:
-; 0000 0303 lcdCommand(0xC0);
+	BRSH _0xF3
+; 0000 0307                 lcd_print(" ");
+	__POINTW2MN _0x9D,285
+	RCALL _lcd_print
 	CALL SUBOPT_0x2E
-; 0000 0304             memset(buffer, 0, 32);
-; 0000 0305         }
-; 0000 0306         else if (keypad[rowloc][cl] == 'E')
 	RJMP _0xF2
-_0xEE:
-	CALL SUBOPT_0x24
+_0xF3:
+; 0000 0308 lcdCommand(0xC0);
+	CALL SUBOPT_0x2F
+; 0000 0309             memset(buffer, 0, 32);
+; 0000 030A         }
+; 0000 030B         else if (keypad[rowloc][cl] == 'E')
+	RJMP _0xF4
+_0xF0:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x45)
-	BRNE _0xF3
-; 0000 0307         {
-; 0000 0308             // search from eeprom data
-; 0000 0309             unsigned char result = search_student_code();
-; 0000 030A 
-; 0000 030B             if (result > 0)
+	BRNE _0xF5
+; 0000 030C         {
+; 0000 030D             // search from eeprom data
+; 0000 030E             unsigned char result = search_student_code();
+; 0000 030F 
+; 0000 0310             if (result > 0)
 	CALL SUBOPT_0x33
 ;	i -> Y+13
 ;	minute -> Y+12
@@ -3778,169 +3817,169 @@ _0xEE:
 ;	month -> Y+8
 ;	year -> Y+7
 ;	result -> Y+0
-	BRLO _0xF4
-; 0000 030C             {
-; 0000 030D                 lcdCommand(0x01);
+	BRLO _0xF6
+; 0000 0311             {
+; 0000 0312                 lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 030E                 lcd_gotoxy(1, 1);
-; 0000 030F                 lcd_print("Student Code Found");
-	__POINTW2MN _0x9B,287
+; 0000 0313                 lcd_gotoxy(1, 1);
+; 0000 0314                 lcd_print("Student Code Found");
+	__POINTW2MN _0x9D,287
 	CALL SUBOPT_0x1
-; 0000 0310                 lcd_gotoxy(1, 2);
-; 0000 0311                 lcd_print("You Will Back Menu In 2 Second");
-	__POINTW2MN _0x9B,306
-	RJMP _0x1BC
-; 0000 0312                 delay_ms(2000);
-; 0000 0313             }
-; 0000 0314             else
-_0xF4:
-; 0000 0315             {
-; 0000 0316                 lcdCommand(0x01);
+; 0000 0315                 lcd_gotoxy(1, 2);
+; 0000 0316                 lcd_print("You Will Back Menu In 2 Second");
+	__POINTW2MN _0x9D,306
+	RJMP _0x1BE
+; 0000 0317                 delay_ms(2000);
+; 0000 0318             }
+; 0000 0319             else
+_0xF6:
+; 0000 031A             {
+; 0000 031B                 lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 0317                 lcd_gotoxy(1, 1);
-; 0000 0318                 lcd_print("Ops , Student Code Not Found");
-	__POINTW2MN _0x9B,337
+; 0000 031C                 lcd_gotoxy(1, 1);
+; 0000 031D                 lcd_print("Ops , Student Code Not Found");
+	__POINTW2MN _0x9D,337
 	CALL SUBOPT_0x1
-; 0000 0319                 lcd_gotoxy(1, 2);
-; 0000 031A                 lcd_print("You Will Back Menu In 2 Second");
-	__POINTW2MN _0x9B,366
-_0x1BC:
+; 0000 031E                 lcd_gotoxy(1, 2);
+; 0000 031F                 lcd_print("You Will Back Menu In 2 Second");
+	__POINTW2MN _0x9D,366
+_0x1BE:
 	RCALL _lcd_print
-; 0000 031B                 delay_ms(2000);
+; 0000 0320                 delay_ms(2000);
 	CALL SUBOPT_0x20
-; 0000 031C             }
-; 0000 031D             memset(buffer, 0, 32);
+; 0000 0321             }
+; 0000 0322             memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 031E             stage = STAGE_STUDENT_MANAGMENT;
+; 0000 0323             stage = STAGE_STUDENT_MANAGMENT;
 	LDI  R30,LOW(7)
 	MOV  R5,R30
-; 0000 031F         }
+; 0000 0324         }
 	ADIW R28,1
-; 0000 0320         else if (keypad[rowloc][cl] == 'C')
-	RJMP _0xF6
-_0xF3:
-	CALL SUBOPT_0x24
+; 0000 0325         else if (keypad[rowloc][cl] == 'C')
+	RJMP _0xF8
+_0xF5:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x43)
-	BRNE _0xF7
-; 0000 0321             stage = STAGE_STUDENT_MANAGMENT;
-_0x1BB:
+	BRNE _0xF9
+; 0000 0326             stage = STAGE_STUDENT_MANAGMENT;
+_0x1BD:
 	LDI  R30,LOW(7)
 	MOV  R5,R30
-; 0000 0322     }
-_0xF7:
-_0xF6:
-_0xF2:
-_0xED:
-_0xEA:
-; 0000 0323     else if (stage == STAGE_DELETE_STUDENT)
-	RJMP _0xF8
-_0xE5:
+; 0000 0327     }
+_0xF9:
+_0xF8:
+_0xF4:
+_0xEF:
+_0xEC:
+; 0000 0328     else if (stage == STAGE_DELETE_STUDENT)
+	RJMP _0xFA
+_0xE7:
 	LDI  R30,LOW(9)
 	CP   R30,R5
 	BREQ PC+2
-	RJMP _0xF9
-; 0000 0324     {
-; 0000 0325         if (keypad[rowloc][cl] == 'C')
-	CALL SUBOPT_0x24
+	RJMP _0xFB
+; 0000 0329     {
+; 0000 032A         if (keypad[rowloc][cl] == 'C')
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x43)
-	BRNE _0xFA
-; 0000 0326         {
-; 0000 0327             memset(buffer, 0, 32);
+	BRNE _0xFC
+; 0000 032B         {
+; 0000 032C             memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 0328             stage = STAGE_STUDENT_MANAGMENT;
+; 0000 032D             stage = STAGE_STUDENT_MANAGMENT;
 	LDI  R30,LOW(7)
 	MOV  R5,R30
-; 0000 0329         }
-; 0000 032A         else if ((keypad[rowloc][cl] - '0') < 10)
-	RJMP _0xFB
-_0xFA:
-	CALL SUBOPT_0x24
+; 0000 032E         }
+; 0000 032F         else if ((keypad[rowloc][cl] - '0') < 10)
+	RJMP _0xFD
+_0xFC:
+	CALL SUBOPT_0x25
 	LD   R30,X
 	LDI  R31,0
 	SBIW R30,58
-	BRGE _0xFC
-; 0000 032B         {
-; 0000 032C             if (strlen(buffer) <= 30)
+	BRGE _0xFE
+; 0000 0330         {
+; 0000 0331             if (strlen(buffer) <= 30)
 	CALL SUBOPT_0x7
 	SBIW R30,31
-	BRSH _0xFD
-; 0000 032D             {
-; 0000 032E                 buffer[strlen(buffer)] = keypad[rowloc][cl];
+	BRSH _0xFF
+; 0000 0332             {
+; 0000 0333                 buffer[strlen(buffer)] = keypad[rowloc][cl];
 	CALL SUBOPT_0x7
-	CALL SUBOPT_0x26
 	CALL SUBOPT_0x27
-; 0000 032F                 buffer[strlen(buffer) + 1] = '\0';
 	CALL SUBOPT_0x28
-; 0000 0330                 lcdData(keypad[rowloc][cl]);
+; 0000 0334                 buffer[strlen(buffer) + 1] = '\0';
+	CALL SUBOPT_0x29
+; 0000 0335                 lcdData(keypad[rowloc][cl]);
 	LD   R26,X
 	RCALL _lcdData
-; 0000 0331             }
-; 0000 0332         }
-_0xFD:
-; 0000 0333         else if (keypad[rowloc][cl] == 'D')
-	RJMP _0xFE
-_0xFC:
-	CALL SUBOPT_0x24
+; 0000 0336             }
+; 0000 0337         }
+_0xFF:
+; 0000 0338         else if (keypad[rowloc][cl] == 'D')
+	RJMP _0x100
+_0xFE:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x44)
-	BRNE _0xFF
-; 0000 0334         {
-; 0000 0335             buffer_len = strlen(buffer);
+	BRNE _0x101
+; 0000 0339         {
+; 0000 033A             buffer_len = strlen(buffer);
 	CALL SUBOPT_0x7
 	MOV  R21,R30
-; 0000 0336             if (buffer_len > 0)
+; 0000 033B             if (buffer_len > 0)
 	CPI  R21,1
-	BRLO _0x100
-; 0000 0337             {
-; 0000 0338                 buffer[buffer_len - 1] = '\0';
-	CALL SUBOPT_0x29
-; 0000 0339                 lcdCommand(0x10);
-; 0000 033A                 lcd_print(" ");
-	__POINTW2MN _0x9B,397
+	BRLO _0x102
+; 0000 033C             {
+; 0000 033D                 buffer[buffer_len - 1] = '\0';
 	CALL SUBOPT_0x2A
-; 0000 033B                 lcdCommand(0x10);
-; 0000 033C             }
-; 0000 033D         }
-_0x100:
-; 0000 033E         else if (keypad[rowloc][cl] == 'O')
-	RJMP _0x101
-_0xFF:
-	CALL SUBOPT_0x24
+; 0000 033E                 lcdCommand(0x10);
+; 0000 033F                 lcd_print(" ");
+	__POINTW2MN _0x9D,397
+	CALL SUBOPT_0x2B
+; 0000 0340                 lcdCommand(0x10);
+; 0000 0341             }
+; 0000 0342         }
+_0x102:
+; 0000 0343         else if (keypad[rowloc][cl] == 'O')
+	RJMP _0x103
+_0x101:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x4F)
-	BRNE _0x102
-; 0000 033F         {
-; 0000 0340             lcdCommand(0xC0);
-	CALL SUBOPT_0x2B
-; 0000 0341             for(i = 0; i < strlen(buffer); i++)
-_0x104:
-	CALL SUBOPT_0x7
+	BRNE _0x104
+; 0000 0344         {
+; 0000 0345             lcdCommand(0xC0);
 	CALL SUBOPT_0x2C
-	BRSH _0x105
-; 0000 0342                 lcd_print(" ");
-	__POINTW2MN _0x9B,399
-	RCALL _lcd_print
+; 0000 0346             for(i = 0; i < strlen(buffer); i++)
+_0x106:
+	CALL SUBOPT_0x7
 	CALL SUBOPT_0x2D
-	RJMP _0x104
-_0x105:
-; 0000 0343 lcdCommand(0xC0);
+	BRSH _0x107
+; 0000 0347                 lcd_print(" ");
+	__POINTW2MN _0x9D,399
+	RCALL _lcd_print
 	CALL SUBOPT_0x2E
-; 0000 0344             memset(buffer, 0, 32);
-; 0000 0345         }
-; 0000 0346         else if (keypad[rowloc][cl] == 'E')
 	RJMP _0x106
-_0x102:
-	CALL SUBOPT_0x24
+_0x107:
+; 0000 0348 lcdCommand(0xC0);
+	CALL SUBOPT_0x2F
+; 0000 0349             memset(buffer, 0, 32);
+; 0000 034A         }
+; 0000 034B         else if (keypad[rowloc][cl] == 'E')
+	RJMP _0x108
+_0x104:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x45)
-	BRNE _0x107
-; 0000 0347         {
-; 0000 0348             // search from eeprom data
-; 0000 0349             unsigned char result = search_student_code();
-; 0000 034A 
-; 0000 034B             if (result > 0)
+	BRNE _0x109
+; 0000 034C         {
+; 0000 034D             // search from eeprom data
+; 0000 034E             unsigned char result = search_student_code();
+; 0000 034F 
+; 0000 0350             if (result > 0)
 	CALL SUBOPT_0x33
 ;	i -> Y+13
 ;	minute -> Y+12
@@ -3950,312 +3989,312 @@ _0x102:
 ;	month -> Y+8
 ;	year -> Y+7
 ;	result -> Y+0
-	BRLO _0x108
-; 0000 034C             {
-; 0000 034D                 lcdCommand(0x01);
+	BRLO _0x10A
+; 0000 0351             {
+; 0000 0352                 lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 034E                 lcd_gotoxy(1, 1);
-; 0000 034F                 lcd_print("Student Code Found");
-	__POINTW2MN _0x9B,401
+; 0000 0353                 lcd_gotoxy(1, 1);
+; 0000 0354                 lcd_print("Student Code Found");
+	__POINTW2MN _0x9D,401
 	CALL SUBOPT_0x1
-; 0000 0350                 lcd_gotoxy(1, 2);
-; 0000 0351                 lcd_print("Wait For Delete...");
-	__POINTW2MN _0x9B,420
+; 0000 0355                 lcd_gotoxy(1, 2);
+; 0000 0356                 lcd_print("Wait For Delete...");
+	__POINTW2MN _0x9D,420
 	RCALL _lcd_print
-; 0000 0352                 delete_student_code(result);
+; 0000 0357                 delete_student_code(result);
 	LD   R26,Y
 	RCALL _delete_student_code
-; 0000 0353                 lcdCommand(0x01);
+; 0000 0358                 lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 0354                 lcd_gotoxy(1, 1);
-; 0000 0355                 lcd_print("Student Code Was Deleted");
-	__POINTW2MN _0x9B,439
+; 0000 0359                 lcd_gotoxy(1, 1);
+; 0000 035A                 lcd_print("Student Code Was Deleted");
+	__POINTW2MN _0x9D,439
 	CALL SUBOPT_0x1
-; 0000 0356                 lcd_gotoxy(1, 2);
-; 0000 0357                 lcd_print("You Will Back Menu In 2 Second");
-	__POINTW2MN _0x9B,464
-	RJMP _0x1BD
-; 0000 0358                 delay_ms(2000);
-; 0000 0359             }
-; 0000 035A             else
-_0x108:
-; 0000 035B             {
-; 0000 035C                 lcdCommand(0x01);
+; 0000 035B                 lcd_gotoxy(1, 2);
+; 0000 035C                 lcd_print("You Will Back Menu In 2 Second");
+	__POINTW2MN _0x9D,464
+	RJMP _0x1BF
+; 0000 035D                 delay_ms(2000);
+; 0000 035E             }
+; 0000 035F             else
+_0x10A:
+; 0000 0360             {
+; 0000 0361                 lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 035D                 lcd_gotoxy(1, 1);
-; 0000 035E                 lcd_print("Ops , Student Code Not Found");
-	__POINTW2MN _0x9B,495
+; 0000 0362                 lcd_gotoxy(1, 1);
+; 0000 0363                 lcd_print("Ops , Student Code Not Found");
+	__POINTW2MN _0x9D,495
 	CALL SUBOPT_0x1
-; 0000 035F                 lcd_gotoxy(1, 2);
-; 0000 0360                 lcd_print("You Will Back Menu In 2 Second");
-	__POINTW2MN _0x9B,524
-_0x1BD:
+; 0000 0364                 lcd_gotoxy(1, 2);
+; 0000 0365                 lcd_print("You Will Back Menu In 2 Second");
+	__POINTW2MN _0x9D,524
+_0x1BF:
 	RCALL _lcd_print
-; 0000 0361                 delay_ms(2000);
+; 0000 0366                 delay_ms(2000);
 	CALL SUBOPT_0x20
-; 0000 0362             }
-; 0000 0363             memset(buffer, 0, 32);
+; 0000 0367             }
+; 0000 0368             memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 0364             stage = STAGE_STUDENT_MANAGMENT;
+; 0000 0369             stage = STAGE_STUDENT_MANAGMENT;
 	LDI  R30,LOW(7)
 	MOV  R5,R30
-; 0000 0365         }
+; 0000 036A         }
 	ADIW R28,1
-; 0000 0366     }
-_0x107:
-_0x106:
-_0x101:
-_0xFE:
+; 0000 036B     }
+_0x109:
+_0x108:
+_0x103:
+_0x100:
+_0xFD:
+; 0000 036C     else if (stage == STAGE_TRAFFIC_MONITORING)
+	RJMP _0x10C
 _0xFB:
-; 0000 0367     else if (stage == STAGE_TRAFFIC_MONITORING)
-	RJMP _0x10A
-_0xF9:
 	LDI  R30,LOW(10)
 	CP   R30,R5
-	BRNE _0x10B
-; 0000 0368     {
-; 0000 0369         if (keypad[rowloc][cl] == 'C')
-	CALL SUBOPT_0x24
-	LD   R26,X
-	CPI  R26,LOW(0x43)
-	BRNE _0x10C
-; 0000 036A             stage = STAGE_INIT_MENU;
-	CLR  R5
-; 0000 036B     }
-_0x10C:
-; 0000 036C     else if (stage == STAGE_SHOW_CLOCK)
-	RJMP _0x10D
-_0x10B:
-	LDI  R30,LOW(13)
-	CP   R30,R5
-	BRNE _0x10E
+	BRNE _0x10D
 ; 0000 036D     {
 ; 0000 036E         if (keypad[rowloc][cl] == 'C')
-	CALL SUBOPT_0x24
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x43)
-	BRNE _0x10F
+	BRNE _0x10E
 ; 0000 036F             stage = STAGE_INIT_MENU;
 	CLR  R5
 ; 0000 0370     }
-_0x10F:
-; 0000 0371     else if (stage == STAGE_SET_TIMER)
-	RJMP _0x110
 _0x10E:
+; 0000 0371     else if (stage == STAGE_SHOW_CLOCK)
+	RJMP _0x10F
+_0x10D:
+	LDI  R30,LOW(13)
+	CP   R30,R5
+	BRNE _0x110
+; 0000 0372     {
+; 0000 0373         if (keypad[rowloc][cl] == 'C')
+	CALL SUBOPT_0x25
+	LD   R26,X
+	CPI  R26,LOW(0x43)
+	BRNE _0x111
+; 0000 0374             stage = STAGE_INIT_MENU;
+	CLR  R5
+; 0000 0375     }
+_0x111:
+; 0000 0376     else if (stage == STAGE_SET_TIMER)
+	RJMP _0x112
+_0x110:
 	LDI  R30,LOW(14)
 	CP   R30,R5
 	BREQ PC+2
-	RJMP _0x111
-; 0000 0372     {
-; 0000 0373         if (keypad[rowloc][cl] == 'C')
-	CALL SUBOPT_0x24
+	RJMP _0x113
+; 0000 0377     {
+; 0000 0378         if (keypad[rowloc][cl] == 'C')
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x43)
-	BRNE _0x112
-; 0000 0374         {
-; 0000 0375             memset(buffer, 0, 32);
+	BRNE _0x114
+; 0000 0379         {
+; 0000 037A             memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 0376             stage = STAGE_INIT_MENU;
-	RJMP _0x1BE
-; 0000 0377         }
-; 0000 0378 
-; 0000 0379         else if(keypad[rowloc][cl] == 'R')
-_0x112:
-	CALL SUBOPT_0x24
+; 0000 037B             stage = STAGE_INIT_MENU;
+	RJMP _0x1C0
+; 0000 037C         }
+; 0000 037D 
+; 0000 037E         else if(keypad[rowloc][cl] == 'R')
+_0x114:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x52)
-	BRNE _0x114
-; 0000 037A         {
-; 0000 037B             if(submitTime < 20){
+	BRNE _0x116
+; 0000 037F         {
+; 0000 0380             if(submitTime < 20){
 	LDI  R30,LOW(20)
 	CP   R9,R30
-	BRSH _0x115
-; 0000 037C                 submitTime++;
+	BRSH _0x117
+; 0000 0381                 submitTime++;
 	INC  R9
-; 0000 037D                 itoa(submitTime, buffer);
+; 0000 0382                 itoa(submitTime, buffer);
 	MOV  R30,R9
 	CALL SUBOPT_0x18
-; 0000 037E                 lcd_gotoxy(21,1);
+; 0000 0383                 lcd_gotoxy(21,1);
 	LDI  R30,LOW(21)
 	CALL SUBOPT_0x22
-; 0000 037F                 lcd_print(buffer);
+; 0000 0384                 lcd_print(buffer);
 	CALL SUBOPT_0x17
-; 0000 0380                 lcd_print("  ");
-	__POINTW2MN _0x9B,555
+; 0000 0385                 lcd_print("  ");
+	__POINTW2MN _0x9D,555
 	RCALL _lcd_print
-; 0000 0381             }
-; 0000 0382         }
-_0x115:
-; 0000 0383         else if(keypad[rowloc][cl] == 'L')
-	RJMP _0x116
-_0x114:
-	CALL SUBOPT_0x24
+; 0000 0386             }
+; 0000 0387         }
+_0x117:
+; 0000 0388         else if(keypad[rowloc][cl] == 'L')
+	RJMP _0x118
+_0x116:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x4C)
-	BRNE _0x117
-; 0000 0384         {
-; 0000 0385             if(submitTime > 1){
+	BRNE _0x119
+; 0000 0389         {
+; 0000 038A             if(submitTime > 1){
 	LDI  R30,LOW(1)
 	CP   R30,R9
-	BRSH _0x118
-; 0000 0386                 submitTime--;
+	BRSH _0x11A
+; 0000 038B                 submitTime--;
 	DEC  R9
-; 0000 0387                 itoa(submitTime, buffer);
+; 0000 038C                 itoa(submitTime, buffer);
 	MOV  R30,R9
 	CALL SUBOPT_0x18
-; 0000 0388                 lcd_gotoxy(21,1);
+; 0000 038D                 lcd_gotoxy(21,1);
 	LDI  R30,LOW(21)
 	CALL SUBOPT_0x22
-; 0000 0389                 lcd_print(buffer);
+; 0000 038E                 lcd_print(buffer);
 	CALL SUBOPT_0x17
-; 0000 038A                 lcd_print("  ");
-	__POINTW2MN _0x9B,558
+; 0000 038F                 lcd_print("  ");
+	__POINTW2MN _0x9D,558
 	RCALL _lcd_print
-; 0000 038B             }
-; 0000 038C         }
-_0x118:
-; 0000 038D         else if(keypad[rowloc][cl] == 'E')
-	RJMP _0x119
-_0x117:
-	CALL SUBOPT_0x24
+; 0000 0390             }
+; 0000 0391         }
+_0x11A:
+; 0000 0392         else if(keypad[rowloc][cl] == 'E')
+	RJMP _0x11B
+_0x119:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x45)
-	BRNE _0x11A
-; 0000 038E         {
-; 0000 038F             lcdCommand(0x01);
+	BRNE _0x11C
+; 0000 0393         {
+; 0000 0394             lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 0390             lcd_gotoxy(1,1);
-; 0000 0391             lcd_print("Timer started");
-	__POINTW2MN _0x9B,561
+; 0000 0395             lcd_gotoxy(1,1);
+; 0000 0396             lcd_print("Timer started");
+	__POINTW2MN _0x9D,561
 	RCALL _lcd_print
-; 0000 0392             memset(buffer, 0, 32);
+; 0000 0397             memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 0393             delay_ms(2000);
+; 0000 0398             delay_ms(2000);
 	CALL SUBOPT_0x20
-; 0000 0394             Timer2_Init();
+; 0000 0399             Timer2_Init();
 	RCALL _Timer2_Init
-; 0000 0395             stage = STAGE_INIT_MENU;
-_0x1BE:
+; 0000 039A             stage = STAGE_INIT_MENU;
+_0x1C0:
 	CLR  R5
-; 0000 0396         }
-; 0000 0397 
-; 0000 0398     }
-_0x11A:
-_0x119:
-_0x116:
-; 0000 0399     else if (stage == STAGE_LOGIN_WITH_ADMIN && logged_in != 1)
-	RJMP _0x11B
-_0x111:
+; 0000 039B         }
+; 0000 039C 
+; 0000 039D     }
+_0x11C:
+_0x11B:
+_0x118:
+; 0000 039E     else if (stage == STAGE_LOGIN_WITH_ADMIN && logged_in != 1)
+	RJMP _0x11D
+_0x113:
 	LDI  R30,LOW(11)
 	CP   R30,R5
-	BRNE _0x11D
+	BRNE _0x11F
 	LDI  R30,LOW(1)
 	CP   R30,R6
-	BRNE _0x11E
-_0x11D:
-	RJMP _0x11C
-_0x11E:
-; 0000 039A     {
-; 0000 039B         if (keypad[rowloc][cl] == 'C')
-	CALL SUBOPT_0x24
+	BRNE _0x120
+_0x11F:
+	RJMP _0x11E
+_0x120:
+; 0000 039F     {
+; 0000 03A0         if (keypad[rowloc][cl] == 'C')
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x43)
-	BRNE _0x11F
-; 0000 039C         {
-; 0000 039D             memset(buffer, 0, 32);
+	BRNE _0x121
+; 0000 03A1         {
+; 0000 03A2             memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 039E             stage = STAGE_INIT_MENU;
+; 0000 03A3             stage = STAGE_INIT_MENU;
 	CLR  R5
-; 0000 039F         }
-; 0000 03A0 
-; 0000 03A1         else if ((keypad[rowloc][cl] - '0') < 10)
-	RJMP _0x120
-_0x11F:
-	CALL SUBOPT_0x24
+; 0000 03A4         }
+; 0000 03A5 
+; 0000 03A6         else if ((keypad[rowloc][cl] - '0') < 10)
+	RJMP _0x122
+_0x121:
+	CALL SUBOPT_0x25
 	LD   R30,X
 	LDI  R31,0
 	SBIW R30,58
-	BRGE _0x121
-; 0000 03A2         {
-; 0000 03A3             if (strlen(buffer) <= 30)
+	BRGE _0x123
+; 0000 03A7         {
+; 0000 03A8             if (strlen(buffer) <= 30)
 	CALL SUBOPT_0x7
 	SBIW R30,31
-	BRSH _0x122
-; 0000 03A4             {
-; 0000 03A5                 buffer[strlen(buffer)] = keypad[rowloc][cl];
+	BRSH _0x124
+; 0000 03A9             {
+; 0000 03AA                 buffer[strlen(buffer)] = keypad[rowloc][cl];
 	CALL SUBOPT_0x7
-	CALL SUBOPT_0x26
 	CALL SUBOPT_0x27
-; 0000 03A6                 buffer[strlen(buffer) + 1] = '\0';
 	CALL SUBOPT_0x28
-; 0000 03A7                 lcdData(keypad[rowloc][cl]);
+; 0000 03AB                 buffer[strlen(buffer) + 1] = '\0';
+	CALL SUBOPT_0x29
+; 0000 03AC                 lcdData(keypad[rowloc][cl]);
 	LD   R26,X
 	RCALL _lcdData
-; 0000 03A8             }
-; 0000 03A9         }
-_0x122:
-; 0000 03AA         else if (keypad[rowloc][cl] == 'D')
-	RJMP _0x123
-_0x121:
-	CALL SUBOPT_0x24
+; 0000 03AD             }
+; 0000 03AE         }
+_0x124:
+; 0000 03AF         else if (keypad[rowloc][cl] == 'D')
+	RJMP _0x125
+_0x123:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x44)
-	BRNE _0x124
-; 0000 03AB         {
-; 0000 03AC             buffer_len = strlen(buffer);
+	BRNE _0x126
+; 0000 03B0         {
+; 0000 03B1             buffer_len = strlen(buffer);
 	CALL SUBOPT_0x7
 	MOV  R21,R30
-; 0000 03AD             if (buffer_len > 0)
+; 0000 03B2             if (buffer_len > 0)
 	CPI  R21,1
-	BRLO _0x125
-; 0000 03AE             {
-; 0000 03AF                 buffer[buffer_len - 1] = '\0';
-	CALL SUBOPT_0x29
-; 0000 03B0                 lcdCommand(0x10);
-; 0000 03B1                 lcd_print(" ");
-	__POINTW2MN _0x9B,575
+	BRLO _0x127
+; 0000 03B3             {
+; 0000 03B4                 buffer[buffer_len - 1] = '\0';
 	CALL SUBOPT_0x2A
-; 0000 03B2                 lcdCommand(0x10);
-; 0000 03B3             }
-; 0000 03B4         }
-_0x125:
-; 0000 03B5         else if (keypad[rowloc][cl] == 'O')
-	RJMP _0x126
-_0x124:
-	CALL SUBOPT_0x24
+; 0000 03B5                 lcdCommand(0x10);
+; 0000 03B6                 lcd_print(" ");
+	__POINTW2MN _0x9D,575
+	CALL SUBOPT_0x2B
+; 0000 03B7                 lcdCommand(0x10);
+; 0000 03B8             }
+; 0000 03B9         }
+_0x127:
+; 0000 03BA         else if (keypad[rowloc][cl] == 'O')
+	RJMP _0x128
+_0x126:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x4F)
-	BRNE _0x127
-; 0000 03B6         {
-; 0000 03B7             lcdCommand(0xC0);
-	CALL SUBOPT_0x2B
-; 0000 03B8             for(i = 0; i < strlen(buffer); i++)
-_0x129:
-	CALL SUBOPT_0x7
+	BRNE _0x129
+; 0000 03BB         {
+; 0000 03BC             lcdCommand(0xC0);
 	CALL SUBOPT_0x2C
-	BRSH _0x12A
-; 0000 03B9                 lcd_print(" ");
-	__POINTW2MN _0x9B,577
-	RCALL _lcd_print
+; 0000 03BD             for(i = 0; i < strlen(buffer); i++)
+_0x12B:
+	CALL SUBOPT_0x7
 	CALL SUBOPT_0x2D
-	RJMP _0x129
-_0x12A:
-; 0000 03BA lcdCommand(0xC0);
+	BRSH _0x12C
+; 0000 03BE                 lcd_print(" ");
+	__POINTW2MN _0x9D,577
+	RCALL _lcd_print
 	CALL SUBOPT_0x2E
-; 0000 03BB             memset(buffer, 0, 32);
-; 0000 03BC         }
-; 0000 03BD         else if (keypad[rowloc][cl] == 'E')
 	RJMP _0x12B
-_0x127:
-	CALL SUBOPT_0x24
+_0x12C:
+; 0000 03BF lcdCommand(0xC0);
+	CALL SUBOPT_0x2F
+; 0000 03C0             memset(buffer, 0, 32);
+; 0000 03C1         }
+; 0000 03C2         else if (keypad[rowloc][cl] == 'E')
+	RJMP _0x12D
+_0x129:
+	CALL SUBOPT_0x25
 	LD   R26,X
 	CPI  R26,LOW(0x45)
-	BRNE _0x12C
-; 0000 03BE         {
-; 0000 03BF             // search from eeprom data
-; 0000 03C0             unsigned int input_hash = simple_hash(buffer);
-; 0000 03C1 
-; 0000 03C2             if (input_hash == secret)
+	BRNE _0x12E
+; 0000 03C3         {
+; 0000 03C4             // search from eeprom data
+; 0000 03C5             unsigned int input_hash = simple_hash(buffer);
+; 0000 03C6 
+; 0000 03C7             if (input_hash == secret)
 	SBIW R28,2
 ;	i -> Y+14
 ;	minute -> Y+13
@@ -4275,122 +4314,122 @@ _0x127:
 	CPI  R26,LOW(0xF64)
 	LDI  R30,HIGH(0xF64)
 	CPC  R27,R30
-	BRNE _0x12D
-; 0000 03C3             {
-; 0000 03C4                 lcdCommand(0x01);
+	BRNE _0x12F
+; 0000 03C8             {
+; 0000 03C9                 lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 03C5                 lcd_gotoxy(1, 1);
-; 0000 03C6                 lcd_print("Login Successfully");
-	__POINTW2MN _0x9B,579
+; 0000 03CA                 lcd_gotoxy(1, 1);
+; 0000 03CB                 lcd_print("Login Successfully");
+	__POINTW2MN _0x9D,579
 	CALL SUBOPT_0x1
-; 0000 03C7                 lcd_gotoxy(1, 2);
-; 0000 03C8                 lcd_print("Wait...");
-	__POINTW2MN _0x9B,598
-	CALL SUBOPT_0x25
-; 0000 03C9                 delay_ms(2000);
-; 0000 03CA                 logged_in = 1;
+; 0000 03CC                 lcd_gotoxy(1, 2);
+; 0000 03CD                 lcd_print("Wait...");
+	__POINTW2MN _0x9D,598
+	CALL SUBOPT_0x26
+; 0000 03CE                 delay_ms(2000);
+; 0000 03CF                 logged_in = 1;
 	LDI  R30,LOW(1)
 	MOV  R6,R30
-; 0000 03CB             }
-; 0000 03CC             else
-	RJMP _0x12E
-_0x12D:
-; 0000 03CD             {
-; 0000 03CE                 lcdCommand(0x01);
+; 0000 03D0             }
+; 0000 03D1             else
+	RJMP _0x130
+_0x12F:
+; 0000 03D2             {
+; 0000 03D3                 lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 03CF                 lcd_gotoxy(1, 1);
-; 0000 03D0                 lcd_print("Ops , secret is incorrect");
-	__POINTW2MN _0x9B,606
+; 0000 03D4                 lcd_gotoxy(1, 1);
+; 0000 03D5                 lcd_print("Ops , secret is incorrect");
+	__POINTW2MN _0x9D,606
 	CALL SUBOPT_0x1
-; 0000 03D1                 lcd_gotoxy(1, 2);
-; 0000 03D2                 lcd_print("You Will Back Menu In 2 Second");
-	__POINTW2MN _0x9B,632
-	CALL SUBOPT_0x25
-; 0000 03D3                 delay_ms(2000);
-; 0000 03D4             }
-_0x12E:
-; 0000 03D5             memset(buffer, 0, 32);
+; 0000 03D6                 lcd_gotoxy(1, 2);
+; 0000 03D7                 lcd_print("You Will Back Menu In 2 Second");
+	__POINTW2MN _0x9D,632
+	CALL SUBOPT_0x26
+; 0000 03D8                 delay_ms(2000);
+; 0000 03D9             }
+_0x130:
+; 0000 03DA             memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 03D6             stage = STAGE_INIT_MENU;
+; 0000 03DB             stage = STAGE_INIT_MENU;
 	CLR  R5
-; 0000 03D7         }
+; 0000 03DC         }
 	ADIW R28,2
-; 0000 03D8     }
-_0x12C:
-_0x12B:
-_0x126:
-_0x123:
-_0x120:
-; 0000 03D9     else if (stage == STAGE_LOGIN_WITH_ADMIN && logged_in != 0)
-	RJMP _0x12F
-_0x11C:
+; 0000 03DD     }
+_0x12E:
+_0x12D:
+_0x128:
+_0x125:
+_0x122:
+; 0000 03DE     else if (stage == STAGE_LOGIN_WITH_ADMIN && logged_in != 0)
+	RJMP _0x131
+_0x11E:
 	LDI  R30,LOW(11)
 	CP   R30,R5
-	BRNE _0x131
+	BRNE _0x133
 	TST  R6
-	BRNE _0x132
-_0x131:
-	RJMP _0x130
-_0x132:
-; 0000 03DA     {
-; 0000 03DB         switch (keypad[rowloc][cl])
-	CALL SUBOPT_0x24
+	BRNE _0x134
+_0x133:
+	RJMP _0x132
+_0x134:
+; 0000 03DF     {
+; 0000 03E0         switch (keypad[rowloc][cl])
+	CALL SUBOPT_0x25
 	LD   R30,X
 	LDI  R31,0
-; 0000 03DC         {
-; 0000 03DD         case 'C':
+; 0000 03E1         {
+; 0000 03E2         case 'C':
 	CPI  R30,LOW(0x43)
 	LDI  R26,HIGH(0x43)
 	CPC  R31,R26
-	BRNE _0x136
-; 0000 03DE             stage = STAGE_INIT_MENU;
+	BRNE _0x138
+; 0000 03E3             stage = STAGE_INIT_MENU;
 	CLR  R5
-; 0000 03DF             break;
-	RJMP _0x135
-; 0000 03E0         case '1':
-_0x136:
+; 0000 03E4             break;
+	RJMP _0x137
+; 0000 03E5         case '1':
+_0x138:
 	CPI  R30,LOW(0x31)
 	LDI  R26,HIGH(0x31)
 	CPC  R31,R26
-	BRNE _0x138
-; 0000 03E1 #asm("cli") // disable interrupts
+	BRNE _0x13A
+; 0000 03E6 #asm("cli") // disable interrupts
 	cli
-; 0000 03E2             lcdCommand(0x1);
+; 0000 03E7             lcdCommand(0x1);
 	CALL SUBOPT_0x0
-; 0000 03E3             lcd_gotoxy(1, 1);
-; 0000 03E4             lcd_print("Clearing EEPROM ...");
-	__POINTW2MN _0x9B,663
+; 0000 03E8             lcd_gotoxy(1, 1);
+; 0000 03E9             lcd_print("Clearing EEPROM ...");
+	__POINTW2MN _0x9D,663
 	RCALL _lcd_print
-; 0000 03E5             clear_eeprom();
+; 0000 03EA             clear_eeprom();
 	RCALL _clear_eeprom
-; 0000 03E6 #asm("sei") // enable interrupts
+; 0000 03EB #asm("sei") // enable interrupts
 	sei
-; 0000 03E7             break;
-; 0000 03E8         default:
-_0x138:
-; 0000 03E9             break;
-; 0000 03EA         }
-_0x135:
-; 0000 03EB         memset(buffer, 0, 32);
+; 0000 03EC             break;
+; 0000 03ED         default:
+_0x13A:
+; 0000 03EE             break;
+; 0000 03EF         }
+_0x137:
+; 0000 03F0         memset(buffer, 0, 32);
 	CALL SUBOPT_0x5
-; 0000 03EC         stage = STAGE_INIT_MENU;
+; 0000 03F1         stage = STAGE_INIT_MENU;
 	CLR  R5
-; 0000 03ED     }
-; 0000 03EE }
-_0x130:
-_0x12F:
-_0x11B:
-_0x110:
-_0x10D:
-_0x10A:
-_0xF8:
-_0xE4:
-_0xD7:
-_0xD4:
-_0xD1:
-_0xCE:
-_0xAE:
-_0xA5:
+; 0000 03F2     }
+; 0000 03F3 }
+_0x132:
+_0x131:
+_0x11D:
+_0x112:
+_0x10F:
+_0x10C:
+_0xFA:
+_0xE6:
+_0xD9:
+_0xD6:
+_0xD3:
+_0xD0:
+_0xB0:
+_0xA7:
 	CALL __LOADLOCR6
 	ADIW R28,14
 	LD   R30,Y+
@@ -4410,101 +4449,101 @@ _0xA5:
 ; .FEND
 
 	.DSEG
-_0x9B:
+_0x9D:
 	.BYTE 0x2AB
 ;
 ;void lcdCommand(unsigned char cmnd)
-; 0000 03F1 {
+; 0000 03F6 {
 
 	.CSEG
 _lcdCommand:
 ; .FSTART _lcdCommand
-; 0000 03F2     LCD_PRT = (LCD_PRT & 0x0F) | (cmnd & 0xF0);
+; 0000 03F7     LCD_PRT = (LCD_PRT & 0x0F) | (cmnd & 0xF0);
 	CALL SUBOPT_0x34
 ;	cmnd -> Y+0
-; 0000 03F3     LCD_PRT &= ~(1 << LCD_RS); // RS = 0 for command
+; 0000 03F8     LCD_PRT &= ~(1 << LCD_RS); // RS = 0 for command
 	CBI  0x1B,0
-; 0000 03F4     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
+; 0000 03F9     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
 	CALL SUBOPT_0x35
-; 0000 03F5     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
-; 0000 03F6     delay_us(1 * 16);          // wait to make EN wider
-; 0000 03F7     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
-; 0000 03F8     delay_us(20 * 16);         // wait
-	__DELAY_USW 640
-; 0000 03F9     LCD_PRT = (LCD_PRT & 0x0F) | (cmnd << 4);
-	CALL SUBOPT_0x36
 ; 0000 03FA     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
 ; 0000 03FB     delay_us(1 * 16);          // wait to make EN wider
 ; 0000 03FC     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
-; 0000 03FD }
+; 0000 03FD     delay_us(20 * 16);         // wait
+	__DELAY_USW 640
+; 0000 03FE     LCD_PRT = (LCD_PRT & 0x0F) | (cmnd << 4);
+	CALL SUBOPT_0x36
+; 0000 03FF     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
+; 0000 0400     delay_us(1 * 16);          // wait to make EN wider
+; 0000 0401     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
+; 0000 0402 }
 	RJMP _0x20C0006
 ; .FEND
 ;void lcdData(unsigned char data)
-; 0000 03FF {
+; 0000 0404 {
 _lcdData:
 ; .FSTART _lcdData
-; 0000 0400     LCD_PRT = (LCD_PRT & 0x0F) | (data & 0xF0);
+; 0000 0405     LCD_PRT = (LCD_PRT & 0x0F) | (data & 0xF0);
 	CALL SUBOPT_0x34
 ;	data -> Y+0
-; 0000 0401     LCD_PRT |= (1 << LCD_RS);  // RS = 1 for data
+; 0000 0406     LCD_PRT |= (1 << LCD_RS);  // RS = 1 for data
 	SBI  0x1B,0
-; 0000 0402     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
+; 0000 0407     LCD_PRT &= ~(1 << LCD_RW); // RW = 0 for write
 	CALL SUBOPT_0x35
-; 0000 0403     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
-; 0000 0404     delay_us(1 * 16);          // wait to make EN wider
-; 0000 0405     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
-; 0000 0406     LCD_PRT = (LCD_PRT & 0x0F) | (data << 4);
+; 0000 0408     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
+; 0000 0409     delay_us(1 * 16);          // wait to make EN wider
+; 0000 040A     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
+; 0000 040B     LCD_PRT = (LCD_PRT & 0x0F) | (data << 4);
 	CALL SUBOPT_0x36
-; 0000 0407     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
-; 0000 0408     delay_us(1 * 16);          // wait to make EN wider
-; 0000 0409     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
-; 0000 040A }
+; 0000 040C     LCD_PRT |= (1 << LCD_EN);  // EN = 1 for H-to-L
+; 0000 040D     delay_us(1 * 16);          // wait to make EN wider
+; 0000 040E     LCD_PRT &= ~(1 << LCD_EN); // EN = 0 for H-to-L
+; 0000 040F }
 	RJMP _0x20C0006
 ; .FEND
 ;void lcd_init()
-; 0000 040C {
+; 0000 0411 {
 _lcd_init:
 ; .FSTART _lcd_init
-; 0000 040D     LCD_DDR = 0xFF;            // LCD port is output
+; 0000 0412     LCD_DDR = 0xFF;            // LCD port is output
 	LDI  R30,LOW(255)
 	OUT  0x1A,R30
-; 0000 040E     LCD_PRT &= ~(1 << LCD_EN); // LCD_EN = 0
+; 0000 0413     LCD_PRT &= ~(1 << LCD_EN); // LCD_EN = 0
 	CBI  0x1B,2
-; 0000 040F     delay_us(2000 * 16);       // wait for stable power
+; 0000 0414     delay_us(2000 * 16);       // wait for stable power
 	__DELAY_USW 64000
-; 0000 0410     lcdCommand(0x33);          //$33 for 4-bit mode
+; 0000 0415     lcdCommand(0x33);          //$33 for 4-bit mode
 	LDI  R26,LOW(51)
 	CALL SUBOPT_0x37
-; 0000 0411     delay_us(100 * 16);        // wait
-; 0000 0412     lcdCommand(0x32);          //$32 for 4-bit mode
+; 0000 0416     delay_us(100 * 16);        // wait
+; 0000 0417     lcdCommand(0x32);          //$32 for 4-bit mode
 	LDI  R26,LOW(50)
 	CALL SUBOPT_0x37
-; 0000 0413     delay_us(100 * 16);        // wait
-; 0000 0414     lcdCommand(0x28);          //$28 for 4-bit mode
+; 0000 0418     delay_us(100 * 16);        // wait
+; 0000 0419     lcdCommand(0x28);          //$28 for 4-bit mode
 	LDI  R26,LOW(40)
 	CALL SUBOPT_0x37
-; 0000 0415     delay_us(100 * 16);        // wait
-; 0000 0416     lcdCommand(0x0c);          // display on, cursor off
+; 0000 041A     delay_us(100 * 16);        // wait
+; 0000 041B     lcdCommand(0x0c);          // display on, cursor off
 	CALL SUBOPT_0x4
-; 0000 0417     delay_us(100 * 16);        // wait
-; 0000 0418     lcdCommand(0x01);          // clear LCD
+; 0000 041C     delay_us(100 * 16);        // wait
+; 0000 041D     lcdCommand(0x01);          // clear LCD
 	LDI  R26,LOW(1)
 	RCALL _lcdCommand
-; 0000 0419     delay_us(2000 * 16);       // wait
+; 0000 041E     delay_us(2000 * 16);       // wait
 	__DELAY_USW 64000
-; 0000 041A     lcdCommand(0x06);          // shift cursor right
+; 0000 041F     lcdCommand(0x06);          // shift cursor right
 	LDI  R26,LOW(6)
 	CALL SUBOPT_0x37
-; 0000 041B     delay_us(100 * 16);
-; 0000 041C }
+; 0000 0420     delay_us(100 * 16);
+; 0000 0421 }
 	RET
 ; .FEND
 ;void lcd_gotoxy(unsigned char x, unsigned char y)
-; 0000 041E {
+; 0000 0423 {
 _lcd_gotoxy:
 ; .FSTART _lcd_gotoxy
-; 0000 041F     unsigned char firstCharAdr[] = {0x80, 0xC0, 0x94, 0xD4};
-; 0000 0420     lcdCommand(firstCharAdr[y - 1] + x - 1);
+; 0000 0424     unsigned char firstCharAdr[] = {0x80, 0xC0, 0x94, 0xD4};
+; 0000 0425     lcdCommand(firstCharAdr[y - 1] + x - 1);
 	ST   -Y,R26
 	SBIW R28,4
 	LDI  R30,LOW(128)
@@ -4529,23 +4568,23 @@ _lcd_gotoxy:
 	ADD  R26,R30
 	SUBI R26,LOW(1)
 	CALL SUBOPT_0x37
-; 0000 0421     delay_us(100 * 16);
-; 0000 0422 }
+; 0000 0426     delay_us(100 * 16);
+; 0000 0427 }
 	RJMP _0x20C0005
 ; .FEND
 ;void lcd_print(char *str)
-; 0000 0424 {
+; 0000 0429 {
 _lcd_print:
 ; .FSTART _lcd_print
-; 0000 0425     unsigned char i = 0;
-; 0000 0426     while (str[i] != 0)
+; 0000 042A     unsigned char i = 0;
+; 0000 042B     while (str[i] != 0)
 	ST   -Y,R27
 	ST   -Y,R26
 	ST   -Y,R17
 ;	*str -> Y+1
 ;	i -> R17
 	LDI  R17,0
-_0x139:
+_0x13B:
 	LDD  R26,Y+1
 	LDD  R27,Y+1+1
 	CLR  R30
@@ -4553,9 +4592,9 @@ _0x139:
 	ADC  R27,R30
 	LD   R30,X
 	CPI  R30,0
-	BREQ _0x13B
-; 0000 0427     {
-; 0000 0428         lcdData(str[i]);
+	BREQ _0x13D
+; 0000 042C     {
+; 0000 042D         lcdData(str[i]);
 	LDD  R26,Y+1
 	LDD  R27,Y+1+1
 	CLR  R30
@@ -4563,65 +4602,65 @@ _0x139:
 	ADC  R27,R30
 	LD   R26,X
 	RCALL _lcdData
-; 0000 0429         i++;
+; 0000 042E         i++;
 	SUBI R17,-1
-; 0000 042A     }
-	RJMP _0x139
-_0x13B:
-; 0000 042B }
+; 0000 042F     }
+	RJMP _0x13B
+_0x13D:
+; 0000 0430 }
 	LDD  R17,Y+0
 	RJMP _0x20C0009
 ; .FEND
 ;
 ;void show_temperature()
-; 0000 042E {
+; 0000 0433 {
 _show_temperature:
 ; .FSTART _show_temperature
-; 0000 042F     unsigned char temperatureVal = 0;
-; 0000 0430     unsigned char temperatureRep[3];
-; 0000 0431 
-; 0000 0432     DDRA &= ~(1 << 3);
+; 0000 0434     unsigned char temperatureVal = 0;
+; 0000 0435     unsigned char temperatureRep[3];
+; 0000 0436 
+; 0000 0437     DDRA &= ~(1 << 3);
 	SBIW R28,3
 	ST   -Y,R17
 ;	temperatureVal -> R17
 ;	temperatureRep -> Y+1
 	LDI  R17,0
 	CBI  0x1A,3
-; 0000 0433     ADMUX = 0xE3;
+; 0000 0438     ADMUX = 0xE3;
 	LDI  R30,LOW(227)
 	OUT  0x7,R30
-; 0000 0434     ADCSRA = 0x87;
+; 0000 0439     ADCSRA = 0x87;
 	LDI  R30,LOW(135)
 	OUT  0x6,R30
-; 0000 0435 
-; 0000 0436     lcdCommand(0x01);
+; 0000 043A 
+; 0000 043B     lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 0437     lcd_gotoxy(1, 1);
-; 0000 0438     lcd_print("Temperature(C):");
-	__POINTW2MN _0x13C,0
+; 0000 043C     lcd_gotoxy(1, 1);
+; 0000 043D     lcd_print("Temperature(C):");
+	__POINTW2MN _0x13E,0
 	RCALL _lcd_print
-; 0000 0439 
-; 0000 043A     while (stage == STAGE_TEMPERATURE_MONITORING)
-_0x13D:
+; 0000 043E 
+; 0000 043F     while (stage == STAGE_TEMPERATURE_MONITORING)
+_0x13F:
 	LDI  R30,LOW(4)
 	CP   R30,R5
-	BRNE _0x13F
-; 0000 043B     {
-; 0000 043C         ADCSRA |= (1 << ADSC);
+	BRNE _0x141
+; 0000 0440     {
+; 0000 0441         ADCSRA |= (1 << ADSC);
 	SBI  0x6,6
-; 0000 043D         while ((ADCSRA & (1 << ADIF)) == 0)
-_0x140:
+; 0000 0442         while ((ADCSRA & (1 << ADIF)) == 0)
+_0x142:
 	SBIS 0x6,4
-; 0000 043E             ;
-	RJMP _0x140
-; 0000 043F         if (ADCH != temperatureVal)
+; 0000 0443             ;
+	RJMP _0x142
+; 0000 0444         if (ADCH != temperatureVal)
 	IN   R30,0x5
 	CP   R17,R30
-	BREQ _0x143
-; 0000 0440         {
-; 0000 0441             temperatureVal = ADCH;
+	BREQ _0x145
+; 0000 0445         {
+; 0000 0446             temperatureVal = ADCH;
 	IN   R17,5
-; 0000 0442             itoa(temperatureVal, temperatureRep);
+; 0000 0447             itoa(temperatureVal, temperatureRep);
 	MOV  R30,R17
 	LDI  R31,0
 	ST   -Y,R31
@@ -4629,411 +4668,411 @@ _0x140:
 	MOVW R26,R28
 	ADIW R26,3
 	CALL _itoa
-; 0000 0443             lcd_gotoxy(17, 1);
+; 0000 0448             lcd_gotoxy(17, 1);
 	LDI  R30,LOW(17)
 	CALL SUBOPT_0x22
-; 0000 0444             lcd_print(temperatureRep);
+; 0000 0449             lcd_print(temperatureRep);
 	MOVW R26,R28
 	ADIW R26,1
 	RCALL _lcd_print
-; 0000 0445             lcd_print(" ");
-	__POINTW2MN _0x13C,16
+; 0000 044A             lcd_print(" ");
+	__POINTW2MN _0x13E,16
 	RCALL _lcd_print
-; 0000 0446         }
-; 0000 0447         delay_ms(500);
-_0x143:
+; 0000 044B         }
+; 0000 044C         delay_ms(500);
+_0x145:
 	LDI  R26,LOW(500)
 	LDI  R27,HIGH(500)
 	CALL _delay_ms
-; 0000 0448     }
-	RJMP _0x13D
-_0x13F:
-; 0000 0449 
-; 0000 044A     ADCSRA = 0x0;
+; 0000 044D     }
+	RJMP _0x13F
+_0x141:
+; 0000 044E 
+; 0000 044F     ADCSRA = 0x0;
 	LDI  R30,LOW(0)
 	OUT  0x6,R30
-; 0000 044B }
+; 0000 0450 }
 	LDD  R17,Y+0
 	RJMP _0x20C0007
 ; .FEND
 
 	.DSEG
-_0x13C:
+_0x13E:
 	.BYTE 0x12
 ;
 ;void show_menu()
-; 0000 044E {
+; 0000 0453 {
 
 	.CSEG
 _show_menu:
 ; .FSTART _show_menu
-; 0000 044F     while (stage == STAGE_INIT_MENU)
-_0x144:
+; 0000 0454     while (stage == STAGE_INIT_MENU)
+_0x146:
 	TST  R5
 	BREQ PC+2
-	RJMP _0x146
-; 0000 0450     {
-; 0000 0451         lcdCommand(0x01);
+	RJMP _0x148
+; 0000 0455     {
+; 0000 0456         lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 0452         lcd_gotoxy(1, 1);
-; 0000 0453         if (page_num == 0)
+; 0000 0457         lcd_gotoxy(1, 1);
+; 0000 0458         if (page_num == 0)
 	TST  R4
-	BRNE _0x147
-; 0000 0454         {
-; 0000 0455             lcd_print("1: Attendance Initialization");
-	__POINTW2MN _0x148,0
+	BRNE _0x149
+; 0000 0459         {
+; 0000 045A             lcd_print("1: Attendance Initialization");
+	__POINTW2MN _0x14A,0
 	CALL SUBOPT_0x1
-; 0000 0456             lcd_gotoxy(1, 2);
-; 0000 0457             lcd_print("2: Student Management");
-	__POINTW2MN _0x148,29
+; 0000 045B             lcd_gotoxy(1, 2);
+; 0000 045C             lcd_print("2: Student Management");
+	__POINTW2MN _0x14A,29
 	RCALL _lcd_print
-; 0000 0458             while (page_num == 0 && stage == STAGE_INIT_MENU)
-_0x149:
+; 0000 045D             while (page_num == 0 && stage == STAGE_INIT_MENU)
+_0x14B:
 	TST  R4
-	BRNE _0x14C
+	BRNE _0x14E
 	TST  R5
-	BREQ _0x14D
-_0x14C:
+	BREQ _0x14F
+_0x14E:
+	RJMP _0x14D
+_0x14F:
+; 0000 045E                 ;
 	RJMP _0x14B
 _0x14D:
-; 0000 0459                 ;
-	RJMP _0x149
-_0x14B:
-; 0000 045A         }
-; 0000 045B         else if (page_num == 1)
-	RJMP _0x14E
-_0x147:
+; 0000 045F         }
+; 0000 0460         else if (page_num == 1)
+	RJMP _0x150
+_0x149:
 	LDI  R30,LOW(1)
 	CP   R30,R4
-	BRNE _0x14F
-; 0000 045C         {
-; 0000 045D             lcd_print("3: View Present Students ");
-	__POINTW2MN _0x148,51
+	BRNE _0x151
+; 0000 0461         {
+; 0000 0462             lcd_print("3: View Present Students ");
+	__POINTW2MN _0x14A,51
 	CALL SUBOPT_0x1
-; 0000 045E             lcd_gotoxy(1, 2);
-; 0000 045F             lcd_print("4: Temperature Monitoring");
-	__POINTW2MN _0x148,77
+; 0000 0463             lcd_gotoxy(1, 2);
+; 0000 0464             lcd_print("4: Temperature Monitoring");
+	__POINTW2MN _0x14A,77
 	RCALL _lcd_print
-; 0000 0460             while (page_num == 1 && stage == STAGE_INIT_MENU)
-_0x150:
+; 0000 0465             while (page_num == 1 && stage == STAGE_INIT_MENU)
+_0x152:
 	LDI  R30,LOW(1)
 	CP   R30,R4
-	BRNE _0x153
+	BRNE _0x155
 	TST  R5
-	BREQ _0x154
-_0x153:
+	BREQ _0x156
+_0x155:
+	RJMP _0x154
+_0x156:
+; 0000 0466                 ;
 	RJMP _0x152
 _0x154:
-; 0000 0461                 ;
-	RJMP _0x150
-_0x152:
-; 0000 0462         }
-; 0000 0463         else if (page_num == 2)
-	RJMP _0x155
-_0x14F:
+; 0000 0467         }
+; 0000 0468         else if (page_num == 2)
+	RJMP _0x157
+_0x151:
 	LDI  R30,LOW(2)
 	CP   R30,R4
-	BRNE _0x156
-; 0000 0464         {
-; 0000 0465             lcd_print("5: Retrieve Student Data");
-	__POINTW2MN _0x148,103
+	BRNE _0x158
+; 0000 0469         {
+; 0000 046A             lcd_print("5: Retrieve Student Data");
+	__POINTW2MN _0x14A,103
 	CALL SUBOPT_0x1
-; 0000 0466             lcd_gotoxy(1, 2);
-; 0000 0467             lcd_print("6: Traffic Monitoring");
-	__POINTW2MN _0x148,128
+; 0000 046B             lcd_gotoxy(1, 2);
+; 0000 046C             lcd_print("6: Traffic Monitoring");
+	__POINTW2MN _0x14A,128
 	RCALL _lcd_print
-; 0000 0468             while (page_num == 2 && stage == STAGE_INIT_MENU)
-_0x157:
+; 0000 046D             while (page_num == 2 && stage == STAGE_INIT_MENU)
+_0x159:
 	LDI  R30,LOW(2)
 	CP   R30,R4
-	BRNE _0x15A
+	BRNE _0x15C
 	TST  R5
-	BREQ _0x15B
-_0x15A:
+	BREQ _0x15D
+_0x15C:
+	RJMP _0x15B
+_0x15D:
+; 0000 046E                 ;
 	RJMP _0x159
 _0x15B:
-; 0000 0469                 ;
-	RJMP _0x157
-_0x159:
-; 0000 046A         }
-; 0000 046B         else if (page_num == 3)
-	RJMP _0x15C
-_0x156:
+; 0000 046F         }
+; 0000 0470         else if (page_num == 3)
+	RJMP _0x15E
+_0x158:
 	LDI  R30,LOW(3)
 	CP   R30,R4
-	BRNE _0x15D
-; 0000 046C         {
-; 0000 046D             lcd_print("7: Login With Admin");
-	__POINTW2MN _0x148,150
+	BRNE _0x15F
+; 0000 0471         {
+; 0000 0472             lcd_print("7: Login With Admin");
+	__POINTW2MN _0x14A,150
 	CALL SUBOPT_0x1
-; 0000 046E             lcd_gotoxy(1, 2);
-; 0000 046F             lcd_print("8: Logout");
-	__POINTW2MN _0x148,170
+; 0000 0473             lcd_gotoxy(1, 2);
+; 0000 0474             lcd_print("8: Logout");
+	__POINTW2MN _0x14A,170
 	RCALL _lcd_print
-; 0000 0470             while (page_num == 3 && stage == STAGE_INIT_MENU)
-_0x15E:
+; 0000 0475             while (page_num == 3 && stage == STAGE_INIT_MENU)
+_0x160:
 	LDI  R30,LOW(3)
 	CP   R30,R4
-	BRNE _0x161
+	BRNE _0x163
 	TST  R5
-	BREQ _0x162
-_0x161:
+	BREQ _0x164
+_0x163:
+	RJMP _0x162
+_0x164:
+; 0000 0476                 ;
 	RJMP _0x160
 _0x162:
-; 0000 0471                 ;
-	RJMP _0x15E
-_0x160:
-; 0000 0472         }
-; 0000 0473         else if (page_num == 4)
-	RJMP _0x163
-_0x15D:
+; 0000 0477         }
+; 0000 0478         else if (page_num == 4)
+	RJMP _0x165
+_0x15F:
 	LDI  R30,LOW(4)
 	CP   R30,R4
-	BRNE _0x164
-; 0000 0474         {
-; 0000 0475             lcd_print("9: Set Timer");
-	__POINTW2MN _0x148,180
+	BRNE _0x166
+; 0000 0479         {
+; 0000 047A             lcd_print("9: Set Timer");
+	__POINTW2MN _0x14A,180
 	RCALL _lcd_print
-; 0000 0476             while (page_num == 4 && stage == STAGE_INIT_MENU)
-_0x165:
+; 0000 047B             while (page_num == 4 && stage == STAGE_INIT_MENU)
+_0x167:
 	LDI  R30,LOW(4)
 	CP   R30,R4
-	BRNE _0x168
+	BRNE _0x16A
 	TST  R5
-	BREQ _0x169
-_0x168:
+	BREQ _0x16B
+_0x16A:
+	RJMP _0x169
+_0x16B:
+; 0000 047C                 ;
 	RJMP _0x167
 _0x169:
-; 0000 0477                 ;
-	RJMP _0x165
-_0x167:
-; 0000 0478         }
-; 0000 0479     }
-_0x164:
-_0x163:
-_0x15C:
-_0x155:
-_0x14E:
-	RJMP _0x144
-_0x146:
-; 0000 047A }
+; 0000 047D         }
+; 0000 047E     }
+_0x166:
+_0x165:
+_0x15E:
+_0x157:
+_0x150:
+	RJMP _0x146
+_0x148:
+; 0000 047F }
 	RET
 ; .FEND
 
 	.DSEG
-_0x148:
+_0x14A:
 	.BYTE 0xC1
 ;
 ;void clear_eeprom()
-; 0000 047D {
+; 0000 0482 {
 
 	.CSEG
 _clear_eeprom:
 ; .FSTART _clear_eeprom
-; 0000 047E     unsigned int i;
-; 0000 047F 
-; 0000 0480     for (i = 0; i <= 1023; i++)
+; 0000 0483     unsigned int i;
+; 0000 0484 
+; 0000 0485     for (i = 0; i <= 1023; i++)
 	ST   -Y,R17
 	ST   -Y,R16
 ;	i -> R16,R17
 	__GETWRN 16,17,0
-_0x16B:
-	__CPWRN 16,17,1024
-	BRSH _0x16C
-; 0000 0481     {
-; 0000 0482         // Wait for the previous write to complete
-; 0000 0483         while (EECR & (1 << EEWE))
 _0x16D:
+	__CPWRN 16,17,1024
+	BRSH _0x16E
+; 0000 0486     {
+; 0000 0487         // Wait for the previous write to complete
+; 0000 0488         while (EECR & (1 << EEWE))
+_0x16F:
 	SBIC 0x1C,1
-; 0000 0484             ;
-	RJMP _0x16D
-; 0000 0485 
-; 0000 0486         // Set up address registers
-; 0000 0487         EEARH = (i >> 8) & 0x03; // High byte (bits 8-9)
+; 0000 0489             ;
+	RJMP _0x16F
+; 0000 048A 
+; 0000 048B         // Set up address registers
+; 0000 048C         EEARH = (i >> 8) & 0x03; // High byte (bits 8-9)
 	MOV  R30,R17
 	ANDI R31,HIGH(0x0)
 	ANDI R30,LOW(0x3)
 	OUT  0x1F,R30
-; 0000 0488         EEARL = i & 0xFF;        // Low byte (bits 0-7)
+; 0000 048D         EEARL = i & 0xFF;        // Low byte (bits 0-7)
 	MOV  R30,R16
 	OUT  0x1E,R30
-; 0000 0489 
-; 0000 048A         // Set up data register
-; 0000 048B         EEDR = 0; // Write 0 to EEPROM
+; 0000 048E 
+; 0000 048F         // Set up data register
+; 0000 0490         EEDR = 0; // Write 0 to EEPROM
 	LDI  R30,LOW(0)
 	OUT  0x1D,R30
-; 0000 048C 
-; 0000 048D         // Enable write
-; 0000 048E         EECR |= (1 << EEMWE); // Master write enable
+; 0000 0491 
+; 0000 0492         // Enable write
+; 0000 0493         EECR |= (1 << EEMWE); // Master write enable
 	SBI  0x1C,2
-; 0000 048F         EECR |= (1 << EEWE);  // Start EEPROM write
+; 0000 0494         EECR |= (1 << EEWE);  // Start EEPROM write
 	SBI  0x1C,1
-; 0000 0490     }
+; 0000 0495     }
 	__ADDWRN 16,17,1
-	RJMP _0x16B
-_0x16C:
-; 0000 0491 }
+	RJMP _0x16D
+_0x16E:
+; 0000 0496 }
 	LD   R16,Y+
 	LD   R17,Y+
 	RET
 ; .FEND
 ;
 ;unsigned char read_byte_from_eeprom(unsigned int addr)
-; 0000 0494 {
+; 0000 0499 {
 _read_byte_from_eeprom:
 ; .FSTART _read_byte_from_eeprom
-; 0000 0495     unsigned char x;
-; 0000 0496     // Wait for the previous write to complete
-; 0000 0497     while (EECR & (1 << EEWE))
+; 0000 049A     unsigned char x;
+; 0000 049B     // Wait for the previous write to complete
+; 0000 049C     while (EECR & (1 << EEWE))
 	ST   -Y,R27
 	ST   -Y,R26
 	ST   -Y,R17
 ;	addr -> Y+1
 ;	x -> R17
-_0x170:
+_0x172:
 	SBIC 0x1C,1
-; 0000 0498         ;
-	RJMP _0x170
-; 0000 0499 
-; 0000 049A     // Set up address registers
-; 0000 049B     EEARH = (addr >> 8) & 0x03; // High byte (bits 8-9)
+; 0000 049D         ;
+	RJMP _0x172
+; 0000 049E 
+; 0000 049F     // Set up address registers
+; 0000 04A0     EEARH = (addr >> 8) & 0x03; // High byte (bits 8-9)
 	CALL SUBOPT_0x38
-; 0000 049C     EEARL = addr & 0xFF;        // Low byte (bits 0-7)
-; 0000 049D     EECR |= (1 << EERE);        // Read Enable
+; 0000 04A1     EEARL = addr & 0xFF;        // Low byte (bits 0-7)
+; 0000 04A2     EECR |= (1 << EERE);        // Read Enable
 	SBI  0x1C,0
-; 0000 049E     x = EEDR;
+; 0000 04A3     x = EEDR;
 	IN   R17,29
-; 0000 049F     return x;
+; 0000 04A4     return x;
 	MOV  R30,R17
 	LDD  R17,Y+0
 	RJMP _0x20C0009
-; 0000 04A0 }
+; 0000 04A5 }
 ; .FEND
 ;
 ;void write_byte_to_eeprom(unsigned int addr, unsigned char value)
-; 0000 04A3 {
+; 0000 04A8 {
 _write_byte_to_eeprom:
 ; .FSTART _write_byte_to_eeprom
-; 0000 04A4     // Wait for the previous write to complete
-; 0000 04A5     while (EECR & (1 << EEWE))
+; 0000 04A9     // Wait for the previous write to complete
+; 0000 04AA     while (EECR & (1 << EEWE))
 	ST   -Y,R26
 ;	addr -> Y+1
 ;	value -> Y+0
-_0x173:
+_0x175:
 	SBIC 0x1C,1
-; 0000 04A6         ;
-	RJMP _0x173
-; 0000 04A7 
-; 0000 04A8     // Set up address registers
-; 0000 04A9     EEARH = (addr >> 8) & 0x03; // High byte (bits 8-9)
+; 0000 04AB         ;
+	RJMP _0x175
+; 0000 04AC 
+; 0000 04AD     // Set up address registers
+; 0000 04AE     EEARH = (addr >> 8) & 0x03; // High byte (bits 8-9)
 	CALL SUBOPT_0x38
-; 0000 04AA     EEARL = addr & 0xFF;        // Low byte (bits 0-7)
-; 0000 04AB 
-; 0000 04AC     // Set up data register
-; 0000 04AD     EEDR = value; // Write 0 to EEPROM
+; 0000 04AF     EEARL = addr & 0xFF;        // Low byte (bits 0-7)
+; 0000 04B0 
+; 0000 04B1     // Set up data register
+; 0000 04B2     EEDR = value; // Write 0 to EEPROM
 	LD   R30,Y
 	OUT  0x1D,R30
-; 0000 04AE 
-; 0000 04AF     // Enable write
-; 0000 04B0     EECR |= (1 << EEMWE); // Master write enable
+; 0000 04B3 
+; 0000 04B4     // Enable write
+; 0000 04B5     EECR |= (1 << EEMWE); // Master write enable
 	SBI  0x1C,2
-; 0000 04B1     EECR |= (1 << EEWE);  // Start EEPROM write
+; 0000 04B6     EECR |= (1 << EEWE);  // Start EEPROM write
 	SBI  0x1C,1
-; 0000 04B2 }
+; 0000 04B7 }
 _0x20C0009:
 	ADIW R28,3
 	RET
 ; .FEND
 ;
 ;void USART_Transmit(unsigned char data)
-; 0000 04B5 {
+; 0000 04BA {
 _USART_Transmit:
 ; .FSTART _USART_Transmit
-; 0000 04B6     while (!(UCSRA & (1 << UDRE)))
+; 0000 04BB     while (!(UCSRA & (1 << UDRE)))
 	ST   -Y,R26
 ;	data -> Y+0
-_0x176:
+_0x178:
 	SBIS 0xB,5
-; 0000 04B7         ;
-	RJMP _0x176
-; 0000 04B8     UDR = data;
+; 0000 04BC         ;
+	RJMP _0x178
+; 0000 04BD     UDR = data;
 	LD   R30,Y
 	OUT  0xC,R30
-; 0000 04B9 }
+; 0000 04BE }
 	RJMP _0x20C0006
 ; .FEND
 ;
 ;unsigned char USART_Receive()
-; 0000 04BC {
+; 0000 04C1 {
 _USART_Receive:
 ; .FSTART _USART_Receive
-; 0000 04BD     while(!(UCSRA & (1 << RXC)) && stage == STAGE_SUBMIT_WITH_CARD);
-_0x179:
+; 0000 04C2     while(!(UCSRA & (1 << RXC)) && stage == STAGE_SUBMIT_WITH_CARD);
+_0x17B:
 	SBIC 0xB,7
-	RJMP _0x17C
+	RJMP _0x17E
 	LDI  R30,LOW(3)
 	CP   R30,R5
-	BREQ _0x17D
-_0x17C:
+	BREQ _0x17F
+_0x17E:
+	RJMP _0x17D
+_0x17F:
 	RJMP _0x17B
 _0x17D:
-	RJMP _0x179
-_0x17B:
-; 0000 04BE     return UDR;
+; 0000 04C3     return UDR;
 	IN   R30,0xC
 	RET
-; 0000 04BF }
+; 0000 04C4 }
 ; .FEND
 ;
 ;void USART_init(unsigned int ubrr)
-; 0000 04C2 {
+; 0000 04C7 {
 _USART_init:
 ; .FSTART _USART_init
-; 0000 04C3     UBRRL = (unsigned char)ubrr;
+; 0000 04C8     UBRRL = (unsigned char)ubrr;
 	ST   -Y,R27
 	ST   -Y,R26
 ;	ubrr -> Y+0
 	LD   R30,Y
 	OUT  0x9,R30
-; 0000 04C4     UBRRH = (unsigned char)(ubrr >> 8);
+; 0000 04C9     UBRRH = (unsigned char)(ubrr >> 8);
 	LDD  R30,Y+1
 	ANDI R31,HIGH(0x0)
 	OUT  0x20,R30
-; 0000 04C5     UCSRB = (1 << RXEN) | (1 << TXEN);
+; 0000 04CA     UCSRB = (1 << RXEN) | (1 << TXEN);
 	LDI  R30,LOW(24)
 	OUT  0xA,R30
-; 0000 04C6     UCSRC = (1 << UCSZ1) | (1 << UCSZ0); // Set UCSZ1 and UCSZ0 for 8-bit data
+; 0000 04CB     UCSRC = (1 << UCSZ1) | (1 << UCSZ0); // Set UCSZ1 and UCSZ0 for 8-bit data
 	LDI  R30,LOW(6)
 	OUT  0x20,R30
-; 0000 04C7 }
+; 0000 04CC }
 	ADIW R28,2
 	RET
 ; .FEND
 ;
 ;unsigned char search_student_code()
-; 0000 04CA {
+; 0000 04CF {
 _search_student_code:
 ; .FSTART _search_student_code
-; 0000 04CB     unsigned char st_counts, i, j;
-; 0000 04CC     char temp[10];
-; 0000 04CD 
-; 0000 04CE     st_counts = read_byte_from_eeprom(0x0);
+; 0000 04D0     unsigned char st_counts, i, j;
+; 0000 04D1     char temp[10];
+; 0000 04D2 
+; 0000 04D3     st_counts = read_byte_from_eeprom(0x0);
 	SBIW R28,10
 	CALL __SAVELOCR4
 ;	st_counts -> R17
 ;	i -> R16
 ;	j -> R19
 ;	temp -> Y+4
-	CALL SUBOPT_0x2F
+	CALL SUBOPT_0x30
 	MOV  R17,R30
-; 0000 04CF 
-; 0000 04D0     for (i = 0; i < st_counts; i++)
+; 0000 04D4 
+; 0000 04D5     for (i = 0; i < st_counts; i++)
 	LDI  R16,LOW(0)
-_0x17F:
+_0x181:
 	CP   R16,R17
-	BRSH _0x180
-; 0000 04D1     {
-; 0000 04D2         memset(temp, 0, 10);
+	BRSH _0x182
+; 0000 04D6     {
+; 0000 04D7         memset(temp, 0, 10);
 	MOVW R30,R28
 	ADIW R30,4
 	ST   -Y,R31
@@ -5043,13 +5082,13 @@ _0x17F:
 	LDI  R26,LOW(10)
 	LDI  R27,0
 	CALL _memset
-; 0000 04D3         for (j = 0; j < 8; j++)
+; 0000 04D8         for (j = 0; j < 8; j++)
 	LDI  R19,LOW(0)
-_0x182:
+_0x184:
 	CPI  R19,8
-	BRSH _0x183
-; 0000 04D4         {
-; 0000 04D5             temp[j] = read_byte_from_eeprom(j + ((i + 1) * 16));
+	BRSH _0x185
+; 0000 04D9         {
+; 0000 04DA             temp[j] = read_byte_from_eeprom(j + ((i + 1) * 16));
 	MOV  R30,R19
 	LDI  R31,0
 	MOVW R26,R28
@@ -5062,11 +5101,11 @@ _0x182:
 	POP  R26
 	POP  R27
 	ST   X,R30
-; 0000 04D6         }
+; 0000 04DB         }
 	SUBI R19,-1
-	RJMP _0x182
-_0x183:
-; 0000 04D7         temp[j] = '\0';
+	RJMP _0x184
+_0x185:
+; 0000 04DC         temp[j] = '\0';
 	MOV  R30,R19
 	LDI  R31,0
 	MOVW R26,R28
@@ -5075,7 +5114,7 @@ _0x183:
 	ADC  R27,R31
 	LDI  R30,LOW(0)
 	ST   X,R30
-; 0000 04D8         if (strncmp(temp, buffer, 8) == 0)
+; 0000 04DD         if (strncmp(temp, buffer, 8) == 0)
 	MOVW R30,R28
 	ADIW R30,4
 	ST   -Y,R31
@@ -5084,34 +5123,34 @@ _0x183:
 	LDI  R26,LOW(8)
 	CALL _strncmp
 	CPI  R30,0
-	BRNE _0x184
-; 0000 04D9             return (i + 1);
+	BRNE _0x186
+; 0000 04DE             return (i + 1);
 	MOV  R30,R16
 	SUBI R30,-LOW(1)
 	RJMP _0x20C0008
-; 0000 04DA     }
-_0x184:
+; 0000 04DF     }
+_0x186:
 	SUBI R16,-1
-	RJMP _0x17F
-_0x180:
-; 0000 04DB 
-; 0000 04DC     return 0;
+	RJMP _0x181
+_0x182:
+; 0000 04E0 
+; 0000 04E1     return 0;
 	LDI  R30,LOW(0)
 _0x20C0008:
 	CALL __LOADLOCR4
 	ADIW R28,14
 	RET
-; 0000 04DD }
+; 0000 04E2 }
 ; .FEND
 ;
 ;void delete_student_code(unsigned char index)
-; 0000 04E0 {
+; 0000 04E5 {
 _delete_student_code:
 ; .FSTART _delete_student_code
-; 0000 04E1     unsigned char st_counts, i, j;
-; 0000 04E2     unsigned char temp;
-; 0000 04E3 
-; 0000 04E4     st_counts = read_byte_from_eeprom(0x0);
+; 0000 04E6     unsigned char st_counts, i, j;
+; 0000 04E7     unsigned char temp;
+; 0000 04E8 
+; 0000 04E9     st_counts = read_byte_from_eeprom(0x0);
 	ST   -Y,R26
 	CALL __SAVELOCR4
 ;	index -> Y+4
@@ -5119,40 +5158,40 @@ _delete_student_code:
 ;	i -> R16
 ;	j -> R19
 ;	temp -> R18
-	CALL SUBOPT_0x2F
+	CALL SUBOPT_0x30
 	MOV  R17,R30
-; 0000 04E5 
-; 0000 04E6     for (i = index; i <= st_counts; i++)
+; 0000 04EA 
+; 0000 04EB     for (i = index; i <= st_counts; i++)
 	LDD  R16,Y+4
-_0x186:
+_0x188:
 	CP   R17,R16
-	BRLO _0x187
-; 0000 04E7     {
-; 0000 04E8         for (j = 0; j < 8; j++)
+	BRLO _0x189
+; 0000 04EC     {
+; 0000 04ED         for (j = 0; j < 8; j++)
 	LDI  R19,LOW(0)
-_0x189:
+_0x18B:
 	CPI  R19,8
-	BRSH _0x18A
-; 0000 04E9         {
-; 0000 04EA             temp = read_byte_from_eeprom(j + ((i + 1) * 16));
+	BRSH _0x18C
+; 0000 04EE         {
+; 0000 04EF             temp = read_byte_from_eeprom(j + ((i + 1) * 16));
 	CALL SUBOPT_0x39
 	CALL SUBOPT_0x3A
-; 0000 04EB             write_byte_to_eeprom(j + (i * 16), temp);
+; 0000 04F0             write_byte_to_eeprom(j + (i * 16), temp);
 	ST   -Y,R31
 	ST   -Y,R30
 	MOV  R26,R18
 	RCALL _write_byte_to_eeprom
-; 0000 04EC         }
+; 0000 04F1         }
 	SUBI R19,-1
-	RJMP _0x189
-_0x18A:
-; 0000 04ED         for (j = 0; j < 8; j++)
-	LDI  R19,LOW(0)
+	RJMP _0x18B
 _0x18C:
+; 0000 04F2         for (j = 0; j < 8; j++)
+	LDI  R19,LOW(0)
+_0x18E:
 	CPI  R19,8
-	BRSH _0x18D
-; 0000 04EE         {
-; 0000 04EF             temp = read_byte_from_eeprom(j + ((i + 1) * 16) + 8);
+	BRSH _0x18F
+; 0000 04F3         {
+; 0000 04F4             temp = read_byte_from_eeprom(j + ((i + 1) * 16) + 8);
 	MOV  R26,R19
 	CLR  R27
 	MOV  R30,R16
@@ -5164,177 +5203,177 @@ _0x18C:
 	ADIW R26,8
 	RCALL _read_byte_from_eeprom
 	CALL SUBOPT_0x3A
-; 0000 04F0             write_byte_to_eeprom(j + (i * 16) + 8, temp);
+; 0000 04F5             write_byte_to_eeprom(j + (i * 16) + 8, temp);
 	ADIW R30,8
 	ST   -Y,R31
 	ST   -Y,R30
 	MOV  R26,R18
 	RCALL _write_byte_to_eeprom
-; 0000 04F1         }
+; 0000 04F6         }
 	SUBI R19,-1
-	RJMP _0x18C
-_0x18D:
-; 0000 04F2     }
+	RJMP _0x18E
+_0x18F:
+; 0000 04F7     }
 	SUBI R16,-1
-	RJMP _0x186
-_0x187:
-; 0000 04F3     write_byte_to_eeprom(0x0, st_counts - 1);
+	RJMP _0x188
+_0x189:
+; 0000 04F8     write_byte_to_eeprom(0x0, st_counts - 1);
 	CALL SUBOPT_0x16
 	MOV  R26,R17
 	SUBI R26,LOW(1)
 	RCALL _write_byte_to_eeprom
-; 0000 04F4 }
+; 0000 04F9 }
 	CALL __LOADLOCR4
 	JMP  _0x20C0003
 ; .FEND
 ;
 ;void HCSR04Init()
-; 0000 04F7 {
+; 0000 04FC {
 _HCSR04Init:
 ; .FSTART _HCSR04Init
-; 0000 04F8     US_DDR |= (1 << US_TRIG_POS);  // Trigger pin as output
+; 0000 04FD     US_DDR |= (1 << US_TRIG_POS);  // Trigger pin as output
 	SBI  0x11,5
-; 0000 04F9     US_DDR &= ~(1 << US_ECHO_POS); // Echo pin as input
+; 0000 04FE     US_DDR &= ~(1 << US_ECHO_POS); // Echo pin as input
 	CBI  0x11,6
-; 0000 04FA }
+; 0000 04FF }
 	RET
 ; .FEND
 ;
 ;void HCSR04Trigger()
-; 0000 04FD {
+; 0000 0502 {
 _HCSR04Trigger:
 ; .FSTART _HCSR04Trigger
-; 0000 04FE     US_PORT |= (1 << US_TRIG_POS);  // Set trigger pin high
+; 0000 0503     US_PORT |= (1 << US_TRIG_POS);  // Set trigger pin high
 	SBI  0x12,5
-; 0000 04FF     delay_us(15 * 16);              // Wait for 15 microseconds
+; 0000 0504     delay_us(15 * 16);              // Wait for 15 microseconds
 	__DELAY_USW 480
-; 0000 0500     US_PORT &= ~(1 << US_TRIG_POS); // Set trigger pin low
+; 0000 0505     US_PORT &= ~(1 << US_TRIG_POS); // Set trigger pin low
 	CBI  0x12,5
-; 0000 0501 }
+; 0000 0506 }
 	RET
 ; .FEND
 ;
 ;uint16_t GetPulseWidth()
-; 0000 0504 {
+; 0000 0509 {
 _GetPulseWidth:
 ; .FSTART _GetPulseWidth
-; 0000 0505     uint32_t i, result;
-; 0000 0506 
-; 0000 0507     // Wait for rising edge on Echo pin
-; 0000 0508     for (i = 0; i < 600000; i++)
+; 0000 050A     uint32_t i, result;
+; 0000 050B 
+; 0000 050C     // Wait for rising edge on Echo pin
+; 0000 050D     for (i = 0; i < 600000; i++)
 	SBIW R28,8
 ;	i -> Y+4
 ;	result -> Y+0
 	LDI  R30,LOW(0)
 	__CLRD1S 4
-_0x18F:
+_0x191:
 	CALL SUBOPT_0x3B
-	BRSH _0x190
-; 0000 0509     {
-; 0000 050A         if (!(US_PIN & (1 << US_ECHO_POS)))
+	BRSH _0x192
+; 0000 050E     {
+; 0000 050F         if (!(US_PIN & (1 << US_ECHO_POS)))
 	SBIS 0x10,6
-; 0000 050B             continue;
-	RJMP _0x18E
-; 0000 050C         else
-; 0000 050D             break;
+; 0000 0510             continue;
 	RJMP _0x190
-; 0000 050E     }
-_0x18E:
-	CALL SUBOPT_0x3C
-	RJMP _0x18F
+; 0000 0511         else
+; 0000 0512             break;
+	RJMP _0x192
+; 0000 0513     }
 _0x190:
-; 0000 050F 
-; 0000 0510     if (i == 600000)
+	CALL SUBOPT_0x3C
+	RJMP _0x191
+_0x192:
+; 0000 0514 
+; 0000 0515     if (i == 600000)
 	CALL SUBOPT_0x3B
-	BRNE _0x193
-; 0000 0511         return US_ERROR; // Timeout error if no rising edge detected
+	BRNE _0x195
+; 0000 0516         return US_ERROR; // Timeout error if no rising edge detected
 	LDI  R30,LOW(65535)
 	LDI  R31,HIGH(65535)
 	RJMP _0x20C0004
-; 0000 0512 
-; 0000 0513     // Start timer with prescaler 64
-; 0000 0514     TCCR1A = 0x00;
-_0x193:
+; 0000 0517 
+; 0000 0518     // Start timer with prescaler 64
+; 0000 0519     TCCR1A = 0x00;
+_0x195:
 	LDI  R30,LOW(0)
 	OUT  0x2F,R30
-; 0000 0515     TCCR1B = (1 << CS11) | (1 << CS10);
+; 0000 051A     TCCR1B = (1 << CS11) | (1 << CS10);
 	LDI  R30,LOW(3)
 	OUT  0x2E,R30
-; 0000 0516     TCNT1 = 0x00; // Reset timer
+; 0000 051B     TCNT1 = 0x00; // Reset timer
 	LDI  R30,LOW(0)
 	LDI  R31,HIGH(0)
 	OUT  0x2C+1,R31
 	OUT  0x2C,R30
-; 0000 0517 
-; 0000 0518     // Wait for falling edge on Echo pin
-; 0000 0519     for (i = 0; i < 600000; i++)
+; 0000 051C 
+; 0000 051D     // Wait for falling edge on Echo pin
+; 0000 051E     for (i = 0; i < 600000; i++)
 	__CLRD1S 4
-_0x195:
+_0x197:
 	CALL SUBOPT_0x3B
-	BRSH _0x196
-; 0000 051A     {
-; 0000 051B         if (!(US_PIN & (1 << US_ECHO_POS)))
+	BRSH _0x198
+; 0000 051F     {
+; 0000 0520         if (!(US_PIN & (1 << US_ECHO_POS)))
 	SBIS 0x10,6
-; 0000 051C             break; // Falling edge detected
-	RJMP _0x196
-; 0000 051D         if (TCNT1 > 60000)
+; 0000 0521             break; // Falling edge detected
+	RJMP _0x198
+; 0000 0522         if (TCNT1 > 60000)
 	IN   R30,0x2C
 	IN   R31,0x2C+1
 	CPI  R30,LOW(0xEA61)
 	LDI  R26,HIGH(0xEA61)
 	CPC  R31,R26
-	BRLO _0x198
-; 0000 051E             return US_NO_OBSTACLE; // No obstacle in range
+	BRLO _0x19A
+; 0000 0523             return US_NO_OBSTACLE; // No obstacle in range
 	LDI  R30,LOW(65534)
 	LDI  R31,HIGH(65534)
 	RJMP _0x20C0004
-; 0000 051F     }
-_0x198:
+; 0000 0524     }
+_0x19A:
 	CALL SUBOPT_0x3C
-	RJMP _0x195
-_0x196:
-; 0000 0520 
-; 0000 0521     result = TCNT1; // Capture timer value
+	RJMP _0x197
+_0x198:
+; 0000 0525 
+; 0000 0526     result = TCNT1; // Capture timer value
 	IN   R30,0x2C
 	IN   R31,0x2C+1
 	CLR  R22
 	CLR  R23
 	CALL __PUTD1S0
-; 0000 0522     TCCR1B = 0x00;  // Stop timer
+; 0000 0527     TCCR1B = 0x00;  // Stop timer
 	LDI  R30,LOW(0)
 	OUT  0x2E,R30
-; 0000 0523 
-; 0000 0524     if (result > 60000)
+; 0000 0528 
+; 0000 0529     if (result > 60000)
 	CALL __GETD2S0
 	__CPD2N 0xEA61
-	BRLO _0x199
-; 0000 0525         return US_NO_OBSTACLE;
+	BRLO _0x19B
+; 0000 052A         return US_NO_OBSTACLE;
 	LDI  R30,LOW(65534)
 	LDI  R31,HIGH(65534)
 	RJMP _0x20C0004
-; 0000 0526     else
-_0x199:
-; 0000 0527         return (result >> 1); // Return the measured pulse width
+; 0000 052B     else
+_0x19B:
+; 0000 052C         return (result >> 1); // Return the measured pulse width
 	CALL __GETD1S0
 	CALL __LSRD1
 	RJMP _0x20C0004
-; 0000 0528 }
+; 0000 052D }
 ; .FEND
 ;
 ;void startSonar()
-; 0000 052B {
+; 0000 0530 {
 _startSonar:
 ; .FSTART _startSonar
-; 0000 052C     char numberString[16];
-; 0000 052D     uint16_t pulseWidth; // Pulse width from echo
-; 0000 052E     int distance, previous_distance = -1;
-; 0000 052F     static int previous_count = -1;
+; 0000 0531     char numberString[16];
+; 0000 0532     uint16_t pulseWidth; // Pulse width from echo
+; 0000 0533     int distance, previous_distance = -1;
+; 0000 0534     static int previous_count = -1;
 
 	.DSEG
 
 	.CSEG
-; 0000 0530 
-; 0000 0531     lcdCommand(0x01);
+; 0000 0535 
+; 0000 0536     lcdCommand(0x01);
 	SBIW R28,16
 	CALL __SAVELOCR6
 ;	numberString -> Y+6
@@ -5343,57 +5382,57 @@ _startSonar:
 ;	previous_distance -> R20,R21
 	__GETWRN 20,21,-1
 	CALL SUBOPT_0x0
-; 0000 0532     lcd_gotoxy(1, 1);
-; 0000 0533     lcd_print("Distance: ");
-	__POINTW2MN _0x19C,0
+; 0000 0537     lcd_gotoxy(1, 1);
+; 0000 0538     lcd_print("Distance: ");
+	__POINTW2MN _0x19E,0
 	RCALL _lcd_print
-; 0000 0534 
-; 0000 0535     while (stage == STAGE_TRAFFIC_MONITORING)
-_0x19D:
+; 0000 0539 
+; 0000 053A     while (stage == STAGE_TRAFFIC_MONITORING)
+_0x19F:
 	LDI  R30,LOW(10)
 	CP   R30,R5
 	BREQ PC+2
-	RJMP _0x19F
-; 0000 0536     {
-; 0000 0537         HCSR04Trigger();              // Send trigger pulse
+	RJMP _0x1A1
+; 0000 053B     {
+; 0000 053C         HCSR04Trigger();              // Send trigger pulse
 	RCALL _HCSR04Trigger
-; 0000 0538         pulseWidth = GetPulseWidth(); // Measure echo pulse
+; 0000 053D         pulseWidth = GetPulseWidth(); // Measure echo pulse
 	RCALL _GetPulseWidth
 	MOVW R16,R30
-; 0000 0539 
-; 0000 053A         if (pulseWidth == US_ERROR)
+; 0000 053E 
+; 0000 053F         if (pulseWidth == US_ERROR)
 	LDI  R30,LOW(65535)
 	LDI  R31,HIGH(65535)
 	CP   R30,R16
 	CPC  R31,R17
-	BRNE _0x1A0
-; 0000 053B         {
-; 0000 053C             lcdCommand(0x01);
+	BRNE _0x1A2
+; 0000 0540         {
+; 0000 0541             lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 053D             lcd_gotoxy(1, 1);
-; 0000 053E             lcd_print("Error"); // Display error message
-	__POINTW2MN _0x19C,11
-	RJMP _0x1BF
-; 0000 053F         }
-; 0000 0540         else if (pulseWidth == US_NO_OBSTACLE)
-_0x1A0:
+; 0000 0542             lcd_gotoxy(1, 1);
+; 0000 0543             lcd_print("Error"); // Display error message
+	__POINTW2MN _0x19E,11
+	RJMP _0x1C1
+; 0000 0544         }
+; 0000 0545         else if (pulseWidth == US_NO_OBSTACLE)
+_0x1A2:
 	LDI  R30,LOW(65534)
 	LDI  R31,HIGH(65534)
 	CP   R30,R16
 	CPC  R31,R17
-	BRNE _0x1A2
-; 0000 0541         {
-; 0000 0542             lcdCommand(0x01);
+	BRNE _0x1A4
+; 0000 0546         {
+; 0000 0547             lcdCommand(0x01);
 	CALL SUBOPT_0x0
-; 0000 0543             lcd_gotoxy(1, 1);
-; 0000 0544             lcd_print("No Obstacle"); // Display no obstacle message
-	__POINTW2MN _0x19C,17
-	RJMP _0x1BF
-; 0000 0545         }
-; 0000 0546         else
-_0x1A2:
-; 0000 0547         {
-; 0000 0548             distance = (int)((pulseWidth * 0.034 / 2) + 0.5);
+; 0000 0548             lcd_gotoxy(1, 1);
+; 0000 0549             lcd_print("No Obstacle"); // Display no obstacle message
+	__POINTW2MN _0x19E,17
+	RJMP _0x1C1
+; 0000 054A         }
+; 0000 054B         else
+_0x1A4:
+; 0000 054C         {
+; 0000 054D             distance = (int)((pulseWidth * 0.034 / 2) + 0.5);
 	MOVW R30,R16
 	CLR  R22
 	CLR  R23
@@ -5408,60 +5447,60 @@ _0x1A2:
 	CALL __ADDF12
 	CALL __CFD1
 	MOVW R18,R30
-; 0000 0549 
-; 0000 054A             if (distance != previous_distance)
+; 0000 054E 
+; 0000 054F             if (distance != previous_distance)
 	__CPWRR 20,21,18,19
-	BREQ _0x1A4
-; 0000 054B             {
-; 0000 054C                 previous_distance = distance;
+	BREQ _0x1A6
+; 0000 0550             {
+; 0000 0551                 previous_distance = distance;
 	MOVW R20,R18
-; 0000 054D                 // Display distance on LCD
-; 0000 054E                 itoa(distance, numberString); // Convert distance to string
+; 0000 0552                 // Display distance on LCD
+; 0000 0553                 itoa(distance, numberString); // Convert distance to string
 	ST   -Y,R19
 	ST   -Y,R18
 	MOVW R26,R28
 	ADIW R26,8
 	CALL _itoa
-; 0000 054F                 lcd_gotoxy(11, 1);
+; 0000 0554                 lcd_gotoxy(11, 1);
 	LDI  R30,LOW(11)
 	CALL SUBOPT_0x22
-; 0000 0550                 lcd_print(numberString);
+; 0000 0555                 lcd_print(numberString);
 	MOVW R26,R28
 	ADIW R26,6
 	RCALL _lcd_print
-; 0000 0551                 lcd_print(" cm ");
-	__POINTW2MN _0x19C,29
+; 0000 0556                 lcd_print(" cm ");
+	__POINTW2MN _0x19E,29
 	RCALL _lcd_print
-; 0000 0552             }
-; 0000 0553             // Counting logic based on distance
-; 0000 0554             if (distance < 6)
-_0x1A4:
-	__CPWRN 18,19,6
-	BRGE _0x1A5
-; 0000 0555             {
-; 0000 0556                 US_count++; // Increment count if distance is below threshold
-	INC  R7
 ; 0000 0557             }
-; 0000 0558 
-; 0000 0559             // Update count on LCD only if it changes
-; 0000 055A             if (US_count != previous_count)
-_0x1A5:
+; 0000 0558             // Counting logic based on distance
+; 0000 0559             if (distance < 6)
+_0x1A6:
+	__CPWRN 18,19,6
+	BRGE _0x1A7
+; 0000 055A             {
+; 0000 055B                 US_count++; // Increment count if distance is below threshold
+	INC  R7
+; 0000 055C             }
+; 0000 055D 
+; 0000 055E             // Update count on LCD only if it changes
+; 0000 055F             if (US_count != previous_count)
+_0x1A7:
 	LDS  R30,_previous_count_S0000015000
 	LDS  R31,_previous_count_S0000015000+1
 	MOV  R26,R7
 	LDI  R27,0
 	CP   R30,R26
 	CPC  R31,R27
-	BREQ _0x1A6
-; 0000 055B             {
-; 0000 055C                 previous_count = US_count;
+	BREQ _0x1A8
+; 0000 0560             {
+; 0000 0561                 previous_count = US_count;
 	MOV  R30,R7
 	LDI  R31,0
 	STS  _previous_count_S0000015000,R30
 	STS  _previous_count_S0000015000+1,R31
-; 0000 055D                 lcd_gotoxy(1, 2); // Move to second line
+; 0000 0562                 lcd_gotoxy(1, 2); // Move to second line
 	CALL SUBOPT_0x1C
-; 0000 055E                 itoa(US_count, numberString);
+; 0000 0563                 itoa(US_count, numberString);
 	MOV  R30,R7
 	LDI  R31,0
 	ST   -Y,R31
@@ -5469,42 +5508,42 @@ _0x1A5:
 	MOVW R26,R28
 	ADIW R26,8
 	CALL _itoa
-; 0000 055F                 lcd_print("Count: ");
-	__POINTW2MN _0x19C,34
+; 0000 0564                 lcd_print("Count: ");
+	__POINTW2MN _0x19E,34
 	RCALL _lcd_print
-; 0000 0560                 lcd_print(numberString);
+; 0000 0565                 lcd_print(numberString);
 	MOVW R26,R28
 	ADIW R26,6
-_0x1BF:
+_0x1C1:
 	RCALL _lcd_print
-; 0000 0561             }
-; 0000 0562         }
-_0x1A6:
-; 0000 0563         delay_ms(500);
+; 0000 0566             }
+; 0000 0567         }
+_0x1A8:
+; 0000 0568         delay_ms(500);
 	LDI  R26,LOW(500)
 	LDI  R27,HIGH(500)
 	CALL _delay_ms
-; 0000 0564     }
-	RJMP _0x19D
-_0x19F:
-; 0000 0565 }
+; 0000 0569     }
+	RJMP _0x19F
+_0x1A1:
+; 0000 056A }
 	CALL __LOADLOCR6
 	ADIW R28,22
 	RET
 ; .FEND
 
 	.DSEG
-_0x19C:
+_0x19E:
 	.BYTE 0x2A
 ;
 ;unsigned int simple_hash(const char *str)
-; 0000 0568 {
+; 0000 056D {
 
 	.CSEG
 _simple_hash:
 ; .FSTART _simple_hash
-; 0000 0569     unsigned int hash = 0;
-; 0000 056A     while (*str)
+; 0000 056E     unsigned int hash = 0;
+; 0000 056F     while (*str)
 	ST   -Y,R27
 	ST   -Y,R26
 	ST   -Y,R17
@@ -5512,14 +5551,14 @@ _simple_hash:
 ;	*str -> Y+2
 ;	hash -> R16,R17
 	__GETWRN 16,17,0
-_0x1A7:
+_0x1A9:
 	LDD  R26,Y+2
 	LDD  R27,Y+2+1
 	LD   R30,X
 	CPI  R30,0
-	BREQ _0x1A9
-; 0000 056B     {
-; 0000 056C         hash = (hash * 31) + *str; // A basic hash formula
+	BREQ _0x1AB
+; 0000 0570     {
+; 0000 0571         hash = (hash * 31) + *str; // A basic hash formula
 	__MULBNWRU 16,17,31
 	MOVW R0,R30
 	LDD  R26,Y+2
@@ -5529,84 +5568,84 @@ _0x1A7:
 	ADD  R30,R0
 	ADC  R31,R1
 	MOVW R16,R30
-; 0000 056D         str++;
+; 0000 0572         str++;
 	LDD  R30,Y+2
 	LDD  R31,Y+2+1
 	ADIW R30,1
 	STD  Y+2,R30
 	STD  Y+2+1,R31
-; 0000 056E     }
-	RJMP _0x1A7
-_0x1A9:
-; 0000 056F     return hash;
+; 0000 0573     }
+	RJMP _0x1A9
+_0x1AB:
+; 0000 0574     return hash;
 	MOVW R30,R16
 	LDD  R17,Y+1
 	LDD  R16,Y+0
 _0x20C0007:
 	ADIW R28,4
 	RET
-; 0000 0570 }
+; 0000 0575 }
 ; .FEND
 ;
 ;void I2C_init()
-; 0000 0573 {
+; 0000 0578 {
 _I2C_init:
 ; .FSTART _I2C_init
-; 0000 0574     TWSR = 0x00;
+; 0000 0579     TWSR = 0x00;
 	LDI  R30,LOW(0)
 	OUT  0x1,R30
-; 0000 0575     TWBR = 0x47;
+; 0000 057A     TWBR = 0x47;
 	LDI  R30,LOW(71)
 	OUT  0x0,R30
-; 0000 0576     TWCR = 0x04;
+; 0000 057B     TWCR = 0x04;
 	LDI  R30,LOW(4)
 	OUT  0x36,R30
-; 0000 0577 }
+; 0000 057C }
 	RET
 ; .FEND
 ;
 ;void I2C_start()
-; 0000 057A {
+; 0000 057F {
 _I2C_start:
 ; .FSTART _I2C_start
-; 0000 057B     TWCR = (1 << TWINT) | (1 << TWSTA) | (1 << TWEN);
+; 0000 0580     TWCR = (1 << TWINT) | (1 << TWSTA) | (1 << TWEN);
 	LDI  R30,LOW(164)
 	OUT  0x36,R30
-; 0000 057C     while(!(TWCR & (1 << TWINT)));
-_0x1AA:
+; 0000 0581     while(!(TWCR & (1 << TWINT)));
+_0x1AC:
 	IN   R30,0x36
 	ANDI R30,LOW(0x80)
-	BREQ _0x1AA
-; 0000 057D }
+	BREQ _0x1AC
+; 0000 0582 }
 	RET
 ; .FEND
 ;
 ;void I2C_write(unsigned char data)
-; 0000 0580 {
+; 0000 0585 {
 _I2C_write:
 ; .FSTART _I2C_write
-; 0000 0581     TWDR = data;
+; 0000 0586     TWDR = data;
 	ST   -Y,R26
 ;	data -> Y+0
 	LD   R30,Y
 	OUT  0x3,R30
-; 0000 0582     TWCR = (1 << TWINT) | (1 << TWEN);
+; 0000 0587     TWCR = (1 << TWINT) | (1 << TWEN);
 	LDI  R30,LOW(132)
 	OUT  0x36,R30
-; 0000 0583     while(!(TWCR & (1 << TWINT)));
-_0x1AD:
+; 0000 0588     while(!(TWCR & (1 << TWINT)));
+_0x1AF:
 	IN   R30,0x36
 	ANDI R30,LOW(0x80)
-	BREQ _0x1AD
-; 0000 0584 }
+	BREQ _0x1AF
+; 0000 0589 }
 	RJMP _0x20C0006
 ; .FEND
 ;
 ;unsigned char I2C_read(unsigned char ackVal)
-; 0000 0587 {
+; 0000 058C {
 _I2C_read:
 ; .FSTART _I2C_read
-; 0000 0588     TWCR = (1 << TWINT) | (1 << TWEN) | (ackVal << TWEA);
+; 0000 058D     TWCR = (1 << TWINT) | (1 << TWEN) | (ackVal << TWEA);
 	ST   -Y,R26
 ;	ackVal -> Y+0
 	LD   R30,Y
@@ -5616,96 +5655,96 @@ _I2C_read:
 	LSL  R30
 	ORI  R30,LOW(0x84)
 	OUT  0x36,R30
-; 0000 0589     while(!(TWCR & (1 << TWINT)));
-_0x1B0:
+; 0000 058E     while(!(TWCR & (1 << TWINT)));
+_0x1B2:
 	IN   R30,0x36
 	ANDI R30,LOW(0x80)
-	BREQ _0x1B0
-; 0000 058A     return TWDR;
+	BREQ _0x1B2
+; 0000 058F     return TWDR;
 	IN   R30,0x3
 _0x20C0006:
 	ADIW R28,1
 	RET
-; 0000 058B }
+; 0000 0590 }
 ; .FEND
 ;
 ;void I2C_stop()
-; 0000 058E {
+; 0000 0593 {
 _I2C_stop:
 ; .FSTART _I2C_stop
-; 0000 058F     TWCR = (1 << TWINT) | (1 << TWEN) | (1 << TWSTO);
+; 0000 0594     TWCR = (1 << TWINT) | (1 << TWEN) | (1 << TWSTO);
 	LDI  R30,LOW(148)
 	OUT  0x36,R30
-; 0000 0590     while(TWCR & (1 << TWSTO));
-_0x1B3:
+; 0000 0595     while(TWCR & (1 << TWSTO));
+_0x1B5:
 	IN   R30,0x36
 	SBRC R30,4
-	RJMP _0x1B3
-; 0000 0591 }
+	RJMP _0x1B5
+; 0000 0596 }
 	RET
 ; .FEND
 ;
 ;void rtc_init()
-; 0000 0594 {
+; 0000 0599 {
 _rtc_init:
 ; .FSTART _rtc_init
-; 0000 0595     I2C_init();
+; 0000 059A     I2C_init();
 	RCALL _I2C_init
-; 0000 0596     I2C_start();
+; 0000 059B     I2C_start();
 	CALL SUBOPT_0x3D
-; 0000 0597     I2C_write(0xD0);
-; 0000 0598     I2C_write(0x07);
+; 0000 059C     I2C_write(0xD0);
+; 0000 059D     I2C_write(0x07);
 	LDI  R26,LOW(7)
 	RCALL _I2C_write
-; 0000 0599     I2C_write(0x00);
+; 0000 059E     I2C_write(0x00);
 	LDI  R26,LOW(0)
 	CALL SUBOPT_0x3E
-; 0000 059A     I2C_stop();
-; 0000 059B }
+; 0000 059F     I2C_stop();
+; 0000 05A0 }
 	RET
 ; .FEND
 ;
 ;void rtc_getTime(unsigned char* hour, unsigned char* minute, unsigned char* second)
-; 0000 059E {
+; 0000 05A3 {
 _rtc_getTime:
 ; .FSTART _rtc_getTime
-; 0000 059F     I2C_start();
+; 0000 05A4     I2C_start();
 	ST   -Y,R27
 	ST   -Y,R26
 ;	*hour -> Y+4
 ;	*minute -> Y+2
 ;	*second -> Y+0
 	CALL SUBOPT_0x3D
-; 0000 05A0     I2C_write(0xD0);
-; 0000 05A1     I2C_write(0x00);
+; 0000 05A5     I2C_write(0xD0);
+; 0000 05A6     I2C_write(0x00);
 	LDI  R26,LOW(0)
 	CALL SUBOPT_0x3E
-; 0000 05A2     I2C_stop();
-; 0000 05A3 
-; 0000 05A4     I2C_start();
+; 0000 05A7     I2C_stop();
+; 0000 05A8 
+; 0000 05A9     I2C_start();
 	CALL SUBOPT_0x3F
-; 0000 05A5     I2C_write(0xD1);
-; 0000 05A6     *second = I2C_read(1);
-; 0000 05A7     *minute = I2C_read(1);
-; 0000 05A8     *hour = I2C_read(0);
+; 0000 05AA     I2C_write(0xD1);
+; 0000 05AB     *second = I2C_read(1);
+; 0000 05AC     *minute = I2C_read(1);
+; 0000 05AD     *hour = I2C_read(0);
 	LDI  R26,LOW(0)
 	RCALL _I2C_read
 	LDD  R26,Y+4
 	LDD  R27,Y+4+1
 	ST   X,R30
-; 0000 05A9     I2C_stop();
+; 0000 05AE     I2C_stop();
 	RCALL _I2C_stop
-; 0000 05AA }
+; 0000 05AF }
 _0x20C0005:
 	ADIW R28,6
 	RET
 ; .FEND
 ;
 ;void rtc_getDate(unsigned char* year, unsigned char* month, unsigned char* date, unsigned char* day)
-; 0000 05AD {
+; 0000 05B2 {
 _rtc_getDate:
 ; .FSTART _rtc_getDate
-; 0000 05AE     I2C_start();
+; 0000 05B3     I2C_start();
 	ST   -Y,R27
 	ST   -Y,R26
 ;	*year -> Y+6
@@ -5713,74 +5752,74 @@ _rtc_getDate:
 ;	*date -> Y+2
 ;	*day -> Y+0
 	CALL SUBOPT_0x3D
-; 0000 05AF     I2C_write(0xD0);
-; 0000 05B0     I2C_write(0x03);
+; 0000 05B4     I2C_write(0xD0);
+; 0000 05B5     I2C_write(0x03);
 	LDI  R26,LOW(3)
 	CALL SUBOPT_0x3E
-; 0000 05B1     I2C_stop();
-; 0000 05B2 
-; 0000 05B3     I2C_start();
+; 0000 05B6     I2C_stop();
+; 0000 05B7 
+; 0000 05B8     I2C_start();
 	CALL SUBOPT_0x3F
-; 0000 05B4     I2C_write(0xD1);
-; 0000 05B5     *day = I2C_read(1);
-; 0000 05B6     *date = I2C_read(1);
-; 0000 05B7     *month = I2C_read(1);
+; 0000 05B9     I2C_write(0xD1);
+; 0000 05BA     *day = I2C_read(1);
+; 0000 05BB     *date = I2C_read(1);
+; 0000 05BC     *month = I2C_read(1);
 	LDI  R26,LOW(1)
 	RCALL _I2C_read
 	LDD  R26,Y+4
 	LDD  R27,Y+4+1
 	ST   X,R30
-; 0000 05B8     *year = I2C_read(0);
+; 0000 05BD     *year = I2C_read(0);
 	LDI  R26,LOW(0)
 	RCALL _I2C_read
 	LDD  R26,Y+6
 	LDD  R27,Y+6+1
 	ST   X,R30
-; 0000 05B9     I2C_stop();
+; 0000 05BE     I2C_stop();
 	RCALL _I2C_stop
-; 0000 05BA }
+; 0000 05BF }
 _0x20C0004:
 	ADIW R28,8
 	RET
 ; .FEND
 ;
 ;void Timer2_Init()
-; 0000 05BD {
+; 0000 05C2 {
 _Timer2_Init:
 ; .FSTART _Timer2_Init
-; 0000 05BE     //Disable timer2 interrupts
-; 0000 05BF     TIMSK = 0;
+; 0000 05C3     //Disable timer2 interrupts
+; 0000 05C4     TIMSK = 0;
 	LDI  R30,LOW(0)
 	OUT  0x39,R30
-; 0000 05C0     //Enable asynchronous mode
-; 0000 05C1     ASSR = (1 << AS2);
+; 0000 05C5     //Enable asynchronous mode
+; 0000 05C6     ASSR = (1 << AS2);
 	LDI  R30,LOW(8)
 	OUT  0x22,R30
-; 0000 05C2     //set initial counter value
-; 0000 05C3     TCNT2 = 0;
+; 0000 05C7     //set initial counter value
+; 0000 05C8     TCNT2 = 0;
 	LDI  R30,LOW(0)
 	OUT  0x24,R30
-; 0000 05C4     //set prescaller 128
-; 0000 05C5     TCCR2 = 0;
+; 0000 05C9     //set prescaller 128
+; 0000 05CA     TCCR2 = 0;
 	OUT  0x25,R30
-; 0000 05C6     TCCR2 |= (1 << CS22) | ( 1 << CS00);
+; 0000 05CB     TCCR2 |= (1 << CS22) | ( 1 << CS00);
 	IN   R30,0x25
 	ORI  R30,LOW(0x5)
 	OUT  0x25,R30
-; 0000 05C7     //wait for registers update
-; 0000 05C8     while (ASSR & ((1 << TCN2UB) | (1 << TCR2UB)));
-_0x1B6:
+; 0000 05CC     //wait for registers update
+; 0000 05CD     while (ASSR & ((1 << TCN2UB) | (1 << TCR2UB)));
+_0x1B8:
 	IN   R30,0x22
 	ANDI R30,LOW(0x5)
-	BRNE _0x1B6
-; 0000 05C9     //clear interrupt flags
-; 0000 05CA     TIFR = (1 << TOV2);
+	BRNE _0x1B8
+; 0000 05CE     //clear interrupt flags
+; 0000 05CF     TIFR = (1 << TOV2);
 	LDI  R30,LOW(64)
 	OUT  0x38,R30
-; 0000 05CB     //enable TOV2 interrupt
-; 0000 05CC     TIMSK  = (1 << TOIE2);
+; 0000 05D0     //enable TOV2 interrupt
+; 0000 05D1     TIMSK  = (1 << TOIE2);
 	OUT  0x39,R30
-; 0000 05CD }
+; 0000 05D2 }
 	RET
 ; .FEND
 
@@ -5866,6 +5905,50 @@ memset1:
     ldd  r30,y+3
     ldd  r31,y+4
 	JMP  _0x20C0003
+; .FEND
+_strcmp:
+; .FSTART _strcmp
+	ST   -Y,R27
+	ST   -Y,R26
+    ld   r30,y+
+    ld   r31,y+
+    ld   r26,y+
+    ld   r27,y+
+strcmp0:
+    ld   r22,x+
+    ld   r23,z+
+    cp   r22,r23
+    brne strcmp1
+    tst  r22
+    brne strcmp0
+strcmp3:
+    clr  r30
+    ret
+strcmp1:
+    sub  r22,r23
+    breq strcmp3
+    ldi  r30,1
+    brcc strcmp2
+    subi r30,2
+strcmp2:
+    ret
+; .FEND
+_strcpy:
+; .FSTART _strcpy
+	ST   -Y,R27
+	ST   -Y,R26
+    ld   r30,y+
+    ld   r31,y+
+    ld   r26,y+
+    ld   r27,y+
+    movw r24,r26
+strcpy0:
+    ld   r22,z+
+    st   x+,r22
+    tst  r22
+    brne strcpy0
+    movw r30,r24
+    ret
 ; .FEND
 _strlen:
 ; .FSTART _strlen
@@ -6576,15 +6659,15 @@ SUBOPT_0xE:
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:11 WORDS
 SUBOPT_0xF:
 	MOVW R30,R28
-	ADIW R30,4
+	ADIW R30,24
 	ST   -Y,R31
 	ST   -Y,R30
 	MOVW R30,R28
-	ADIW R30,7
+	ADIW R30,27
 	ST   -Y,R31
 	ST   -Y,R30
 	MOVW R26,R28
-	ADIW R26,10
+	ADIW R26,30
 	CALL _rtc_getTime
 	LDI  R30,LOW(_time)
 	LDI  R31,HIGH(_time)
@@ -6601,12 +6684,12 @@ SUBOPT_0x10:
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:7 WORDS
 SUBOPT_0x11:
-	LDD  R30,Y+8
+	LDD  R30,Y+28
 	CLR  R31
 	CLR  R22
 	CLR  R23
 	CALL __PUTPARD1
-	LDD  R30,Y+13
+	LDD  R30,Y+33
 	CLR  R31
 	CLR  R22
 	CLR  R23
@@ -6623,18 +6706,19 @@ SUBOPT_0x12:
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:15 WORDS
 SUBOPT_0x13:
 	MOVW R30,R28
+	ADIW R30,20
 	ST   -Y,R31
 	ST   -Y,R30
 	MOVW R30,R28
-	ADIW R30,3
+	ADIW R30,23
 	ST   -Y,R31
 	ST   -Y,R30
 	MOVW R30,R28
-	ADIW R30,6
+	ADIW R30,26
 	ST   -Y,R31
 	ST   -Y,R30
 	MOVW R26,R28
-	ADIW R26,9
+	ADIW R26,29
 	CALL _rtc_getDate
 	LDI  R30,LOW(_time)
 	LDI  R31,HIGH(_time)
@@ -6767,8 +6851,16 @@ SUBOPT_0x22:
 	LDI  R26,LOW(1)
 	JMP  _lcd_gotoxy
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
 SUBOPT_0x23:
+	LDI  R30,LOW(_time)
+	LDI  R31,HIGH(_time)
+	ST   -Y,R31
+	ST   -Y,R30
+	RET
+
+;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
+SUBOPT_0x24:
 	OUT  0x18,R30
 	IN   R30,0x16
 	ANDI R30,LOW(0xF)
@@ -6777,7 +6869,7 @@ SUBOPT_0x23:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 49 TIMES, CODE SIZE REDUCTION:429 WORDS
-SUBOPT_0x24:
+SUBOPT_0x25:
 	MOV  R30,R16
 	LDI  R26,LOW(_keypad)
 	LDI  R27,HIGH(_keypad)
@@ -6791,33 +6883,33 @@ SUBOPT_0x24:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 5 TIMES, CODE SIZE REDUCTION:5 WORDS
-SUBOPT_0x25:
+SUBOPT_0x26:
 	CALL _lcd_print
 	RJMP SUBOPT_0x20
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:6 WORDS
-SUBOPT_0x26:
+SUBOPT_0x27:
 	SUBI R30,LOW(-_buffer)
 	SBCI R31,HIGH(-_buffer)
 	MOVW R0,R30
-	RJMP SUBOPT_0x24
+	RJMP SUBOPT_0x25
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:6 WORDS
-SUBOPT_0x27:
+SUBOPT_0x28:
 	LD   R30,X
 	MOVW R26,R0
 	ST   X,R30
 	RJMP SUBOPT_0x7
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:9 WORDS
-SUBOPT_0x28:
+SUBOPT_0x29:
 	__ADDW1MN _buffer,1
 	LDI  R26,LOW(0)
 	STD  Z+0,R26
-	RJMP SUBOPT_0x24
+	RJMP SUBOPT_0x25
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:21 WORDS
-SUBOPT_0x29:
+SUBOPT_0x2A:
 	MOV  R30,R21
 	LDI  R31,0
 	SBIW R30,1
@@ -6829,13 +6921,13 @@ SUBOPT_0x29:
 	JMP  _lcdCommand
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:6 WORDS
-SUBOPT_0x2A:
+SUBOPT_0x2B:
 	CALL _lcd_print
 	LDI  R26,LOW(16)
 	JMP  _lcdCommand
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:9 WORDS
-SUBOPT_0x2B:
+SUBOPT_0x2C:
 	LDI  R26,LOW(192)
 	CALL _lcdCommand
 	LDI  R30,LOW(0)
@@ -6844,7 +6936,7 @@ SUBOPT_0x2B:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:3 WORDS
-SUBOPT_0x2C:
+SUBOPT_0x2D:
 	LDD  R26,Y+12
 	LDD  R27,Y+12+1
 	CP   R26,R30
@@ -6852,7 +6944,7 @@ SUBOPT_0x2C:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 7 TIMES, CODE SIZE REDUCTION:15 WORDS
-SUBOPT_0x2D:
+SUBOPT_0x2E:
 	LDD  R30,Y+12
 	LDD  R31,Y+12+1
 	ADIW R30,1
@@ -6861,19 +6953,19 @@ SUBOPT_0x2D:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:6 WORDS
-SUBOPT_0x2E:
+SUBOPT_0x2F:
 	LDI  R26,LOW(192)
 	CALL _lcdCommand
 	RJMP SUBOPT_0x5
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x2F:
+SUBOPT_0x30:
 	LDI  R26,LOW(0)
 	LDI  R27,0
 	JMP  _read_byte_from_eeprom
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
-SUBOPT_0x30:
+SUBOPT_0x31:
 	MOV  R30,R18
 	LDI  R31,0
 	ADIW R30,1
@@ -6881,7 +6973,7 @@ SUBOPT_0x30:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:9 WORDS
-SUBOPT_0x31:
+SUBOPT_0x32:
 	LDD  R26,Y+12
 	LDD  R27,Y+12+1
 	ADD  R30,R26
@@ -6891,14 +6983,6 @@ SUBOPT_0x31:
 	LDD  R30,Y+14
 	LDD  R31,Y+14+1
 	RET
-
-;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x32:
-	LDI  R30,LOW(_time)
-	LDI  R31,HIGH(_time)
-	ST   -Y,R31
-	ST   -Y,R30
-	RJMP SUBOPT_0x10
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
 SUBOPT_0x33:
@@ -7745,6 +7829,17 @@ __LOADLOCR3:
 __LOADLOCR2:
 	LDD  R17,Y+1
 	LD   R16,Y
+	RET
+
+__INITLOCB:
+__INITLOCW:
+	ADD  R26,R28
+	ADC  R27,R29
+__INITLOC0:
+	LPM  R0,Z+
+	ST   X+,R0
+	DEC  R24
+	BRNE __INITLOC0
 	RET
 
 ;END OF CODE MARKER

@@ -75,7 +75,7 @@ char buffer[32] = "";
 unsigned char page_num = 0;
 unsigned char US_count = 0;
 const unsigned int secret = 3940;
-char logged_in = 1;
+char logged_in = 0;
 char* days[7]= {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
 char time[20] = "";
 unsigned char submitTime = 5;
@@ -120,6 +120,7 @@ void main(void)
     unsigned char data;
     unsigned char second, minute, hour;
     unsigned char day, date, month, year;
+    char Date[20] = "";
 
     KEY_DDR = 0xF0;
     KEY_PRT = 0xFF;
@@ -443,17 +444,21 @@ void main(void)
         }
         else if(stage == STAGE_SHOW_CLOCK)
         {
+            lcdCommand(0x01);
+            memset(Date, 0, 20);
             while(stage == STAGE_SHOW_CLOCK){
-                lcdCommand(0x01);
                 rtc_getTime(&hour, &minute, &second);
                 sprintf(time, "%02x:%02x:%02x  ", hour, minute, second);
                 lcd_gotoxy(1,1);
                 lcd_print(time);
                 rtc_getDate(&year, &month, &date, &day);
                 sprintf(time, "20%02x/%02x/%02x  %3s", year, month, date, days[day - 1]);
-                lcd_gotoxy(1,2);
-                lcd_print(time);
-                delay_ms(1000);
+                if(strcmp(time, Date) != 0){
+                    lcd_gotoxy(1,2);
+                    lcd_print(time);
+                    strcpy(Date, time);
+                }   
+                delay_ms(1000);       
             }
         }
     }
