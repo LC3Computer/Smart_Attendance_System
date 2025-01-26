@@ -27,7 +27,7 @@ Built using the **C programming language**, this project offers a robust and sca
 
 ## Features
 
-1. **Attendance Initialization**:
+1. **##Attendance Initialization**:
    - The system prompts the user to set a specific time limit for attendance registration. Students must register their attendance before the timer expires. Once the time is up, attendance registration will automatically close, and the system will display a summary of the registered students.
    - **Submit Student Code**:
      - Students can enter their unique 8-digit ID via the keypad or using RFID which is simulated via virtual terminal.
