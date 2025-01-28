@@ -1,102 +1,101 @@
-# Smart Attendance System Project
 
-![bandicam 2025-01-28 13-49-44-641](https://github.com/user-attachments/assets/138f18fb-b7a5-4655-9aaa-a492bd696e6b)
----
+# Smart Attendance System with AVR Microcontroller  
+
+![System Demo Screenshot](https://github.com/user-attachments/assets/138f18fb-b7a5-4655-9aaa-a492bd696e6b)  
+[![Project Demo Video](https://img.shields.io/badge/Watch-Demo-red)](https://github.com/user-attachments/assets/b59a6b9f-54ea-471e-b054-7dbb25250943)
+
 ## Table of Contents
+1. [Project Overview](#-project-overview)
+2. [Key Features](#-key-features)
+3. [Hardware Components](#-hardware-components)
+4. [Setup & Simulation](#-setup--simulation)
+5. [Course Information](#-course-information)
 
-1. [Project Overview](#project-overview)
-2. [Features](#features)
-3. [Project Demo](#project-demo)
-4. [Components Used](#components-used)
-5. [Installation and Usage](#installation-and-usage)
 ---
+
 ## Project Overview
+An intelligent attendance tracking system built around the ATmega32 microcontroller that combines:  
 
-This project leverages the features of the AVR microcontroller (ATmega32) to create an efficient system for:
-- **Tracking student attendance** during classes.
-- **Monitoring traffic and temperature** in real-time.
-- **Providing user-friendly interactions** through a keypad, LCD and also RFID.
-- **Ensuring data persistence** with EEPROM storage and USART communication.
+**Automated attendance management** with time-limited registration  
+**Environmental monitoring** (temperature & room occupancy)  
+**Multiple input methods** (Keypad + Simulated RFID)  
+**Persistent data storage** using EEPROM and USART communication  
+
+Designed for educational environments to streamline attendance while monitoring classroom conditions.
+
 ---
 
-## Features
+## Key Features
 
-1. **Attendance Initialization**:
-   - The system prompts the user to set a specific time limit for attendance registration. Students must register their attendance before the timer expires. Once the time is up, attendance registration will automatically close, and the system will display a summary of the registered students.
-   - **Submit Student Code**:
-     - Students can enter their unique 8-digit ID via the keypad or using RFID which is simulated via virtual terminal.
-     - The system validates the ID format. If the input is invalid (e.g., incorrect length or format), an error message is displayed on the LCD, and the buzzer provides audio feedback.
-   - **Exit**:
-     - Allows users to return to the main menu without making any changes.
+### Smart Attendance Tracking
+- Configurable registration time window
+- Dual input methods:
+  - 8-digit keypad entry
+  - RFID simulation (via virtual terminal)
+- Real-time validation with audio/visual feedback
 
-2. **Student Management**:
-   - **Search Students**:
-      - Enter a student ID to check if the student is present or absent.
-   - **Delete Students**:
-      - Enter a student ID to delete it from the records.
-   - **Exit**:
-     - This option allows users to return to the main menu.
+### Student Management
+- **Search function**: Check individual attendance status
+- **Data maintenance**: Delete student records
+- **Attendance reports**: View present students with timestamps
 
-3. **View Present Students**:
-   - Displays the total number of present students along with the time of submit code.
-   - Lists the IDs of present students on the LCD, updating dynamically.
+### Environmental Monitoring
+- Real-time temperature readings (LM35 sensor)
+- Classroom traffic analysis (Ultrasonic sensor)
+- Continuous LCD display of sensor data
 
-4. **Temperature Monitoring**:
-   - Displays real-time environmental temperature using the LM35 sensor.
-   - Temperature values are converted from ADC readings and updated on the LCD.
+### Data Handling
+- EEPROM storage for persistent records
+- USART communication for data export
+- System status feedback via LCD messages
 
-5. **Retrieve Student Data**:
-   - Fetch stored student data from EEPROM.
-   - Transfer data via USART to external systems. Success or error messages are displayed on the LCD.
-
-6. **Traffic Monitoring**:
-   - Monitors real-time classroom traffic using an ultrasonic sensor.
-   - Traffic data is displayed on the LCD for better classroom management.
 ---
 
-## Project Demo
+## Hardware Components
+| Component | Usage |
+|-----------|-------|
+| ATmega32 MCU | System brain |
+| LM017L LCD | User interface display |
+| 4x4 Keypad | Student ID input |
+| Buzzer | Audio feedback |
+| HCSR04 Ultrasonic | People counting |
+| LM35 | Temperature sensing |
+| DS1307 RTC | Timekeeping |
+| Virtual Terminals | RFID simulation & data monitoring |
 
-[![check out this video](https://raw.githubusercontent.com/username/repository/branch/path/to/thumbnail.jpg)](https://raw.githubusercontent.com/LC3Computer/Smart_Attendance_System/main/video/bandicam%202025-01-28%2014-08-53-432.mp4)
 ---
 
-## Components Used
 
-- **Keypad**: For entering student IDs and navigating the menu. the keypad has been customized for this usage.
-- **LCD (LM017L)**: For displaying system states and user instructions.
-- **Buzzer**: For audio feedback and error notifications.
-- **Ultrasonic Sensor (HCSR04)**: For monitoring traffic.
-- **Temperature Sensor (LM35)**: For environmental temperature tracking.
-- **Virtual Terminals**: For simulating RFID and also showing EEPROM data.
-- **RTC (DS1307)**: For capturing time.
-- **Crystal**: A 32.768kHz crystal has been used for RTC.
----
+## Setup & Simulation
 
-## Installation and Usage
+### Requirements
+- Proteus 8 Professional
+- CodeVisionAVR (or compatible compiler)
 
-1. **Clone this repository**:
-
+### Step-by-Step Guide
+1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/attendance-system.git
-2. **Open the Proteus Simulation**:
+   git clone https://github.com/LC3Computer/Smart_Attendance_System.git
+   cd Smart_Attendance_System
+   ```
 
-   - Navigate to the `simulation` folder in the repository.
-   - Open the `.pdsprj` file in **Proteus** to view and simulate the project.
+2. **Open the Proteus simulation**:
+   - Launch `microFinalProjectProteusSimulate.pdsprj`
 
-3. **Compile the Source Code**:
+3. **Compile the source code**:
+   - Open in CodeVisionAVR
+   - Generate new `.hex` file
 
-   - Navigate to the `Smart-Attendance-System/src` folder in the repository.
-   - Open the source files in **Atmel Studio** or your preferred IDE.
-   - Compile the project to generate a new `.hex` file.
+4. **Configure the MCU**:
+   - Set clock frequency to **8MHz**
+   - Load the compiled `.hex` file
 
-4. **Load the Hex File**:
+5. **Run the simulation**:
+   - Interact via keypad
+   - Monitor LCD and virtual terminals
+   - Observe sensor responses
 
-   - Inside the Proteus simulation, double-click on the ATmega32 microcontroller.
-   - In the configuration window, browse to the location of the newly compiled `.hex` file.
-   - Apply the settings and close the configuration window.
+> [!NOTE]
+> The RFID functionality is simulated through virtual terminals in the Proteus environment.
 
-5. **Run the Simulation**:
-
-   - Press the play button in **Proteus** to run the simulation.
-   - Interact with the system using the keypad and observe the LCD, buzzer, and other components.
-
-
+---
