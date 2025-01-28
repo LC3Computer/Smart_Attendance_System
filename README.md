@@ -56,7 +56,7 @@ This project leverages the features of the AVR microcontroller (ATmega32) to cre
 
 ## Project Demo
 
-https://raw.githubusercontent.com/LC3Computer/Smart_Attendance_System/main/video/bandicam%202025-01-28%2014-08-53-432.mp4
+https://github.com/user-attachments/assets/c18e9bab-31f5-4db3-9dd1-0f559dd6ff35
 ---
 
 ## Components Used
@@ -69,34 +69,3 @@ https://raw.githubusercontent.com/LC3Computer/Smart_Attendance_System/main/video
 - **Virtual Terminals**: For simulating RFID and also showing EEPROM data.
 - **RTC (DS1307)**: For capturing time.
 - **Crystal**: A 32.768kHz crystal has been used for RTC.
----
-
-## Installation and Usage
-
-1. **Clone this repository**:
-
-   ```bash
-   git clone https://github.com/your-username/attendance-system.git
-2. **Open the Proteus Simulation**:
-
-   - Navigate to the `simulation` folder in the repository.
-   - Open the `.pdsprj` file in **Proteus** to view and simulate the project.
-
-3. **Compile the Source Code**:
-
-   - Navigate to the `Smart-Attendance-System/src` folder in the repository.
-   - Open the source files in **Atmel Studio** or your preferred IDE.
-   - Compile the project to generate a new `.hex` file.
-
-4. **Load the Hex File**:
-
-   - Inside the Proteus simulation, double-click on the ATmega32 microcontroller.
-   - In the configuration window, browse to the location of the newly compiled `.hex` file.
-   - Apply the settings and close the configuration window.
-
-5. **Run the Simulation**:
-
-   - Press the play button in **Proteus** to run the simulation.
-   - Interact with the system using the keypad and observe the LCD, buzzer, and other components.
-
-
