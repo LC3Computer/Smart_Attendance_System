@@ -56,7 +56,10 @@ This project leverages the features of the AVR microcontroller (ATmega32) to cre
 
 ## Project Demo
 
-https://github.com/user-attachments/assets/c18e9bab-31f5-4db3-9dd1-0f559dd6ff35
+
+https://github.com/user-attachments/assets/b59a6b9f-54ea-471e-b054-7dbb25250943
+
+
 ---
 
 ## Components Used
