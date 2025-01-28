@@ -56,7 +56,7 @@ This project leverages the features of the AVR microcontroller (ATmega32) to cre
 
 ## Project Demo
 
-[![check out this video](https://raw.githubusercontent.com/username/repository/branch/path/to/thumbnail.jpg)](https://raw.githubusercontent.com/LC3Computer/Smart_Attendance_System/main/video/bandicam%202025-01-28%2014-08-53-432.mp4.mp4)
+[![check out this video](https://raw.githubusercontent.com/username/repository/branch/path/to/thumbnail.jpg)](https://raw.githubusercontent.com/LC3Computer/Smart_Attendance_System/main/video/bandicam%202025-01-28%2014-08-53-432.mp4)
 ---
 
 ## Components Used
