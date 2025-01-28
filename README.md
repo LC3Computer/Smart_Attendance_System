@@ -1,4 +1,6 @@
 # Smart Attendance System Project
+
+![bandicam 2025-01-28 13-49-44-641](https://github.com/user-attachments/assets/138f18fb-b7a5-4655-9aaa-a492bd696e6b)
 ---
 ## Table of Contents
 
@@ -15,8 +17,6 @@ This project leverages the features of the AVR microcontroller (ATmega32) to cre
 - **Monitoring traffic and temperature** in real-time.
 - **Providing user-friendly interactions** through a keypad, LCD and also RFID.
 - **Ensuring data persistence** with EEPROM storage and USART communication.
-
-Built using the **C programming language**, this project offers a robust and scalable solution for managing attendance and environmental monitoring in educational settings.
 ---
 
 ## Features
@@ -38,7 +38,7 @@ Built using the **C programming language**, this project offers a robust and sca
      - This option allows users to return to the main menu.
 
 3. **View Present Students**:
-   - Displays the total number of present students along with the time of subimt code.
+   - Displays the total number of present students along with the time of submit code.
    - Lists the IDs of present students on the LCD, updating dynamically.
 
 4. **Temperature Monitoring**:
@@ -64,12 +64,12 @@ Built using the **C programming language**, this project offers a robust and sca
 ## Components Used
 
 - **Keypad**: For entering student IDs and navigating the menu. the keypad has been customized for this usage.
-- **LCD(LM017L)**: For displaying system states and user instructions.
+- **LCD (LM017L)**: For displaying system states and user instructions.
 - **Buzzer**: For audio feedback and error notifications.
-- **Ultrasonic Sensor(HCSR04)**: For monitoring traffic.
-- **Temperature Sensor(LM35)**: For environmental temperature tracking.
+- **Ultrasonic Sensor (HCSR04)**: For monitoring traffic.
+- **Temperature Sensor (LM35)**: For environmental temperature tracking.
 - **Virtual Terminals**: For simulating RFID and also showing EEPROM data.
-- **RTC(DS1307)**: For capturing time.
+- **RTC (DS1307)**: For capturing time.
 - **Crystal**: A 32.768kHz crystal has been used for RTC.
 ---
 
