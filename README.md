@@ -72,3 +72,32 @@ https://github.com/user-attachments/assets/b59a6b9f-54ea-471e-b054-7dbb25250943
 - **Virtual Terminals**: For simulating RFID and also showing EEPROM data.
 - **RTC (DS1307)**: For capturing time.
 - **Crystal**: A 32.768kHz crystal has been used for RTC.
+---
+
+## Installation and Usage
+
+1. **Clone this repository**:
+
+   ```bash
+   git clone https://github.com/LC3Computer/Smart_Attendance_System.git
+   
+2. **Open the Proteus Simulation**:
+
+    Open the `microFinalProjectProteusSimulate.pdsprj` file in **Proteus** to view and simulate the project.
+
+3. **Compile the Source Code**:
+
+   - Open the source files in **Code Vision**.
+   - Compile the project to generate a new `.hex` file.
+
+4. **Load the Hex File**:
+
+   - Inside the Proteus simulation, double-click on the ATmega32 microcontroller.
+   - In the configuration window, browse to the location of the newly compiled `.hex` file.
+   - Apply the settings and close the configuration window.
+   - Pay attention that micro clock frequency should be set in 8 MHz.
+
+5. **Run the Simulation**:
+
+   - Press the play button in **Proteus** to run the simulation.
+   - Interact with the system using the keypad and observe the LCD, buzzer, and other components.
