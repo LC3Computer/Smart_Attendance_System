@@ -101,3 +101,5 @@ https://github.com/user-attachments/assets/b59a6b9f-54ea-471e-b054-7dbb25250943
 
    - Press the play button in **Proteus** to run the simulation.
    - Interact with the system using the keypad and observe the LCD, buzzer, and other components.
+## Prepared for
+Microprocessor course at Isfahan University of Technology
