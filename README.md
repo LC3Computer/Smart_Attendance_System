@@ -109,5 +109,4 @@ Electrical Engineering Department
 - Peripheral interfacing (sensors, displays)
 - Real-time system design
 - Embedded data management
-```
 
