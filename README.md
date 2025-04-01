@@ -65,12 +65,6 @@ Designed for educational environments to streamline attendance while monitoring 
 
 ---
 
-## 🚀 Project Demo
-
-
-https://github.com/user-attachments/assets/b59a6b9f-54ea-471e-b054-7dbb25250943
-
----
 
 ## 💻 Setup & Simulation
 
