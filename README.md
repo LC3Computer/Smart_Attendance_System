@@ -95,7 +95,8 @@ Designed for educational environments to streamline attendance while monitoring 
    - Monitor LCD and virtual terminals
    - Observe sensor responses
 
-> **Note**: The RFID functionality is simulated through virtual terminals in the Proteus environment.
+> [!NOTE]
+> The RFID functionality is simulated through virtual terminals in the Proteus environment.
 
 ---
 
