@@ -83,12 +83,12 @@ Designed for educational environments to streamline attendance while monitoring 
    - Launch `microFinalProjectProteusSimulate.pdsprj`
 
 3. **Compile the source code**:
-   - Open in CodeVisionAVR
-   - Generate new `.hex` file
+   - Open `microFinalProjectCodes.prj` in CodeVisionAVR
+   - Compile and build the project to Generate new `.hex` file
 
 4. **Configure the MCU**:
    - Set clock frequency to **8MHz**
-   - Load the compiled `.hex` file
+   - Load the `.hex` file located at `\Debug\Exe\` directory
 
 5. **Run the simulation**:
    - Interact via keypad
